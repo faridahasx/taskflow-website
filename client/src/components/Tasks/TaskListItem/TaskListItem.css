@@ -1,0 +1,46 @@
+.task-li {
+    padding: 0 20px;
+    margin: 10px 0;
+    width: 100%;
+    list-style: none;
+}
+
+.task-wrapper {
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px -2px rgba(100, 94, 94, 0.412), 0 6px 20px 0 rgba(0, 0, 0, 0);
+    background-color: white;
+    width: 100%;
+}
+
+.task-wrapper:hover {
+    box-shadow: 0 4px 8px -2px rgb(100, 94, 94), 0 6px 20px 0 rgba(0, 0, 0, 0);
+}
+
+.task-wrapper h3 {
+    padding: 10px;
+    width: 100%;
+    /* white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; */
+
+}
+
+.details-container {
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+
+.task-middle {
+    max-width: calc(100% - 95px);
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+
+.task-wrapper .text-overflow {
+    width: 100%;
+    align-items: center;
+}

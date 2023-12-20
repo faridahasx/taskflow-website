@@ -1,0 +1,138 @@
+.editor-container {
+    color: #000;
+    position: relative;
+    line-height: 2em;
+    font-weight: 400;
+    text-align: left;
+    width: 100%;
+    overflow: auto;
+    border: 1px solid rgb(234, 234, 234);
+    background-color: rgb(234, 234, 234);
+    border-radius: 7px;
+}
+.editor-container:focus-within{
+    background-color: rgb(255, 255, 255);    
+}
+
+.editor-container::-webkit-scrollbar-track{
+    margin: 63px 0 10px 0;
+}
+
+
+
+
+#editor {
+    resize: none;
+    font-size: 15px;
+    caret-color: rgb(5, 5, 5);
+    position: relative;
+    tab-size: 1;
+    outline: 0;
+    padding: 20px;
+    caret-color: #444;
+    height: calc(var(--vh) - 266px);
+    min-height: calc(var(--vh) - 266px);
+} 
+
+
+
+
+.editor-placeholder {
+    color: #999;
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    top: 20px;
+    left: 20px;
+    font-size: 15px;
+    user-select: none;
+    display: inline-block;
+    pointer-events: none;
+}
+
+/* TEXT FORMATS */
+.editor-text-bold {
+    font-weight: bold;
+}
+
+.editor-text-italic {
+    font-style: italic;
+}
+
+.editor-text-underline {
+    text-decoration: underline;
+}
+
+.editor-text-strikethrough {
+    text-decoration: line-through;
+}
+
+.editor-text-underlineStrikethrough {
+    text-decoration: underline line-through;
+}
+
+/* Block Formats */
+.editor-paragraph {
+    font-size: 19px;
+    margin: 0;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.editor-paragraph:last-child {
+    margin-bottom: 0;
+}
+
+.editor-heading-h1 {
+    font-size: 25px;
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 12px;
+    padding: 0;
+}
+
+.editor-heading-h2 {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+/* LISTS */
+.editor-list-ol {
+    font-size: 19px;
+    padding: 0;
+    margin: 0;
+    margin-left: 16px;
+}
+
+.editor-list-ul {
+    font-size: 19px;
+    padding: 0;
+    margin: 0;
+    margin-left: 16px;
+    list-style-type: disc;
+
+}
+
+.editor-listitem {
+    margin: 8px 32px 8px 32px;
+}
+
+.editor-nested-listitem {
+    list-style-type: none;
+}
+
+
+@media  all and (min-width: 900px) and (min-height: 500px) {
+    .editor-container::-webkit-scrollbar-track{
+        margin: 46px 0 10px 0;
+    }    
+
+    #editor{
+        height: calc(((var(--vh) / 100) * 88) - 266px);
+        min-height: calc(((var(--vh) / 100) * 88) - 276px);
+    }
+} 

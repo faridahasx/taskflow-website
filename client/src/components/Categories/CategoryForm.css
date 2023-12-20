@@ -1,0 +1,32 @@
+.category-dialog {
+    width: 80%;
+    max-width: 400px;
+    height: 200px;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px -2px rgba(100, 94, 94, 0.911),
+        0 6px 20px 0 rgba(0, 0, 0, 0.379);
+}
+
+.category-dialog form {
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.category-dialog label {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+
+
+.category-dialog input {
+    height: 50px;
+    margin: 10px 0;
+    padding: 0 10px;
+    border: 1px solid rgba(128, 128, 128, 0.558);
+    border-radius: 10px;
+    font-size: 20px;
+}

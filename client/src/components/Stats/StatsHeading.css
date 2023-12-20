@@ -1,0 +1,32 @@
+#stats-heading {
+    width: 100%;
+    padding-top: 8px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#stats-dt-container {
+    font-weight: 500;
+    font-size: 15px;
+    font-style: italic;
+}
+
+
+.datetime {
+    margin: 0 5px;
+}
+
+@media all and (max-width: 380px) {
+    #stats-heading {
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .datetime {
+        margin: 5px 5px 5px 0;
+    }
+    
+    .datetime:nth-child(2) {
+        margin-right: 5px;
+    }
+}

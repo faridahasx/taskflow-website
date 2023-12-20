@@ -1,0 +1,132 @@
+:root {
+    --vh: 0;
+    --light-grey: rgb(227, 227, 227);
+    --lighter-grey: rgb(242, 241, 241);
+    --main-blue: rgb(0, 127, 182);
+    --main-green: rgb(48, 161, 80);
+    --min-width: 300px;
+    --big-screen-width: 80vw;
+    --dialog-bg: #0000006d;
+    --hover-bg-color: rgba(0, 0, 0, 0.263);
+    --border-radius: 20px;
+    --box-shadow: 0 4px 8px -2px rgba(100, 94, 94, 0.911), 0 6px 20px 0 rgba(0, 0, 0, 0.379);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    font-family: 'Urbanist', sans-serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    background-color: rgba(183, 72, 72, 0);
+    width: 10px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0);
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(50, 50, 50, 0.264);
+    border-radius: 20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+    background: rgba(77, 77, 77, 0.542);
+}
+
+/* Elements */
+body {
+    width: 100%;
+    min-width: var(--min-width);
+    height: 100%;
+    background-color: var(--light-grey);
+}
+
+main {
+    width: 100%;
+}
+
+a {
+    color: rgb(21, 19, 19);
+    cursor: pointer;
+}
+
+a,
+a:focus {
+    text-decoration: none;
+}
+
+input {
+    border: none;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+button {
+    height: 40px;
+    width: 40px;
+    min-height: 40px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    background-color: #00000000;
+    border: none;
+    cursor: pointer;
+    color: black;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+/* Classes */
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.text-overflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+}
+
+/* Flexbox */
+.flex,
+.center,
+.column,
+.jc-end {
+    display: flex;
+    display: -webkit-flex;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.jc-end {
+    justify-content: flex-end;
+}
+
+.column {
+    flex-direction: column;
+    -ms-flex-direction: column;
+}

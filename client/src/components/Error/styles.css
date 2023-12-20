@@ -1,0 +1,14 @@
+.error {
+    flex-direction: column;
+    -ms-flex-direction: column;
+}
+
+#error-message-container {
+    height: calc((var(--vh)) - 121px);
+}
+
+#error-message {
+    padding-top: 20px;
+    text-align: center;
+    font-size: 35px;
+}

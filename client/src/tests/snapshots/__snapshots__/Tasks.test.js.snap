@@ -1,0 +1,720 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tasks snapshot: Tasks 1`] = `
+<DocumentFragment>
+  <section
+    class="column"
+    id="tasks-wrapper"
+  >
+    <div
+      class="column"
+      id="tasks"
+    >
+      <nav
+        class="flex nav "
+        data-testid="nav"
+      >
+        <div
+          class="column"
+          id="nav-methods"
+        >
+          <div
+            class="flex"
+          >
+            <ul
+              class="flex"
+            >
+              <li>
+                <span
+                  class="nav-item center"
+                >
+                  <button
+                    class="icon "
+                    title="Search"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-testid="SearchIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                      />
+                    </svg>
+                  </button>
+                </span>
+              </li>
+              <li>
+                <span
+                  class="nav-item center"
+                >
+                  <button
+                    class="icon "
+                    title="Filters"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-testid="FilterListIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"
+                      />
+                    </svg>
+                  </button>
+                </span>
+              </li>
+              <li>
+                <span
+                  class="nav-item center"
+                >
+                  <button
+                    class="icon "
+                    title="Sort"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-testid="SwapVertIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3 5 6.99h3V14h2V6.99h3L9 3z"
+                      />
+                    </svg>
+                  </button>
+                </span>
+              </li>
+            </ul>
+            <button
+              class="icon add-task-btn"
+              title="Add Task"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="AddIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                />
+              </svg>
+            </button>
+          </div>
+          <ul
+            class="flex active-filters-ul"
+          >
+            <li>
+              <button
+                class="center activate-filter-btn active-filter"
+                title="All tasks"
+              >
+                All
+              </button>
+            </li>
+            <li>
+              <button
+                class="center activate-filter-btn inactive-filter"
+                title="Current tasks"
+              >
+                Current
+              </button>
+            </li>
+            <li>
+              <button
+                class="center activate-filter-btn inactive-filter"
+                title="Overdue tasks"
+              >
+                Overdue
+              </button>
+            </li>
+            <li>
+              <button
+                class="center activate-filter-btn inactive-filter"
+                title="Upcoming tasks"
+              >
+                Upcoming
+              </button>
+            </li>
+            <li>
+              <button
+                class="center activate-filter-btn inactive-filter"
+                title="Completed tasks"
+              >
+                Completed
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <ol
+        class="column"
+        id="tasks-list"
+      >
+        <li
+          class="task-li"
+        >
+          <div
+            class="task-wrapper flex"
+          >
+            <button
+              class="center color blue "
+              title="Mark as completed"
+            >
+              <span
+                class="icon center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="RadioButtonUncheckedIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="column task-middle"
+              data-testid="task-clickable"
+            >
+              <h3
+                class="flex"
+                title="Task 1"
+              >
+                Task 1
+              </h3>
+              <div
+                class="details-container column"
+              >
+                <span
+                  class="flex detail"
+                  title="Category: Tasks"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Category:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    Tasks
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Start date: 12/18/2023, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Start date:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    12/18/2023, 12:00 AM
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Target date: 12/20/2023, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Target date:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    12/20/2023, 12:00 AM
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="column task-controls"
+            >
+              <button
+                class="icon expand "
+                title="Expand"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="ExpandMoreIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </li>
+        <li
+          class="task-li"
+        >
+          <div
+            class="task-wrapper flex"
+          >
+            <button
+              class="center color red "
+              title="Mark as completed"
+            >
+              <span
+                class="icon center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="RadioButtonUncheckedIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="column task-middle"
+              data-testid="task-clickable"
+            >
+              <h3
+                class="flex"
+                title="Task 2"
+              >
+                Task 2
+              </h3>
+              <div
+                class="details-container column"
+              >
+                <span
+                  class="flex detail"
+                  title="Category: Tasks"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Category:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    Tasks
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Start date: 12/17/2023, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Start date:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    12/17/2023, 12:00 AM
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Target date: 12/18/2023, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Target date:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    12/18/2023, 12:00 AM
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="column task-controls"
+            >
+              <button
+                class="icon expand "
+                title="Expand"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="ExpandMoreIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </li>
+        <li
+          class="task-li"
+        >
+          <div
+            class="task-wrapper flex"
+          >
+            <button
+              class="center color yellow "
+              title="Mark as completed"
+            >
+              <span
+                class="icon center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="RadioButtonUncheckedIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="column task-middle"
+              data-testid="task-clickable"
+            >
+              <h3
+                class="flex"
+                title="Task 3"
+              >
+                Task 3
+              </h3>
+              <div
+                class="details-container column"
+              >
+                <span
+                  class="flex detail"
+                  title="Category: Tasks"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Category:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    Tasks
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Start date: 12/21/2023, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Start date:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    12/21/2023, 12:00 AM
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Target date: 12/22/2023, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Target date:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    12/22/2023, 12:00 AM
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="column task-controls"
+            >
+              <button
+                class="icon expand "
+                title="Expand"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="ExpandMoreIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </li>
+        <li
+          class="task-li"
+        >
+          <div
+            class="task-wrapper flex"
+          >
+            <button
+              class="center color green "
+              title="Unmark as completed"
+            >
+              <span
+                class="icon center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-15yr02a-MuiSvgIcon-root"
+                  data-testid="CheckCircleIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="column task-middle"
+              data-testid="task-clickable"
+            >
+              <h3
+                class="flex"
+                title="Task 4"
+              >
+                Task 4
+              </h3>
+              <div
+                class="details-container column"
+              >
+                <span
+                  class="flex detail"
+                  title="Category: Tasks"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Category:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    Tasks
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Start date: 12/21/2023, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Start date:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    12/21/2023, 12:00 AM
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Target date: 12/23/2023, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Target date:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    12/23/2023, 12:00 AM
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Completed at: 12/22/2023, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Completed at:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    12/22/2023, 12:00 AM
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="column task-controls"
+            >
+              <button
+                class="icon expand "
+                title="Expand"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="ExpandMoreIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </li>
+        <li
+          class="task-li"
+        >
+          <div
+            class="task-wrapper flex"
+          >
+            <button
+              class="center color blue "
+              title="Mark as completed"
+            >
+              <span
+                class="icon center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="RadioButtonUncheckedIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="column task-middle"
+              data-testid="task-clickable"
+            >
+              <h3
+                class="flex"
+                title="Login to continue"
+              >
+                Login to continue
+              </h3>
+              <div
+                class="details-container column"
+              >
+                <span
+                  class="flex detail"
+                  title="Category: Tasks"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Category:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    Tasks
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Start date: 12/18/2023, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Start date:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    12/18/2023, 12:00 AM
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Target date: 12/20/2023, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Target date:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    12/20/2023, 12:00 AM
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="column task-controls"
+            >
+              <button
+                class="icon expand "
+                title="Expand"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="ExpandMoreIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+</DocumentFragment>
+`;

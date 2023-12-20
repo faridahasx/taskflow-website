@@ -1,0 +1,48 @@
+#auth-container {
+    width: 90vw;
+    max-width: 500px;
+    min-width: 200px;
+    height: calc((var(--vh) / 100) * 90);
+    max-height: 700px;
+    background-color: white;
+    overflow: auto;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    align-items: center;
+}
+
+#auth-container::-webkit-scrollbar-track {
+    margin: 5px 0;
+}
+
+#auth-top {
+    width: 100%;
+    padding: 5px;
+}
+
+#auth-top h1 {
+    width: 100%;
+    font-size: 23px;
+}
+
+
+#auth-wrapper {
+    width: 100%;
+    padding: 20px 10%;
+    align-items: center;
+}
+
+#change-auth-method-btn,
+#google-btn {
+    font-weight: 600;
+}
+
+#change-auth-method-btn:hover,
+#google-btn:hover {
+    color: rgb(85, 85, 85);
+}
+
+
+#change-auth-method-btn {
+    width: 100%;
+}

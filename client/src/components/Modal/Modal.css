@@ -1,0 +1,14 @@
+.modal {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
+    min-width: var(--min-width);
+    height: 100%;
+    background-color: var(--dialog-bg);
+    align-items: center;
+    justify-content: center;
+}

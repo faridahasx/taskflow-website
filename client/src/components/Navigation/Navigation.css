@@ -1,0 +1,82 @@
+.nav li {
+    list-style: none;
+    margin-right: 10px;
+}
+
+.nav {
+    position: fixed;
+    z-index: 107;
+    width: 100vw;
+    min-width: var(--min-width);
+    padding: 4px 20px;
+    background-color: var(--light-grey);
+    transition: transform 0.3s;
+    -o-transition: transform 0.3s;
+    -moz-transition: transform 0.3s;
+    -webkit-transition: transform 0.3s;
+    transform: translateY(0);
+    -o-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+}
+
+.nav.scroll-down {
+    transform: translateY(-110%);
+    -o-transform: translateY(-110%);
+    -moz-transform: translateY(-110%);
+    -webkit-transform: translateY(-110%);
+    -ms-transform: translateY(-110%);
+}
+
+#nav-methods {
+    width: 100%;
+    padding: 5px 0;
+}
+
+#nav-methods>div {
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+.active-filters-ul {
+    overflow: auto;
+    padding: 5px 0;
+
+}
+
+.add-task-btn {
+    margin-left: 20px;
+}
+
+
+@media all and (max-width: 520px) {
+    #nav-lists {
+        flex-direction: column;
+        -ms-flex-direction: column;
+    }
+
+    #nav-lists ul:nth-child(1) {
+        margin-top: 10px;
+    }
+}
+
+
+
+@media all and (max-width: 900px) {
+    .nav {
+        top: 48px;
+    }
+}
+
+@media all and (min-width: 900px) {
+    .nav {
+        top: 0;
+        width: 80vw;
+        align-items: center;
+        justify-content: center;
+    }
+}

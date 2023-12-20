@@ -1,0 +1,13 @@
+#google-btn {
+    width: 100%;
+    margin: 25px 0;
+    font-size: medium;
+}
+
+#google-btn span {
+    margin-right: 3%;
+}
+
+#google-btn {
+    font-weight: 600;
+}

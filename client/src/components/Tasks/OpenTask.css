@@ -1,0 +1,48 @@
+.open-task-wrapper {
+    min-height: calc(var(--vh) - 80px);
+    max-height: calc(var(--vh) - 80px);
+    overflow: auto;
+    padding: 0 5px;
+}
+
+.open-task-wrapper .task-dialog-title {
+    max-height: 100%;
+    padding: 10px 20px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    background-color: rgba(234, 234, 234, 0.442);
+    overflow-wrap: break-word;
+    font-size: 19px;
+    word-wrap: break-word;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.task-description {
+    width: 100%;
+    overflow-wrap: break-word;
+}
+
+.t-icon {
+    min-width: 40px;
+    min-height: 40px;
+    color: rgb(59, 59, 59);
+}
+
+.description-loading {
+    min-height: calc(var(--vh) - 200px);
+}
+
+@media all and (min-width: 900px) and (min-height: 500px) {
+    .open-task-wrapper {
+        min-height: calc(((var(--vh) / 100) * 88) - 90px);
+        max-height: calc(((var(--vh) / 100) * 88) - 90px);
+    }
+
+    .description-loading {
+        min-height: calc(((var(--vh) / 100) * 88) - 200px);
+    }
+}

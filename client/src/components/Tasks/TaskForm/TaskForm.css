@@ -1,0 +1,34 @@
+#task-form{
+    height: calc(var(--vh) - 70px);
+    justify-content: space-around;
+}
+#task-form .task-dialog-title {
+    max-height: 40px;
+    padding: 0 20px;
+    background-color: rgb(234, 234, 234);
+    font-size: 15px;
+}
+
+#task-form .task-dialog-title:focus-within{
+    background-color: rgb(255, 255, 255);    
+}
+
+
+#task-title-input:focus-within{
+    background-color: white;
+}
+
+.description-input-loading{
+    min-height: calc(var(--vh) - 300px);
+}
+
+@media  all and (min-width: 900px) and (min-height: 500px) {
+    .description-input-loading{
+        min-height: calc(((var(--vh) / 100) * 88) - 300px );
+    }
+
+    #task-form{
+        height: calc(((var(--vh) / 100) * 88) - 70px);
+    }
+    
+}

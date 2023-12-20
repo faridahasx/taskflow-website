@@ -1,0 +1,44 @@
+#search-form,
+#search-form input {
+    width: 100%;
+}
+
+#search-form {
+    position: absolute;
+    z-index: 100; 
+    top: 0;
+    left: 0;
+    width: calc(100vw - 40px);
+    min-width: calc(var(--min-width) - 40px);
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.174);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+}
+
+
+#search-form:focus-within{
+    border-color: var(--main-green);
+}
+
+#search-form input {
+    background-color: rgba(127, 255, 212, 0);
+    font-size: 17px;
+} 
+
+#search-form .s-icon:hover {
+    color: rgb(33, 33, 33);
+}
+
+.s-icon {
+    min-width: 40px;
+    height: 40px;
+    color: rgb(129, 129, 129);
+}
+
+@media all and (min-width: 900px) {
+    #search-form {
+        width: calc(80vw - 40px);
+    }
+}

@@ -1,0 +1,240 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sort snapshot: Sort 1`] = `
+<DocumentFragment>
+  <div
+    class="sf-wrapper sort-dialog"
+  >
+    <div
+      class="sf-top flex"
+    >
+      <button
+        class="icon "
+        title="Close"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="CloseIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+          />
+        </svg>
+      </button>
+      <h3
+        class="heading-text flex"
+      >
+        Sort By
+      </h3>
+    </div>
+    <ul
+      data-testid="sort"
+      id="sort-ul"
+    >
+      <li
+        class="center sf-component"
+      >
+        <button
+          class="sort-field flex "
+          title="First start first"
+        >
+          <span
+            class="center sort-field-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="CheckIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+              />
+            </svg>
+          </span>
+          First start first
+        </button>
+      </li>
+      <li
+        class="center sf-component"
+      >
+        <button
+          class="sort-field flex "
+          title="Last start first"
+        >
+          <span
+            class="center sort-field-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="CheckIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+              />
+            </svg>
+          </span>
+          Last start first
+        </button>
+      </li>
+      <li
+        class="center sf-component"
+      >
+        <button
+          class="sort-field flex "
+          title="First finish first"
+        >
+          <span
+            class="center sort-field-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="CheckIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+              />
+            </svg>
+          </span>
+          First finish first
+        </button>
+      </li>
+      <li
+        class="center sf-component"
+      >
+        <button
+          class="sort-field flex "
+          title="Last finish first"
+        >
+          <span
+            class="center sort-field-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="CheckIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+              />
+            </svg>
+          </span>
+          Last finish first
+        </button>
+      </li>
+      <li
+        class="center sf-component"
+      >
+        <button
+          class="sort-field flex "
+          title="First update first"
+        >
+          <span
+            class="center sort-field-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="CheckIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+              />
+            </svg>
+          </span>
+          First update first
+        </button>
+      </li>
+      <li
+        class="center sf-component"
+      >
+        <button
+          class="sort-field flex "
+          title="Last update first"
+        >
+          <span
+            class="center sort-field-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="CheckIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+              />
+            </svg>
+          </span>
+          Last update first
+        </button>
+      </li>
+      <li
+        class="center sf-component"
+      >
+        <button
+          class="sort-field flex "
+          title="First created first"
+        >
+          <span
+            class="center sort-field-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="CheckIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+              />
+            </svg>
+          </span>
+          First created first
+        </button>
+      </li>
+      <li
+        class="center sf-component"
+      >
+        <button
+          class="sort-field flex "
+          title="Last created first"
+        >
+          <span
+            class="center sort-field-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="CheckIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+              />
+            </svg>
+          </span>
+          Last created first
+        </button>
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;

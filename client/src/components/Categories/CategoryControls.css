@@ -1,0 +1,35 @@
+.category-controls-list {
+    position: absolute;
+    z-index: 200;
+    right: 15px;
+    bottom: -200%;
+    padding: 10px 0;
+    background-color: var(--light-grey);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+
+
+
+li:nth-last-child(1) .category-controls-list,
+li:nth-last-child(2) .category-controls-list {
+    bottom: 10px;
+}
+
+li:nth-child(2) .category-controls-list,
+li:nth-child(3) .category-controls-list {
+    bottom: -200%;
+}
+
+
+.category-controls-list li {
+    width: 100%;
+}
+
+.category-controls-list button {
+    width: 120px;
+}
+
+.category-controls-list li:hover {
+    background-color: var(--hover-bg-color);
+}

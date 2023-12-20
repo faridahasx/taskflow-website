@@ -1,0 +1,36 @@
+/* Alert Message */
+.message {
+  position: fixed;
+  z-index: 1000;
+  top: 30px;
+  right: 15%;
+  left: 15%;
+  padding: 1px 0;
+  pointer-events: none;
+  transform: translateY(-300%);
+  -o-transform: translateY(-300%);
+  -moz-transform: translateY(-300%);
+  -webkit-transform: translateY(-300%);
+  -ms-transform: translateY(-300%);
+  transition: transform 0.2s;
+  -o-transition: transform 0.2s;
+  -moz-transition: transform 0.2s;
+  -webkit-transition: transform 0.2s;
+}
+
+.alert-message {
+  transform: translateY(0);
+  -o-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+
+}
+
+.alert-message span {
+  padding: 10px 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.47), 0 0px 2px 0 rgb(0, 0, 0);
+  background-color: rgb(38, 38, 38);
+  color: white;
+}

@@ -1,0 +1,41 @@
+footer {
+    width: 100%;
+    min-width: var(--min-width);
+    height: 120px;
+    background-color: var(--light-grey);
+}
+
+
+#footer-div {
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#footer-logo-link,
+#dev-link {
+    padding: 20px 0;
+}
+
+#footer-logo-link .logo{
+    scale: 1.4;
+}
+
+
+
+#dev-link {
+    color: rgb(19, 41, 19);
+    font-size: 17px;
+    font-weight: 500;
+}
+#dev-link:hover{
+    text-decoration: underline;
+}
+
+
+@media all and (min-width: 1000px) {
+    #footer-div {
+        width: var(--big-screen-width);
+        max-width: 2400px;
+        min-width: 750px;
+    }
+}

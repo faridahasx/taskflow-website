@@ -1,0 +1,40 @@
+.detail {
+    padding: 10px;
+    width: 100%;
+    align-items: center;
+    height: 100%;
+    overflow-wrap: break-word;
+}
+
+
+.detail:first-child {
+    word-break: break-all;
+}
+
+.detail {
+    border-top: 1px solid rgba(128, 128, 128, 0.153);
+    font-size: 14px;
+    color: rgb(48, 47, 47);
+}
+
+.detail span {
+    align-items: center;
+}
+
+.detail span:first-child {
+    width: 150px;
+    padding-right: 5px;
+    color: rgb(125, 125, 125);
+    font-weight: 500;
+}
+
+.detail span:last-child {
+    width: 100%;
+    letter-spacing: 1px;
+}
+
+@media all and (max-width: 400px) {
+    .detail {
+        flex-wrap: wrap;
+    }
+}
