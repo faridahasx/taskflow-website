@@ -28,5 +28,4 @@ const useElementOnScreen = (options, containerRef) => {
   return [containerRef, isVisible];
 };
 
-
 export default useElementOnScreen;

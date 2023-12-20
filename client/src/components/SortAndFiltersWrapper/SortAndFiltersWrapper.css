@@ -7,14 +7,14 @@
 
 
 
-.sf-top{
+.sf-top {
     z-index: 10;
     align-items: center;
     height: 50px;
 }
 
 
-.sf-component, 
+.sf-component,
 .sf-top {
     border-bottom: 1px solid var(--light-grey);
 }
@@ -27,11 +27,3 @@
 .sf-component {
     padding: 10px 0;
 }
-
-
-
-
-
-
-
-

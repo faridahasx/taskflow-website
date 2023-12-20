@@ -4,10 +4,9 @@ import auth from "./authReducer";
 import authDialog from "./authDialogReducer";
 import categories from "./categoryReducer";
 
-
 export default combineReducers({
-    alert,
-    auth,
-    authDialog,
-    categories
+  alert,
+  auth,
+  authDialog,
+  categories,
 });

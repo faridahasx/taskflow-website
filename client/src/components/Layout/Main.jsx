@@ -15,17 +15,19 @@ const Main = (props) => {
 
   return (
     <main>
-      {isLogged===true ? (
+      {isLogged === true ? (
         <CategoriesSliderContainer
           categoriesOpen={categoriesOpen}
           setCategoriesOpen={setCategoriesOpen}
         />
-      ) : isLogged===false && (
-        <CategoriesUnauthorizedView
-          handleDisplayAuthDialog={handleDisplayAuthDialog}
-          categoriesOpen={categoriesOpen}
-          setCategoriesOpen={setCategoriesOpen}
-        />
+      ) : (
+        isLogged === false && (
+          <CategoriesUnauthorizedView
+            handleDisplayAuthDialog={handleDisplayAuthDialog}
+            categoriesOpen={categoriesOpen}
+            setCategoriesOpen={setCategoriesOpen}
+          />
+        )
       )}
 
       {children}

@@ -43,15 +43,12 @@ const FiltersContainer = ({ handleClose }) => {
     validateCategories(searchParams.get("categories")?.split(","), categories)
   );
 
-
-
   //   Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     // Removing any existing task parameter fro searchParams
     const newSearchParams = new URLSearchParams(searchParams);
     newSearchParams.get("task") && newSearchParams.delete("task");
-
 
     // Updating searchParams based on filter values
     selectedCategories.length

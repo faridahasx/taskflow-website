@@ -20,8 +20,8 @@ const StatsContainer = () => {
   const location = useLocation();
   const [executeAuthRequest, loading] = useAuthRequest();
   const [defaultDateRange, setDefaultDateRange] = useState({
-    start: '',
-    end: '',
+    start: "",
+    end: "",
   });
   const { start, end } = defaultDateRange;
 
@@ -33,8 +33,7 @@ const StatsContainer = () => {
     // Function to fetch statistics data
     const fetchStats = async () => {
       // Extract query parameters from the URL
-      let [queryString, new_start, new_end] =
-        getStatsRequestQueryFromURL();
+      let [queryString, new_start, new_end] = getStatsRequestQueryFromURL();
       // Make a request to the server to fetch statistics
       const res = await axiosWithCredentials.get(`stats?${queryString}`);
 

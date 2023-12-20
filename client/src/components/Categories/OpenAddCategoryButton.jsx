@@ -4,17 +4,17 @@ import "./OpenAddCategoryButton.css";
 
 const OpenAddCategoryButton = ({ onClick }) => {
   return (
-      <button
-        id="add-category"
-        className="center"
-        title="Add new category"
-        onClick={onClick}
-      >
-        <span className="center">
-          <Add />
-        </span>
-        New Category
-      </button>
+    <button
+      id="add-category"
+      className="center"
+      title="Add new category"
+      onClick={onClick}
+    >
+      <span className="center">
+        <Add />
+      </span>
+      New Category
+    </button>
   );
 };
 

@@ -2,7 +2,7 @@ import "./StatsHeading.css";
 
 const StatsHeading = ({ start, end }) => {
   return (
-    <h1 id='stats-heading' className="flex">
+    <h1 id="stats-heading" className="flex">
       Tasks:
       {start && (
         <span id="stats-dt-container" className="center">

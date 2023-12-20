@@ -11,7 +11,7 @@ const TaskDialog = (props) => {
   const { children, handleBackgroundClick, handleCloseClick, SecondButton } =
     props;
   return (
-    <Modal handleClose={handleBackgroundClick} className=' task-modal'>
+    <Modal handleClose={handleBackgroundClick} className=" task-modal">
       <div className="task-dialog">
         <div className="flex task-dialog-top">
           <CloseButton onClick={handleCloseClick} />

@@ -63,7 +63,7 @@ const TaskForm = (props) => {
           buttonProps={{
             form: "task-form",
             title: "Save task",
-            disabled:loading
+            disabled: loading,
           }}
         />
       }

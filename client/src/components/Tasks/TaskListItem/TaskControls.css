@@ -10,7 +10,7 @@
     margin: 10px 0;
 }
 
-.expand{
+.expand {
     transform: rotate(0deg);
     -o-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -22,7 +22,7 @@
     -webkit-transition: transform 0.3s;
 }
 
-.collapse{
+.collapse {
     transform: rotate(180deg);
     -o-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
@@ -33,4 +33,3 @@
 .task-controls button:nth-child(3):hover {
     color: rgb(157, 21, 21);
 }
-

@@ -9,10 +9,7 @@ const IconButton = (props) => {
   const { className } = buttonProps;
 
   return (
-    <button
-      {...buttonProps}
-      className={`icon ${className ? className : ""}`}
-    >
+    <button {...buttonProps} className={`icon ${className ? className : ""}`}>
       {Icon}
     </button>
   );

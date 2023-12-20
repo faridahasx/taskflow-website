@@ -4,13 +4,16 @@ import Layout from "../components/Layout/Layout";
 import TasksContainer from "../containers/Tasks/TasksContainer";
 import TasksUnauthorizedView from "../components/Tasks/TasksUnauthorizedView";
 
-
 const Home = () => {
   const isLogged = useSelector((state) => state.auth.isLogged);
   return (
     <TaskProvider>
       <Layout>
-        {isLogged === false ? <TasksUnauthorizedView /> : isLogged === true && <TasksContainer />}
+        {isLogged === false ? (
+          <TasksUnauthorizedView />
+        ) : (
+          isLogged === true && <TasksContainer />
+        )}
       </Layout>
     </TaskProvider>
   );

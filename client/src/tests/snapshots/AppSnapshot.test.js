@@ -1,8 +1,8 @@
 import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
-import App from "../../App";
 import { MockIntersectionObserver } from "../mocks/mockClasses";
 import mockInitialState, { mockStore } from "../mocks/mockReduxState";
+import App from "../../App";
 
 test("App snapshot", () => {
   global.IntersectionObserver = MockIntersectionObserver;

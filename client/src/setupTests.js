@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import '@testing-library/jest-dom'
+import "@testing-library/jest-dom";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -20,4 +20,3 @@ jest.mock("./assets/axiosInstance", () => ({
 jest.mock("./context/TaskContext");
 
 jest.setTimeout(15000);
-

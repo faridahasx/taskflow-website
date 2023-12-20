@@ -7,7 +7,9 @@ export const isValidDate = (dateString) => {
 
 // Function to validate selected categories against a list of available categories
 export const validateCategories = (selectedCategories, categories) => {
-    if (!selectedCategories) return [];
-    // Filter selectedCategories to only include only those present in the list of categories
-  return selectedCategories.filter((s) => categories.findIndex(c=> c.title===s)>-1);
+  if (!selectedCategories) return [];
+  // Filter selectedCategories to only include only those present in the list of categories
+  return selectedCategories.filter(
+    (s) => categories.findIndex((c) => c.title === s) > -1
+  );
 };

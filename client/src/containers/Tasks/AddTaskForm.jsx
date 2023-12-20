@@ -23,15 +23,17 @@ const taskDefaultValues = {
 const AddTaskForm = (props) => {
   // Destructuring props
   const { handleCloseEditor } = props;
-  
+
   // Redux dispatch setup
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories);
   const isLogged = useSelector((state) => state.auth.isLogged);
 
-
   // Initializing newTask state with default values
-  const [newTask, setNewTask] = useState({...taskDefaultValues, category: isLogged?getDefaultCategory(categories):"All"});
+  const [newTask, setNewTask] = useState({
+    ...taskDefaultValues,
+    category: isLogged ? getDefaultCategory(categories) : "All",
+  });
 
   //  Function to handle adding a new task
   const handleAddTask = async () => {

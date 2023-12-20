@@ -2,9 +2,9 @@ import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { MockIntersectionObserver } from "../mocks/mockClasses";
-import Home from "../../pages/Home";
 import { mockAuthState, mockStore } from "../mocks/mockReduxState";
 import { clickByTitle } from "../../testUtilities";
+import Home from "../../pages/Home";
 
 const { queryByTestId, getByTestId } = screen;
 
@@ -31,17 +31,6 @@ describe("Home", () => {
       expect(getByTestId("nav")).toBeInTheDocument();
     });
 
-    it("handles open Search", async () => {
-      expect(queryByTestId("search")).not.toBeInTheDocument();
-      clickByTitle("Search");
-      await waitFor(
-        () => {
-          expect(queryByTestId("search")).toBeInTheDocument();
-        },
-        { timeout: 7000 }
-      );
-    });
-
     it("handles open Sort", async () => {
       const sort = queryByTestId("sort");
       expect(sort).not.toBeInTheDocument();
@@ -49,6 +38,17 @@ describe("Home", () => {
       await waitFor(
         () => {
           expect(queryByTestId("sort")).toBeInTheDocument();
+        },
+        { timeout: 7000 }
+      );
+    });
+
+    it("handles open Search", async () => {
+      expect(queryByTestId("search")).not.toBeInTheDocument();
+      clickByTitle("Search");
+      await waitFor(
+        () => {
+          expect(queryByTestId("search")).toBeInTheDocument();
         },
         { timeout: 7000 }
       );

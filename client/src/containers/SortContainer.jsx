@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 // Component
 import Sort from "../components/Sort/Sort";
 
-
 const SortContainer = (props) => {
   // Destructuring props
   const { handleClose } = props;

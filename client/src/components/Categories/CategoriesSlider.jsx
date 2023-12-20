@@ -21,12 +21,7 @@ const CategoryForm = lazy(() =>
 
 const CategorieSlider = (props) => {
   // Destructure props
-  const {
-    categories,
-    loading,
-    categoriesOpen,
-    setCategoriesOpen
-    } = props;
+  const { categories, loading, categoriesOpen, setCategoriesOpen } = props;
 
   // State to track current category dialog
   const [openDialog, setOpenDialog] = useState({
@@ -41,7 +36,6 @@ const CategorieSlider = (props) => {
       ? document.body.classList.add("overflow-hidden")
       : document.body.classList.remove("overflow-hidden");
   }, [categoriesOpen]);
-
 
   // Function to close the currently open dialog
   const handleCloseDialog = () => {
@@ -79,9 +73,8 @@ const CategorieSlider = (props) => {
   useKeyDownListener(handleKeyDown, !categoriesOpen);
 
   useEffect(() => {
-    !categoriesOpen && currentDialog && handleCloseDialog()
+    !categoriesOpen && currentDialog && handleCloseDialog();
   }, [categoriesOpen, currentDialog]);
-
 
   return (
     <div
@@ -95,7 +88,7 @@ const CategorieSlider = (props) => {
       <div className={`categories ${categoriesOpen ? "open-categories" : ""}`}>
         <div id="categories-list-container" className="center">
           {loading ? (
-            <CircularLoading/>
+            <CircularLoading />
           ) : (
             categories &&
             categories.length > 0 && (
@@ -121,9 +114,7 @@ const CategorieSlider = (props) => {
             )
           )}
         </div>
-        <OpenAddCategoryButton
-          onClick={handleOpenAddCategoryClick}
-        />
+        <OpenAddCategoryButton onClick={handleOpenAddCategoryClick} />
       </div>
       <Suspense fallback={<ModalLoading handleClose={handleCloseDialog} />}>
         {currentDialog === "add" ? (

@@ -79,7 +79,7 @@ const EditTaskForm = (props) => {
 
 EditTaskForm.propTypes = {
   task: PropTypes.object.isRequired,
-  handleCloseEditor: PropTypes.func.isRequired
+  handleCloseEditor: PropTypes.func.isRequired,
 };
 
 export default EditTaskForm;

@@ -71,7 +71,6 @@ router.get("/:id", auth, async (req: Request, res: Response) => {
   }
 });
 
-
 // EDIT TASK
 router.patch(
   "/:id",

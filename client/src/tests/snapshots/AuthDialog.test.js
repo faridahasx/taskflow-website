@@ -1,8 +1,7 @@
 import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
-import AuthDialog from "../../components/Auth/AuthDialog";
 import mockInitialState, { mockStore } from "../mocks/mockReduxState";
-
+import AuthDialog from "../../components/Auth/AuthDialog";
 
 test("AuthDialog snapshot", () => {
   const { asFragment } = render(

@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
-import TaskForm from "../../components/Tasks/TaskForm/TaskForm";
 import { categoriesSample } from "../../constants/sampleData";
+import TaskForm from "../../components/Tasks/TaskForm/TaskForm";
 
 const mockFn = jest.fn();
 

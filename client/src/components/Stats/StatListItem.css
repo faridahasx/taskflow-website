@@ -18,7 +18,7 @@
 
 .stat-li:first-child,
 .stat-li:first-child .stat-key,
-.stat-li:last-child ,
+.stat-li:last-child,
 .stat-li:last-child .stat-key {
     font-weight: 600;
 }
@@ -29,10 +29,10 @@
     }
 
     .stat-li:last-child {
-        border-top: 1px solid  rgb(128, 128, 128);
+        border-top: 1px solid rgb(128, 128, 128);
     }
 
-    .stat-li:first-child{
+    .stat-li:first-child {
         border-bottom-color: rgb(128, 128, 128);
     }
 }

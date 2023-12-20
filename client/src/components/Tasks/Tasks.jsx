@@ -17,9 +17,7 @@ import "./Tasks.css";
 
 // Lazy-loaded components
 const AddTaskForm = lazy(() => import("../../containers/Tasks/AddTaskForm"));
-const EditTaskForm = lazy(() =>
-  import("../../containers/Tasks/EditTaskForm")
-);
+const EditTaskForm = lazy(() => import("../../containers/Tasks/EditTaskForm"));
 
 const Tasks = (props) => {
   // Destructure props
@@ -37,8 +35,8 @@ const Tasks = (props) => {
   const [openTask, setOpenTask] = useState({});
   const [expandDetailsTaskID, setExpandDetailsTaskID] = useState("");
 
-  const isOnline = useNetworkStatus()
-  
+  const isOnline = useNetworkStatus();
+
   // Event handlers
   const handleToggleOpenTaskForm = () => {
     setOpenAddTaskEditor(!openAddTaskEditor);
@@ -95,7 +93,7 @@ const Tasks = (props) => {
               data-testid="loading-more-tasks-indicator"
               ref={loadingRef}
             >
-              <CircularLoading/>
+              <CircularLoading />
             </span>
           )
         )}

@@ -4,14 +4,14 @@ import {
 } from "../../utils/tasksURLSearchParamsUtils";
 
 const searchParamsReturnObject = {
-  sort: null, 
-  search: null, 
-  startgte: null, 
-  startlte: null, 
+  sort: null,
+  search: null,
+  startgte: null,
+  startlte: null,
   finishgte: null,
   finishlte: null,
   category: null,
-  tasks: null
+  tasks: null,
 };
 
 describe("getSearchParams", () => {
@@ -31,7 +31,8 @@ describe("getSearchParams", () => {
   it("should return an object with other parameters when 'task' is not present", () => {
     Object.defineProperty(window, "location", {
       value: {
-        search: "?sort=asc&search=query&startgte=2023-01-01&startlte=2023-01-03",
+        search:
+          "?sort=asc&search=query&startgte=2023-01-01&startlte=2023-01-03",
       },
       writable: true,
     });
@@ -61,7 +62,7 @@ describe("getSearchParams", () => {
       finishgte: "2022-11-31",
       finishlte: "2022-12-31",
       category: "cat1,cat2",
-      tasks: 'current'
+      tasks: "current",
     });
   });
 });

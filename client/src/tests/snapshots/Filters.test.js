@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
-import Filters from "../../components/Filters/Filters";
 import { categoriesSample } from "../../constants/sampleData";
+import Filters from "../../components/Filters/Filters";
 
 const mockFn = jest.fn();
 

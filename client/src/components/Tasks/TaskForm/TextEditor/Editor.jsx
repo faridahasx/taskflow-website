@@ -12,12 +12,11 @@ import ListMaxIndentLevelPlugin from "./plugins/ListMaxIndentLevelPlugin";
 import HtmlPlugin from "./plugins/HTMLPlugin";
 import ToolbarPlugin from "./Toolbar/Toolbar";
 import ExampleTheme from "./assets/theme";
-import './styles.css'
-
+import "./styles.css";
 
 const Placeholder = () => {
   return <div className="editor-placeholder">Description...</div>;
-}
+};
 
 const editorConfig = {
   theme: ExampleTheme,
@@ -31,21 +30,22 @@ const editorConfig = {
     TableNode,
     TableCellNode,
     TableRowNode,
-  ]
+  ],
 };
-
 
 const Editor = ({ description, handleSetDescription }) => {
   return (
-    <LexicalComposer initialConfig={editorConfig} >
-      
-      <div className="editor-container" >
-        <HtmlPlugin initialHtml={description} onHtmlChanged={handleSetDescription} />
+    <LexicalComposer initialConfig={editorConfig}>
+      <div className="editor-container">
+        <HtmlPlugin
+          initialHtml={description}
+          onHtmlChanged={handleSetDescription}
+        />
         <ToolbarPlugin />
 
-        <div  id="editor" className="editor-inner">
+        <div id="editor" className="editor-inner">
           <RichTextPlugin
-            contentEditable={<ContentEditable  />}
+            contentEditable={<ContentEditable />}
             placeholder={<Placeholder />}
             ErrorBoundary={LexicalErrorBoundary}
           />
@@ -53,12 +53,10 @@ const Editor = ({ description, handleSetDescription }) => {
           <AutoFocusPlugin />
           <ListPlugin />
           <ListMaxIndentLevelPlugin maxDepth={7} />
-        </div>   
+        </div>
       </div>
     </LexicalComposer>
   );
-}
-
-
+};
 
 export default Editor;

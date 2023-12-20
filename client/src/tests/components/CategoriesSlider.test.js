@@ -1,8 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import CategorieSlider from "../../components/Categories/CategoriesSlider";
 import { categoriesSample } from "../../constants/sampleData";
 import { pressEscape } from "../../testUtilities";
+import CategorieSlider from "../../components/Categories/CategoriesSlider";
 
 const mockFn = jest.fn();
 let mockSetCategoriesOpen = jest.fn();
@@ -21,7 +21,6 @@ describe("CategoriesSlider", () => {
             handleLinkClick={mockFn}
           />
         </BrowserRouter>
-        
       );
     });
 
@@ -54,7 +53,7 @@ describe("CategoriesSlider", () => {
     });
     it("doesn't listen for 'Escape' key press events", () => {
       const { container } = component;
-      pressEscape(container)
+      pressEscape(container);
       expect(mockSetCategoriesOpen).not.toHaveBeenCalled();
     });
   });
@@ -85,7 +84,7 @@ describe("CategoriesSlider", () => {
     });
     it("handles 'Escape' key press", () => {
       const { container } = component;
-      pressEscape(container)
+      pressEscape(container);
       expect(mockSetCategoriesOpen).toHaveBeenCalledWith(false);
     });
   });

@@ -8,11 +8,7 @@ const PortalComponent = ({ children }) => {
 };
 
 PortalComponent.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.elementType,
-    PropTypes.object
-  ])
+  children: PropTypes.oneOfType([PropTypes.elementType, PropTypes.object]),
 };
-
 
 export default PortalComponent;

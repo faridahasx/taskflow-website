@@ -37,10 +37,7 @@ const CategoryListItem = (props) => {
 
   return (
     <li className="category-li flex">
-      <Link
-        className="flex text-overflow"
-        to={`/?categories=${title}`}
-      >
+      <Link className="flex text-overflow" to={`/?categories=${title}`}>
         <span className="text-overflow" title={title}>
           {title}
         </span>
@@ -50,7 +47,7 @@ const CategoryListItem = (props) => {
         Icon={<MoreVertOutlined />}
         buttonProps={{
           title: "More",
-          onClick:  handleClickOnShowMore,
+          onClick: handleClickOnShowMore,
           "data-testid": `${category.title}-menu`,
         }}
       />

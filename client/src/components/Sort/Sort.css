@@ -15,22 +15,24 @@
 #sort-ul button {
     width: 100%;
 }
+
 #sort-ul button:hover,
 #sort-ul .sort-field-active {
     color: var(--main-green);
 }
 
-.sort-field-icon{
+.sort-field-icon {
     width: 40px;
     height: 40px;
     margin-right: 10px;
 }
 
-@media all and (max-width: 376px){
-    .sf-wrapper.sort-dialog{
+@media all and (max-width: 376px) {
+    .sf-wrapper.sort-dialog {
         width: calc(100vw - 40px);
         left: -100px;
     }
+
     #sort-ul {
         width: 100%;
     }

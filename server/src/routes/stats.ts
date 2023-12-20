@@ -82,7 +82,7 @@ router.get("/", auth, async (req: Request, res: Response) => {
                 {
                   $and: [
                     { $eq: ["$completedAt", null] },
-                    { $gt: ["$startDate", new Date()] }
+                    { $gt: ["$startDate", new Date()] },
                   ],
                 },
                 1,
@@ -96,16 +96,15 @@ router.get("/", auth, async (req: Request, res: Response) => {
         $project: {
           _id: 0,
           "Total Tasks": "$Total Tasks",
-          "Completed": "$Completed",
+          Completed: "$Completed",
           "Completed Post-Deadline": "$Completed Post-Deadline",
-          "Incompleted": "$Incompleted",
-          "Current": "$Current",
-          "Overdue": "$Overdue",
-          "Upcoming": "$Upcoming",
+          Incompleted: "$Incompleted",
+          Current: "$Current",
+          Overdue: "$Overdue",
+          Upcoming: "$Upcoming",
         },
       },
     ]);
-
     res.status(200).json(stats);
   } catch (err) {
     console.log(err);

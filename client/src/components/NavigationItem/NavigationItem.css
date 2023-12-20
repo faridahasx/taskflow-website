@@ -1,9 +1,9 @@
-.nav-item{
+.nav-item {
     position: relative;
     list-style: none;
 }
 
-.load-nav-item{
+.load-nav-item {
     position: absolute;
     border-radius: 50%;
     background-color: var(--light-grey);

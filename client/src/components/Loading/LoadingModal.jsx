@@ -4,7 +4,7 @@ import Modal from "../Modal/Modal";
 const LoadingModal = ({ handleClose }) => {
   return (
     <Modal handleClose={handleClose}>
-      <CircularLoading/>
+      <CircularLoading />
     </Modal>
   );
 };

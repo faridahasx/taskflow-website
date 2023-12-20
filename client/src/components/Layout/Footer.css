@@ -16,7 +16,7 @@ footer {
     padding: 20px 0;
 }
 
-#footer-logo-link .logo{
+#footer-logo-link .logo {
     scale: 1.4;
 }
 
@@ -27,7 +27,8 @@ footer {
     font-size: 17px;
     font-weight: 500;
 }
-#dev-link:hover{
+
+#dev-link:hover {
     text-decoration: underline;
 }
 

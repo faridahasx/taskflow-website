@@ -20,7 +20,6 @@ const Home = lazy(() => import("./pages/Home"));
 const LoginSuccessRedirect = lazy(() => import("./pages/LoginSuccessRedirect"));
 const Stats = lazy(() => import("./pages/Stats"));
 
-
 function App() {
   // Redux dispatch function
   const dispatch = useDispatch();
@@ -55,7 +54,7 @@ function App() {
       dispatch({ type: "IS_LOGGED", payload: firstLogin ? true : false });
     };
     // Dispatches action only if not logged in
-    if (isLogged===null) getFirstLogin();
+    if (isLogged === null) getFirstLogin();
   }, [isLogged, dispatch]);
 
   return (

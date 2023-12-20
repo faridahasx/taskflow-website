@@ -37,17 +37,15 @@ const Navigation = (props) => {
             </li>
           </ul>
           <IconButton
-
             Icon={<Add />}
             buttonProps={{
-              title:"Add Task",
-              onClick:handleToggleOpenTaskForm,
-              className:"add-task-btn"
-
+              title: "Add Task",
+              onClick: handleToggleOpenTaskForm,
+              className: "add-task-btn",
             }}
           />
         </div>
-        <FiltersShortCutContainer/>
+        <FiltersShortCutContainer />
       </div>
     </nav>
   );

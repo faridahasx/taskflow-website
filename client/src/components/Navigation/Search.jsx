@@ -16,7 +16,7 @@ const Search = (props) => {
     loading,
     handleLinkClick,
     handleClose,
-    handleClear
+    handleClear,
   } = props;
 
   // Ref for handling clicks outside the container
@@ -41,13 +41,13 @@ const Search = (props) => {
 };
 
 Search.propTypes = {
-  handleSubmit:PropTypes.func.isRequired ,
+  handleSubmit: PropTypes.func.isRequired,
   handleInputChange: PropTypes.func.isRequired,
   handleLinkClick: PropTypes.func.isRequired,
   handleClose: PropTypes.func.isRequired,
   handleClear: PropTypes.func.isRequired,
   searchResults: PropTypes.array.isRequired,
-  inputValue: PropTypes.string.isRequired, 
+  inputValue: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
 };
 

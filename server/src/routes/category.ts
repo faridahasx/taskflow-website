@@ -78,7 +78,7 @@ router.get("/", auth, async (req: Request, res: Response) => {
               },
             },
           ],
-          as: "tasksCount", 
+          as: "tasksCount",
         },
       },
       {
@@ -130,10 +130,10 @@ router.patch("/:title", auth, async (req: Request, res: Response) => {
       { category: newTitle }
     );
 
-    Promise.all([updateCategory, updateTasks]).then(([c,t]) => {
-      if(!c)  return res.status(404).json(categoryNotFound);
+    Promise.all([updateCategory, updateTasks]).then(([c, t]) => {
+      if (!c) return res.status(404).json(categoryNotFound);
       res.status(200).json(updateSuccess);
-    })
+    });
   } catch (err) {
     return res.status(500).json(serverError);
   }

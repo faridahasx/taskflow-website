@@ -1,10 +1,10 @@
 import { render, screen} from "@testing-library/react";
 import { BrowserRouter, useNavigate } from "react-router-dom";
 import { Provider } from "react-redux";
-import Layout from "../../components/Layout/Layout";
 import mockInitialState, { mockStore } from "../mocks/mockReduxState";
 import { categoriesSample } from "../../constants/sampleData";
 import { clickByTestId, clickByTitle } from "../../testUtilities";
+import Layout from "../../components/Layout/Layout";
 
 const { getByTestId } = screen;
 

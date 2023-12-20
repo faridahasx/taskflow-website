@@ -9,7 +9,7 @@ const FormatElement = ({ editor }) => {
     e.preventDefault();
     editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, command);
   };
-  
+
   return (
     <div className="toolbar-items-group-contrainer">
       <button

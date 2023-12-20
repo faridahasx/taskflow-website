@@ -1,7 +1,7 @@
 import { IUser } from "./models/user";
 
 interface AuthenticatedUser {
-    userId: IUser['_id'];
+  userId: IUser["_id"];
 }
 
-export {AuthenticatedUser}
+export { AuthenticatedUser };

@@ -65,7 +65,7 @@ const Filters = (props) => {
               <CancelButton buttonText="Clear Filters" onClick={handleClear} />
               <SubmitButton
                 buttonText="Apply"
-                buttonProps={{form:"filters-form" }}
+                buttonProps={{ form: "filters-form" }}
               />
             </div>
           </form>

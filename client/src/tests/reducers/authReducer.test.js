@@ -3,7 +3,7 @@ import authReducer from "../../redux/reducers/authReducer";
 describe("authReducer", () => {
   it("should return initial state ", () => {
     const initialState = {
-        isLogged: null,
+      isLogged: null,
     };
 
     const action = {};
@@ -13,12 +13,11 @@ describe("authReducer", () => {
 
   it("isLogged should be true", () => {
     const initialState = {
-        isLogged: false,
+      isLogged: false,
     };
 
     const action = { type: "IS_LOGGED", payload: true };
     const nextState = authReducer(initialState, action);
     expect(nextState.isLogged).toBeTruthy();
   });
-
 });

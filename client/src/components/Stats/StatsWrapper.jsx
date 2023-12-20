@@ -12,13 +12,7 @@ import StatsHeading from "./StatsHeading";
 // Styles
 import "./StatsWrapper.css";
 
-const StatsWrapper = ({
-  stats,
-  loading,
-  isLogged,
-  start,
-  end,
-}) => {
+const StatsWrapper = ({ stats, loading, isLogged, start, end }) => {
   const statKeys = useMemo(() => stats && Object.keys(stats), [stats]);
   const isOnline = useNetworkStatus();
 
@@ -31,10 +25,7 @@ const StatsWrapper = ({
           <>
             <div id="stats-top" className="flex">
               <FiltersNav />
-              <StatsHeading
-                start={start}
-                end={end}
-              />
+              <StatsHeading start={start} end={end} />
             </div>
 
             {isLogged === false ? (

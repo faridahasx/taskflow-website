@@ -13,7 +13,9 @@ const FiltersShortCutContainer = () => {
     let currentFilter = searchParams.get("tasks");
     if (currentFilter) {
       setActiveFilter(
-        activateFilters.findIndex(e=>e.value===currentFilter) !== -1 ? currentFilter : "all"
+        activateFilters.findIndex((e) => e.value === currentFilter) !== -1
+          ? currentFilter
+          : "all"
       );
     }
   }, [searchParams]);

@@ -1,12 +1,12 @@
 import React from "react";
 import { render, waitFor } from "@testing-library/react";
-import CategoryFormContainer from "../../../containers/Categories/CategoryFormContainer";
 import { Provider } from "react-redux";
 import { axiosWithCredentials } from "../../../assets/axiosInstance";
 import { TasksDispatchContext } from "../../../context/TaskContext";
 import { categoriesSample } from "../../../constants/sampleData";
 import { mockAuthState, mockStore } from "../../mocks/mockReduxState";
 import { changeByLabelText, clickByText } from "../../../testUtilities";
+import CategoryFormContainer from "../../../containers/Categories/CategoryFormContainer";
 
 const mockCategory = categoriesSample[0];
 const successResponse = { status: 200, data: mockCategory };

@@ -1,8 +1,8 @@
 import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import Stats from "../../pages/Stats";
 import mockInitialState, { mockStore } from "../mocks/mockReduxState";
+import Stats from "../../pages/Stats";
 
 test("Stats snapshot", () => {
   const { asFragment } = render(

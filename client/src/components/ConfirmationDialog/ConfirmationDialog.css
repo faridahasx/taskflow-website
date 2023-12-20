@@ -1,4 +1,4 @@
-.confirmation-dialog{
+.confirmation-dialog {
     width: 80%;
     max-width: 400px;
     padding: 10px;
@@ -7,7 +7,7 @@
     box-shadow: var(--box-shadow);
 }
 
-.confirmation-dialog h1{
+.confirmation-dialog h1 {
     padding: 25px 0;
     font-weight: 500;
     font-size: 20px;

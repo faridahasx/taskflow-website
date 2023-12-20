@@ -1,4 +1,4 @@
-import { getDateWithNDaysOfDifference } from '../utils/dateUtils';
+import { getDateWithNDaysOfDifference } from "../utils/dateUtils";
 
 const categoriesSample = [
   {
@@ -12,8 +12,6 @@ const categoriesSample = [
     title: "Tasks",
   },
 ];
-
-
 
 let tasksSample = [
   {
@@ -52,7 +50,7 @@ let tasksSample = [
     updatedAt: getDateWithNDaysOfDifference(-4),
     __v: 0,
   },
-  
+
   {
     _id: "4",
     title: "Task 4",

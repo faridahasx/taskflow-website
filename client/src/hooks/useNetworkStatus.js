@@ -18,7 +18,7 @@ const useNetworkStatus = () => {
       window.removeEventListener("online", handleStatusChange);
       window.removeEventListener("offline", handleStatusChange);
     };
-  }, []); // Dependencies for the useEffect hook
+  }, []);
   // Return the current online/offline status
 
   return isOnline;

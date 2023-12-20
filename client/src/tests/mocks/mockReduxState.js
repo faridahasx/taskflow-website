@@ -12,9 +12,8 @@ const mockInitialState = {
 
 const mockAuthState = {
   ...mockInitialState,
-  auth: { isLogged: true }
+  auth: { isLogged: true },
 };
-
 
 export { mockAuthState, mockStore };
 

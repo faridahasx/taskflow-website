@@ -13,8 +13,6 @@ const dateFormatOptions = {
   day: "2-digit",
 };
 
-
-
 // Function to format a given date using specified format options
 export const formatDateTime = (date) =>
   new Intl.DateTimeFormat("en-US", dateTimeFormatOptions).format(

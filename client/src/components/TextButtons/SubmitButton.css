@@ -1,11 +1,11 @@
-.submit-btn{
+.submit-btn {
     border-radius: 10px;
     color: rgb(255, 255, 255);
     background-color: var(--main-green);
     width: 100%;
 }
 
-.submit-btn:hover{
+.submit-btn:hover {
     background-color: rgba(48, 161, 80, 0.9);
 
 }
@@ -13,4 +13,3 @@
 .submit-btn:disabled {
     background-color: rgba(59, 167, 90, 0.604);
 }
-

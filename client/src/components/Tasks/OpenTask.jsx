@@ -7,7 +7,7 @@ import EditButton from "../IconButtons/EditButton";
 import TaskDialog from "./TaskDialog";
 // Styles
 import "./OpenTask.css";
-import './TaskForm/TextEditor/styles.css'
+import "./TaskForm/TextEditor/styles.css";
 
 const OpenTask = (props) => {
   // Destructure props
@@ -54,12 +54,11 @@ const OpenTask = (props) => {
 };
 
 OpenTask.propTypes = {
-  task:PropTypes.object.isRequired,
-  openEditTaskEditor:PropTypes.object,
-  handleClickEditTask:PropTypes.func.isRequired,
-  handleCloseOpenedTask:PropTypes.func.isRequired,
-  loading:PropTypes.bool.isRequired,
+  task: PropTypes.object.isRequired,
+  openEditTaskEditor: PropTypes.object,
+  handleClickEditTask: PropTypes.func.isRequired,
+  handleCloseOpenedTask: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
-
 
 export default OpenTask;

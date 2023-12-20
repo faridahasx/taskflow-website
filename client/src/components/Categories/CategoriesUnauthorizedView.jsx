@@ -6,7 +6,6 @@ const CategoriesUnauthorizedView = ({
   setCategoriesOpen,
   handleDisplayAuthDialog,
 }) => {
-
   return (
     <CategorieSlider
       categories={categoriesSample}

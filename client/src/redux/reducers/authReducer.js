@@ -5,16 +5,15 @@ const auth = {
 };
 
 const authReducer = (state = auth, action) => {
-    switch (action.type) {
-        case ACTIONS.IS_LOGGED:
-            return {
-                ...state,
-                isLogged: action.payload,
-            };
-        default:
-            return state
-    }
+  switch (action.type) {
+    case ACTIONS.IS_LOGGED:
+      return {
+        ...state,
+        isLogged: action.payload,
+      };
+    default:
+      return state;
+  }
 };
 
-
-export default authReducer 
+export default authReducer;

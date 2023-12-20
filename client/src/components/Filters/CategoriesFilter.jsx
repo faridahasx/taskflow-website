@@ -73,6 +73,6 @@ CategoriesFilter.propTypes = {
   categories: PropTypes.array.isRequired,
   selectedCategories: PropTypes.array.isRequired,
   setSelectedCategories: PropTypes.func.isRequired,
-} 
+};
 
 export default CategoriesFilter;

@@ -1,14 +1,15 @@
-.activate-filter-btn{
+.activate-filter-btn {
     width: 100%;
     min-width: 40px;
     padding: 0 10px;
-    background-color:  rgba(0, 0, 0, 0.086);
+    background-color: rgba(0, 0, 0, 0.086);
     border-radius: 10px;
     font-size: 14px;
 }
-.active-filter{
-    background-color:  rgba(0, 0, 0, 0.569);
-    color:white;
+
+.active-filter {
+    background-color: rgba(0, 0, 0, 0.569);
+    color: white;
 }
 
 

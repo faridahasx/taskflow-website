@@ -1,4 +1,4 @@
-#filters-form{
+#filters-form {
     width: calc(100vw - 50px);
     max-width: 550px;
     min-width: calc(var(--min-width) - 50px);
@@ -6,7 +6,7 @@
     overflow: hidden;
 }
 
-#filters-form-fields{
+#filters-form-fields {
     padding: 10px;
     max-height: calc(var(--vh) - 200px);
     overflow: auto;
@@ -43,7 +43,7 @@
     padding: 10px;
 }
 
-#filters-bottom button:first-child{
+#filters-bottom button:first-child {
     font-weight: 500;
-    
+
 }

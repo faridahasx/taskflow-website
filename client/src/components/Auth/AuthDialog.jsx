@@ -44,7 +44,13 @@ const AuthDialog = ({ handleCloseAuthDialog }) => {
               path={path}
               subtmitButtonText={subtmitButtonText}
             />
-            <button onClick={handleChangeAuthMethod} id="change-auth-method-btn" className="center">{changeMethod}</button>
+            <button
+              onClick={handleChangeAuthMethod}
+              id="change-auth-method-btn"
+              className="center"
+            >
+              {changeMethod}
+            </button>
           </div>
         </div>
       </div>
@@ -53,7 +59,7 @@ const AuthDialog = ({ handleCloseAuthDialog }) => {
 };
 
 AuthDialog.propTypes = {
-  handleCloseAuthDialog: PropTypes.func.isRequired
+  handleCloseAuthDialog: PropTypes.func.isRequired,
 };
 
 export default AuthDialog;

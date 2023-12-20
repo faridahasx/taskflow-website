@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import Tasks from "../../components/Tasks/Tasks";
 import { tasksSample } from "../../constants/sampleData";
+import Tasks from "../../components/Tasks/Tasks";
 
 const mockFn = jest.fn();
 

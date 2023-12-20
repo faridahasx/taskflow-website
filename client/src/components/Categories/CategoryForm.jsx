@@ -44,7 +44,10 @@ const CategoryForm = (props) => {
             <SubmitButton
               loading={loading}
               buttonText="Save"
-              buttonProps={{form: "category-form", disabled: loading || title.length === 0}}              
+              buttonProps={{
+                form: "category-form",
+                disabled: loading || title.length === 0,
+              }}
             />
           </div>
         </form>

@@ -1,14 +1,12 @@
 import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react";
-import SearchContainer from "../../../containers/SearchContainer";
 import { Provider } from "react-redux";
-import { axiosWithCredentials } from "../../../assets/axiosInstance";
 import { BrowserRouter } from "react-router-dom";
+import { axiosWithCredentials } from "../../../assets/axiosInstance";
 import { mockAuthState, mockStore } from "../../mocks/mockReduxState";
+import SearchContainer from "../../../containers/SearchContainer";
 
 const successResponse = { status: 200, data: [] };
-
-
 
 describe("SearchContainer", () => {
   const inputValue = "inputValue";

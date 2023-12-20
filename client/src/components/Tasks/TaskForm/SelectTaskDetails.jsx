@@ -16,7 +16,7 @@ const SelectTaskDetails = (props) => {
     category,
     startDate,
     finishDate,
-    categories
+    categories,
   } = props;
 
   return (
@@ -59,6 +59,5 @@ SelectTaskDetails.propTypes = {
   startDate: PropTypes.instanceOf(dayjs),
   finishDate: PropTypes.instanceOf(dayjs),
 };
-
 
 export default SelectTaskDetails;

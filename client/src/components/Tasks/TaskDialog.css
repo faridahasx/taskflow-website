@@ -1,4 +1,4 @@
-.task-dialog{
+.task-dialog {
     width: 100vw;
     min-width: var(--min-width);
     height: var(--vh);
@@ -8,11 +8,12 @@
     background-color: rgb(255, 255, 255);
     padding: 0 20px;
 }
-.task-dialog::-webkit-scrollbar-track{
+
+.task-dialog::-webkit-scrollbar-track {
     margin: 5px 0;
 }
 
-.task-dialog-top{
+.task-dialog-top {
     padding-top: 2px;
     justify-content: space-between;
 }
@@ -27,15 +28,16 @@
 }
 
 
-@media  all and (min-width: 900px) and (min-height: 500px) {
-    .task-dialog-top{
+@media all and (min-width: 900px) and (min-height: 500px) {
+    .task-dialog-top {
         padding-top: 0;
     }
-    .task-dialog{
+
+    .task-dialog {
         padding: 15px 20px;
         border-radius: 7px;
         width: 80vw;
         height: calc((var(--vh) / 100) * 88);
         min-height: calc((var(--vh) / 100) * 88);
     }
-} 
+}

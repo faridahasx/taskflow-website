@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
 import { useDispatch } from "react-redux";
 import useAuthRequest from "../../hooks/useAuthRequest";
-import "@testing-library/jest-dom";
+
 
 jest.mock("react-redux", () => ({
   useDispatch: jest.fn(),

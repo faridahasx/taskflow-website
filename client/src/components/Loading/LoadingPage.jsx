@@ -5,7 +5,7 @@ const LoadingPage = () => {
   return (
     <div>
       <div className="loading-page-indicator">
-        <LinearProgress/>
+        <LinearProgress />
       </div>
     </div>
   );

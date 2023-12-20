@@ -49,7 +49,7 @@ const taskReducer = (tasks, action) => {
 
 // Create the context for tasks
 export const TasksContext = createContext(null);
-export const TasksDispatchContext = createContext(()=>{}); // Default to an empty function
+export const TasksDispatchContext = createContext(() => {}); // Default to an empty function
 
 // Provider component for managing tasks state
 export function TaskProvider({ children }) {

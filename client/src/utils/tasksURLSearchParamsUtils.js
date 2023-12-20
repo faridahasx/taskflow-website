@@ -5,7 +5,8 @@ import { isValidDate } from "./validateFilters";
 export const getSearchParams = () => {
   const searchParams = new URLSearchParams(window.location.search);
   const taskID = searchParams.get("task");
-  // If there is a taskID, return it as an object
+  
+  // If there is a taskID return it
   if (taskID) return { taskID };
 
   // Extract other parameters
@@ -112,8 +113,12 @@ export const getStatsRequestQueryFromURL = () => {
   let [startRange, endRange] = ["", ""];
 
   if (!startgte && !startlte && !finishgte && !finishlte) {
-    startRange = new Date(formatDate(getDateWithNDaysOfDifference(-30))).toLocaleString("en-US", localeDateStringOptions);
-    endRange = new Date(formatDate(getDateWithNDaysOfDifference(30))).toLocaleString("en-US", localeDateStringOptions);
+    startRange = new Date(
+      formatDate(getDateWithNDaysOfDifference(-30))
+    ).toLocaleString("en-US", localeDateStringOptions);
+    endRange = new Date(
+      formatDate(getDateWithNDaysOfDifference(30))
+    ).toLocaleString("en-US", localeDateStringOptions);
   }
 
   return [

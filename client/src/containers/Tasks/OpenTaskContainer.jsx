@@ -12,8 +12,12 @@ import OpenTask from "../../components/Tasks/OpenTask";
 
 const OpenTaskContainer = (props) => {
   // Destructuring props
-  const { task, openEditTaskEditor, handleClickEditTask, handleCloseOpenedTask } =
-    props;
+  const {
+    task,
+    openEditTaskEditor,
+    handleClickEditTask,
+    handleCloseOpenedTask,
+  } = props;
 
   // Custom hook for handling authenticated requests
   const [executeAuthRequest, loading] = useAuthRequest();
@@ -48,10 +52,10 @@ const OpenTaskContainer = (props) => {
 };
 
 OpenTaskContainer.propTypes = {
-  task:PropTypes.object.isRequired,
-  openEditTaskEditor:PropTypes.object.isRequired,
-  handleClickEditTask:PropTypes.func.isRequired,
-  handleCloseOpenedTask:PropTypes.func.isRequired,
-}
+  task: PropTypes.object.isRequired,
+  openEditTaskEditor: PropTypes.object.isRequired,
+  handleClickEditTask: PropTypes.func.isRequired,
+  handleCloseOpenedTask: PropTypes.func.isRequired,
+};
 
 export default OpenTaskContainer;

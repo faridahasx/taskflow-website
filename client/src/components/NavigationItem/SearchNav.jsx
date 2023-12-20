@@ -4,7 +4,6 @@ import NavigationItem from "./NavigationItem";
 
 const Search = lazy(() => import("../../containers/SearchContainer"));
 
-
 const SearchNav = () => {
   const [openComponent, setOpenComponent] = useState(false);
   const handlClick = () => setOpenComponent(!openComponent);
@@ -15,7 +14,7 @@ const SearchNav = () => {
       title={"Search"}
       Icon={<SearchIcon />}
       openComponent={openComponent}
-      Component={<Search handleClose={handlClick}/>}
+      Component={<Search handleClose={handlClick} />}
     />
   );
 };

@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
-import OpenTask from "../../components/Tasks/OpenTask";
 import { tasksSample } from "../../constants/sampleData";
+import OpenTask from "../../components/Tasks/OpenTask";
 
 const mockFn = jest.fn();
 

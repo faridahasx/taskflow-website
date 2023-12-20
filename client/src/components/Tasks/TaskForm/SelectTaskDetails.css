@@ -1,9 +1,9 @@
-#select-task-details{
+#select-task-details {
     justify-content: space-between;
     padding-top: 10px;
 }
 
-.select-task-detail{
+.select-task-detail {
     width: 33%;
     min-width: 33%;
 }

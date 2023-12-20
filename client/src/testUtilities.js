@@ -24,4 +24,11 @@ const pressEscape = (container) => {
   pressKeyboardButton(container, "Escape");
 };
 
-export { clickByText,clickByTitle,clickByTestId, changeByLabelText, pressEnter, pressEscape };
+export {
+  clickByText,
+  clickByTitle,
+  clickByTestId,
+  changeByLabelText,
+  pressEnter,
+  pressEscape,
+};

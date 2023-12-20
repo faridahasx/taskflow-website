@@ -1,7 +1,7 @@
 /**
  * Stats Component
  *
- * This component represents the statistics page, 
+ * This component represents the statistics page,
  * rendering StatsContainer inside Layout
  * to display relevant statistical information about tasks.
  *

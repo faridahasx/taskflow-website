@@ -1,14 +1,14 @@
 import React from "react";
 import { render, waitFor } from "@testing-library/react";
-import TasksContainer from "../../../containers/Tasks/TasksContainer";
 import { Provider } from "react-redux";
-import { axiosWithCredentials } from "../../../assets/axiosInstance";
 import { BrowserRouter } from "react-router-dom";
+import { axiosWithCredentials } from "../../../assets/axiosInstance";
 import { TasksDispatchContext } from "../../../context/TaskContext";
 import { getTasksRequestQueryFromURL } from "../../../utils/tasksURLSearchParamsUtils";
 import { MockIntersectionObserverIntersecting } from "../../mocks/mockClasses";
 import { tasksSample } from "../../../constants/sampleData";
 import { mockAuthState, mockStore } from "../../mocks/mockReduxState";
+import TasksContainer from "../../../containers/Tasks/TasksContainer";
 
 const mockFetchedData = {
   status: 200,

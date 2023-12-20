@@ -36,8 +36,7 @@ const SearchResults = (props) => {
 
 SearchResults.propTypes = {
   searchResults: PropTypes.array.isRequired,
-  handleLinkClick: PropTypes.func.isRequired
+  handleLinkClick: PropTypes.func.isRequired,
 };
-
 
 export default SearchResults;

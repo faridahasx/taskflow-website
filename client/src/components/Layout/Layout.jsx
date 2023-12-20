@@ -1,7 +1,7 @@
 // External imports
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 // Components
 import AuthDialog from "../Auth/AuthDialog";
 import Header from "./Header";
@@ -13,15 +13,17 @@ const Layout = ({ children }) => {
   const dispatch = useDispatch();
 
   const isLogged = useSelector((state) => state.auth.isLogged);
-  const displayAuthDialog = useSelector((state) => state.authDialog.displayAuthDialog);
+  const displayAuthDialog = useSelector(
+    (state) => state.authDialog.displayAuthDialog
+  );
 
-
-  const handleDisplayAuthDialog = () => dispatch({ type: "AUTH_DIALOG", payload: true });
-  const handleCloseAuthDialog = () => dispatch({ type: "AUTH_DIALOG", payload: false });
+  const handleDisplayAuthDialog = () =>
+    dispatch({ type: "AUTH_DIALOG", payload: true });
+  const handleCloseAuthDialog = () =>
+    dispatch({ type: "AUTH_DIALOG", payload: false });
 
   return (
     <>
-
       <Header
         categoriesOpen={categoriesOpen}
         setCategoriesOpen={setCategoriesOpen}

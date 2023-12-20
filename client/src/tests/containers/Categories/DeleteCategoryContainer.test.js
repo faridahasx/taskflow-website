@@ -1,12 +1,12 @@
 import React from "react";
 import { render, waitFor } from "@testing-library/react";
-import DeleteCategoryContainer from "../../../containers/Categories/DeleteCategoryContainer";
 import { Provider } from "react-redux";
 import { axiosWithCredentials } from "../../../assets/axiosInstance";
 import { TasksDispatchContext } from "../../../context/TaskContext";
 import { mockAuthState, mockStore } from "../../mocks/mockReduxState";
 import { categoriesSample } from "../../../constants/sampleData";
 import { clickByText } from "../../../testUtilities";
+import DeleteCategoryContainer from "../../../containers/Categories/DeleteCategoryContainer";
 
 const mockCategory = categoriesSample[0];
 

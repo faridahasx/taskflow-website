@@ -11,7 +11,6 @@ import SortFieldListItem from "./SortFieldListItem";
 // Styles
 import "./Sort.css";
 
-
 const Sort = (props) => {
   // Destructuring props
   const { handleClose, handleSorting, sortValue } = props;

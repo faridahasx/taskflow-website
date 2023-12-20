@@ -50,4 +50,4 @@ passport.deserializeUser((user: any, done) => done(null, user));
 
 passport.use(new GoogleStrategy(OPTIONS, verify));
 
-export default passport
+export default passport;

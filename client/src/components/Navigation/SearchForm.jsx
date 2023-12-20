@@ -9,13 +9,8 @@ import "./SearchForm.css";
 
 const SearchForm = (props) => {
   // Destructure props
-  const {
-    handleSubmit,
-    handleInputChange,
-    inputValue,
-    loading,
-    handleClear,
-  } = props;
+  const { handleSubmit, handleInputChange, inputValue, loading, handleClear } =
+    props;
 
   return (
     <form id="search-form" className="flex" onSubmit={handleSubmit}>
@@ -36,11 +31,7 @@ const SearchForm = (props) => {
         </span>
       )}
       {inputValue && (
-        <button
-          className="center s-icon"
-          type="button"
-          onClick={handleClear}
-        >
+        <button className="center s-icon" type="button" onClick={handleClear}>
           <ClearIcon />
         </button>
       )}
@@ -48,12 +39,11 @@ const SearchForm = (props) => {
   );
 };
 
-
 SearchForm.propTypes = {
-  handleSubmit:PropTypes.func.isRequired ,
+  handleSubmit: PropTypes.func.isRequired,
   handleInputChange: PropTypes.func.isRequired,
   handleClear: PropTypes.func.isRequired,
-  inputValue: PropTypes.string.isRequired, 
+  inputValue: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
 };
 

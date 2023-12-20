@@ -1,10 +1,10 @@
 import React from "react";
 import { render, waitFor } from "@testing-library/react";
-import OpenTaskContainer from "../../../containers/Tasks/OpenTaskContainer";
 import { Provider } from "react-redux";
 import { axiosWithCredentials } from "../../../assets/axiosInstance";
 import { mockAuthState, mockStore } from "../../mocks/mockReduxState";
 import { TasksDispatchContext } from "../../../context/TaskContext";
+import OpenTaskContainer from "../../../containers/Tasks/OpenTaskContainer";
 
 const mockFetchedData = {
   status: 200,

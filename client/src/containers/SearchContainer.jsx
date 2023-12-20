@@ -53,7 +53,7 @@ const SearchContainer = (props) => {
   };
 
   // const handle
-  const handleClear = () => setInputValue("")
+  const handleClear = () => setInputValue("");
 
   // Effect to fetch data based on the search input value
   useEffect(() => {
@@ -73,7 +73,7 @@ const SearchContainer = (props) => {
     return () => (ignore.value = true);
     // eslint-disable-next-line
   }, [inputValue]);
-  
+
   // Rendering Search component with necessary props
   return (
     <Search
@@ -91,7 +91,7 @@ const SearchContainer = (props) => {
 };
 
 SearchContainer.propTypes = {
-  handleClose: PropTypes.func.isRequired
-}
+  handleClose: PropTypes.func.isRequired,
+};
 
 export default SearchContainer;

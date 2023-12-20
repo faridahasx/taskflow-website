@@ -4,7 +4,6 @@
     overflow: hidden;
 }
 
-
 #tasks {
     width: 100vw;
     min-width: var(--min-width);
@@ -13,8 +12,6 @@
     background-color: var(--light-grey);
     align-items: center;
 }
-
-
 
 #tasks-list {
     width: 100%;

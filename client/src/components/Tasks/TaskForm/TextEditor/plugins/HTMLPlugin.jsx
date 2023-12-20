@@ -20,7 +20,7 @@ const HtmlPlugin = ({ initialHtml, onHtmlChanged }) => {
         $insertNodes(nodes);
       }
     });
-    // eslint-disable-next-line 
+    // eslint-disable-next-line
   }, []);
 
   return (

@@ -1,6 +1,5 @@
 // External imports
 import PropTypes from "prop-types";
-import dayjs from "dayjs";
 // MUI components
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";

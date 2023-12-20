@@ -9,7 +9,6 @@ const TaskCheckbox = (props) => {
   return (
     <button
       className={`center color ${colorTransition.color} ${colorTransition.transition}`}
-
       onClick={() => handleToggleCompleted(task)}
       title={`${task.completedAt ? "Unmark" : "Mark"} as completed`}
     >

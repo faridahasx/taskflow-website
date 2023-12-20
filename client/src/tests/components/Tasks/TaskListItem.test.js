@@ -1,8 +1,8 @@
 import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
-import TaskListItem from "../../../components/Tasks/TaskListItem/TaskListItem";
-import { tasksSample } from "../../../constants/sampleData";
 import { act } from "react-dom/test-utils";
+import { tasksSample } from "../../../constants/sampleData";
+import TaskListItem from "../../../components/Tasks/TaskListItem/TaskListItem";
 
 const { getByTestId, getByTitle } = screen;
 

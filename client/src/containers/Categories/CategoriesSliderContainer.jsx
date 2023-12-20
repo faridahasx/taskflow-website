@@ -47,8 +47,6 @@ const CategoriesSliderContainer = (props) => {
       executeAuthRequest(fetchCategories);
   }, [executeAuthRequest, dispatch, initialFetch, categories.length]);
 
-
-
   // Rendering CategorieSlider component with necessary props
   return (
     <CategorieSlider

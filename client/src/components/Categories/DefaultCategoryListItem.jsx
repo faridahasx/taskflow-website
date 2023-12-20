@@ -7,7 +7,7 @@ import "./CategoryListItem";
 const DefaultCategoryListItem = ({ tasksCount }) => {
   return (
     <li className="category-li flex">
-      <Link className="flex" to='/'>
+      <Link className="flex" to="/">
         <span className="text-overflow">All</span>
         <span>{tasksCount}</span>
       </Link>
@@ -15,8 +15,8 @@ const DefaultCategoryListItem = ({ tasksCount }) => {
   );
 };
 
-DefaultCategoryListItem.propTypes =  {
-  tasksCount: PropTypes.string.isRequired
-}
+DefaultCategoryListItem.propTypes = {
+  tasksCount: PropTypes.string.isRequired,
+};
 
 export default DefaultCategoryListItem;

@@ -4,7 +4,7 @@
     max-width: 40px;
     height: 40px;
     min-height: 40px;
-    max-height: 40px;    
+    max-height: 40px;
     background-color: #00000000;
     border-radius: 50%;
     border: none;
@@ -15,14 +15,14 @@
     justify-content: center;
     align-items: center;
 }
- 
+
 
 
 .icon:hover {
-    background-color:var(--hover-bg-color);
+    background-color: var(--hover-bg-color);
 }
 
-.icon:disabled{
+.icon:disabled {
     pointer-events: none;
-    
+
 }
