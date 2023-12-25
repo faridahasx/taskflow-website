@@ -1,0 +1,2 @@
+TaskFlow: A task management website for a simplified workflow.
+Crafted with the MERN stack. Utilizing TypeScript for the backend and JavaScript for the frontend. Tested with Jest and React Testing Library.
