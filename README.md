@@ -39,7 +39,7 @@ Crafted with the MERN stack. Utilizing TypeScript for the backend and JavaScript
   
 
 
-## 🤝 Contributing:
+## 🤝 Contributing
 For developers interested in contributing to this project:🚀 Your expertise is welcomed! Let's collaborate to enhance TaskFlow's functionality. Together, we can make meaningful improvements and create a tool that serves users effectively. 🤝
 While we don't have strict guidelines, I'll be reviewing contributions to ensure they align with the project's goals. Feel free to reach out if you have questions.
 
