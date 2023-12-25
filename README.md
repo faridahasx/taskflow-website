@@ -25,7 +25,7 @@ Crafted with the MERN stack. Utilizing TypeScript for the backend and JavaScript
   - **Responsive UI:** 📱 A smooth experience on various devices through a responsive user interface.
   - **Material UI:** 🗓️ Utilizing the visually appealing Material UI framework, incorporating date pickers and inputs for enhanced user interaction.
   - **Testing with Jest:** 🧪 Enhanced code reliability and robustness by conducting testing using Jest.
-  - **TypeScript & Node.js Backend:** 🚀 Elevating code reliability and maintainability with TypeScript while harnessing the efficiency of Node.js for robust server-side development.
+  - **TypeScript & Node.js Backend:** 💻 Elevating code reliability and maintainability with TypeScript while harnessing the efficiency of Node.js for robust server-side development.
   - **User Authentication:** 🔐 Implementing secure access control with Passport.js and JWT for user authentication.
 
 
