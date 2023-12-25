@@ -1,7 +1,7 @@
 # [TaskFlow](https://www.taskflow.site/): A task management website for a simplified workflow.
 Crafted with the MERN stack. Utilizing TypeScript for the backend and JavaScript for the frontend. Tested with Jest and React Testing Library.
 
-[Visit Site](https://www.taskflow.site/) | [Server](https://github.com/faridasLab/taskflow-website/tree/main/server) | [Client](https://github.com/faridasLab/taskflow-website/tree/main/client)
+[Visit the site](https://www.taskflow.site/) | [Server](https://github.com/faridasLab/taskflow-website/tree/main/server) | [Client](https://github.com/faridasLab/taskflow-website/tree/main/client)
 
 
 
@@ -18,7 +18,19 @@ Crafted with the MERN stack. Utilizing TypeScript for the backend and JavaScript
   - CSS
   - Jest & React Testing Library
 
-    
+
+## 🚀 Features
+  - **React Frontend:** ⚛️ Dynamic and interactive user interfaces using the React library.
+  - **CSS Styling:** 🎨 Custom styles to enhance visual presentation and user experience.
+  - **Responsive UI:** 📱 A smooth experience on various devices through a responsive user interface.
+  - **Material UI:** 🗓️ Utilizing the visually appealing Material UI framework, incorporating date pickers and inputs for enhanced user interaction.
+  - **Testing with Jest:** 🧪 Enhanced code reliability and robustness by conducting testing using Jest.
+  - **TypeScript & Node.js Backend:** 🚀 Elevating code reliability and maintainability with TypeScript while harnessing the efficiency of Node.js for robust server-side development.
+  - **User Authentication:** 🔐 Implementing secure access control with Passport.js and JWT for user authentication.
+
+
+
+
 
 ## 🎯 Purpose of this project 
   Driven developer here! [TaskFlow](https://www.taskflow.site/) isn't just a showcase project. Beyond the code, it's about
@@ -30,3 +42,6 @@ Crafted with the MERN stack. Utilizing TypeScript for the backend and JavaScript
 ## 🤝 Contributing:
 For developers interested in contributing to this project:🚀 Your expertise is welcomed! Let's collaborate to enhance TaskFlow's functionality. Together, we can make meaningful improvements and create a tool that serves users effectively. 🤝
 While we don't have strict guidelines, I'll be reviewing contributions to ensure they align with the project's goals. Feel free to reach out if you have questions.
+
+#
+[Visit the site](https://www.taskflow.site/) | [Server](https://github.com/faridasLab/taskflow-website/tree/main/server) | [Client](https://github.com/faridasLab/taskflow-website/tree/main/client)
