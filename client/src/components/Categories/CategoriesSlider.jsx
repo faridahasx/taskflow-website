@@ -9,6 +9,7 @@ import CircularLoading from "../Loading/CircularLoading";
 import CategoryListItem from "./CategoryListItem";
 import DefaultCategoryListItem from "./DefaultCategoryListItem";
 import OpenAddCategoryButton from "./OpenAddCategoryButton";
+import PortalComponent from "../PortalComponent";
 // Styles
 import "./CategoriesSlider.css";
 // Lazy-loaded Components
@@ -116,27 +117,29 @@ const CategorieSlider = (props) => {
         </div>
         <OpenAddCategoryButton onClick={handleOpenAddCategoryClick} />
       </div>
-      <Suspense fallback={<ModalLoading handleClose={handleCloseDialog} />}>
-        {currentDialog === "add" ? (
-          <CategoryForm
-            label="Add category"
-            handleCloseDialog={handleCloseDialog}
-          />
-        ) : currentDialog === "edit" ? (
-          <CategoryForm
-            label="Rename"
-            handleCloseDialog={handleCloseDialog}
-            category={currentCategory}
-          />
-        ) : (
-          currentDialog === "delete" && (
-            <DeleteCategory
+      <PortalComponent>
+        <Suspense fallback={<ModalLoading handleClose={handleCloseDialog} />}>
+          {currentDialog === "add" ? (
+            <CategoryForm
+              label="Add category"
+              handleCloseDialog={handleCloseDialog}
+            />
+          ) : currentDialog === "edit" ? (
+            <CategoryForm
+              label="Rename"
               handleCloseDialog={handleCloseDialog}
               category={currentCategory}
             />
-          )
-        )}
-      </Suspense>
+          ) : (
+            currentDialog === "delete" && (
+              <DeleteCategory
+                handleCloseDialog={handleCloseDialog}
+                category={currentCategory}
+              />
+            )
+          )}
+        </Suspense>
+      </PortalComponent>
     </div>
   );
 };

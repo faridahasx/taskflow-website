@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useClearCredentials from "./useClearCredentials";
 import useNetworkStatus from "./useNetworkStatus";
 
-// Custom React hook for handling authentication requests
+// Custom React hook for handling requests that requires authenticed user
 const useAuthRequest = () => {
   const [loading, setLoading] = useState(false);
   const isOnline = useNetworkStatus();
@@ -13,7 +13,7 @@ const useAuthRequest = () => {
   const dispatch = useDispatch();
   const clearCredentials = useClearCredentials();
 
-  // Function to execute authentication request with error handling
+  // Function to execute handling requests that requires authenticed user
   const executeAuthRequest = async (
     callback,
     successMessage,
@@ -24,9 +24,10 @@ const useAuthRequest = () => {
     if (!isOnline) {
       // Dispatch an alert if there's no internet connection
       dispatch({ type: "ALERT", payload: "Check your internet connection" });
+      // Display AuthDialog if the user is not authenticated
     } else if (isLogged === false) {
       dispatch({ type: "AUTH_DIALOG", payload: true });
-    } else if (isLogged === true) {
+    } else {
       try {
         // Set loading state if specified
         setLoadingState && setLoading(true);
