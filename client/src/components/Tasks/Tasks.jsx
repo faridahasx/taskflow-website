@@ -43,6 +43,7 @@ const Tasks = (props) => {
   };
   const handleCloseAddTaskEditor = () => setOpenAddTaskEditor("");
   const handleCloseEditTaskEditor = () => setOpenEditTaskEditor({});
+  console.log('tasks', tasks)
 
   return (
     <section id="tasks-wrapper" className="column">
