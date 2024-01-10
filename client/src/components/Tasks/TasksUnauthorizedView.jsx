@@ -10,7 +10,7 @@ const TasksUnauthorizedView = () => {
   const [tasks, setTasks] = useState(tasksSample);
 
   useEffect(() => {
-    let nextTasks;
+    let nextTasks = tasksSample;
     const URLTasksValue = searchParams.get("tasks");
     if (URLTasksValue) {
       const now = new Date();
