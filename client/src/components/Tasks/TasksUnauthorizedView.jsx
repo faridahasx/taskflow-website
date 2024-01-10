@@ -11,29 +11,38 @@ const TasksUnauthorizedView = () => {
 
   useEffect(() => {
     let nextTasks;
-    if (searchParams.get("all")) {
-      nextTasks = allTasks;
-    } else if (searchParams.get("completed")) {
-      nextTasks = allTasks.filter((t) => t.completedAt);
-    } else {
+    const URLTasksValue = searchParams.get("tasks");
+    if (URLTasksValue) {
       const now = new Date();
-      if (searchParams.get("current")) {
-        nextTasks = allTasks.filter(
-          (t) => !t.completedAt && t.finishDate > now && t.startDate < now
-        );
-      } else if (searchParams.get("overdue")) {
-        nextTasks = allTasks.filter(
-          (t) => !t.completedAt && t.finishDate < now
-        );
-      } else if (searchParams.get("upcoming")) {
-        nextTasks = allTasks.filter((t) => !t.completedAt && t.startDate > now);
-      } else {
-        nextTasks = tasksSample;
+      switch (URLTasksValue) {
+        case "all":
+          nextTasks = allTasks;
+          break;
+        case "completed":
+          nextTasks = allTasks.filter((t) => t.completedAt);
+          break;
+        case "current":
+          nextTasks = allTasks.filter(
+            (t) => !t.completedAt && t.finishDate > now && t.startDate < now
+          );
+          break;
+        case "overdue":
+          nextTasks = allTasks.filter(
+            (t) => !t.completedAt && t.finishDate < now
+          );
+          break
+        case "upcoming":
+          nextTasks = allTasks.filter(
+            (t) => !t.completedAt && t.startDate > now
+          );
+          break
+        default:
+          nextTasks = tasksSample;
       }
     }
 
     setTasks(nextTasks);
-  }, [searchParams, allTasks]);
+  }, [searchParams]);
 
   // Toggle Completed Checkbox
   const handleToggleCompleted = (task) => {

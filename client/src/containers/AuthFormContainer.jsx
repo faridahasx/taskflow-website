@@ -10,8 +10,10 @@ import { axiosWithCredentials } from "../assets/axiosInstance";
 // Components
 import AuthForm from "../components/Auth/AuthForm";
 
-const GOOGLE_OAUTH_URL = process.env.REACT_APP_GOOGLE_OAUTH_URL;
+// ENV 
+const GOOGLE_CALLBACK_URL = process.env.REACT_APP_GOOGLE_CALLBACK_URL;
 
+// Functional component 
 const AuthFormContainer = (props) => {
   // Destructuring props
   const { path, subtmitButtonText } = props;
@@ -30,7 +32,7 @@ const AuthFormContainer = (props) => {
   };
 
   const handleContinueWithGoogle = () => {
-    window.open(GOOGLE_OAUTH_URL, "_self");
+    window.open(GOOGLE_CALLBACK_URL, "_self");
   };
 
   // Function to handle form submission
