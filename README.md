@@ -1,7 +1,7 @@
 # [TaskFlow](https://www.taskflow.site/): A simple task management website for a simplified workflow.
 Crafted with the MERN stack. Tested with Jest and React Testing Library. ✅
 
-![Main](https://github.com/faridasLab/taskflow-website/main.png)
+![Main](https://github.com/faridasLab/taskflow-website/blob/main/main.png)
 
 [Visit the site](https://www.taskflow.site/) | [Server](https://github.com/faridasLab/taskflow-website/tree/main/server) | [Client](https://github.com/faridasLab/taskflow-website/tree/main/client)
 
