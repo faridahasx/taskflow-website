@@ -1,7 +1,7 @@
 # [TaskFlow](https://www.taskflow.site/): A simple task management website for a simplified workflow.
 Crafted with the MERN stack. Tested with Jest and React Testing Library. ✅
 
-![Main](https://github.com/faridasLab/taskflow-website/blob/main/project.gif)
+![Project gif](https://github.com/faridasLab/taskflow-website/blob/main/project.gif)
 
 [Visit the site](https://www.taskflow.site/) | [Server](https://github.com/faridasLab/taskflow-website/tree/main/server) | [Client](https://github.com/faridasLab/taskflow-website/tree/main/client)
 
@@ -21,7 +21,7 @@ Crafted with the MERN stack. Tested with Jest and React Testing Library. ✅
   - Jest & React Testing Library
 
 
-## 🚀 Features
+## 💻 Features
   - **React Frontend:** ⚛️ Dynamic and interactive user interfaces using the React library.
   - **CSS Styling:** 🎨 Custom styles to enhance visual presentation and user experience.
   - **Responsive UI:** 📱 A smooth experience on various devices through a responsive user interface.
@@ -30,7 +30,7 @@ Crafted with the MERN stack. Tested with Jest and React Testing Library. ✅
   - **TypeScript & Node.js Backend:** 💻 Elevating code reliability and maintainability with TypeScript while harnessing the efficiency of Node.js for robust server-side development.
   - **User Authentication:** 🔐 Implementing secure access control with Passport.js and JWT for user authentication.
 
-## Optimizations
+## 🚀 Optimizations
   - **Include end to end and integration tests**
 
 
@@ -46,7 +46,7 @@ Crafted with the MERN stack. Tested with Jest and React Testing Library. ✅
 For developers interested in contributing to this project:🚀 Your expertise is welcomed! Let's collaborate to enhance TaskFlow's functionality. Together, we can make meaningful improvements and create a tool that serves users effectively. 🤝
 While we don't have strict guidelines, I'll be reviewing contributions to ensure they align with the project's goals. Feel free to reach out if you have questions.
 
-## Contact 📇
+## 📇 Contact 
 
 If you have any questions or feedback, feel free to reach out:
 - 📧Email: farida.hasanova009@gmail.com
