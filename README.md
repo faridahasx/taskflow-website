@@ -1,7 +1,7 @@
 # [TaskFlow](https://www.taskflow.site/): A simple task management website for a simplified workflow.
 Crafted with the MERN stack. Tested with Jest and React Testing Library. ✅
 
-![Main](https://github.com/faridasLab/taskflow-website/blob/main/main.png)
+![Main](https://github.com/faridasLab/taskflow-website/blob/main/project.gif)
 
 [Visit the site](https://www.taskflow.site/) | [Server](https://github.com/faridasLab/taskflow-website/tree/main/server) | [Client](https://github.com/faridasLab/taskflow-website/tree/main/client)
 
@@ -31,7 +31,7 @@ Crafted with the MERN stack. Tested with Jest and React Testing Library. ✅
   - **User Authentication:** 🔐 Implementing secure access control with Passport.js and JWT for user authentication.
 
 ## Optimizations
-  - **Include end to end tests**
+  - **Include end to end and integration tests**
 
 
 
