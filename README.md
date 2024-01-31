@@ -1,4 +1,4 @@
-# [TaskFlow](https://www.taskflow.site/): A simple task management website for a simplified workflow.
+# [TaskFlow](https://www.taskflow.site/): A personal task management website for a simplified workflow.
 Crafted with the MERN stack. Tested with Jest and React Testing Library. ✅
 
 ![Project gif](https://github.com/faridahasx/taskflow-website/blob/main/project.gif)
