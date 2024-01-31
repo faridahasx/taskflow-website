@@ -1,9 +1,9 @@
 # [TaskFlow](https://www.taskflow.site/): A simple task management website for a simplified workflow.
 Crafted with the MERN stack. Tested with Jest and React Testing Library. ✅
 
-![Project gif](https://github.com/faridasLab/taskflow-website/blob/main/project.gif)
+![Project gif](https://github.com/faridahasx/taskflow-website/blob/main/project.gif)
 
-[Visit the site](https://www.taskflow.site/) | [Server](https://github.com/faridasLab/taskflow-website/tree/main/server) | [Client](https://github.com/faridasLab/taskflow-website/tree/main/client)
+[Visit the site](https://www.taskflow.site/) | [Server](https://github.com/faridahasx/taskflow-website/tree/main/server) | [Client](https://github.com/faridahasx/taskflow-website/tree/main/client)
 
 
 
@@ -46,15 +46,16 @@ Crafted with the MERN stack. Tested with Jest and React Testing Library. ✅
 For developers interested in contributing to this project:🚀 Your expertise is welcomed! Let's collaborate to enhance TaskFlow's functionality. Together, we can make meaningful improvements and create a tool that serves users effectively. 🤝
 While we don't have strict guidelines, I'll be reviewing contributions to ensure they align with the project's goals. Feel free to reach out if you have questions.
 
+
 ## 📇 Contact 
 
 If you have any queries, please feel free to reach out:
-- [🌎 My official website](https://farida-mu.vercel.app)
+- [🌎 My official website](https://faridah.vercel.app)
 - Email: farida.hasanova009@gmail.com
-- X: [faridahasx](https://twitter.com/faridahasx)
-- LinkedIn: [Farida Hasanova](https://www.linkedin.com/in/farida-hasanova-879744194/)
+- Twitter: [@faridahasx](https://twitter.com/faridahasx)
+- LinkedIn: [Farida Hasanova](https://www.linkedin.com/in/faridahasx)
 
 
 #
-[Visit the site](https://www.taskflow.site/) | [Server](https://github.com/faridasLab/taskflow-website/tree/main/server) | [Client](https://github.com/faridasLab/taskflow-website/tree/main/client)
+[Visit the site](https://www.taskflow.site/) | [Server](https://github.com/faridahasx/taskflow-website/tree/main/server) | [Client](https://github.com/faridahasx/taskflow-website/tree/main/client)
 
