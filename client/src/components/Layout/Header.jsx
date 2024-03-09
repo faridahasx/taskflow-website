@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 // MUI components
-import { Close, LoginOutlined } from "@mui/icons-material";
+import { Close } from "@mui/icons-material";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import MenuIcon from "@mui/icons-material/Menu";
 // Components
@@ -16,8 +16,6 @@ import "./Header.css";
 const Header = ({
   categoriesOpen,
   setCategoriesOpen,
-  isLogged,
-  handleDisplayAuthDialog,
 }) => {
   // React Router hooks
   const location = useLocation();
@@ -65,17 +63,7 @@ const Header = ({
         >
           <BarChartIcon />
         </Link>
-        {isLogged === true ? (
-          <LogoutButtonContainer />
-        ) : (
-          <IconButton
-            Icon={<LoginOutlined />}
-            buttonProps={{
-              title: "Sign In",
-              onClick: handleDisplayAuthDialog,
-            }}
-          />
-        )}
+        <LogoutButtonContainer />
       </span>
     </header>
   );

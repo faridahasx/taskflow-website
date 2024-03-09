@@ -19,6 +19,8 @@ import "./assets/globals.css";
 const Home = lazy(() => import("./pages/Home"));
 const LoginSuccessRedirect = lazy(() => import("./pages/LoginSuccessRedirect"));
 const Stats = lazy(() => import("./pages/Stats"));
+const LandingPage = lazy(() => import("./pages/LandingPage"));
+
 
 function App() {
   // Redux dispatch function
@@ -49,8 +51,6 @@ function App() {
   useLayoutEffect(() => {
     const getFirstLogin = () => {
       const firstLogin = localStorage.getItem("firstLogin");
-      !firstLogin && dispatch({ type: "AUTH_DIALOG", payload: true });
-
       dispatch({ type: "IS_LOGGED", payload: firstLogin ? true : false });
     };
     // Dispatches action only if not logged in
@@ -65,8 +65,9 @@ function App() {
         <ErrorBoundary>
           <Suspense fallback={<LoadingPage />}>
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/stats" element={<Stats />} />
+              <Route exact path="/" element={isLogged===false? <LandingPage/>: isLogged===true?<Home />:null}/>
+              <Route exact path="/stats" element={isLogged===false ? <Navigate replace to="/" /> : <Stats />}/>
+
               <Route path="/redirect" element={<LoginSuccessRedirect />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>

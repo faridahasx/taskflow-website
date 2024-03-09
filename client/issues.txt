@@ -1,3 +1,3 @@
-remove or fix:  sort and filter from unauth view
+prop types: Button props, children props
 aria lebels
 re-evaluate the timers, they are not very good

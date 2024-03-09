@@ -4,9 +4,9 @@ import "./Logo.css";
 const Logo = () => {
   return (
     <div className="logo center" title="TaskFlow">
-      <MovingIcon />
       <span className="logo-task">Task</span>
       <span className="logo-flow">Flow</span>
+      <MovingIcon id='logo-icon'/>
     </div>
   );
 };

@@ -1,22 +1,23 @@
-.green {
-    background: rgb(92, 205, 92)
+.green{
+    background: linear-gradient(120deg, #84fab0, #57d352);
 }
 
 .red {
-    background: rgb(255, 101, 101);
+    background: linear-gradient(120deg, #ff4b2b, #ff416c);
 }
 
 .yellow {
-    background: rgb(255, 255, 115);
+    background: linear-gradient(160deg, #fffdba, #fff71e);
 }
 
 .blue {
-    background: rgb(92, 132, 205);
+    background: linear-gradient(120deg, #84fab0, #6dcaf8);
 }
 
 .t-color {
-    transition: all .35s linear;
+    transition: all 0.35s ease;
 }
+
 
 .color {
     width: 45px;

@@ -4,6 +4,9 @@
     color: rgb(40, 90, 40);
 }
 
+#logo-icon{
+    font-size: larger;
+}
 
 .logo-task {
     margin-left: 5px;
