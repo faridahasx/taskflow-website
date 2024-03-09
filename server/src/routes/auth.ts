@@ -18,14 +18,12 @@ import {
   wrongCredentialsError,
 } from "../assets/responseMessages";
 import category from "../models/category";
-import sendAuthToken from "../utils/sendAuthToken";
 
 const router = Router();
 const PASSWORD_SECRET = process.env.PASSWORD_SECRET || "";
 const CLIENT_URL = process.env.CLIENT_URL || "";
 const JWT_RESET_PASSWORD_REFRESH_TOKEN_SECRET =
   process.env.JWT_RESET_PASSWORD_REFRESH_TOKEN_SECRET || "";
-
 
 // REGISTER
 router.post("/register", async (req: Request, res: Response) => {
@@ -59,22 +57,19 @@ router.post("/register", async (req: Request, res: Response) => {
     const newCategory = new category({ title: "Tasks", userId: newUser._id });
     await newCategory.save();
 
-    sendAuthToken(res, newUser._id);
-
-    // // Create refresh token
-    // const refreshToken = createRefreshToken({
-    //   userId: newUser._id,
-    // });
+    // Create refresh token
+    const refreshToken = createRefreshToken({
+      userId: newUser._id,
+    });
 
     // Send response
-    // res.cookie("refreshtoken", refreshToken, {
-    //   httpOnly: true,
-    //   secure: true,
-    //   sameSite: "lax",
-    //   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    // });
-    // res.status(200).json("Register Success!");
-
+    res.cookie("refreshtoken", refreshToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    });
+    res.status(200).json("Register Success!");
   } catch (err) {
     return res.status(500).json(serverError);
   }
@@ -98,21 +93,19 @@ router.post("/login", async (req: Request, res: Response) => {
     if (userPassword !== password)
       return res.status(400).json(wrongCredentialsError);
 
-    sendAuthToken(res, user._id)
+    // Create refresh token
+    const refreshToken = createRefreshToken({
+      userId: user._id,
+    });
 
-    // // Create refresh token
-    // const refreshToken = createRefreshToken({
-    //   userId: user._id,
-    // });
-
-    // // Send response
-    // res.cookie("refreshtoken", refreshToken, {
-    //   httpOnly: true,
-    //   secure: true,
-    //   sameSite: "lax",
-    //   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    // });
-    // res.status(200).json("Login Success!");
+    // Send response
+    res.cookie("refreshtoken", refreshToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    });
+    res.status(200).json("Login Success!");
   } catch (err) {
     return res.status(500).json(serverError);
   }
@@ -197,7 +190,7 @@ router.get("/success", (req: Request, res: Response) => {
       httpOnly: true,
       secure: true,
       sameSite: "lax",
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
     });
     res.status(200).json("Login success!");
   }
