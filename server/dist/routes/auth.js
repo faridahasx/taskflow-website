@@ -22,22 +22,11 @@ const validateEmail_1 = __importDefault(require("../utils/validateEmail"));
 const user_1 = __importDefault(require("../models/user"));
 const responseMessages_1 = require("../assets/responseMessages");
 const category_1 = __importDefault(require("../models/category"));
+const sendAuthToken_1 = __importDefault(require("../utils/sendAuthToken"));
 const router = (0, express_1.Router)();
 const PASSWORD_SECRET = process.env.PASSWORD_SECRET || "";
 const CLIENT_URL = process.env.CLIENT_URL || "";
 const JWT_RESET_PASSWORD_REFRESH_TOKEN_SECRET = process.env.JWT_RESET_PASSWORD_REFRESH_TOKEN_SECRET || "";
-const sendAuthToken = (res, userId) => {
-    // Create refresh token
-    const refreshToken = (0, createToken_1.createRefreshToken)({
-        userId: userId,
-    });
-    res.cookie("refreshtoken", refreshToken, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "lax",
-        maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-    });
-};
 // REGISTER
 router.post("/register", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -66,7 +55,7 @@ router.post("/register", (req, res) => __awaiter(void 0, void 0, void 0, functio
         // Create default category
         const newCategory = new category_1.default({ title: "Tasks", userId: newUser._id });
         yield newCategory.save();
-        sendAuthToken(res, newUser._id);
+        (0, sendAuthToken_1.default)(res, newUser._id);
         // // Create refresh token
         // const refreshToken = createRefreshToken({
         //   userId: newUser._id,
@@ -100,18 +89,19 @@ router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* 
         const userPassword = hashedPassword.toString(crypto_js_1.default.enc.Utf8);
         if (userPassword !== password)
             return res.status(400).json(responseMessages_1.wrongCredentialsError);
-        // Create refresh token
-        const refreshToken = (0, createToken_1.createRefreshToken)({
-            userId: user._id,
-        });
-        // Send response
-        res.cookie("refreshtoken", refreshToken, {
-            httpOnly: true,
-            secure: true,
-            sameSite: "lax",
-            maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-        });
-        res.status(200).json("Login Success!");
+        (0, sendAuthToken_1.default)(res, user._id);
+        // // Create refresh token
+        // const refreshToken = createRefreshToken({
+        //   userId: user._id,
+        // });
+        // // Send response
+        // res.cookie("refreshtoken", refreshToken, {
+        //   httpOnly: true,
+        //   secure: true,
+        //   sameSite: "lax",
+        //   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+        // });
+        // res.status(200).json("Login Success!");
     }
     catch (err) {
         return res.status(500).json(responseMessages_1.serverError);
@@ -203,7 +193,7 @@ router.get("/google/callback", passport_1.default.authenticate("google", {
         httpOnly: true,
         secure: true,
         sameSite: "lax",
-        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+        maxAge: 30 * 24 * 60 * 60 * 1000, // 7 days
     });
     res.redirect(CLIENT_URL + "/redirect");
 }));
