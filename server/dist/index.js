@@ -20,7 +20,7 @@ const connect_mongo_1 = __importDefault(require("connect-mongo"));
 //
 // ENV
 dotenv_1.default.config();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 const DB_URI = process.env.DB_URI || "";
 const COOKIE_SECRET = process.env.COOKIE_SECRET || "";
 const NODE_ENV = process.env.NODE_ENV;

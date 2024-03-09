@@ -88,7 +88,7 @@ router.get("/", authVerify_1.default, (req, res) => __awaiter(void 0, void 0, vo
                                 {
                                     $and: [
                                         { $eq: ["$completedAt", null] },
-                                        { $gt: ["$startDate", new Date()] }
+                                        { $gt: ["$startDate", new Date()] },
                                     ],
                                 },
                                 1,
@@ -102,12 +102,12 @@ router.get("/", authVerify_1.default, (req, res) => __awaiter(void 0, void 0, vo
                 $project: {
                     _id: 0,
                     "Total Tasks": "$Total Tasks",
-                    "Completed": "$Completed",
+                    Completed: "$Completed",
                     "Completed Post-Deadline": "$Completed Post-Deadline",
-                    "Incompleted": "$Incompleted",
-                    "Current": "$Current",
-                    "Overdue": "$Overdue",
-                    "Upcoming": "$Upcoming",
+                    Incompleted: "$Incompleted",
+                    Current: "$Current",
+                    Overdue: "$Overdue",
+                    Upcoming: "$Upcoming",
                 },
             },
         ]);

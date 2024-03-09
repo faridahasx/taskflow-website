@@ -12,7 +12,7 @@ describe("useAuthRequest", () => {
     const dispatchMock = jest.fn();
     useDispatch.mockReturnValue(dispatchMock);
 
-    const { result, waitForNextUpdate } = renderHook(() => useAuthRequest());
+    const { result } = renderHook(() => useAuthRequest());
     const [executeAuthRequest, loading] = result.current;
 
     // Mock a successful API call
@@ -30,7 +30,7 @@ describe("useAuthRequest", () => {
   it("should handle an API error with a 401 status code", async () => {
     const dispatchMock = jest.fn();
     useDispatch.mockReturnValue(dispatchMock);
-    const { result, waitForNextUpdate } = renderHook(() => useAuthRequest());
+    const { result } = renderHook(() => useAuthRequest());
     const [executeAuthRequest, loading] = result.current;
     // Mock an API error with a 401 status code
     const errorCallback = () => {
@@ -48,7 +48,7 @@ describe("useAuthRequest", () => {
   it("should handle an unknown API error", async () => {
     const dispatchMock = jest.fn();
     useDispatch.mockReturnValue(dispatchMock);
-    const { result, waitForNextUpdate } = renderHook(() => useAuthRequest());
+    const { result } = renderHook(() => useAuthRequest());
     const [executeAuthRequest, loading] = result.current;
     // Mock an API error with an error
     const errorCallback = () => {

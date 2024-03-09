@@ -1,0 +1,3 @@
+remove or fix:  sort and filter from unauth view
+aria lebels
+re-evaluate the timers, they are not very good

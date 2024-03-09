@@ -25,6 +25,21 @@ const CLIENT_URL = process.env.CLIENT_URL || "";
 const JWT_RESET_PASSWORD_REFRESH_TOKEN_SECRET =
   process.env.JWT_RESET_PASSWORD_REFRESH_TOKEN_SECRET || "";
 
+const sendAuthToken = (res: Response, userId:string) => {
+    // Create refresh token
+    const refreshToken = createRefreshToken({
+      userId: userId,
+    });
+
+  res.cookie("refreshtoken", refreshToken, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+  });
+
+}
+
 // REGISTER
 router.post("/register", async (req: Request, res: Response) => {
   try {
@@ -57,19 +72,22 @@ router.post("/register", async (req: Request, res: Response) => {
     const newCategory = new category({ title: "Tasks", userId: newUser._id });
     await newCategory.save();
 
-    // Create refresh token
-    const refreshToken = createRefreshToken({
-      userId: newUser._id,
-    });
+    sendAuthToken(res, newUser._id);
+
+    // // Create refresh token
+    // const refreshToken = createRefreshToken({
+    //   userId: newUser._id,
+    // });
 
     // Send response
-    res.cookie("refreshtoken", refreshToken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "lax",
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    });
-    res.status(200).json("Register Success!");
+    // res.cookie("refreshtoken", refreshToken, {
+    //   httpOnly: true,
+    //   secure: true,
+    //   sameSite: "lax",
+    //   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    // });
+    // res.status(200).json("Register Success!");
+
   } catch (err) {
     return res.status(500).json(serverError);
   }
