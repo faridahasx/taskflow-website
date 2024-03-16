@@ -1,5 +1,5 @@
 // External imports
-import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy, useState} from "react";
 import PropTypes from "prop-types";
 // Custom hooks
 import useNetworkStatus from "../../hooks/useNetworkStatus";

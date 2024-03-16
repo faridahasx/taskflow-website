@@ -5,7 +5,7 @@ import './LandingPage.css'
 import SubmitButton from '../components/TextButtons/SubmitButton';
 
 
-const UnauthorizedMain = () => {
+const LandingPage = () => {
     const [displayAuthDialog, setDisplayAuthDialog] = useState(false)
 
     const toggleDisplayAuthDialog = () => setDisplayAuthDialog(prev=>!prev)
@@ -25,4 +25,4 @@ const UnauthorizedMain = () => {
   )
 }
 
-export default UnauthorizedMain
+export default LandingPage
