@@ -1,16 +1,6 @@
-import mongoose, { Schema, Document } from "mongoose";
-import { ICategory } from "./category";
-import { IUser } from "./user";
+import mongoose, { Schema } from "mongoose";
+import { ITaskSchema } from "../types/taskTypes";
 
-export interface ITask extends Document {
-  userId: IUser["_id"];
-  title: String;
-  description: String;
-  category: ICategory["title"];
-  startDate: Date;
-  finishDate: Date;
-  completedAt: Date;
-}
 
 const taskSchema: Schema = new Schema(
   {
@@ -31,4 +21,4 @@ const taskSchema: Schema = new Schema(
   }
 );
 
-export default mongoose.model<ITask>("Task", taskSchema);
+export default mongoose.model<ITaskSchema>("Task", taskSchema);

@@ -22,7 +22,6 @@ const BASE_URL = process.env.BASE_URL || "";
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || "TO TEST";
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || "";
 const callbackURL = `${BASE_URL}/auth/google/callback`;
-console.log(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, callbackURL);
 const OPTIONS = {
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,

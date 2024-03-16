@@ -2,9 +2,10 @@ import { Request, Response, Router } from "express";
 import mongoose from "mongoose";
 import auth from "../middleware/authVerify";
 import Task from "../models/task";
-import { AuthenticatedUser } from "../types";
-import { IRequestQuery, getFilters } from "../utils/taskQuery";
-import { serverError } from "../assets/responseMessages";
+import { AuthenticatedUser } from "../types/userTypes";
+import { getFilters } from "../utils/taskQuery";
+import { serverError } from "../constants/responseMessages";
+import { IFetchTasksRequestQuery } from "../types/taskTypes";
 
 const router = Router();
 
@@ -12,7 +13,7 @@ const router = Router();
 router.get("/", auth, async (req: Request, res: Response) => {
   try {
     let user = req.user as AuthenticatedUser;
-    let reqQuery = req.query as IRequestQuery;
+    let reqQuery = req.query as IFetchTasksRequestQuery;
 
     const filters = getFilters(
       reqQuery,

@@ -1,44 +1,10 @@
-import { IUser } from "../models/user";
-
-interface IRequestQueryCategory {
-  in: string;
-}
-
-interface IRequestQuerySearch {
-  regex: string;
-}
-
-export interface IQueryFilter {
-  userId: IUser["_id"];
-  category?: any;
-  completedAt?: any;
-
-  startDate?: any;
-  finishDate?: any;
-  $or?: any;
-}
-
-export interface IRequestQuery {
-  search?: IRequestQuerySearch;
-  category?: IRequestQueryCategory;
-  sort?: any;
-  completed?: "true" | "false";
-  started?: "true" | "false";
-  finished?: "true" | "false";
-  startgte?: string;
-  startlte?: string;
-  finishgte?: string;
-  finishlte?: string;
-  startRange?: string;
-  endRange?: string;
-  page?: string;
-  limit?: string;
-}
+import { IFetchTasksRequestQuery, IFetchTasksFilterQuery} from "../types/taskTypes";
+import { IUserSchema } from "../types/userTypes";
 
 export const getFilters = (
-  query: IRequestQuery,
-  userId: IUser["_id"]
-): IQueryFilter => {
+  query: IFetchTasksRequestQuery,
+  userId: IUserSchema["_id"]
+): IFetchTasksFilterQuery => {
   const {
     category,
     search,
@@ -53,7 +19,7 @@ export const getFilters = (
     endRange,
   } = query;
 
-  const filters: IQueryFilter = { userId: userId };
+  const filters: IFetchTasksFilterQuery = { userId: userId };
   if (category) filters.category = { $in: category.in.split(",") };
 
   if (search) {
@@ -110,10 +76,10 @@ export const getFilters = (
 
 class TasksQuery {
   dbQuery: any;
-  reqQuery: IRequestQuery;
-  userId: IUser["_id"];
+  reqQuery: IFetchTasksRequestQuery;
+  userId: IUserSchema["_id"];
 
-  constructor(dbQuery: any, reqQuery: IRequestQuery, userId: IUser["_id"]) {
+  constructor(dbQuery: any, reqQuery: IFetchTasksRequestQuery, userId: IUserSchema["_id"]) {
     this.dbQuery = dbQuery;
     this.reqQuery = reqQuery;
     this.userId = userId;

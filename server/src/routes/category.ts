@@ -1,10 +1,9 @@
 import { Request, Response, Router } from "express";
 import mongoose from "mongoose";
-
 import auth from "../middleware/authVerify";
 import Category from "../models/category";
 import Task from "../models/task";
-import { AuthenticatedUser } from "../types";
+import { AuthenticatedUser } from "../types/userTypes";
 import {
   categoryNotFound,
   deleteSuccess,
@@ -13,7 +12,7 @@ import {
   missingTitleField,
   serverError,
   updateSuccess,
-} from "../assets/responseMessages";
+} from "../constants/responseMessages";
 
 const router = Router();
 

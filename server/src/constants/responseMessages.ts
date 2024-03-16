@@ -1,3 +1,4 @@
+// General
 export const serverError = "Something went wrong";
 export const updateSuccess = "Update Success!";
 export const deleteSuccess = "Delete Success!";
@@ -9,7 +10,6 @@ export const missingField = "Please fill in the required field"
 export const authError = "Not Authenticated!";
 export const invalidEmailError = "Invalid email address";
 export const  duplicateEmailsError= "The email address is already being used";
-
 export const minimumPasswordLengthError = "Password must be at least 8 characters long"
 export const wrongCredentialsError  = "Wrong credentials!"
 
@@ -17,7 +17,6 @@ export const wrongCredentialsError  = "Wrong credentials!"
 export const  duplicateTitlesError= "Duplicate titles";
 export const  maximumCategoriesReached = "Maximum 25 categories allowed";
 export const categoryNotFound = "Category not found";
-
 
 // Task
 export const  missingStartDate = "Please select a start date"

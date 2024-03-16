@@ -18,9 +18,9 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const crypto_js_1 = __importDefault(require("crypto-js"));
 const createToken_1 = require("../utils/auth/createToken");
 const sendEmail_1 = __importDefault(require("../utils/sendEmail"));
-const validateEmail_1 = __importDefault(require("../utils/validateEmail"));
+const validateEmail_1 = __importDefault(require("../utils/auth/validateEmail"));
 const user_1 = __importDefault(require("../models/user"));
-const responseMessages_1 = require("../assets/responseMessages");
+const responseMessages_1 = require("../constants/responseMessages");
 const category_1 = __importDefault(require("../models/category"));
 const generateAndSendAuthTokens_1 = __importDefault(require("../utils/auth/generateAndSendAuthTokens"));
 const router = (0, express_1.Router)();
@@ -91,6 +91,7 @@ router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* 
 router.post("/logout", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         res.clearCookie("refreshtoken");
+        res.clearCookie('accesstoken');
         return res.status(200).json("Logged out.");
     }
     catch (err) {
@@ -166,16 +167,5 @@ router.get("/google/callback", passport_1.default.authenticate("google", {
     const userId = req.user;
     (0, generateAndSendAuthTokens_1.default)(res, userId);
     res.redirect(CLIENT_URL + "/redirect");
-})
-// async (req, res) => {
-//   const refreshToken = req.user as string;
-//   res.cookie("refreshtoken", refreshToken, {
-//     httpOnly: true,
-//     secure: true,
-//     sameSite: "lax",
-//     maxAge: 30 * 24 * 60 * 60 * 1000, // 7 days
-//   });
-//   res.redirect(CLIENT_URL + "/redirect");
-// }
-);
+}));
 exports.default = router;

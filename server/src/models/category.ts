@@ -1,10 +1,6 @@
-import mongoose, { Schema, Document } from "mongoose";
-import { IUser } from "./user";
+import mongoose, { Schema } from "mongoose";
+import { ICategorySchema } from "../types/categoryTypes";
 
-export interface ICategory extends Document {
-  title: String;
-  userId: IUser["_id"];
-}
 
 const categorySchema: Schema = new Schema(
   {
@@ -20,4 +16,4 @@ const categorySchema: Schema = new Schema(
   }
 );
 
-export default mongoose.model<ICategory>("Categories", categorySchema);
+export default mongoose.model<ICategorySchema>("Categories", categorySchema);

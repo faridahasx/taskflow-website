@@ -1,15 +1,16 @@
 import { Router, Request, Response } from "express";
 import auth from "../middleware/authVerify";
 import Task from "../models/task";
-import TasksQuery, { IRequestQuery } from "../utils/taskQuery";
-import { AuthenticatedUser } from "../types";
+import TasksQuery from "../utils/taskQuery";
+import { AuthenticatedUser } from "../types/userTypes";
 import {
   deleteSuccess,
   serverError,
   taskNotFound,
   updateSuccess,
-} from "../assets/responseMessages";
+} from "../constants/responseMessages";
 import { validateTaskInputs } from "../middleware/validateTaskInputs";
+import { IFetchTasksRequestQuery } from "../types/taskTypes";
 
 const router = Router();
 
@@ -34,7 +35,7 @@ router.post(
 router.get("/", auth, async (req: Request, res: Response) => {
   try {
     let user = req.user as AuthenticatedUser;
-    let reqQuery = req.query as IRequestQuery;
+    let reqQuery = req.query as IFetchTasksRequestQuery;
     const { id } = req.query;
     if (id) {
       let data = await Task.findOne({ _id: id, userId: user.userId });

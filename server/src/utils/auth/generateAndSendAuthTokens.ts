@@ -1,8 +1,8 @@
 import { Response } from "express";
-import { IUser } from "../../models/user";
 import { createRefreshToken, createAccessToken } from "./createToken";
+import { IUserSchema } from "../../types/userTypes";
 
-const generateAndSendAuthTokens = (res: Response, userID: IUser["_id"]) => {
+const generateAndSendAuthTokens = (res: Response, userID: IUserSchema["_id"]) => {
   // Create tokens
   const refreshToken = createRefreshToken({
     userId: userID,

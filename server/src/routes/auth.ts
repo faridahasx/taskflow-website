@@ -6,8 +6,8 @@ import {
   createResetPasswordToken,
 } from "../utils/auth/createToken";
 import sendEmail from "../utils/sendEmail";
-import validateEmail from "../utils/validateEmail";
-import User, { IUser } from "../models/user";
+import validateEmail from "../utils/auth/validateEmail";
+import User from "../models/user";
 import {
   duplicateEmailsError,
   invalidEmailError,
@@ -15,9 +15,10 @@ import {
   missingFields,
   serverError,
   wrongCredentialsError,
-} from "../assets/responseMessages";
+} from "../constants/responseMessages";
 import category from "../models/category";
 import generateAndSendAuthTokens from "../utils/auth/generateAndSendAuthTokens";
+import { IUserSchema } from "../types/userTypes";
 
 const router = Router();
 const PASSWORD_SECRET = process.env.PASSWORD_SECRET || "";
@@ -95,6 +96,7 @@ router.post("/login", async (req: Request, res: Response) => {
 router.post("/logout", async (req: Request, res: Response) => {
   try {
     res.clearCookie("refreshtoken");
+    res.clearCookie('accesstoken')
     return res.status(200).json("Logged out.");
   } catch (err) {
     return res.status(500).json(serverError);
@@ -165,7 +167,7 @@ router.get("/failed", (req: Request, res: Response) => {
 // LOGIN SUCCESS
 router.get("/success", (req: Request, res: Response) => {
   if (req.user) {
-    const userId = req.user as IUser['_id'];
+    const userId = req.user as IUserSchema['_id'];
     generateAndSendAuthTokens(res, userId)
     res.status(200).json("Login success!");
   }
@@ -188,21 +190,10 @@ router.get(
   }),
 
   async (req, res) => {
-    const userId = req.user as IUser['_id'];
+    const userId = req.user as IUserSchema['_id'];
     generateAndSendAuthTokens(res, userId);
     res.redirect(CLIENT_URL + "/redirect");
   }
-
-  // async (req, res) => {
-  //   const refreshToken = req.user as string;
-  //   res.cookie("refreshtoken", refreshToken, {
-  //     httpOnly: true,
-  //     secure: true,
-  //     sameSite: "lax",
-  //     maxAge: 30 * 24 * 60 * 60 * 1000, // 7 days
-  //   });
-  //   res.redirect(CLIENT_URL + "/redirect");
-  // }
 );
 
 export default router;

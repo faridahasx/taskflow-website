@@ -5,9 +5,9 @@ import {
   missingStartDate,
   missingTitleField,
   titleTooLong,
-} from "../assets/responseMessages";
+} from "../constants/responseMessages";
 import Category from "../models/category";
-import { AuthenticatedUser } from "../types";
+import { AuthenticatedUser } from "../types/userTypes";
 
 export const validateTaskInputs = async (
   req: Request,

@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { serverError, authError } from "../assets/responseMessages";
+import { serverError, authError } from "../constants/responseMessages";
 import generateAndSendAuthTokens from "../utils/auth/generateAndSendAuthTokens";
 
 dotenv.config();
@@ -14,13 +14,11 @@ const auth = (req: any, res: any, next: any) => {
     /*
     if access token is valid: give permission
     else if access token is invalid: Check for refresh token
-      if refresh token is valid: renew both access and refresh tokens
+      if refresh token is valid: renew both access and refresh tokens, give permission
       else if refresh token if invalid: deny permission
     */
 
    const accessToken = req.cookies.accesstoken;
-   
-
    jwt.verify(
     accessToken,
     JWT_ACCESS_TOKEN_SECRET,
