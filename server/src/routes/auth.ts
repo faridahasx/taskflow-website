@@ -5,10 +5,10 @@ import CryptoJS from "crypto-js";
 import {
   createRefreshToken,
   createResetPasswordToken,
-} from "../utils/createToken";
+} from "../utils/auth/createToken";
 import sendEmail from "../utils/sendEmail";
 import validateEmail from "../utils/validateEmail";
-import User from "../models/user";
+import User, { IUser } from "../models/user";
 import {
   duplicateEmailsError,
   invalidEmailError,
@@ -18,6 +18,7 @@ import {
   wrongCredentialsError,
 } from "../assets/responseMessages";
 import category from "../models/category";
+import generateAndSendAuthTokens from "../utils/auth/generateAndSendAuthTokens";
 
 const router = Router();
 const PASSWORD_SECRET = process.env.PASSWORD_SECRET || "";
@@ -57,18 +58,8 @@ router.post("/register", async (req: Request, res: Response) => {
     const newCategory = new category({ title: "Tasks", userId: newUser._id });
     await newCategory.save();
 
-    // Create refresh token
-    const refreshToken = createRefreshToken({
-      userId: newUser._id,
-    });
-
-    // Send response
-    res.cookie("refreshtoken", refreshToken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "lax",
-      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-    });
+    // Set credentials ans send response
+    generateAndSendAuthTokens(res, newUser._id)
     res.status(200).json("Register Success!");
   } catch (err) {
     return res.status(500).json(serverError);
@@ -93,18 +84,8 @@ router.post("/login", async (req: Request, res: Response) => {
     if (userPassword !== password)
       return res.status(400).json(wrongCredentialsError);
 
-    // Create refresh token
-    const refreshToken = createRefreshToken({
-      userId: user._id,
-    });
-
-    // Send response
-    res.cookie("refreshtoken", refreshToken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "lax",
-      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-    });
+    // Set credentials and send response
+    generateAndSendAuthTokens(res, user._id)
     res.status(200).json("Login Success!");
   } catch (err) {
     return res.status(500).json(serverError);
@@ -132,7 +113,7 @@ router.post("/forgot-password", async (req: Request, res: Response) => {
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json(wrongCredentialsError);
 
-    // Create token
+    // Create token and URL
     const token = createResetPasswordToken({ email: user.email });
     const url = `${CLIENT_URL}/reset-password/${token}`;
 
@@ -185,13 +166,8 @@ router.get("/failed", (req: Request, res: Response) => {
 // LOGIN SUCCESS
 router.get("/success", (req: Request, res: Response) => {
   if (req.user) {
-    const refreshToken = req.user as string;
-    res.cookie("refreshtoken", refreshToken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "lax",
-      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-    });
+    const userId = req.user as IUser['_id'];
+    generateAndSendAuthTokens(res, userId)
     res.status(200).json("Login success!");
   }
 });
@@ -213,15 +189,21 @@ router.get(
   }),
 
   async (req, res) => {
-    const refreshToken = req.user as string;
-    res.cookie("refreshtoken", refreshToken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "lax",
-      maxAge: 30 * 24 * 60 * 60 * 1000, // 7 days
-    });
+    const userId = req.user as IUser['_id'];
+    generateAndSendAuthTokens(res, userId);
     res.redirect(CLIENT_URL + "/redirect");
   }
+
+  // async (req, res) => {
+  //   const refreshToken = req.user as string;
+  //   res.cookie("refreshtoken", refreshToken, {
+  //     httpOnly: true,
+  //     secure: true,
+  //     sameSite: "lax",
+  //     maxAge: 30 * 24 * 60 * 60 * 1000, // 7 days
+  //   });
+  //   res.redirect(CLIENT_URL + "/redirect");
+  // }
 );
 
 export default router;

@@ -16,12 +16,13 @@ const express_1 = require("express");
 const passport_1 = __importDefault(require("passport"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const crypto_js_1 = __importDefault(require("crypto-js"));
-const createToken_1 = require("../utils/createToken");
+const createToken_1 = require("../utils/auth/createToken");
 const sendEmail_1 = __importDefault(require("../utils/sendEmail"));
 const validateEmail_1 = __importDefault(require("../utils/validateEmail"));
 const user_1 = __importDefault(require("../models/user"));
 const responseMessages_1 = require("../assets/responseMessages");
 const category_1 = __importDefault(require("../models/category"));
+const generateAndSendAuthTokens_1 = __importDefault(require("../utils/auth/generateAndSendAuthTokens"));
 const router = (0, express_1.Router)();
 const PASSWORD_SECRET = process.env.PASSWORD_SECRET || "";
 const CLIENT_URL = process.env.CLIENT_URL || "";
@@ -54,17 +55,8 @@ router.post("/register", (req, res) => __awaiter(void 0, void 0, void 0, functio
         // Create default category
         const newCategory = new category_1.default({ title: "Tasks", userId: newUser._id });
         yield newCategory.save();
-        // Create refresh token
-        const refreshToken = (0, createToken_1.createRefreshToken)({
-            userId: newUser._id,
-        });
-        // Send response
-        res.cookie("refreshtoken", refreshToken, {
-            httpOnly: true,
-            secure: true,
-            sameSite: "lax",
-            maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-        });
+        // Set credentials ans send response
+        (0, generateAndSendAuthTokens_1.default)(res, newUser._id);
         res.status(200).json("Register Success!");
     }
     catch (err) {
@@ -87,17 +79,8 @@ router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* 
         const userPassword = hashedPassword.toString(crypto_js_1.default.enc.Utf8);
         if (userPassword !== password)
             return res.status(400).json(responseMessages_1.wrongCredentialsError);
-        // Create refresh token
-        const refreshToken = (0, createToken_1.createRefreshToken)({
-            userId: user._id,
-        });
-        // Send response
-        res.cookie("refreshtoken", refreshToken, {
-            httpOnly: true,
-            secure: true,
-            sameSite: "lax",
-            maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-        });
+        // Set credentials and send response
+        (0, generateAndSendAuthTokens_1.default)(res, user._id);
         res.status(200).json("Login Success!");
     }
     catch (err) {
@@ -125,7 +108,7 @@ router.post("/forgot-password", (req, res) => __awaiter(void 0, void 0, void 0, 
         const user = yield user_1.default.findOne({ email });
         if (!user)
             return res.status(400).json(responseMessages_1.wrongCredentialsError);
-        // Create token
+        // Create token and URL
         const token = (0, createToken_1.createResetPasswordToken)({ email: user.email });
         const url = `${CLIENT_URL}/reset-password/${token}`;
         // Send email
@@ -166,13 +149,8 @@ router.get("/failed", (req, res) => {
 // LOGIN SUCCESS
 router.get("/success", (req, res) => {
     if (req.user) {
-        const refreshToken = req.user;
-        res.cookie("refreshtoken", refreshToken, {
-            httpOnly: true,
-            secure: true,
-            sameSite: "lax",
-            maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-        });
+        const userId = req.user;
+        (0, generateAndSendAuthTokens_1.default)(res, userId);
         res.status(200).json("Login success!");
     }
 });
@@ -185,13 +163,19 @@ router.get("/google/callback", passport_1.default.authenticate("google", {
     session: false,
     failureRedirect: "/auth/failed",
 }), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const refreshToken = req.user;
-    res.cookie("refreshtoken", refreshToken, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "lax",
-        maxAge: 30 * 24 * 60 * 60 * 1000, // 7 days
-    });
+    const userId = req.user;
+    (0, generateAndSendAuthTokens_1.default)(res, userId);
     res.redirect(CLIENT_URL + "/redirect");
-}));
+})
+// async (req, res) => {
+//   const refreshToken = req.user as string;
+//   res.cookie("refreshtoken", refreshToken, {
+//     httpOnly: true,
+//     secure: true,
+//     sameSite: "lax",
+//     maxAge: 30 * 24 * 60 * 60 * 1000, // 7 days
+//   });
+//   res.redirect(CLIENT_URL + "/redirect");
+// }
+);
 exports.default = router;

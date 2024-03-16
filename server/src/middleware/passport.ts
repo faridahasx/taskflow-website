@@ -2,11 +2,11 @@ import passport from "passport";
 import CryptoJS from "crypto-js";
 import { Strategy as GoogleStrategy } from "passport-google-oauth2";
 import User from "../models/user";
-import { createRefreshToken } from "../utils/createToken";
 
 const PASSWORD = process.env.SOCIAL_PASSWORD || "";
 const PASSWORD_SECRET = process.env.PASSWORD_SECRET || "";
 const BASE_URL = process.env.BASE_URL || "";
+
 
 const OPTIONS = {
   clientID: process.env.GOOGLE_CLIENT_ID || "",
@@ -33,16 +33,9 @@ const verify = async function (
       password: CryptoJS.AES.encrypt(PASSWORD, PASSWORD_SECRET).toString(),
     });
     await newUser.save();
-
-    let token = createRefreshToken({
-      userId: newUser._id,
-    });
-    return done(null, token);
+    return done(null, newUser._id);
   }
-  let token = createRefreshToken({
-    userId: user._id,
-  });
-  return done(null, token);
+  return done(null, user._id);
 };
 
 passport.serializeUser((user: any, done) => done(null, user));

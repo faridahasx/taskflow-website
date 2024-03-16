@@ -16,10 +16,10 @@ const passport_1 = __importDefault(require("passport"));
 const crypto_js_1 = __importDefault(require("crypto-js"));
 const passport_google_oauth2_1 = require("passport-google-oauth2");
 const user_1 = __importDefault(require("../models/user"));
-const createToken_1 = require("../utils/createToken");
 const PASSWORD = process.env.SOCIAL_PASSWORD || "";
 const PASSWORD_SECRET = process.env.PASSWORD_SECRET || "";
 const BASE_URL = process.env.BASE_URL || "";
+console.log(process.env.GOOGLE_CLIENT_ID, 'THIS IS ID');
 const OPTIONS = {
     clientID: process.env.GOOGLE_CLIENT_ID || "",
     clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
@@ -39,15 +39,9 @@ const verify = function (accessToken, refreshToken, profile, done) {
                 password: crypto_js_1.default.AES.encrypt(PASSWORD, PASSWORD_SECRET).toString(),
             });
             yield newUser.save();
-            let token = (0, createToken_1.createRefreshToken)({
-                userId: newUser._id,
-            });
-            return done(null, token);
+            return done(null, newUser._id);
         }
-        let token = (0, createToken_1.createRefreshToken)({
-            userId: user._id,
-        });
-        return done(null, token);
+        return done(null, user._id);
     });
 };
 passport_1.default.serializeUser((user, done) => done(null, user));
