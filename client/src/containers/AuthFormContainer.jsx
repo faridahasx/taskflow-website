@@ -32,6 +32,7 @@ const AuthFormContainer = (props) => {
   };
 
   const handleContinueWithGoogle = () => {
+    console.log('GOOGLE_CALLBACK_URL',GOOGLE_CALLBACK_URL)
     window.open(GOOGLE_CALLBACK_URL, "_self");
   };
 
