@@ -3,7 +3,6 @@ import passport from "passport";
 import jwt from "jsonwebtoken";
 import CryptoJS from "crypto-js";
 import {
-  createRefreshToken,
   createResetPasswordToken,
 } from "../utils/auth/createToken";
 import sendEmail from "../utils/sendEmail";

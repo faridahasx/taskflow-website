@@ -19,11 +19,14 @@ const user_1 = __importDefault(require("../models/user"));
 const PASSWORD = process.env.SOCIAL_PASSWORD || "";
 const PASSWORD_SECRET = process.env.PASSWORD_SECRET || "";
 const BASE_URL = process.env.BASE_URL || "";
-console.log(process.env.GOOGLE_CLIENT_ID, 'THIS IS ID');
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || "TO TEST";
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || "";
+const callbackURL = `${BASE_URL}/auth/google/callback`;
+console.log(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, callbackURL);
 const OPTIONS = {
-    clientID: process.env.GOOGLE_CLIENT_ID || "",
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
-    callbackURL: `${BASE_URL}/auth/google/callback`,
+    clientID: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: callbackURL,
 };
 const verify = function (accessToken, refreshToken, profile, done) {
     return __awaiter(this, void 0, void 0, function* () {
