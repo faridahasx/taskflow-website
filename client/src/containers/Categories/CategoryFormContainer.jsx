@@ -1,9 +1,9 @@
 // External imports
 import { useContext, useState } from "react";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 // Custom hooks
 import useAuthRequest from "../../hooks/useAuthRequest";
-import { useDispatch } from "react-redux";
 // Assets
 import { axiosWithCredentials } from "../../assets/axiosInstance";
 // Context
@@ -21,7 +21,7 @@ const CategoryFormContainer = (props) => {
   // Initialize state
   const [title, setTitle] = useState(category ? category.title : "");
   // Custom hook for handling authenticated requests and loading state
-  const [executeAuthRequest, loading] = useAuthRequest();
+  const { executeAuthRequest, loading } = useAuthRequest();
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
@@ -35,10 +35,11 @@ const CategoryFormContainer = (props) => {
           payload: "Please fill out the title field.",
         });
       else
-        await executeAuthRequest(
-          label === "Add category" ? handleAddCategory : handleEditCategory,
-          "Saved"
-        );
+        await executeAuthRequest({
+          callback:
+            label === "Add category" ? handleAddCategory : handleEditCategory,
+          successMessage: "Saved",
+        });
     } else {
       // Close dialog if there are no changes
       handleCloseDialog();

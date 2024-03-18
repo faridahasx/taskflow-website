@@ -1,6 +1,7 @@
 // External imports
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 // Custom hooks
 import useAuthRequest from "../hooks/useAuthRequest";
 import useNetworkStatus from "../hooks/useNetworkStatus";
@@ -11,14 +12,14 @@ import { getStatsRequestQueryFromURL } from "../utils/tasksURLSearchParamsUtils"
 import { axiosWithCredentials } from "../assets/axiosInstance";
 // Component
 import StatsWrapper from "../components/Stats/StatsWrapper";
-import { useSelector } from "react-redux";
 
 const StatsContainer = () => {
   // Get the current location object from React Router
   const isLogged = useSelector((state) => state.auth.isLogged);
   const isOnline = useNetworkStatus();
   const location = useLocation();
-  const [executeAuthRequest, loading] = useAuthRequest();
+  const { executeAuthRequest, loading, error, handleTryAgain } =
+    useAuthRequest();
   const [defaultDateRange, setDefaultDateRange] = useState({
     start: "",
     end: "",
@@ -48,12 +49,13 @@ const StatsContainer = () => {
         setStats(res.data.length === 0 ? 0 : formatStats(res.data[0]));
       }
     };
+    console.log(error,'error')
     // Execute the authenticated request and fetch statistics on component mount
-    isLogged && executeAuthRequest(fetchStats);
+    !error && executeAuthRequest({ callback: fetchStats });
     // Cleanup funtion to avoid state updates on an unmounted component
     return () => (ignore.value = true);
     // eslint-disable-next-line
-  }, [location, isLogged, isOnline]);
+  }, [location, isLogged, isOnline, error]);
 
   // Render StatsWrapper component with necessary props
   return (
@@ -63,6 +65,8 @@ const StatsContainer = () => {
       isLogged={isLogged}
       start={start}
       end={end}
+      errorDuringFetch={error}
+      handleTryAgain={handleTryAgain}
     />
   );
 };

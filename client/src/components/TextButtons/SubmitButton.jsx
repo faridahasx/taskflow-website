@@ -5,9 +5,12 @@ import CircularLoading from "../Loading/CircularLoading";
 // Styles
 import "./SubmitButton.css";
 
-const SubmitButton = ({ buttonProps, loading, buttonText }) => {
+const SubmitButton = (props) => {
+  const { loading, buttonText, ...buttonProps } = props;
+
+
   return (
-    <button {...buttonProps} className="center submit-btn" title={buttonText}>
+    <button className={`center submit-btn ${!buttonProps.disabled?"active":""}`}title={buttonText} {...buttonProps}>
       {loading ? <CircularLoading /> : buttonText}
     </button>
   );

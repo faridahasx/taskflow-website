@@ -28,7 +28,7 @@ const ConfirmationDialog = (props) => {
           <SubmitButton
             buttonText={confirmButtonText}
             loading={loading}
-            buttonProps={{ onClick: handleConfirm }}
+            onClick={handleConfirm}
           />
         </div>
       </div>

@@ -24,7 +24,7 @@
 
 .tasks-empty {
     width: 100%;
-    height: calc(var(--vh) - 230px);
+    height: calc(var(--vh) - 280px);
 }
 
 @media all and (max-width: 444px) {

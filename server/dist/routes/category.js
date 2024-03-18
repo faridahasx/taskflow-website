@@ -68,11 +68,17 @@ router.get("/", authVerify_1.default, (req, res) => __awaiter(void 0, void 0, vo
                     from: "tasks",
                     let: {
                         categoryTitle: "$title",
+                        userId: "$userId",
                     },
                     pipeline: [
                         {
                             $match: {
-                                $expr: { $eq: ["$category", "$$categoryTitle"] },
+                                $expr: {
+                                    $and: [
+                                        { $eq: ["$category", "$$categoryTitle"] },
+                                        { $eq: ["$userId", "$$userId"] },
+                                    ],
+                                },
                             },
                         },
                     ],

@@ -7,12 +7,20 @@ import useNetworkStatus from "../../hooks/useNetworkStatus";
 import OfflineContent from "../../components/OfflineContent";
 import CircularLoading from "../../components/Loading/CircularLoading";
 import FiltersNav from "../../components/NavigationItem/FiltersNav";
+import TryAgain from "../IconButtons/TryAgain";
 import StatListItem from "./StatListItem";
 import StatsHeading from "./StatsHeading";
 // Styles
 import "./StatsWrapper.css";
 
-const StatsWrapper = ({ stats, loading, isLogged, start, end }) => {
+const StatsWrapper = ({
+  stats,
+  loading,
+  start,
+  end,
+  errorDuringFetch,
+  handleTryAgain,
+}) => {
   const statKeys = useMemo(() => stats && Object.keys(stats), [stats]);
   const isOnline = useNetworkStatus();
 
@@ -28,13 +36,13 @@ const StatsWrapper = ({ stats, loading, isLogged, start, end }) => {
               <StatsHeading start={start} end={end} />
             </div>
 
-            {isLogged === false ? (
+            {stats === null ? (
               <span className="center stats-empty">
-                Sign in to unlock this feature
-              </span>
-            ) : loading || stats === null ? (
-              <span className="center stats-empty">
-                <CircularLoading />
+                {errorDuringFetch ? (
+                  <TryAgain onClick={handleTryAgain} />
+                ) : (
+                  <CircularLoading />
+                )}
               </span>
             ) : (
               stats !== null &&
@@ -60,6 +68,8 @@ StatsWrapper.propTypes = {
   start: PropTypes.string.isRequired,
   end: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
+  errorDuringFetch: PropTypes.bool.isRequired,
+  handleTryAgain: PropTypes.func.isRequired,
 };
 
 export default StatsWrapper;

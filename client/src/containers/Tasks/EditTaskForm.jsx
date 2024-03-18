@@ -1,16 +1,15 @@
 // External imports
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
-// Custom hook
-import useAuthRequest from "../../hooks/useAuthRequest";
 // Assets
 import { axiosWithCredentials } from "../../assets/axiosInstance";
 // Context
 import { TasksDispatchContext } from "../../context/TaskContext";
 // Component
 import TaskFormContainer from "./TaskFormContainer";
+import useFetchTaskDescription from "../../hooks/useFetchTaskDesctription";
 
 const EditTaskForm = (props) => {
   // Destructuring props
@@ -26,28 +25,13 @@ const EditTaskForm = (props) => {
     startDate: dayjs(task.startDate),
     finishDate: dayjs(task.finishDate),
   });
-  // Custom hook for handling authenticated requests
-  const [executeAuthRequest, loadingDescription] = useAuthRequest();
-
-  // Fetch task description on component mount if not already available
-  useEffect(() => {
-    // Check if description is undefined before fetching
-    if (newTask.description === undefined) {
-      const fetch_description = async () => {
-        const res = await axiosWithCredentials.get(`/task/${task._id}`);
-        const description_ = res.data.description;
-
-        // Set description in state and update tasks dispatch context
-        setNewTask((prev) => ({ ...prev, description: res.data.description }));
-        dispatchTasks({
-          type: "edit",
-          payload: { _id: task._id, description: description_ },
-        });
-      };
-      // Execute the fetch
-      executeAuthRequest(fetch_description);
-    }
-  }, [dispatchTasks, executeAuthRequest, newTask.description, task]);
+  const { errorDuringFetch, handleTryFetchAgain } =
+    useFetchTaskDescription(
+      task._id,
+      newTask.description,
+      dispatchTasks,
+      setNewTask
+    );
 
   const handleEditTask = async () => {
     await axiosWithCredentials.patch(`/task/${newTask._id}`, newTask);
@@ -72,7 +56,8 @@ const EditTaskForm = (props) => {
       onSubmit={handleEditTask}
       newTask={newTask}
       setNewTask={setNewTask}
-      loadingDescription={loadingDescription}
+      handleTryFetchAgain={handleTryFetchAgain}
+      errorDuringFetch={errorDuringFetch}
     />
   );
 };

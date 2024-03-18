@@ -13,10 +13,7 @@ import Logo from "../Logo/Logo";
 // Styles
 import "./Header.css";
 
-const Header = ({
-  categoriesOpen,
-  setCategoriesOpen,
-}) => {
+const Header = ({ categoriesOpen, setCategoriesOpen }) => {
   // React Router hooks
   const location = useLocation();
   const navigate = useNavigate();
@@ -38,12 +35,9 @@ const Header = ({
       <span id="header-first" className="flex">
         <IconButton
           Icon={categoriesOpen ? <Close /> : <MenuIcon />}
-          buttonProps={{
-            title: categoriesOpen ? "Close categories" : "Open categories",
-            onClick: handleToggleCategoriesOpen,
-          }}
+          title={categoriesOpen ? "Close categories" : "Open categories"}
+          onClick={handleToggleCategoriesOpen}
         />
-
         <Link
           data-testid="header-home-link"
           className="center"

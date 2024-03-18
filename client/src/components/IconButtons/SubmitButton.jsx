@@ -6,11 +6,15 @@ import { Done } from "@mui/icons-material";
 import CircularLoading from "../Loading/CircularLoading";
 import IconButton from "./IconButton";
 
-const SubmitButton = ({ loading, buttonProps }) => {
+const SubmitButton = (props) => {
+    // Destructure props
+  const {loading, ...buttonProps} = props;
+
+
   return (
     <IconButton
       Icon={loading ? <CircularLoading /> : <Done />}
-      buttonProps={{ ...buttonProps, title: "Save" }}
+      {...buttonProps}
     />
   );
 };

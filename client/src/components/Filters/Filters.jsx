@@ -63,10 +63,7 @@ const Filters = (props) => {
             </div>
             <div id="filters-bottom" className="flex">
               <CancelButton buttonText="Clear Filters" onClick={handleClear} />
-              <SubmitButton
-                buttonText="Apply"
-                buttonProps={{ form: "filters-form" }}
-              />
+              <SubmitButton buttonText="Apply" form="filters-form" />
             </div>
           </form>
         </SortAndFiltersWrapper>

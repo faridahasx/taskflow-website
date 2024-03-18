@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 // Styles
 import "./Footer.css";
+
 const DEV_CONTACT_URL = process.env.REACT_APP_DEVELOPER_CONTACT_URL;
 
 const Footer = () => {

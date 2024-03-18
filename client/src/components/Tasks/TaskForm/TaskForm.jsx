@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import useBodyOverflowHidden from "../../../hooks/useBodyOverflowHidden";
 // Components
 import SubmitButton from "../../IconButtons/SubmitButton";
+import TryAgain from "../../IconButtons/TryAgain";
 import ConfirmationDialog from "../../ConfirmationDialog/ConfirmationDialog";
 import CircularLoading from "../../Loading/CircularLoading";
 import Editor from "./TextEditor/Editor";
@@ -29,6 +30,8 @@ const TaskForm = (props) => {
     description,
     handleSetDescription,
     loading,
+    errorDuringFetch,
+    handleTryFetchAgain,
     saved,
     categories,
   } = props;
@@ -60,11 +63,10 @@ const TaskForm = (props) => {
       SecondButton={
         <SubmitButton
           loading={loading}
-          buttonProps={{
-            form: "task-form",
-            title: "Save task",
-            disabled: loading,
-          }}
+          form="task-form"
+          title="Save"
+          className="task-save-btn"
+          disabled={loading || description===undefined}
         />
       }
     >
@@ -83,7 +85,11 @@ const TaskForm = (props) => {
 
         {description === undefined ? (
           <div className="description-input-loading center">
-            <CircularLoading />
+            {errorDuringFetch ? (
+              <TryAgain onClick={handleTryFetchAgain} />
+            ) : (
+              <CircularLoading />
+            )}
           </div>
         ) : (
           <Editor
@@ -106,9 +112,9 @@ const TaskForm = (props) => {
         <ConfirmationDialog
           handleCloseDialog={handleCancelClose}
           handleCancel={handleCancelClose}
-          cancelButtonText="Cancel"
+          cancelButtonText="Back To Editor" 
           handleConfirm={handleCloseEditor}
-          confirmButtonText="Exit"
+          confirmButtonText="Exit Anyway"
           loading={loading}
           heading="Your draft will be lost"
         />
@@ -124,9 +130,11 @@ TaskForm.propTypes = {
   handleSetStartDate: PropTypes.func.isRequired,
   handleSetFinishDate: PropTypes.func.isRequired,
   handleSetDescription: PropTypes.func.isRequired,
+  handleTryFetchAgain: PropTypes.func,
   category: PropTypes.string.isRequired,
   categories: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
+  errorDuringFetch: PropTypes.any,
   description: PropTypes.string,
   title: PropTypes.string,
   startDate: PropTypes.instanceOf(dayjs),

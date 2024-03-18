@@ -45,11 +45,9 @@ const CategoryListItem = (props) => {
       </Link>
       <IconButton
         Icon={<MoreVertOutlined />}
-        buttonProps={{
-          title: "More",
-          onClick: handleClickOnShowMore,
-          "data-testid": `${category.title}-menu`,
-        }}
+        title='More'
+        onClick={handleClickOnShowMore}
+        data-testid={`${category.title}-menu`}
       />
       {currentDialog === "menu" && currentCategory._id === category._id && (
         <Suspense>

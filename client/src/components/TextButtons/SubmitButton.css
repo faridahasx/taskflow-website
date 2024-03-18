@@ -7,6 +7,6 @@
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.submit-btn:hover {
+.submit-btn.active:hover {
     background: linear-gradient(120deg, #ff4b2b, #ff416c);
 }

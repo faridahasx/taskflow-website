@@ -1,10 +1,8 @@
 // External imports
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import PropTypes from "prop-types";
 // Custom hooks
-import useAuthRequest from "../../hooks/useAuthRequest";
-// Assets
-import { axiosWithCredentials } from "../../assets/axiosInstance";
+import useFetchTaskDescription from "../../hooks/useFetchTaskDesctription";
 // Context
 import { TasksDispatchContext } from "../../context/TaskContext";
 // Component
@@ -18,26 +16,12 @@ const OpenTaskContainer = (props) => {
     handleClickEditTask,
     handleCloseOpenedTask,
   } = props;
-
-  // Custom hook for handling authenticated requests
-  const [executeAuthRequest, loading] = useAuthRequest();
-
   // Accessing the tasks dispatch context
   const dispatchTasks = useContext(TasksDispatchContext);
-
   // Fetch task description on component mount if not already available
-  useEffect(() => {
-    const fetch_description = async () => {
-      const res = await axiosWithCredentials.get(`/task/${task._id}`);
-      const description_ = res.data.description;
-      dispatchTasks({
-        type: "edit",
-        payload: { _id: task._id, description: description_ },
-      });
-    };
-    // Execute fetch only if description is undefined
-    task.description === undefined && executeAuthRequest(fetch_description);
-  }, [dispatchTasks, executeAuthRequest, task.description, task._id]);
+
+  const { errorDuringFetch, handleTryFetchAgain } =
+    useFetchTaskDescription(task._id, task.description, dispatchTasks);
 
   // Render the OpenTask component
   return (
@@ -46,7 +30,8 @@ const OpenTaskContainer = (props) => {
       openEditTaskEditor={openEditTaskEditor}
       handleClickEditTask={handleClickEditTask}
       handleCloseOpenedTask={handleCloseOpenedTask}
-      loading={loading}
+      errorDuringFetch={errorDuringFetch}
+      handleTryFetchAgain={handleTryFetchAgain}
     />
   );
 };

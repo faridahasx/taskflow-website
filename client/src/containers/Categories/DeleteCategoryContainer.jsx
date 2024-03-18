@@ -19,20 +19,23 @@ const DeleteCategoryContainer = (props) => {
   // Context dispatch setup
   const dispatchTasks = useContext(TasksDispatchContext);
   // Custom hook for handling authenticated requests and loading state
-  const [executeAuthRequest, loading] = useAuthRequest();
+  const { executeAuthRequest, loading } = useAuthRequest();
 
   // Function to handle category deletion
   const handleDelete = async () => {
-    await executeAuthRequest(async () => {
-      await axiosWithCredentials.delete(`/category/${category.title}`);
-      // Update categories in Redux state
-      dispatch({
-        type: "DELETE_CATEGORY",
-        payload: category,
-      });
-      // Delete tasks of this category in context
-      dispatchTasks({ type: "delete_category", payload: category.title });
-    }, "Category deleted");
+    await executeAuthRequest({
+      callback: async () => {
+        await axiosWithCredentials.delete(`/category/${category.title}`);
+        // Update categories in Redux state
+        dispatch({
+          type: "DELETE_CATEGORY",
+          payload: category,
+        });
+        // Delete tasks of this category in context
+        dispatchTasks({ type: "delete_category", payload: category.title });
+      },
+      successMessage: "Category deleted"
+    });
     // Close the dialog
     handleCloseDialog();
   };
@@ -46,7 +49,7 @@ const DeleteCategoryContainer = (props) => {
       loading={loading}
       cancelButtonText="Cancel"
       confirmButtonText="Delete"
-      heading="This action is unrecoverable"
+      heading="Deleting categories is a permanent action and cannot be undone."
     />
   );
 };

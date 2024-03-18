@@ -15,7 +15,8 @@ const NavigationItem = (props) => {
     <span className="nav-item center">
       <IconButton
         Icon={Icon}
-        buttonProps={{ onClick: handleClick, title: title }}
+        onClick={handleClick}
+        title={title}
       />
       <Suspense fallback={<LoadNavItemFallback />}>
         {openComponent && Component}

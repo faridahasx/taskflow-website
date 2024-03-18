@@ -41,13 +41,12 @@ const CategoryForm = (props) => {
           />
           <div className="flex">
             <CancelButton buttonText="Cancel" onClick={handleClose} />
+
             <SubmitButton
               loading={loading}
               buttonText="Save"
-              buttonProps={{
-                form: "category-form",
-                disabled: loading || title.length === 0,
-              }}
+              form="category-form"
+              disabled={loading || title.length === 0}
             />
           </div>
         </form>

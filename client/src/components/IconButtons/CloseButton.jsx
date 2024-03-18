@@ -8,7 +8,8 @@ const CloseButton = (buttonProps) => {
   return (
     <IconButton
       Icon={<Close />}
-      buttonProps={{ ...buttonProps, title: "Close" }}
+      title='Close'
+      {...buttonProps}
     />
   );
 };

@@ -6,7 +6,7 @@
     max-width: 60px;
 }
 
-.task-controls button {
+.task-controls>button {
     margin: 10px 0;
 }
 

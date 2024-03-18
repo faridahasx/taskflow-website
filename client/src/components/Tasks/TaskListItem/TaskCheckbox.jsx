@@ -1,33 +1,41 @@
 import PropTypes from "prop-types";
+// MUI Components
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
+// Styles
 import "./TaskCheckbox.css";
 
 const TaskCheckbox = (props) => {
   // Destructure props
-  const { task, handleToggleCompleted, colorTransition } = props;
+  const { taskCompleted, handleToggleCompleted, colorTransition } = props;
+
   return (
     <button
-      className={`center color ${colorTransition.color} ${colorTransition.transition}`}
-      onClick={() => handleToggleCompleted(task)}
-      title={`${task.completedAt ? "Unmark" : "Mark"} as completed`}
+      className={`center color ${colorTransition.color} ${
+        colorTransition.transition ? "color-transition" : "no-transtion"
+      }`}
+      onClick={handleToggleCompleted}
+      title={`${taskCompleted ? "Unmark" : "Mark"} as completed`}
     >
-      <span className="icon center">
-        {task.completedAt ? (
-          <CheckCircleIcon sx={{ color: "green" }} />
-        ) : (
-          <RadioButtonUncheckedIcon />
+      <span className="center">
+        {!taskCompleted && (
+          <RadioButtonUncheckedIcon fontSize="small" className="unfilled" />
         )}
+
+        <CheckCircleIcon
+          sx={{ color: "green" }}
+          className={`checkbox-icon ${taskCompleted ? "checked" : "unchecked"}`}
+        />
       </span>
     </button>
   );
 };
 
 TaskCheckbox.propTypes = {
-  task: PropTypes.object.isRequired,
+  taskCompleted: PropTypes.any.isRequired,
   handleToggleCompleted: PropTypes.func.isRequired,
   colorTransition: PropTypes.shape({
-    transition: PropTypes.string,
+    transition: PropTypes.bool,
     color: PropTypes.string,
   }).isRequired,
 };

@@ -69,11 +69,17 @@ router.get("/", auth, async (req: Request, res: Response) => {
           from: "tasks",
           let: {
             categoryTitle: "$title",
+            userId: "$userId",
           },
           pipeline: [
             {
               $match: {
-                $expr: { $eq: ["$category", "$$categoryTitle"] },
+                $expr: {
+                  $and: [
+                    { $eq: ["$category", "$$categoryTitle"] },
+                    { $eq: ["$userId", "$$userId"] },
+                  ],
+                },
               },
             },
           ],

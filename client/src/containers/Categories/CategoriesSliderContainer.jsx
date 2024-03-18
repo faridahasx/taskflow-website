@@ -19,7 +19,8 @@ const CategoriesSliderContainer = (props) => {
   // Local state for initial fetch status
   const [initialFetch, setInitialFetch] = useState(false);
   // Custom hook for handling authenticated requests and loading state
-  const [executeAuthRequest, loading] = useAuthRequest();
+  const { executeAuthRequest, loading, error, handleTryAgain } =
+    useAuthRequest();
 
   // Effect hook to fetch categories on component mount
   useEffect(() => {
@@ -42,10 +43,11 @@ const CategoriesSliderContainer = (props) => {
       setInitialFetch(true);
     };
     // Fetch categories only if it's the initial load and categories are empty
-    !initialFetch &&
-      categories.length <= 1 &&
-      executeAuthRequest(fetchCategories);
-  }, [executeAuthRequest, dispatch, initialFetch, categories.length]);
+    !error &&
+      !initialFetch &&
+      categories.length < 1 &&
+      executeAuthRequest({ callback: fetchCategories, errorMessage: null });
+  }, [dispatch, initialFetch, categories.length, error]);
 
   // Rendering CategorieSlider component with necessary props
   return (
@@ -54,6 +56,8 @@ const CategoriesSliderContainer = (props) => {
       loading={loading}
       categoriesOpen={categoriesOpen}
       setCategoriesOpen={setCategoriesOpen}
+      errorDuringFetch={error}
+      handleTryAgain={handleTryAgain}
     />
   );
 };

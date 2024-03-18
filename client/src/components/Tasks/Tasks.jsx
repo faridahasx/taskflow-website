@@ -1,6 +1,8 @@
 // External imports
-import { Suspense, lazy, useState} from "react";
+import { Suspense, lazy, useState } from "react";
 import PropTypes from "prop-types";
+// MUI Components
+import SplitscreenIcon from "@mui/icons-material/Splitscreen";
 // Custom hooks
 import useNetworkStatus from "../../hooks/useNetworkStatus";
 // Components
@@ -9,9 +11,10 @@ import LinearTransition from "../Loading/LinearTransition";
 import LoadingModal from "../Loading/LoadingModal";
 import CircularLoading from "../Loading/CircularLoading";
 import Navigation from "../Navigation/Navigation";
+import TryAgain from "../IconButtons/TryAgain";
+import ExceptionContainer from "../Error/ExceptionContainer";
 import TaskListItem from "./TaskListItem/TaskListItem";
 import TasksEmpty from "./TasksEmpty";
-
 // Styles
 import "./Tasks.css";
 
@@ -24,10 +27,10 @@ const Tasks = (props) => {
   const {
     tasks,
     loadingRef,
-    handleToggleCompleted,
-    handleDelete,
     isTransitioning,
     loadMore,
+    errorDuringFetch,
+    handleTryAgain,
   } = props;
   // Local state
   const [openEditTaskEditor, setOpenEditTaskEditor] = useState({});
@@ -61,8 +64,6 @@ const Tasks = (props) => {
                   setOpenEditTaskEditor={setOpenEditTaskEditor}
                   openTask={openTask}
                   setOpenTask={setOpenTask}
-                  handleToggleCompleted={handleToggleCompleted}
-                  handleDelete={handleDelete}
                   expandDetailsTaskID={expandDetailsTaskID}
                   setExpandDetailsTaskID={setExpandDetailsTaskID}
                 />
@@ -70,12 +71,16 @@ const Tasks = (props) => {
             </ol>
           ) : (
             // Display message when there are no tasks
-            <TasksEmpty>No tasks</TasksEmpty>
+            <TasksEmpty>
+              <ExceptionContainer message="No Task" Icon={SplitscreenIcon} />
+            </TasksEmpty>
           )
         ) : (
           <TasksEmpty>
             {!isOnline ? (
               <OfflineContent />
+            ) : errorDuringFetch ? (
+              <ExceptionContainer message="Something went wrong" />
             ) : (
               <CircularLoading data-testid="loading-initial-tasks-indicator" />
             )}
@@ -84,6 +89,8 @@ const Tasks = (props) => {
 
         {isTransitioning === true ? (
           <LinearTransition />
+        ) : tasks && errorDuringFetch ? (
+          <TryAgain onClick={handleTryAgain} />
         ) : (
           // Display loading indicator for more tasks
           loadMore && (
@@ -128,10 +135,10 @@ const Tasks = (props) => {
 Tasks.propTypes = {
   tasks: PropTypes.oneOfType([PropTypes.array, PropTypes.oneOf([null])]),
   loadingRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
-  handleToggleCompleted: PropTypes.func.isRequired,
-  handleDelete: PropTypes.func.isRequired,
+  errorDuringFetch: PropTypes.bool.isRequired,
   isTransitioning: PropTypes.bool.isRequired,
   loadMore: PropTypes.bool.isRequired,
+  handleTryAgain: PropTypes.func.isRequired,
 };
 
 export default Tasks;

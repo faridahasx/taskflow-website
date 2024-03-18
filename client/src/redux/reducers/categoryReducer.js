@@ -1,6 +1,8 @@
 import ACTIONS from "../actions";
 
-const categories = [{ title: "All", _id: "All", tasks: 0 }];
+// const categories = [{ title: "All", _id: "All", tasks: 0 }];
+const categories = [];
+
 
 const categoryReducer = (state = categories, action) => {
   switch (action.type) {
@@ -10,6 +12,9 @@ const categoryReducer = (state = categories, action) => {
     case ACTIONS.ADD_CATEGORY:
       return [...state, action.payload];
 
+    case ACTIONS.CLEAR_CATEGORIES:
+      return [];
+      
     case ACTIONS.EDIT_CATEGORY:
       return state.map((c) => {
         if (c._id === action.payload._id) return action.payload;

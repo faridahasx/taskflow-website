@@ -8,6 +8,7 @@ import TaskDialog from "./TaskDialog";
 // Styles
 import "./OpenTask.css";
 import "./TaskForm/TextEditor/styles.css";
+import TryAgain from "../IconButtons/TryAgain";
 
 const OpenTask = (props) => {
   // Destructure props
@@ -16,7 +17,8 @@ const OpenTask = (props) => {
     openEditTaskEditor,
     handleClickEditTask,
     handleCloseOpenedTask,
-    loading,
+    errorDuringFetch,
+    handleTryFetchAgain,
   } = props;
 
   // useEffect to manage body class for overflow
@@ -37,9 +39,13 @@ const OpenTask = (props) => {
       <div className="open-task-wrapper">
         <h1 className="task-dialog-title flex">{task.title}</h1>
         <div className="center">
-          {loading ? (
+          {task.description === undefined ? (
             <div className="description-loading center">
-              <CircularLoading />
+              {errorDuringFetch ? (
+                <TryAgain onClick={handleTryFetchAgain} />
+              ) : (
+                <CircularLoading />
+              )}
             </div>
           ) : (
             <section
@@ -58,7 +64,8 @@ OpenTask.propTypes = {
   openEditTaskEditor: PropTypes.object,
   handleClickEditTask: PropTypes.func.isRequired,
   handleCloseOpenedTask: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
+  handleTryFetchAgain: PropTypes.func,
+  errorDuringFetch: PropTypes.any,
 };
 
 export default OpenTask;

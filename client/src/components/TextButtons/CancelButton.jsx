@@ -3,9 +3,12 @@ import PropTypes from "prop-types";
 // Styles
 import "./CancelButton.css";
 
-const CancelButton = ({ onClick, buttonText }) => {
+const CancelButton = (props) => {
+  const { buttonText, ...buttonProps } = props;
+
+
   return (
-    <button className="center cancel-btn" title={buttonText} onClick={onClick}>
+    <button className="center cancel-btn" title={buttonText} {...buttonProps}>
       {buttonText}
     </button>
   );

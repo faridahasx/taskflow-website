@@ -9,7 +9,8 @@ const EditButton = (buttonProps) => {
   return (
     <IconButton
       Icon={<Edit />}
-      buttonProps={{ ...buttonProps, title: "Edit" }}
+      title='Close'
+      {...buttonProps}
     />
   );
 };

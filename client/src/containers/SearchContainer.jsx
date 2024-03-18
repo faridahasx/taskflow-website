@@ -18,7 +18,7 @@ const SearchContainer = (props) => {
   const [inputValue, setInputValue] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   // Custom hook for handling authenticated requests and loading state
-  const [executeAuthRequest, loading] = useAuthRequest();
+  const { executeAuthRequest, loading } = useAuthRequest();
 
   // Function to handle form submission
   const handleSubmit = (e) => {
@@ -68,7 +68,7 @@ const SearchContainer = (props) => {
       if (!ignore.value) setSearchResults(res.data);
     };
     // Triggering data fetching only if inputValue is not empty
-    inputValue && executeAuthRequest(fetchData);
+    inputValue && executeAuthRequest({callback: fetchData, errorMessage:null});
     // Cleanup function to avoid state updates on an unmounted component
     return () => (ignore.value = true);
     // eslint-disable-next-line

@@ -1,6 +1,5 @@
 // External imports
 import PropTypes from "prop-types";
-
 // Styles
 import "./StatListItem.css";
 

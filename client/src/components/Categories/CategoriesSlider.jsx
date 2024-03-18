@@ -10,6 +10,7 @@ import CategoryListItem from "./CategoryListItem";
 import DefaultCategoryListItem from "./DefaultCategoryListItem";
 import OpenAddCategoryButton from "./OpenAddCategoryButton";
 import PortalComponent from "../PortalComponent";
+import TryAgain from "../IconButtons/TryAgain";
 // Styles
 import "./CategoriesSlider.css";
 // Lazy-loaded Components
@@ -22,7 +23,14 @@ const CategoryForm = lazy(() =>
 
 const CategorieSlider = (props) => {
   // Destructure props
-  const { categories, loading, categoriesOpen, setCategoriesOpen } = props;
+  const {
+    categories,
+    loading,
+    categoriesOpen,
+    setCategoriesOpen,
+    errorDuringFetch,
+    handleTryAgain,
+  } = props;
 
   // State to track current category dialog
   const [openDialog, setOpenDialog] = useState({
@@ -90,6 +98,8 @@ const CategorieSlider = (props) => {
         <div id="categories-list-container" className="center">
           {loading ? (
             <CircularLoading />
+          ) : errorDuringFetch ? (
+            <TryAgain onClick={handleTryAgain}/>
           ) : (
             categories &&
             categories.length > 0 && (
@@ -147,8 +157,10 @@ const CategorieSlider = (props) => {
 CategorieSlider.propTypes = {
   categories: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
+  errorDuringFetch: PropTypes.bool.isRequired,
   categoriesOpen: PropTypes.bool.isRequired,
   setCategoriesOpen: PropTypes.func.isRequired,
+  handleTryAgain: PropTypes.func.isRequired,
 };
 
 export default CategorieSlider;

@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 import useAuthRequest from "../../hooks/useAuthRequest";
 // Component
 import TaskForm from "../../components/Tasks/TaskForm/TaskForm";
-import { categoriesSample } from "../../constants/sampleData";
 
 const TaskFormContainer = (props) => {
   // Destructuring props
@@ -15,18 +14,17 @@ const TaskFormContainer = (props) => {
     onSubmit,
     newTask,
     setNewTask,
-    loadingDescription,
+    errorDuringFetch,
+    handleTryFetchAgain,
   } = props;
 
   // Redux dispatch function
   const dispatch = useDispatch();
   // Access the state from Redux store
-  const isLogged = useSelector((state) => state.auth.isLogged);
-
   const categories = useSelector((state) => state.categories);
 
   // Custom hook for handling authenticated requests
-  const [executeAuthRequest, loading] = useAuthRequest();
+  const { executeAuthRequest, loading } = useAuthRequest();
 
   // Destructuring task properties for easier access
   const { title, category, startDate, finishDate, description } = newTask;
@@ -79,7 +77,7 @@ const TaskFormContainer = (props) => {
       dispatch({ type: "ALERT", payload: "Please fill in the title field" });
     } else {
       // Execute the server request
-      await executeAuthRequest(onSubmit, "Saved");
+      await executeAuthRequest({ callback: onSubmit, successMessage: "Saved" });
     }
   };
 
@@ -97,9 +95,11 @@ const TaskFormContainer = (props) => {
       handleSetFinishDate={handleSetFinishDate}
       description={description}
       handleSetDescription={handleSetDescription}
-      loading={loadingDescription || loading}
+      loading={loading}
       saved={saved}
-      categories={isLogged ? categories : categoriesSample}
+      categories={categories}
+      handleTryFetchAgain={handleTryFetchAgain}
+      errorDuringFetch={errorDuringFetch}
     />
   );
 };
@@ -108,8 +108,9 @@ TaskFormContainer.propTypes = {
   handleCloseEditor: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   setNewTask: PropTypes.func.isRequired,
+  handleTryFetchAgain: PropTypes.func,
+  errorDuringFetch: PropTypes.any,
   newTask: PropTypes.object.isRequired,
-  loadingDescription: PropTypes.bool,
 };
 
 export default TaskFormContainer;

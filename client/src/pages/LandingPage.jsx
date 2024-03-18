@@ -16,7 +16,7 @@ const LandingPage = () => {
     <main id='unauth-main'>
         <Logo/>
         <h1 className='center'>Your simple task management tool</h1>
-        <SubmitButton buttonText='Get Started'  buttonProps={{onClick:toggleDisplayAuthDialog}}/>
+        <SubmitButton buttonText='Get Started' onClick={toggleDisplayAuthDialog}/>
     </main>
     {displayAuthDialog && (
         <AuthDialog handleCloseAuthDialog={toggleDisplayAuthDialog} />

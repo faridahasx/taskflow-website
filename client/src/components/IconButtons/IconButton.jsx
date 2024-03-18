@@ -5,7 +5,7 @@ import "./Icon.css";
 
 const IconButton = (props) => {
   // Destructure props
-  const { Icon, buttonProps = {} } = props;
+  const { Icon, ...buttonProps } = props;
   const { className } = buttonProps;
 
   return (

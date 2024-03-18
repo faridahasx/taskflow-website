@@ -1,7 +1,7 @@
 #auth-container {
     width: 90vw;
     max-width: 500px;
-    min-width: 200px;
+    min-width: 250px;
     height: calc((var(--vh) / 100) * 90);
     max-height: 700px;
     background-color: white;
@@ -9,6 +9,7 @@
     border-radius: 10px;
     box-shadow: var(--box-shadow);
     align-items: center;
+
 }
 
 #auth-container::-webkit-scrollbar-track {

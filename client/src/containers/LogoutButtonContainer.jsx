@@ -19,7 +19,8 @@ const LogoutButtonContainer = () => {
   return (
     <IconButton
       Icon={<LogoutTwoTone />}
-      buttonProps={{ onClick: handleLogout, title: "Sign out" }}
+      onClick={handleLogout}
+      title='Sign Out'
     />
   );
 };

@@ -5,12 +5,12 @@ import "./Modal.css";
 
 const Modal = ({ handleClose, children, className }) => {
   const handleClick = (e) => {
-    const bgClass = `modal${className ? className : ""}`;
+    const bgClass = `modal ${className ? className : ""}`;
     e.target.className === bgClass && handleClose && handleClose();
   };
 
   return (
-    <div className={`modal${className ? className : ""}`} onClick={handleClick}>
+    <div className={`modal ${className ? className : ""}`} onClick={handleClick}>
       {children}
     </div>
   );

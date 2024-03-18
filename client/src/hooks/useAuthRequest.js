@@ -8,42 +8,45 @@ import useNetworkStatus from "./useNetworkStatus";
 // Custom React hook for handling requests that requires authenticed user
 const useAuthRequest = () => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const isOnline = useNetworkStatus();
   const isLogged = useSelector((state) => state.auth.isLogged);
   const dispatch = useDispatch();
   const clearCredentials = useClearCredentials();
+  const handleTryAgain = () => setError(null);
 
   // Function to execute handling requests that requires authenticed user
-  const executeAuthRequest = async (
+  const executeAuthRequest = async ({
     callback,
+    callbackArgs = [],
     successMessage,
-    args = [],
-    setLoadingState = true
-  ) => {
+    errorMessage='Something went wrong',
+  }) => {
     // Check if the user is online before making the request
     if (!isOnline) {
       // Dispatch an alert if there's no internet connection
       dispatch({ type: "ALERT", payload: "Check your internet connection" });
       // Display AuthDialog if the user is not authenticated
-    } else if (isLogged === false) {
-      dispatch({ type: "AUTH_DIALOG", payload: true });
-    } else {
+    } else if (isLogged) {
       try {
+        // Reset error state if specified
+        error && setError(null);
         // Set loading state if specified
-        setLoadingState && setLoading(true);
+        setLoading(true);
         // Execute the callback with provided arguments
-        await callback(...args);
+        await callback(...callbackArgs);
         // Dispatch success alert if successMessage is provided
-        successMessage && dispatch({ type: "ALERT", payload: successMessage });
+        dispatch({ type: "ALERT", payload: successMessage });
         // Reset loading state if it was set
-        setLoadingState && setLoading(false);
       } catch (err) {
-        // Reset loading state in case of an error
-        setLoadingState && setLoading(false);
-        // Handle different types of error
+         // Set error state if specified
+        setError(err);
+        // Handle different types of errors
         if (err.response) {
+          // if unauthorized
           if (err.response.status === 401) {
-            // Clear credentials and dispatch an alert if unauthorized
+            // Clear credentials and dispatch an alert
             clearCredentials();
             dispatch({
               type: "ALERT",
@@ -55,13 +58,16 @@ const useAuthRequest = () => {
           }
         } else {
           // Dispatch a generic error for other types of errors
-          // dispatch({ type: "ALERT", payload: "Something went wrong" });
+          errorMessage &&
+            dispatch({ type: "ALERT", payload: errorMessage });
         }
       }
+       // Reset loading state if specified
+      setLoading(false);
     }
   };
   // Return the authentication request function and loading state
-  return [executeAuthRequest, loading, isOnline];
+  return { executeAuthRequest, loading, isOnline, error, handleTryAgain };
 };
 
 export default useAuthRequest;

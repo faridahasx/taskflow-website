@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 // Utilities
 import { formatDateTime } from "../../../utils/dateUtils";
 // Components
-import TaskCheckbox from "./TaskCheckbox";
 import TaskDetail from "./TaskDetail";
 import TaskControls from "./TaskControls";
 import LoadingModal from "../../Loading/LoadingModal";
 import MoreTaskDetails from "./MoreTaskDetails";
+import TaskCheckboxContainer from "../../../containers/Tasks/TaskCheckboxContainer";
 // Styles
 import "./TaskListItem.css";
 
@@ -25,8 +25,6 @@ const TaskListItem = (props) => {
     setOpenEditTaskEditor,
     openTask,
     setOpenTask,
-    handleToggleCompleted,
-    handleDelete,
     expandDetailsTaskID,
     setExpandDetailsTaskID,
   } = props;
@@ -43,7 +41,7 @@ const TaskListItem = (props) => {
   } = task;
   // State for color transition
   const [colorTransition, setColorTransition] = useState({
-    transition: "",
+    transition: false,
     color: "",
   });
 
@@ -84,7 +82,7 @@ const TaskListItem = (props) => {
         : "yellow";
 
       setColorTransition((prev) => ({
-        transition: prev.color && prev.color !== color ? "t-color" : "",
+        transition: prev.color && prev.color !== color ? true : false,
         color: color,
       }));
     };
@@ -100,12 +98,7 @@ const TaskListItem = (props) => {
   return (
     <li className="task-li">
       <div className="task-wrapper flex">
-        <TaskCheckbox
-          task={task}
-          handleToggleCompleted={handleToggleCompleted}
-          colorTransition={colorTransition}
-        />
-
+        <TaskCheckboxContainer task={task} colorTransition={colorTransition} />
         <div
           className="column task-middle"
           data-testid="task-clickable"
@@ -116,10 +109,10 @@ const TaskListItem = (props) => {
           </h3>
           <div className="details-container column">
             <TaskDetail title="Category:" value={category} />
-            <TaskDetail title="Start date:" value={startDateFormatted} />
-            <TaskDetail title="Finish date:" value={finishDateFormatted} />
+            <TaskDetail title="Start Date:" value={startDateFormatted} />
+            <TaskDetail title="Finish Date:" value={finishDateFormatted} />
             {completedTime && (
-              <TaskDetail title="Completed at:" value={completedAtFormatted} />
+              <TaskDetail title="Completed At:" value={completedAtFormatted} />
             )}
             {expandDetailsTaskID === _id && (
               <MoreTaskDetails
@@ -134,10 +127,9 @@ const TaskListItem = (props) => {
         </div>
         <TaskControls
           task={task}
-          handleDelete={handleDelete}
-          expandDetailsTaskID={expandDetailsTaskID}
-          setExpandDetailsTaskID={setExpandDetailsTaskID}
           handleClickEditTask={handleClickEditTask}
+          setExpandDetailsTaskID={setExpandDetailsTaskID}
+          expandDetailsTaskID={expandDetailsTaskID}
         />
       </div>
 
@@ -164,8 +156,6 @@ TaskListItem.propTypes = {
   openTask: PropTypes.object.isRequired,
   setOpenEditTaskEditor: PropTypes.func.isRequired,
   setOpenTask: PropTypes.func.isRequired,
-  handleToggleCompleted: PropTypes.func.isRequired,
-  handleDelete: PropTypes.func.isRequired,
   setExpandDetailsTaskID: PropTypes.func.isRequired,
 };
 

@@ -22,6 +22,9 @@
 .description-input-loading {
     min-height: calc(var(--vh) - 300px);
 }
+.task-save-btn[disabled]{
+    color: grey;
+}
 
 @media all and (min-width: 900px) and (min-height: 500px) {
     .description-input-loading {

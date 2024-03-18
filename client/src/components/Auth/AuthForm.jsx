@@ -54,7 +54,9 @@ const AuthForm = (props) => {
           handleInputChange={handleInputChange}
         />
         <SubmitButton
-          buttonProps={{ disabled: loading, type: "submit", form: "auth-form" }}
+        disabled={loading}
+        type="submit"
+        form="auth-form"
           loading={loading}
           buttonText={subtmitButtonText}
         />

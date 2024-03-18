@@ -10,12 +10,12 @@ import TaskDetail from "./TaskDetail";
 const getTimerStatus = (startTime, finishTime, completedTime) => {
   const now = new Date();
   return completedTime
-    ? "Duration:"
+    ? "Actual Duration:"
     : startTime > now
-    ? "Start in:"
+    ? "Time Until Start:"
     : finishTime > now
-    ? "Finish in:"
-    : "Overdue by:";
+    ? "Time Until Finish:"
+    : "Overdue By:";
 };
 const getTimerOperands = (startTime, finishTime) => {
   const now = new Date();
@@ -92,10 +92,10 @@ const MoreTaskDetails = (props) => {
 
   return (
     <>
-      <TaskDetail title="Created at:" value={createdAtFormatted} />
-      <TaskDetail title="Last update:" value={updatedAtFormatted} />
+      <TaskDetail title="Created At:" value={createdAtFormatted} />
+      <TaskDetail title="Last Update:" value={updatedAtFormatted} />
 
-      <TaskDetail title="Target duration:" value={targetDuration} />
+      <TaskDetail title="Target Duration:" value={targetDuration} />
       <TaskDetail
         title={taskTimerStatus}
         value={taskTimer ? taskTimer : "..."}
