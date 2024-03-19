@@ -81,7 +81,6 @@ const FiltersContainer = ({ handleClose }) => {
   const handleClear = (e) => {
     e.preventDefault();
     setSelectedCategories([]);
-    // setCompleted("");
     setStartgte(null);
     setStartlte(null);
     setFinishgte(null);

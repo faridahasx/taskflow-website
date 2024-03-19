@@ -87,6 +87,7 @@ const Tasks = (props) => {
           </TasksEmpty>
         )}
 
+        {/* Display loadinh indicators */}
         {isTransitioning === true ? (
           <LinearTransition />
         ) : tasks && errorDuringFetch ? (

@@ -17,10 +17,9 @@ const GOOGLE_CALLBACK_URL = process.env.REACT_APP_GOOGLE_CALLBACK_URL;
 const AuthFormContainer = (props) => {
   // Destructuring props
   const { path, subtmitButtonText } = props;
-
   // Redux dispatch function
   const dispatch = useDispatch();
-  // Check online status using custom hook
+  // Check network status using custom hook
   const isOnline = useNetworkStatus();
   // Initialize state
   const [loading, setLoading] = useState(false);
@@ -31,6 +30,7 @@ const AuthFormContainer = (props) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  // Handle Google
   const handleContinueWithGoogle = () => {
     window.open(GOOGLE_CALLBACK_URL, "_self");
   };

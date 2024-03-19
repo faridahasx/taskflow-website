@@ -33,9 +33,9 @@ const TasksContainer = () => {
 
   // State to manage whether to load more tasks
   const [loadMore, setLoadMore] = useState(false);
-
   // Ref for loading indicator
   const ref = useRef(null);
+  // Track visibility of ref to load more tasks
   const [loadingRef, isVisible] = useElementOnScreen(
     {
       root: null,
@@ -60,7 +60,7 @@ const TasksContainer = () => {
     }
   };
 
-  // Fetch Tasks on initial load and when the location changes
+  // Fetch Tasks on initial load or on the location change
   useEffect(() => {
     const ignore = { value: false };
     const queryStringFromURL = getTasksRequestQueryFromURL();
@@ -106,7 +106,7 @@ const TasksContainer = () => {
     // eslint-disable-next-line
   }, [location, isOnline, isVisible, requestQuery, loadMore, loading, error]);
 
-  // Memoized value to determine if tasks are transitioning
+  // Memoized value to determine if tasks are transitioning due to change in search params
   const isTransitioning = useMemo(
     () => tasks !== null && requestQuery.page === 0 && loading,
     [loading, requestQuery, tasks]

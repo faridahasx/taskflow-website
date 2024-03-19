@@ -10,7 +10,7 @@ const LoginSuccessRedirect = () => {
   useEffect(() => {
     localStorage.setItem("firstLogin", "true");
     dispatch({ type: "IS_LOGGED", payload: true });
-    dispatch({ type: "ALERT", payload: "Login Success!" });
+    // dispatch({ type: "ALERT", payload: "Login Success!" });
     navigate("/");
     // eslint-disable-next-line
   }, []);
