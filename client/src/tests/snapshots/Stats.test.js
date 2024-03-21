@@ -10,7 +10,7 @@ test("Stats snapshot", () => {
       <BrowserRouter>
         <Stats />
       </BrowserRouter>
-    </Provider>
+    </Provider>,
   );
   expect(asFragment()).toMatchSnapshot("Stats");
 });

@@ -1,9 +1,9 @@
 #auth-form {
-    width: 100%;
+  width: 100%;
 }
 
 #auth-form .submit-btn {
-    margin: 25px 0;
-    font-size: medium;
-    font-weight: 600;
+  margin: 25px 0;
+  font-size: medium;
+  font-weight: 600;
 }

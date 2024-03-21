@@ -3,12 +3,9 @@ import "./TaskDetail.css";
 
 const TaskDetail = ({ title, value }) => {
   return (
-    <span
-      className="flex detail"
-      title={`${title ? `${title}` : ""} ${value ? `${value}` : ""}`}
-    >
-      {title && <span className="flex">{title}</span>}
-      {value && <span className="flex">{value}</span>}
+    <span className="flex detail" title={`${title} ${value}`}>
+      <span className="flex">{title}</span>
+      <span className="flex">{value}</span>
     </span>
   );
 };

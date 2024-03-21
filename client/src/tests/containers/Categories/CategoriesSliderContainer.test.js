@@ -6,8 +6,6 @@ import { categoriesSample } from "../../../constants/sampleData";
 import { mockAuthState, mockStore } from "../../mocks/mockReduxState";
 import CategoriesSliderContainer from "../../../containers/Categories/CategoriesSliderContainer";
 
-
-
 const mockFetchedCategories = {
   status: 200,
   data: {
@@ -27,7 +25,7 @@ beforeEach(() => {
           setCategoriesOpen={jest.fn()}
         />
       </BrowserRouter>
-    </Provider>
+    </Provider>,
   );
 });
 
@@ -47,9 +45,9 @@ describe("CategoriesSliderContainer", () => {
             },
             ...mockFetchedCategories.data.categories,
           ],
-          type: "FETCH_CATEGORIES"
+          type: "FETCH_CATEGORIES",
         },
-      ])
+      ]),
     );
   });
 });

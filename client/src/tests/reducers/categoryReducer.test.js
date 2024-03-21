@@ -147,7 +147,7 @@ describe("categoryReducer: EDIT_CATEGORY_IN_TASK", () => {
 
     const nextState = categoryReducer(
       [...categoriesSample, anotherCategory],
-      action
+      action,
     );
     expect(nextState).toEqual([
       defaultCategory,

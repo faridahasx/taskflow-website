@@ -8,7 +8,8 @@ const CloseButton = (buttonProps) => {
   return (
     <IconButton
       Icon={<Close />}
-      title='Close'
+      aria-label="Close"
+      title="Close"
       {...buttonProps}
     />
   );

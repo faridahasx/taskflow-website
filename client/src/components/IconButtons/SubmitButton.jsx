@@ -3,16 +3,16 @@ import PropTypes from "prop-types";
 // MUI Component
 import { Done } from "@mui/icons-material";
 // Component
-import CircularLoading from "../Loading/CircularLoading";
+import CircularLoading from "components/Loading/CircularLoading";
 import IconButton from "./IconButton";
 
 const SubmitButton = (props) => {
-    // Destructure props
-  const {loading, ...buttonProps} = props;
-
+  // Destructure props
+  const { loading, ...buttonProps } = props;
 
   return (
     <IconButton
+      aria-label="Submit"
       Icon={loading ? <CircularLoading /> : <Done />}
       {...buttonProps}
     />

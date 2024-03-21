@@ -1,51 +1,50 @@
 #search-results a {
-    width: 100%;
+  width: 100%;
 }
 
 #search-results {
-    position: absolute;
-    z-index: 100;
-    top: 45px;
-    left: 0;
-    width: calc(100vw - 40px);
-    min-width: calc(var(--min-width) - 40px);
-    max-height: calc(var(--vh) - 110px);
-    padding: 10px 0 10px 10px;
-    overflow: auto;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-radius: 10px;
-    box-shadow: var(--box-shadow);
-    background-color: rgb(255, 255, 255);
+  position: absolute;
+  z-index: 100;
+  top: 45px;
+  left: 0;
+  width: calc(100vw - 40px);
+  min-width: calc(var(--min-width) - 40px);
+  max-height: calc(var(--vh) - 110px);
+  padding: 10px 0 10px 10px;
+  overflow: auto;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  background-color: rgb(255, 255, 255);
 }
 
 #search-results a {
-    padding-right: 25px;
-    align-items: center;
+  padding-right: 25px;
+  align-items: center;
 }
 
 #search-results a:hover {
-    background-color: var(--light-grey);
+  background-color: var(--light-grey);
 }
 
 #search-results .text-overflow {
-    width: 100%;
+  width: 100%;
 }
 
 #search-results .text-overflow:first-child {
-    text-align: left;
+  text-align: left;
 }
 
 #search-results .text-overflow:last-child {
-    padding-left: 2px;
-    color: grey;
-    font-size: 12px;
-    text-align: right;
+  padding-left: 2px;
+  color: grey;
+  font-size: 12px;
+  text-align: right;
 }
 
-
 @media all and (min-width: 900px) {
-    #search-results {
-        width: calc(80vw - 40px);
-    }
+  #search-results {
+    width: calc(80vw - 40px);
+  }
 }

@@ -1,18 +1,19 @@
 import { useContext } from "react";
 import PropTypes from "prop-types";
-// Assets
-import { axiosWithCredentials } from "../../assets/axiosInstance";
+// Utils
+import { axiosWithCredentials } from "utils/axiosInstance";
 // Custom hooks
-import useAuthRequest from "../../hooks/useAuthRequest";
+import useMakeServerRequest from "hooks/useMakeServerRequest";
 // Context
-import { TasksDispatchContext } from "../../context/TaskContext";
+import { TasksDispatchContext } from "context/TaskContext";
 // Component
-import TaskCheckbox from "../../components/Tasks/TaskListItem/TaskCheckbox";
+import TaskCheckbox from "components/Tasks/TaskListItem/TaskCheckbox";
 
 const TaskCheckboxContainer = (props) => {
-  const { task, colorTransition } = props;
+  // Desturcture props
+  const { task, checkboxProps } = props;
   // Custom hook for handling authenticated requests
-  const { executeAuthRequest } = useAuthRequest();
+  const { executeServerRequest } = useMakeServerRequest();
   const dispatchTasks = useContext(TasksDispatchContext);
 
   // Toggle Completed Checkbox
@@ -29,7 +30,7 @@ const TaskCheckboxContainer = (props) => {
       });
     };
 
-    executeAuthRequest({
+    executeServerRequest({
       callback: toggleCompleted,
     });
   };
@@ -37,7 +38,7 @@ const TaskCheckboxContainer = (props) => {
   return (
     <TaskCheckbox
       taskCompleted={task.completedAt}
-      colorTransition={colorTransition}
+      checkboxProps={checkboxProps}
       handleToggleCompleted={handleToggleCompleted}
     />
   );
@@ -45,10 +46,10 @@ const TaskCheckboxContainer = (props) => {
 
 TaskCheckboxContainer.propTypes = {
   task: PropTypes.object.isRequired,
-  colorTransition: PropTypes.shape({
-    transition: PropTypes.bool,
+  checkboxProps: PropTypes.shape({
+    changed: PropTypes.string,
     color: PropTypes.string,
-  }).isRequired
+  }).isRequired,
 };
 
 export default TaskCheckboxContainer;

@@ -1,15 +1,16 @@
 import { useEffect } from "react";
-import { axiosWithCredentials } from "../assets/axiosInstance";
-import useAuthRequest from "./useAuthRequest";
+import { axiosWithCredentials } from "../utils/axiosInstance";
+import useMakeServerRequest from "./useMakeServerRequest";
+import { UNKNOWN_ERROR } from "../constants/alertMessages";
 
 const useFetchTaskDescription = (
   taskID,
   description,
   dispatchTasks,
-  setNewTask = null
+  setNewTask = null,
 ) => {
-  const { executeAuthRequest, loading, error, handleTryAgain } =
-    useAuthRequest();
+  const { executeServerRequest, loading, error, handleTryAgain } =
+    useMakeServerRequest();
 
   useEffect(() => {
     // Check if description is undefined before fetching
@@ -25,7 +26,10 @@ const useFetchTaskDescription = (
         });
       };
       // Execute the fetch
-      executeAuthRequest({ callback: fetch_description });
+      executeServerRequest({
+        callback: fetch_description,
+        fallbackErrorMessage: UNKNOWN_ERROR,
+      });
     }
   }, [description, taskID, error]);
 

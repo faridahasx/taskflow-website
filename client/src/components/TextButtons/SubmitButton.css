@@ -1,12 +1,12 @@
 .submit-btn {
-    border-radius: 10px;
-    width: 100%;
-    color: #fff;
-    background: linear-gradient(120deg, #ff69b4, #ff6f8f);
-    border-radius: 5px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width: 100%;
+  color: #fff;
+  background: linear-gradient(120deg, #ff69b4, #ff6f8f);
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .submit-btn.active:hover {
-    background: linear-gradient(120deg, #ff4b2b, #ff416c);
+  background: linear-gradient(120deg, #ff4b2b, #ff416c);
 }

@@ -9,7 +9,7 @@ test("App snapshot", () => {
   const { asFragment } = render(
     <Provider store={mockStore(mockInitialState)}>
       <App />
-    </Provider>
+    </Provider>,
   );
   expect(asFragment()).toMatchSnapshot("App");
 });

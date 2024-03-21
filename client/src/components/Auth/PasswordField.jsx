@@ -28,8 +28,8 @@ const PasswordField = (props) => {
         type={showPassword ? "text" : "password"}
         value={password || ""}
         name="password"
-        required
         onChange={handleInputChange}
+        required
         endAdornment={
           <InputAdornment position="end">
             <IconButton

@@ -3,13 +3,14 @@ import { useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
-// Assets
-import { axiosWithCredentials } from "../../assets/axiosInstance";
+// Utils
+import { axiosWithCredentials } from "utils/axiosInstance";
+// Custom Hooks
+import useFetchTaskDescription from "hooks/useFetchTaskDesctription";
 // Context
-import { TasksDispatchContext } from "../../context/TaskContext";
+import { TasksDispatchContext } from "context/TaskContext";
 // Component
 import TaskFormContainer from "./TaskFormContainer";
-import useFetchTaskDescription from "../../hooks/useFetchTaskDesctription";
 
 const EditTaskForm = (props) => {
   // Destructuring props
@@ -25,13 +26,12 @@ const EditTaskForm = (props) => {
     startDate: dayjs(task.startDate),
     finishDate: dayjs(task.finishDate),
   });
-  const { errorDuringFetch, handleTryFetchAgain } =
-    useFetchTaskDescription(
-      task._id,
-      newTask.description,
-      dispatchTasks,
-      setNewTask
-    );
+  const { errorDuringFetch, handleTryFetchAgain } = useFetchTaskDescription(
+    task._id,
+    newTask.description,
+    dispatchTasks,
+    setNewTask
+  );
 
   const handleEditTask = async () => {
     await axiosWithCredentials.patch(`/task/${newTask._id}`, newTask);
@@ -52,12 +52,12 @@ const EditTaskForm = (props) => {
 
   return (
     <TaskFormContainer
-      handleCloseEditor={handleCloseEditor}
-      onSubmit={handleEditTask}
       newTask={newTask}
-      setNewTask={setNewTask}
-      handleTryFetchAgain={handleTryFetchAgain}
       errorDuringFetch={errorDuringFetch}
+      handleTryFetchAgain={handleTryFetchAgain}
+      setNewTask={setNewTask}
+      onSubmit={handleEditTask}
+      handleCloseEditor={handleCloseEditor}
     />
   );
 };

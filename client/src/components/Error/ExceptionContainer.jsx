@@ -10,7 +10,12 @@ const ExceptionContainer = (props) => {
   const { message, Icon = FeedbackIcon } = props;
 
   return (
-    <section className="center exception">
+    <section
+      role="alert"
+      aria-live="assertive"
+      aria-describedby="exception-message"
+      className="center exception"
+    >
       <div id="exception-message-container" className="column center">
         <Icon sx={{ fontSize: "25px", color: "grey" }} />
         <h1 id="exception-message">{message}</h1>
@@ -21,6 +26,7 @@ const ExceptionContainer = (props) => {
 
 ExceptionContainer.propTypes = {
   message: PropTypes.string.isRequired,
+  Icon: PropTypes.object,
 };
 
 export default ExceptionContainer;

@@ -1,9 +1,9 @@
 // External imports
 import PropTypes from "prop-types";
 // Components
-import CancelButton from "../TextButtons/CancelButton";
-import SubmitButton from "../TextButtons/SubmitButton";
-import Modal from "../Modal/Modal";
+import CancelButton from "components/TextButtons/CancelButton";
+import SubmitButton from "components/TextButtons/SubmitButton";
+import Modal from "components/Modal/Modal";
 // Styles
 import "./CategoryForm.css";
 
@@ -12,10 +12,10 @@ const CategoryForm = (props) => {
   const {
     label,
     title,
-    handleCloseDialog,
-    handleSubmit,
-    handleInputChange,
     loading,
+    handleInputChange,
+    handleSubmit,
+    handleCloseDialog,
   } = props;
 
   // Handle close form dialog
@@ -25,23 +25,28 @@ const CategoryForm = (props) => {
   };
 
   return (
-    <Modal handleClose={handleCloseDialog} title={label}>
+    <Modal title={label} handleClose={handleCloseDialog}>
       <div className="category-dialog center">
-        <form className="column" onSubmit={handleSubmit} id="category-form">
-          {label && <label htmlFor="categoryTitle">{label}</label>}
+        <form
+          aria-label={label}
+          id="category-form"
+          className="column"
+          onSubmit={handleSubmit}
+        >
+          <label htmlFor="categoryTitle">{label}</label>
           <input
+            aria-label="Category Title"
             id="categoryTitle"
+            name="categoryTitle"
+            value={title}
+            placeholder="Title"
+            onChange={handleInputChange}
+            maxLength={50}
             required
             autoFocus
-            maxLength={50}
-            value={title}
-            name="categoryTitle"
-            onChange={handleInputChange}
-            placeholder="Title"
           />
           <div className="flex">
             <CancelButton buttonText="Cancel" onClick={handleClose} />
-
             <SubmitButton
               loading={loading}
               buttonText="Save"
@@ -56,12 +61,12 @@ const CategoryForm = (props) => {
 };
 
 CategoryForm.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOf(["Add Category", "Rename"]).isRequired,
   title: PropTypes.string.isRequired,
-  handleCloseDialog: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  handleInputChange: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  handleCloseDialog: PropTypes.func.isRequired,
 };
 
 export default CategoryForm;

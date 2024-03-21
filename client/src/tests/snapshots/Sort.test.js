@@ -5,7 +5,7 @@ const mockFn = jest.fn();
 
 test("Sort snapshot", () => {
   const { asFragment } = render(
-    <Sort handleClose={mockFn} handleSorting={mockFn} sortValue={""} />
+    <Sort handleClose={mockFn} handleSorting={mockFn} sortValue={""} />,
   );
   expect(asFragment()).toMatchSnapshot("Sort");
 });

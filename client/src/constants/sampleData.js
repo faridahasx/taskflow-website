@@ -1,4 +1,4 @@
-import { getDateWithNDaysOfDifference } from "../utils/dateUtils";
+import { getDateWithNDaysOfDifference } from "utils/dateUtils";
 
 const categoriesSample = [
   {

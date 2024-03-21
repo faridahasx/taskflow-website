@@ -3,10 +3,15 @@ import "./Logo.css";
 
 const Logo = () => {
   return (
-    <div className="logo center" title="TaskFlow">
+    <div
+      role="img"
+      aria-label="TaskFlow Logo"
+      className="logo center"
+      title="TaskFlow"
+    >
       <span className="logo-task">Task</span>
       <span className="logo-flow">Flow</span>
-      <MovingIcon id='logo-icon'/>
+      <MovingIcon id="logo-icon" />
     </div>
   );
 };

@@ -42,7 +42,7 @@ beforeEach(() => {
       <BrowserRouter>
         <AuthDialog handleCloseAuthDialog={jest.fn()} />
       </BrowserRouter>
-    </Provider>
+    </Provider>,
   );
   container = component.container;
 });
@@ -132,7 +132,7 @@ describe("AuthDialog: Submit Events", () => {
         pressEnter(container);
         const actions = store.getActions();
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnSuccessfullAuth)
+          expect(actions).toEqual(reduxStateOnSuccessfullAuth),
         );
       });
 
@@ -140,7 +140,7 @@ describe("AuthDialog: Submit Events", () => {
         clickByText("Sign in");
         const actions = store.getActions();
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnSuccessfullAuth)
+          expect(actions).toEqual(reduxStateOnSuccessfullAuth),
         );
       });
     });
@@ -158,7 +158,7 @@ describe("AuthDialog: Submit Events", () => {
         pressEnter(container);
         const actions = store.getActions();
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnSuccessfullAuth)
+          expect(actions).toEqual(reduxStateOnSuccessfullAuth),
         );
       });
 
@@ -166,7 +166,7 @@ describe("AuthDialog: Submit Events", () => {
         clickByText("Sign up");
         const actions = store.getActions();
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnSuccessfullAuth)
+          expect(actions).toEqual(reduxStateOnSuccessfullAuth),
         );
       });
     });
@@ -181,7 +181,7 @@ describe("AuthDialog: Submit Events", () => {
         const actions = store.getActions();
         // Assertions
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnMissingInputField)
+          expect(actions).toEqual(reduxStateOnMissingInputField),
         );
       });
       it("missing email", async () => {
@@ -191,7 +191,7 @@ describe("AuthDialog: Submit Events", () => {
         const actions = store.getActions();
         // Assertions
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnMissingInputField)
+          expect(actions).toEqual(reduxStateOnMissingInputField),
         );
       });
     });
@@ -209,7 +209,7 @@ describe("AuthDialog: Submit Events", () => {
 
         // Assertions
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnMissingInputField)
+          expect(actions).toEqual(reduxStateOnMissingInputField),
         );
       });
       it("missing password", async () => {
@@ -222,7 +222,7 @@ describe("AuthDialog: Submit Events", () => {
 
         // Assertions
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnMissingInputField)
+          expect(actions).toEqual(reduxStateOnMissingInputField),
         );
       });
 
@@ -236,7 +236,7 @@ describe("AuthDialog: Submit Events", () => {
 
         // Assertions
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnMissingInputField)
+          expect(actions).toEqual(reduxStateOnMissingInputField),
         );
       });
       it("missing last name", async () => {
@@ -249,7 +249,7 @@ describe("AuthDialog: Submit Events", () => {
 
         // Assertions
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnMissingInputField)
+          expect(actions).toEqual(reduxStateOnMissingInputField),
         );
       });
     });
@@ -269,7 +269,7 @@ describe("AuthDialog: Submit Events", () => {
     await waitFor(() =>
       expect(actions).toEqual([
         { type: "ALERT", payload: "Something went wrong" },
-      ])
+      ]),
     );
   });
 });

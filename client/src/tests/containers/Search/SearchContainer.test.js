@@ -17,7 +17,7 @@ describe("SearchContainer", () => {
         <BrowserRouter>
           <SearchContainer handleClose={jest.fn()} />
         </BrowserRouter>
-      </Provider>
+      </Provider>,
     );
 
     axiosWithCredentials.get = jest.fn(() => successResponse);
@@ -29,8 +29,8 @@ describe("SearchContainer", () => {
     // Assertions
     await waitFor(() =>
       expect(axiosWithCredentials.get).toHaveBeenCalledWith(
-        `task?&limit=10&search[regex]=${inputValue}`
-      )
+        `task?&limit=10&search[regex]=${inputValue}`,
+      ),
     );
   });
 });

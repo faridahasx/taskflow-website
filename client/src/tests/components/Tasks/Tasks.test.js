@@ -18,7 +18,7 @@ describe("Tasks component", () => {
             isTransitioning={false}
             loadMore={false}
           />
-        </BrowserRouter>
+        </BrowserRouter>,
       );
     });
     it('renders "No tasks"', () => {
@@ -37,12 +37,12 @@ describe("Tasks component", () => {
             isTransitioning={false}
             loadMore={false}
           />
-        </BrowserRouter>
+        </BrowserRouter>,
       );
     });
     it("renders initial loading indicator", () => {
       expect(
-        queryByTestId("loading-initial-tasks-indicator")
+        queryByTestId("loading-initial-tasks-indicator"),
       ).toBeInTheDocument();
     });
   });
@@ -59,20 +59,20 @@ describe("Tasks component", () => {
             isTransitioning={false}
             loadMore={false}
           />
-        </BrowserRouter>
+        </BrowserRouter>,
       );
     });
 
     it("renders tasks list items", () => {
       expect(document.getElementsByClassName("task-li")).toHaveLength(
-        tasksSample.length
+        tasksSample.length,
       );
     });
 
     it("renders transitioning indicator when isTransitioning is true", () => {
       expect(queryByTestId("linear-transiton")).toBeInTheDocument();
       expect(
-        queryByTestId("loading-more-tasks-indicator")
+        queryByTestId("loading-more-tasks-indicator"),
       ).not.toBeInTheDocument();
     });
 

@@ -1,28 +1,25 @@
 .icon {
-    width: 40px;
-    min-width: 40px;
-    max-width: 40px;
-    height: 40px;
-    min-height: 40px;
-    max-height: 40px;
-    background-color: #00000000;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    color: rgb(57, 57, 57);
-    display: flex;
-    display: -webkit-flex;
-    justify-content: center;
-    align-items: center;
+  width: 40px;
+  min-width: 40px;
+  max-width: 40px;
+  height: 40px;
+  min-height: 40px;
+  max-height: 40px;
+  background-color: #00000000;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  color: rgb(57, 57, 57);
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-
 .icon:hover {
-    background-color: var(--hover-bg-color);
+  background-color: var(--hover-bg-color);
 }
 
 .icon:disabled {
-    pointer-events: none;
-
+  pointer-events: none;
 }

@@ -16,11 +16,11 @@ const TextField = (props) => {
       </InputLabel>
       <Input
         id={name}
+        name={name}
         type={type}
         value={value || ""}
-        name={name}
-        required
         onChange={handleInputChange}
+        required
       />
     </>
   );
@@ -31,11 +31,11 @@ TextField.defaultProps = {
 };
 
 TextField.propTypes = {
-  handleInputChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
 };
 
 export default TextField;

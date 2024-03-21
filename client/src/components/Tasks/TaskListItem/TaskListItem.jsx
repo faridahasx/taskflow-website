@@ -2,30 +2,28 @@
 import { Suspense, lazy, useMemo, useState, useLayoutEffect } from "react";
 import PropTypes from "prop-types";
 // Utilities
-import { formatDateTime } from "../../../utils/dateUtils";
+import { formatDateTime } from "utils/dateUtils";
 // Components
+import ModalLoading from "components/Loading/ModalLoading";
+import TaskCheckboxContainer from "containers/Tasks/TaskCheckboxContainer";
 import TaskDetail from "./TaskDetail";
 import TaskControls from "./TaskControls";
-import LoadingModal from "../../Loading/LoadingModal";
 import MoreTaskDetails from "./MoreTaskDetails";
-import TaskCheckboxContainer from "../../../containers/Tasks/TaskCheckboxContainer";
 // Styles
 import "./TaskListItem.css";
 
 // Lazy-loaded components
-const OpenTask = lazy(() =>
-  import("../../../containers/Tasks/OpenTaskContainer")
-);
+const OpenTask = lazy(() => import("containers/Tasks/OpenTaskContainer"));
 
 const TaskListItem = (props) => {
   // Destructure props
   const {
     task,
-    openEditTaskEditor,
-    setOpenEditTaskEditor,
-    openTask,
-    setOpenTask,
     expandDetailsTaskID,
+    openEditTaskEditor,
+    openTask,
+    setOpenEditTaskEditor,
+    setOpenTask,
     setExpandDetailsTaskID,
   } = props;
   // Destructure task properties
@@ -40,8 +38,8 @@ const TaskListItem = (props) => {
     _id,
   } = task;
   // State for color transition
-  const [colorTransition, setColorTransition] = useState({
-    transition: false,
+  const [checkboxProps, setCheckboxProps] = useState({
+    changed: "",
     color: "",
   });
 
@@ -76,13 +74,16 @@ const TaskListItem = (props) => {
       const color = completedTime
         ? "green"
         : now > finishTime
-        ? "red"
-        : startTime < now
-        ? "blue"
-        : "yellow";
+          ? "red"
+          : startTime < now
+            ? "blue"
+            : "yellow";
 
-      setColorTransition((prev) => ({
-        transition: prev.color && prev.color !== color ? true : false,
+      setCheckboxProps((prev) => ({
+        changed:
+          prev.color && prev.color !== color
+            ? "checkbox-changed"
+            : "checkbox-initial",
         color: color,
       }));
     };
@@ -91,17 +92,17 @@ const TaskListItem = (props) => {
   }, [startTime, finishTime, completedTime]);
 
   // Click handlers
-  const handleClickEditTask = () => setOpenEditTaskEditor(task);
+  const handleOpenEditTaskEditor = () => setOpenEditTaskEditor(task);
   const handleOpenTask = () => setOpenTask(task);
-  const handleCloseOpenedTask = () => setOpenTask({});
+  const handleCloseOpenedTask = () => setOpenTask(null);
 
   return (
     <li className="task-li">
       <div className="task-wrapper flex">
-        <TaskCheckboxContainer task={task} colorTransition={colorTransition} />
+        <TaskCheckboxContainer task={task} checkboxProps={checkboxProps} />
         <div
-          className="column task-middle"
           data-testid="task-clickable"
+          className="column task-middle"
           onClick={handleOpenTask}
         >
           <h3 className="flex" title={task.title}>
@@ -109,10 +110,10 @@ const TaskListItem = (props) => {
           </h3>
           <div className="details-container column">
             <TaskDetail title="Category:" value={category} />
-            <TaskDetail title="Start Date:" value={startDateFormatted} />
-            <TaskDetail title="Finish Date:" value={finishDateFormatted} />
+            <TaskDetail title="Start:" value={startDateFormatted} />
+            <TaskDetail title="Finish:" value={finishDateFormatted} />
             {completedTime && (
-              <TaskDetail title="Completed At:" value={completedAtFormatted} />
+              <TaskDetail title="Completion:" value={completedAtFormatted} />
             )}
             {expandDetailsTaskID === _id && (
               <MoreTaskDetails
@@ -127,20 +128,20 @@ const TaskListItem = (props) => {
         </div>
         <TaskControls
           task={task}
-          handleClickEditTask={handleClickEditTask}
-          setExpandDetailsTaskID={setExpandDetailsTaskID}
           expandDetailsTaskID={expandDetailsTaskID}
+          setExpandDetailsTaskID={setExpandDetailsTaskID}
+          handleOpenEditTaskEditor={handleOpenEditTaskEditor}
         />
       </div>
 
-      {openTask._id === _id && (
+      {openTask && openTask._id === _id && (
         <Suspense
-          fallback={<LoadingModal handleClose={handleCloseOpenedTask} />}
+          fallback={<ModalLoading handleClose={handleCloseOpenedTask} />}
         >
           <OpenTask
             task={task}
             openEditTaskEditor={openEditTaskEditor}
-            handleClickEditTask={handleClickEditTask}
+            handleOpenEditTaskEditor={handleOpenEditTaskEditor}
             handleCloseOpenedTask={handleCloseOpenedTask}
           />
         </Suspense>
@@ -150,10 +151,17 @@ const TaskListItem = (props) => {
 };
 
 TaskListItem.propTypes = {
-  expandDetailsTaskID: PropTypes.string.isRequired,
   task: PropTypes.object.isRequired,
-  openEditTaskEditor: PropTypes.object.isRequired,
-  openTask: PropTypes.object.isRequired,
+  expandDetailsTaskID: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.oneOf(null),
+  ]).isRequired,
+  openEditTaskEditor: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.oneOf(null),
+  ]).isRequired,
+  openTask: PropTypes.oneOfType([PropTypes.object, PropTypes.oneOf(null)])
+    .isRequired,
   setOpenEditTaskEditor: PropTypes.func.isRequired,
   setOpenTask: PropTypes.func.isRequired,
   setExpandDetailsTaskID: PropTypes.func.isRequired,

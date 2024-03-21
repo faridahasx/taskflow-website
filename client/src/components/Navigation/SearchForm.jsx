@@ -9,21 +9,27 @@ import "./SearchForm.css";
 
 const SearchForm = (props) => {
   // Destructure props
-  const { handleSubmit, handleInputChange, inputValue, loading, handleClear } =
+  const { inputValue, loading, handleSubmit, handleInputChange, handleClear } =
     props;
 
   return (
-    <form id="search-form" className="flex" onSubmit={handleSubmit}>
+    <form
+      role="search"
+      aria-label="Search Form"
+      id="search-form"
+      className="flex"
+      onSubmit={handleSubmit}
+    >
       <button className="center s-icon" type="submit">
         <SearchIcon />
       </button>
       <input
-        autoFocus
         data-testid="search"
         type="search"
-        onChange={handleInputChange}
         placeholder="Search"
         value={inputValue}
+        onChange={handleInputChange}
+        autoFocus
       />
       {loading && inputValue && (
         <span id="search-loading" className="center">
@@ -31,7 +37,12 @@ const SearchForm = (props) => {
         </span>
       )}
       {inputValue && (
-        <button className="center s-icon" type="button" onClick={handleClear}>
+        <button
+          aria-label="Clear Search Input"
+          className="center s-icon"
+          type="button"
+          onClick={handleClear}
+        >
           <ClearIcon />
         </button>
       )}
@@ -40,11 +51,11 @@ const SearchForm = (props) => {
 };
 
 SearchForm.propTypes = {
+  inputValue: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleInputChange: PropTypes.func.isRequired,
   handleClear: PropTypes.func.isRequired,
-  inputValue: PropTypes.string.isRequired,
-  loading: PropTypes.bool.isRequired,
 };
 
 export default SearchForm;

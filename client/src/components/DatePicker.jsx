@@ -11,11 +11,11 @@ const DatePicker = (props) => {
   return (
     <LocalizationProvider sx={sx} dateAdapter={AdapterDayjs}>
       <MobileDateTimePicker
+        name={name}
+        label={label}
         value={date}
         onChange={setDate}
         sx={sx}
-        label={label}
-        name={name}
       />
     </LocalizationProvider>
   );

@@ -2,9 +2,7 @@ import { Request, Response, Router } from "express";
 import passport from "passport";
 import jwt from "jsonwebtoken";
 import CryptoJS from "crypto-js";
-import {
-  createResetPasswordToken,
-} from "../utils/auth/createToken";
+import { createResetPasswordToken } from "../utils/auth/createToken";
 import sendEmail from "../utils/sendEmail";
 import validateEmail from "../utils/auth/validateEmail";
 import User from "../models/user";
@@ -59,7 +57,7 @@ router.post("/register", async (req: Request, res: Response) => {
     await newCategory.save();
 
     // Set credentials ans send response
-    generateAndSendAuthTokens(res, newUser._id)
+    generateAndSendAuthTokens(res, newUser._id);
     res.status(200).json("Register Success!");
   } catch (err) {
     return res.status(500).json(serverError);
@@ -85,7 +83,7 @@ router.post("/login", async (req: Request, res: Response) => {
       return res.status(400).json(wrongCredentialsError);
 
     // Set credentials and send response
-    generateAndSendAuthTokens(res, user._id)
+    generateAndSendAuthTokens(res, user._id);
     res.status(200).json("Login Success!");
   } catch (err) {
     return res.status(500).json(serverError);
@@ -96,7 +94,7 @@ router.post("/login", async (req: Request, res: Response) => {
 router.post("/logout", async (req: Request, res: Response) => {
   try {
     res.clearCookie("refreshtoken");
-    res.clearCookie('accesstoken')
+    res.clearCookie("accesstoken");
     return res.status(200).json("Logged out.");
   } catch (err) {
     return res.status(500).json(serverError);
@@ -135,7 +133,7 @@ router.post("/reset-password/:token", async (req: Request, res: Response) => {
     const resetPasswordToken = req.params.token;
     const user = jwt.verify(
       resetPasswordToken,
-      JWT_RESET_PASSWORD_REFRESH_TOKEN_SECRET
+      JWT_RESET_PASSWORD_REFRESH_TOKEN_SECRET,
     );
 
     if (!user) return res.status(400).json("Invalid token.");
@@ -145,13 +143,13 @@ router.post("/reset-password/:token", async (req: Request, res: Response) => {
     const email = user.email;
     const hashedPassword = CryptoJS.AES.encrypt(
       password,
-      PASSWORD_SECRET
+      PASSWORD_SECRET,
     ).toString();
     await User.findOneAndUpdate(
       { email: email },
       {
         password: hashedPassword,
-      }
+      },
     );
     res.status(200).json("Password has been changed successfully!");
   } catch (err) {
@@ -167,8 +165,8 @@ router.get("/failed", (req: Request, res: Response) => {
 // LOGIN SUCCESS
 router.get("/success", (req: Request, res: Response) => {
   if (req.user) {
-    const userId = req.user as IUserSchema['_id'];
-    generateAndSendAuthTokens(res, userId)
+    const userId = req.user as IUserSchema["_id"];
+    generateAndSendAuthTokens(res, userId);
     res.status(200).json("Login success!");
   }
 });
@@ -179,7 +177,7 @@ router.get(
   passport.authenticate("google", {
     session: false,
     scope: ["profile", "email"],
-  })
+  }),
 );
 
 router.get(
@@ -190,10 +188,10 @@ router.get(
   }),
 
   async (req, res) => {
-    const userId = req.user as IUserSchema['_id'];
+    const userId = req.user as IUserSchema["_id"];
     generateAndSendAuthTokens(res, userId);
     res.redirect(CLIENT_URL + "/redirect");
-  }
+  },
 );
 
 export default router;

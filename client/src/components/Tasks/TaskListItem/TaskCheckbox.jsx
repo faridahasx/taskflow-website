@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useMemo } from "react";
 // MUI Components
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
@@ -7,24 +8,26 @@ import "./TaskCheckbox.css";
 
 const TaskCheckbox = (props) => {
   // Destructure props
-  const { taskCompleted, handleToggleCompleted, colorTransition } = props;
+  const { taskCompleted, checkboxProps, handleToggleCompleted } = props;
+  const buttonAction = useMemo(
+    () => `Mark as ${taskCompleted ? "Incomplete" : "Completed"}`,
+    [taskCompleted],
+  );
 
   return (
     <button
-      className={`center color ${colorTransition.color} ${
-        colorTransition.transition ? "color-transition" : "no-transtion"
-      }`}
+      aria-label={buttonAction}
+      className={`center color ${checkboxProps.color} ${checkboxProps.changed}`}
+      title={buttonAction}
       onClick={handleToggleCompleted}
-      title={`${taskCompleted ? "Unmark" : "Mark"} as completed`}
     >
       <span className="center">
         {!taskCompleted && (
-          <RadioButtonUncheckedIcon fontSize="small" className="unfilled" />
+          <RadioButtonUncheckedIcon className="unfilled" fontSize="small" />
         )}
-
         <CheckCircleIcon
-          sx={{ color: "green" }}
           className={`checkbox-icon ${taskCompleted ? "checked" : "unchecked"}`}
+          sx={{ color: "green" }}
         />
       </span>
     </button>
@@ -33,11 +36,11 @@ const TaskCheckbox = (props) => {
 
 TaskCheckbox.propTypes = {
   taskCompleted: PropTypes.any.isRequired,
-  handleToggleCompleted: PropTypes.func.isRequired,
-  colorTransition: PropTypes.shape({
-    transition: PropTypes.bool,
+  checkboxProps: PropTypes.shape({
+    changed: PropTypes.string,
     color: PropTypes.string,
   }).isRequired,
+  handleToggleCompleted: PropTypes.func.isRequired,
 };
 
 export default TaskCheckbox;

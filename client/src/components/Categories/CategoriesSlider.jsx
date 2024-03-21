@@ -2,23 +2,23 @@
 import { Suspense, lazy, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 // Custom hooks
-import useKeyDownListener from "../../hooks/useKeyDownListener";
+import useKeyDownListener from "hooks/useKeyDownListener";
 // Components
-import ModalLoading from "../Loading/LoadingModal";
-import CircularLoading from "../Loading/CircularLoading";
+import ModalLoading from "components/Loading/ModalLoading";
+import CircularLoading from "components/Loading/CircularLoading";
+import PortalComponent from "components/PortalComponent";
+import TryAgain from "components/IconButtons/TryAgain";
 import CategoryListItem from "./CategoryListItem";
 import DefaultCategoryListItem from "./DefaultCategoryListItem";
 import OpenAddCategoryButton from "./OpenAddCategoryButton";
-import PortalComponent from "../PortalComponent";
-import TryAgain from "../IconButtons/TryAgain";
 // Styles
 import "./CategoriesSlider.css";
 // Lazy-loaded Components
-const DeleteCategory = lazy(() =>
-  import("../../containers/Categories/DeleteCategoryContainer")
+const DeleteCategory = lazy(
+  () => import("containers/Categories/DeleteCategoryContainer")
 );
-const CategoryForm = lazy(() =>
-  import("../../containers/Categories/CategoryFormContainer")
+const CategoryForm = lazy(
+  () => import("containers/Categories/CategoryFormContainer")
 );
 
 const CategorieSlider = (props) => {
@@ -87,8 +87,8 @@ const CategorieSlider = (props) => {
 
   return (
     <div
-      data-testid="categories"
       id="categories-dropdown"
+      data-testid="categories"
       className={`categories-slider ${
         categoriesOpen ? "categories-slider-open" : ""
       }`}
@@ -99,11 +99,11 @@ const CategorieSlider = (props) => {
           {loading ? (
             <CircularLoading />
           ) : errorDuringFetch ? (
-            <TryAgain onClick={handleTryAgain}/>
+            <TryAgain onClick={handleTryAgain} />
           ) : (
             categories &&
             categories.length > 0 && (
-              <ol id="categories-list" autoFocus>
+              <ol aria-label="Categories" id="categories-list" autoFocus>
                 <DefaultCategoryListItem
                   tasksCount={`(${categories[0]["tasks"]})`}
                 />
@@ -131,20 +131,20 @@ const CategorieSlider = (props) => {
         <Suspense fallback={<ModalLoading handleClose={handleCloseDialog} />}>
           {currentDialog === "add" ? (
             <CategoryForm
-              label="Add category"
+              label="Add Category"
               handleCloseDialog={handleCloseDialog}
             />
           ) : currentDialog === "edit" ? (
             <CategoryForm
               label="Rename"
-              handleCloseDialog={handleCloseDialog}
               category={currentCategory}
+              handleCloseDialog={handleCloseDialog}
             />
           ) : (
             currentDialog === "delete" && (
               <DeleteCategory
-                handleCloseDialog={handleCloseDialog}
                 category={currentCategory}
+                handleCloseDialog={handleCloseDialog}
               />
             )
           )}

@@ -4,101 +4,104 @@ import PropTypes from "prop-types";
 // MUI Components
 import SplitscreenIcon from "@mui/icons-material/Splitscreen";
 // Custom hooks
-import useNetworkStatus from "../../hooks/useNetworkStatus";
+import useNetworkStatus from "hooks/useNetworkStatus";
 // Components
-import OfflineContent from "../OfflineContent";
-import LinearTransition from "../Loading/LinearTransition";
-import LoadingModal from "../Loading/LoadingModal";
-import CircularLoading from "../Loading/CircularLoading";
-import Navigation from "../Navigation/Navigation";
-import TryAgain from "../IconButtons/TryAgain";
-import ExceptionContainer from "../Error/ExceptionContainer";
+import OfflineContent from "components/OfflineContent";
+import LinearTransition from "components/Loading/LinearTransition";
+import ModalLoading from "components/Loading/ModalLoading";
+import CircularLoading from "components/Loading/CircularLoading";
+import Navigation from "components/Navigation/Navigation";
+import TryAgain from "components/IconButtons/TryAgain";
+import ExceptionContainer from "components/Error/ExceptionContainer";
 import TaskListItem from "./TaskListItem/TaskListItem";
-import TasksEmpty from "./TasksEmpty";
 // Styles
 import "./Tasks.css";
 
 // Lazy-loaded components
-const AddTaskForm = lazy(() => import("../../containers/Tasks/AddTaskForm"));
-const EditTaskForm = lazy(() => import("../../containers/Tasks/EditTaskForm"));
+const AddTaskForm = lazy(() => import("containers/Tasks/AddTaskForm"));
+const EditTaskForm = lazy(() => import("containers/Tasks/EditTaskForm"));
 
 const Tasks = (props) => {
   // Destructure props
   const {
-    tasks,
-    loadingRef,
+    errorDuringFetch,
     isTransitioning,
     loadMore,
-    errorDuringFetch,
+    tasks,
+    loadingRef,
     handleTryAgain,
   } = props;
   // Local state
-  const [openEditTaskEditor, setOpenEditTaskEditor] = useState({});
   const [openAddTaskEditor, setOpenAddTaskEditor] = useState(false);
-  const [openTask, setOpenTask] = useState({});
-  const [expandDetailsTaskID, setExpandDetailsTaskID] = useState("");
+  const [openEditTaskEditor, setOpenEditTaskEditor] = useState(null);
+  const [openTask, setOpenTask] = useState(null);
+  const [expandDetailsTaskID, setExpandDetailsTaskID] = useState(null);
 
   const isOnline = useNetworkStatus();
 
   // Event handlers
-  const handleToggleOpenTaskForm = () => {
+  const handleToggleOpenTaskForm = () =>
     setOpenAddTaskEditor(!openAddTaskEditor);
-  };
-  const handleCloseAddTaskEditor = () => setOpenAddTaskEditor("");
-  const handleCloseEditTaskEditor = () => setOpenEditTaskEditor({});
+  const handleCloseAddTaskEditor = () => setOpenAddTaskEditor(false);
+  const handleCloseEditTaskEditor = () => setOpenEditTaskEditor(null);
 
   return (
     <section id="tasks-wrapper" className="column">
       <div id="tasks" className="column">
         <Navigation handleToggleOpenTaskForm={handleToggleOpenTaskForm} />
-        {/* Render task list or display appropriate messages */}
-        {tasks !== null ? (
-          tasks.length > 0 ? (
-            <ol id="tasks-list" className="column">
-              {tasks.map((t) => (
-                // TaskListItem component for each task
-                <TaskListItem
-                  key={t._id}
-                  task={t}
-                  openEditTaskEditor={openEditTaskEditor}
-                  setOpenEditTaskEditor={setOpenEditTaskEditor}
-                  openTask={openTask}
-                  setOpenTask={setOpenTask}
-                  expandDetailsTaskID={expandDetailsTaskID}
-                  setExpandDetailsTaskID={setExpandDetailsTaskID}
-                />
-              ))}
-            </ol>
-          ) : (
-            // Display message when there are no tasks
-            <TasksEmpty>
+
+        {/* Display appropriate messages when there are no tasks */}
+        {(tasks === null || (tasks && tasks.length === 0)) && (
+          <span className="center tasks-empty">
+            {tasks && tasks.length === 0 ? (
               <ExceptionContainer message="No Task" Icon={SplitscreenIcon} />
-            </TasksEmpty>
-          )
-        ) : (
-          <TasksEmpty>
-            {!isOnline ? (
+            ) : !isOnline ? (
               <OfflineContent />
             ) : errorDuringFetch ? (
               <ExceptionContainer message="Something went wrong" />
             ) : (
-              <CircularLoading data-testid="loading-initial-tasks-indicator" />
+              <CircularLoading
+                role="alert"
+                aria-live="assertive"
+                aria-label="Fetching Tasks"
+                data-testid="loading-initial-tasks-indicator"
+              />
             )}
-          </TasksEmpty>
+          </span>
         )}
 
-        {/* Display loadinh indicators */}
+        {/* Render tasks */}
+        {tasks && tasks.length > 0 && (
+          <ol aria-label="Task List" id="tasks-list" className="column">
+            {tasks.map((t) => (
+              // TaskListItem component for each task
+              <TaskListItem
+                key={t._id}
+                task={t}
+                expandDetailsTaskID={expandDetailsTaskID}
+                openEditTaskEditor={openEditTaskEditor}
+                openTask={openTask}
+                setOpenEditTaskEditor={setOpenEditTaskEditor}
+                setOpenTask={setOpenTask}
+                setExpandDetailsTaskID={setExpandDetailsTaskID}
+              />
+            ))}
+          </ol>
+        )}
+
+        {/* Display loading indicators */}
         {isTransitioning === true ? (
-          <LinearTransition />
+          <LinearTransition aria-label="Fetching Tasks" />
         ) : tasks && errorDuringFetch ? (
           <TryAgain onClick={handleTryAgain} />
         ) : (
           // Display loading indicator for more tasks
           loadMore && (
             <span
-              className="center"
+              aria-label="Fetching More Tasks"
               id="loading-tasks"
               data-testid="loading-more-tasks-indicator"
+              className="center"
               ref={loadingRef}
             >
               <CircularLoading />
@@ -107,38 +110,34 @@ const Tasks = (props) => {
         )}
       </div>
       {/* Conditional rendering of AddTaskForm or EditTaskForm */}
-      {openAddTaskEditor ? (
-        <Suspense
-          fallback={
-            <LoadingModal handleClose={() => setOpenAddTaskEditor(false)} />
-          }
-        >
+
+      <Suspense
+        fallback={<ModalLoading handleClose={handleCloseAddTaskEditor} />}
+      >
+        {openAddTaskEditor && (
           <AddTaskForm handleCloseEditor={handleCloseAddTaskEditor} />
-        </Suspense>
-      ) : (
-        openEditTaskEditor._id && (
-          <Suspense
-            fallback={
-              <LoadingModal handleClose={() => setOpenEditTaskEditor({})} />
-            }
-          >
-            <EditTaskForm
-              handleCloseEditor={handleCloseEditTaskEditor}
-              task={openEditTaskEditor}
-            />
-          </Suspense>
-        )
-      )}
+        )}
+      </Suspense>
+      <Suspense
+        fallback={<ModalLoading handleClose={handleCloseEditTaskEditor} />}
+      >
+        {openEditTaskEditor && (
+          <EditTaskForm
+            handleCloseEditor={handleCloseEditTaskEditor}
+            task={openEditTaskEditor}
+          />
+        )}
+      </Suspense>
     </section>
   );
 };
 
 Tasks.propTypes = {
-  tasks: PropTypes.oneOfType([PropTypes.array, PropTypes.oneOf([null])]),
-  loadingRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   errorDuringFetch: PropTypes.bool.isRequired,
   isTransitioning: PropTypes.bool.isRequired,
   loadMore: PropTypes.bool.isRequired,
+  tasks: PropTypes.oneOfType([PropTypes.array, PropTypes.oneOf([null])]),
+  loadingRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   handleTryAgain: PropTypes.func.isRequired,
 };
 

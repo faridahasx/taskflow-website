@@ -1,13 +1,13 @@
 // External imports
 import PropTypes from "prop-types";
 // Custom hooks
-import useBodyOverflowHidden from "../../hooks/useBodyOverflowHidden";
+import useBodyOverflowHidden from "hooks/useBodyOverflowHidden";
 // Components
-import Modal from "../Modal/Modal";
-import PortalComponent from "../PortalComponent";
-import SubmitButton from "../TextButtons/SubmitButton";
-import CancelButton from "../TextButtons/CancelButton";
-import SortAndFiltersWrapper from "../SortAndFiltersWrapper/SortAndFiltersWrapper";
+import Modal from "components/Modal/Modal";
+import PortalComponent from "components/PortalComponent";
+import SubmitButton from "components/TextButtons/SubmitButton";
+import CancelButton from "components/TextButtons/CancelButton";
+import SortAndFiltersWrapper from "components/SortAndFiltersWrapper/SortAndFiltersWrapper";
 import CategoriesFilter from "./CategoriesFilter";
 import DateRange from "./DateRange";
 // Styles
@@ -16,20 +16,20 @@ import "./Filters.css";
 const Filters = (props) => {
   // Destructuring props
   const {
-    handleClose,
-    handleSubmit,
+    startlte,
+    startgte,
+    finishlte,
+    finishgte,
     categories,
     selectedCategories,
     setSelectedCategories,
-    startgte,
-    setStartgte,
-    startlte,
     setStartlte,
-    finishgte,
+    setStartgte,
     setFinishgte,
-    finishlte,
     setFinishlte,
+    handleSubmit,
     handleClear,
+    handleClose,
   } = props;
 
   useBodyOverflowHidden();
@@ -37,9 +37,9 @@ const Filters = (props) => {
   // Render component
   return (
     <PortalComponent>
-      <Modal handleClose={handleClose}>
+      <Modal aria-label="Filter Tasks" handleClose={handleClose}>
         <SortAndFiltersWrapper handleClose={handleClose} heading="Filters">
-          <form id="filters-form" onSubmit={handleSubmit} data-testid="filters">
+          <form id="filters-form" data-testid="filters" onSubmit={handleSubmit}>
             <div id="filters-form-fields">
               <CategoriesFilter
                 categories={categories}
@@ -62,8 +62,16 @@ const Filters = (props) => {
               />
             </div>
             <div id="filters-bottom" className="flex">
-              <CancelButton buttonText="Clear Filters" onClick={handleClear} />
-              <SubmitButton buttonText="Apply" form="filters-form" />
+              <CancelButton
+                aria-label="Clear Filters"
+                buttonText="Clear"
+                onClick={handleClear}
+              />
+              <SubmitButton
+                aria-label="Apply Filters"
+                buttonText="Apply"
+                form="filters-form"
+              />
             </div>
           </form>
         </SortAndFiltersWrapper>
@@ -73,20 +81,20 @@ const Filters = (props) => {
 };
 
 Filters.propTypes = {
-  handleClose: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+  startlte: PropTypes.any,
+  startgte: PropTypes.any,
+  finishlte: PropTypes.any,
+  finishgte: PropTypes.any,
+  categories: PropTypes.array,
+  selectedCategories: PropTypes.array,
   setSelectedCategories: PropTypes.func.isRequired,
   setStartgte: PropTypes.func.isRequired,
   setStartlte: PropTypes.func.isRequired,
   setFinishgte: PropTypes.func.isRequired,
   setFinishlte: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   handleClear: PropTypes.func.isRequired,
-  categories: PropTypes.array,
-  selectedCategories: PropTypes.array,
-  startgte: PropTypes.any,
-  startlte: PropTypes.any,
-  finishgte: PropTypes.any,
-  finishlte: PropTypes.any,
+  handleClose: PropTypes.func.isRequired,
 };
 
 export default Filters;

@@ -16,7 +16,7 @@ const useClickOutside = (callback, ignore = false, ignoreClasses = []) => {
       // Check if the clicked element has any of the specified ignore classes
       if (
         !ignoreClasses.some((className) =>
-          event.target.classList.contains(className)
+          event.target.classList.contains(className),
         ) &&
         // Check if the ref is defined and if the clicked element is outside the ref
         ref.current &&

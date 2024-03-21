@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
 import { CircularProgress } from "@mui/material";
 
-const CircularLoading = ({ scale, color }) => {
+const CircularLoading = ({ scale, color, ...props }) => {
   return (
     <CircularProgress
-      data-testid="loading"
+      data-testid={!props["data-testid"] && "loading"}
       style={{ color: color, scale: scale }}
+      {...props}
     />
   );
 };

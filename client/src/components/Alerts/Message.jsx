@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // Components
-import PortalComponent from "../PortalComponent";
+import PortalComponent from "components/PortalComponent";
 // Styles
 import "./Message.css";
 
@@ -23,7 +23,17 @@ const Message = () => {
         className={`center message ${alert ? "alert-message" : ""}`}
         title={alert}
       >
-        <span className="center">{alert}</span>
+        {alert && (
+          <span
+            role="alert"
+            aria-live="polite"
+            aria-atomic="true"
+            aria-label="Message"
+            className="center"
+          >
+            {alert}
+          </span>
+        )}
       </div>
     </PortalComponent>
   );

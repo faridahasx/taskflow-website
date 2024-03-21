@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
-import IconButton from "./IconButton";
 import ReplayIcon from "@mui/icons-material/Replay";
+import IconButton from "./IconButton";
 
 const TryAgain = (buttonProps) => {
-  return <IconButton Icon={<ReplayIcon />} {...buttonProps} />;
+  return (
+    <IconButton aria-label="Try Again" Icon={<ReplayIcon />} {...buttonProps} />
+  );
 };
 
 TryAgain.propTypes = {

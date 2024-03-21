@@ -5,14 +5,20 @@ import PropTypes from "prop-types";
 // MUI Components
 import DeleteIcon from "@mui/icons-material/Delete";
 // Custom hooks
-import useAuthRequest from "../../hooks/useAuthRequest";
-import { axiosWithCredentials } from "../../assets/axiosInstance";
+import useMakeServerRequest from "hooks/useMakeServerRequest";
+// Utils
+import { axiosWithCredentials } from "utils/axiosInstance";
+import {
+  PERMANENT_ACTION,
+  TASK_DELETED,
+  DELETE_TASK_FAILED,
+} from "constants/alertMessages";
 // Context
-import { TasksDispatchContext } from "../../context/TaskContext";
+import { TasksDispatchContext } from "context/TaskContext";
 // Components
-import ConfirmationDialog from "../../components/ConfirmationDialog/ConfirmationDialog";
-import IconButton from "../../components/IconButtons/IconButton";
-import CircularLoading from "../../components/Loading/CircularLoading";
+import ConfirmationDialog from "components/ConfirmationDialog/ConfirmationDialog";
+import IconButton from "components/IconButtons/IconButton";
+import CircularLoading from "components/Loading/CircularLoading";
 
 const DeleteTaskButtonContainer = (props) => {
   // Destructure props
@@ -21,7 +27,7 @@ const DeleteTaskButtonContainer = (props) => {
   const [confirmDeleteDialogOpen, setConfirmDeleteDialogOpen] = useState(false);
 
   // Custom hook for handling authenticated requests
-  const { executeAuthRequest, loading } = useAuthRequest();
+  const { executeServerRequest, loading } = useMakeServerRequest();
   const dispatchTasks = useContext(TasksDispatchContext);
   const dispatch = useDispatch();
 
@@ -39,30 +45,31 @@ const DeleteTaskButtonContainer = (props) => {
         payload: { title: taskCategory, count: -1 },
       });
     };
-    executeAuthRequest({
+    executeServerRequest({
       callback: deleteTask,
       trackErrorState: false,
-      successMessage: "Deleted Task",
-      errorMessage: "Failed to delete the task",
+      successMessage: TASK_DELETED,
+      fallbackErrorMessage: DELETE_TASK_FAILED,
     });
   };
 
   return (
     <>
       <IconButton
-        Icon={loading ? <CircularLoading /> : <DeleteIcon />}
-        disabled={loading}
+        aria-label="Delete Task"
         title="Delete"
         onClick={handleDeleteClick}
+        Icon={loading ? <CircularLoading /> : <DeleteIcon />}
+        disabled={loading}
       />
       {confirmDeleteDialogOpen && (
         <ConfirmationDialog
+          cancelButtonText="Cancel"
+          confirmButtonText="Delete"
+          heading={PERMANENT_ACTION}
           handleCloseDialog={handleCancelDelete}
           handleCancel={handleCancelDelete}
           handleConfirm={handleConfirmDelete}
-          cancelButtonText="Cancel"
-          confirmButtonText="Delete"
-          heading="Deleting tasks is a permanent action and cannot be undone."
         />
       )}
     </>

@@ -8,7 +8,8 @@
     "prestart": "npm install --production",
     "poststart": "echo 'The app is running.' ",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon dist/index.js"
+    "dev": "nodemon dist/index.js",
+    "format": "prettier --ignore-path .gitigore --write \"**/*.{ts,js}\""
   },
   "author": "",
   "license": "ISC",
@@ -51,6 +52,7 @@
     "passport": "^0.6.0",
     "passport-google-oauth2": "^0.2.0",
     "passport-google-oauth20": "^2.0.0",
+    "prettier": "^3.2.5",
     "serverless-http": "^3.2.0"
   }
 }

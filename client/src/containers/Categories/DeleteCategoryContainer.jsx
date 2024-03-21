@@ -3,27 +3,32 @@ import { useContext } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 // Custom hooks
-import useAuthRequest from "../../hooks/useAuthRequest";
-// Assets
-import { axiosWithCredentials } from "../../assets/axiosInstance";
+import useMakeServerRequest from "hooks/useMakeServerRequest";
+// Utils
+import { axiosWithCredentials } from "utils/axiosInstance";
+import {
+  CATEGORY_DELETED,
+  DELETE_CATEGORY_FAILED,
+  PERMANENT_ACTION,
+} from "constants/alertMessages";
 // Context
-import { TasksDispatchContext } from "../../context/TaskContext";
+import { TasksDispatchContext } from "context/TaskContext";
 // Component
-import ConfirmationDialog from "../../components/ConfirmationDialog/ConfirmationDialog";
+import ConfirmationDialog from "components/ConfirmationDialog/ConfirmationDialog";
 
 const DeleteCategoryContainer = (props) => {
   // Destructuring props
-  const { handleCloseDialog, category } = props;
+  const { category, handleCloseDialog } = props;
   // Redux dispatch setup
   const dispatch = useDispatch();
   // Context dispatch setup
   const dispatchTasks = useContext(TasksDispatchContext);
   // Custom hook for handling authenticated requests and loading state
-  const { executeAuthRequest, loading } = useAuthRequest();
+  const { executeServerRequest, loading } = useMakeServerRequest();
 
   // Function to handle category deletion
   const handleDelete = async () => {
-    await executeAuthRequest({
+    await executeServerRequest({
       callback: async () => {
         await axiosWithCredentials.delete(`/category/${category.title}`);
         // Update categories in Redux state
@@ -34,7 +39,8 @@ const DeleteCategoryContainer = (props) => {
         // Delete tasks of this category in context
         dispatchTasks({ type: "delete_category", payload: category.title });
       },
-      successMessage: "Category deleted"
+      successMessage: CATEGORY_DELETED,
+      fallbackErrorMessage: DELETE_CATEGORY_FAILED,
     });
     // Close the dialog
     handleCloseDialog();
@@ -43,20 +49,20 @@ const DeleteCategoryContainer = (props) => {
   // Rendering ConfirmationDialog component with necessary props
   return (
     <ConfirmationDialog
+      cancelButtonText="Cancel"
+      confirmButtonText="Delete"
+      heading={PERMANENT_ACTION}
+      loading={loading}
       handleCloseDialog={handleCloseDialog}
       handleCancel={handleCloseDialog}
       handleConfirm={handleDelete}
-      loading={loading}
-      cancelButtonText="Cancel"
-      confirmButtonText="Delete"
-      heading="Deleting categories is a permanent action and cannot be undone."
     />
   );
 };
 
 DeleteCategoryContainer.propTypes = {
-  handleCloseDialog: PropTypes.func.isRequired,
   category: PropTypes.object,
+  handleCloseDialog: PropTypes.func.isRequired,
 };
 
 export default DeleteCategoryContainer;

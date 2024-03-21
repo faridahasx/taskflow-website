@@ -1,7 +1,8 @@
 // External imports
 import { Link } from "react-router-dom";
 // Components
-import Logo from "../Logo/Logo";
+import Logo from "components/Logo/Logo";
+// import { Logo } from "@components/Logo";
 // Styles
 import "./Footer.css";
 

@@ -3,13 +3,14 @@ import { useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 // Custom hooks
-import useAuthRequest from "../../hooks/useAuthRequest";
-// Assets
-import { axiosWithCredentials } from "../../assets/axiosInstance";
+import useMakeServerRequest from "hooks/useMakeServerRequest";
+// Utils
+import { axiosWithCredentials } from "utils/axiosInstance";
+import { MISSING_INPUT_FIELD } from "constants/alertMessages";
 // Context
-import { TasksDispatchContext } from "../../context/TaskContext";
+import { TasksDispatchContext } from "context/TaskContext";
 // Component
-import CategoryForm from "../../components/Categories/CategoryForm";
+import CategoryForm from "components/Categories/CategoryForm";
 
 const CategoryFormContainer = (props) => {
   // Destructuring props
@@ -21,7 +22,7 @@ const CategoryFormContainer = (props) => {
   // Initialize state
   const [title, setTitle] = useState(category ? category.title : "");
   // Custom hook for handling authenticated requests and loading state
-  const { executeAuthRequest, loading } = useAuthRequest();
+  const { executeServerRequest, loading } = useMakeServerRequest();
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
@@ -32,13 +33,12 @@ const CategoryFormContainer = (props) => {
       if (title === "")
         dispatch({
           type: "ALERT",
-          payload: "Please fill out the title field.",
+          payload: MISSING_INPUT_FIELD,
         });
       else
-        await executeAuthRequest({
+        await executeServerRequest({
           callback:
-            label === "Add category" ? handleAddCategory : handleEditCategory,
-          successMessage: "Saved",
+            label === "Add Category" ? handleAddCategory : handleEditCategory,
         });
     } else {
       // Close dialog if there are no changes
@@ -86,16 +86,16 @@ const CategoryFormContainer = (props) => {
     <CategoryForm
       label={label}
       title={title}
-      handleCloseDialog={handleCloseDialog}
-      handleSubmit={handleSubmit}
-      handleInputChange={handleInputChange}
       loading={loading}
+      handleInputChange={handleInputChange}
+      handleSubmit={handleSubmit}
+      handleCloseDialog={handleCloseDialog}
     />
   );
 };
 
 CategoryFormContainer.propTypes = {
-  label: PropTypes.string,
+  label: PropTypes.oneOf(["Add Category", "Rename"]).isRequired,
   category: PropTypes.object,
   handleCloseDialog: PropTypes.func.isRequired,
 };

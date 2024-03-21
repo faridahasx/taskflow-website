@@ -1,7 +1,7 @@
 // External imports
 import PropTypes from "prop-types";
 // Components
-import SubmitButton from "../TextButtons/SubmitButton";
+import SubmitButton from "components/TextButtons/SubmitButton";
 import PasswordField from "./PasswordField";
 import TextField from "./TextField";
 import GoogleButton from "./GoogleButton";
@@ -13,8 +13,8 @@ const AuthForm = (props) => {
   const {
     path,
     subtmitButtonText,
-    loading,
     user,
+    loading,
     handleInputChange,
     handleSubmit,
     handleContinueWithGoogle,
@@ -22,7 +22,12 @@ const AuthForm = (props) => {
 
   return (
     <>
-      <form id="auth-form" className="column" onSubmit={handleSubmit}>
+      <form
+        aria-label={subtmitButtonText}
+        id="auth-form"
+        className="column"
+        onSubmit={handleSubmit}
+      >
         {path === "register" && (
           <>
             <TextField
@@ -54,9 +59,9 @@ const AuthForm = (props) => {
           handleInputChange={handleInputChange}
         />
         <SubmitButton
-        disabled={loading}
-        type="submit"
-        form="auth-form"
+          disabled={loading}
+          type="submit"
+          form="auth-form"
           loading={loading}
           buttonText={subtmitButtonText}
         />

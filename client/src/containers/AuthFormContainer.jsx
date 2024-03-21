@@ -2,28 +2,29 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+// Utils
+import { axiosWithCredentials } from "utils/axiosInstance";
+import { MISSING_INPUT_FIELD } from "constants/alertMessages";
 // Custom hooks
-import useNetworkStatus from "../hooks/useNetworkStatus";
-import useKeyDownListener from "../hooks/useKeyDownListener";
-// Assets
-import { axiosWithCredentials } from "../assets/axiosInstance";
+import useKeyDownListener from "hooks/useKeyDownListener";
+import useMakeServerRequest from "hooks/useMakeServerRequest";
 // Components
-import AuthForm from "../components/Auth/AuthForm";
+import AuthForm from "components/Auth/AuthForm";
 
-// ENV 
+// ENV
 const GOOGLE_CALLBACK_URL = process.env.REACT_APP_GOOGLE_CALLBACK_URL;
 
-// Functional component 
+// Functional component
 const AuthFormContainer = (props) => {
   // Destructuring props
   const { path, subtmitButtonText } = props;
   // Redux dispatch function
   const dispatch = useDispatch();
-  // Check network status using custom hook
-  const isOnline = useNetworkStatus();
-  // Initialize state
-  const [loading, setLoading] = useState(false);
+  // Local state
   const [user, setUser] = useState({});
+
+  //
+  const { executeServerRequest, loading } = useMakeServerRequest();
 
   // Function to handle input changes in the form
   const handleInputChange = (e) => {
@@ -36,47 +37,31 @@ const AuthFormContainer = (props) => {
   };
 
   // Function to handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // Checking network status before submmiting
-    if (!isOnline) {
-      dispatch({ type: "ALERT", payload: "Check your internet connection" });
-      return;
-    }
-    // Validating form fields
-    if (
-      !user.email ||
-      !user.password ||
-      (path === "register" && !(user.firstname && user.lastname))
-    ) {
-      dispatch({ type: "ALERT", payload: "Please fill out all fields." });
-      return;
-    }
-
-    // Initiating loading state
-    setLoading(true);
-    try {
-      // Sending form data to the server
-      const res = await axiosWithCredentials.post(`auth/${path}`, user);
-      // Dispatching actions based on server response
-      dispatch({ type: "IS_LOGGED", payload: true });
-      dispatch({ type: "ALERT", payload: res.data });
-      dispatch({ type: "AUTH_DIALOG", payload: false });
-      // Storing first login status in local storage
-      localStorage.setItem("firstLogin", "true");
-    } catch (err) {
-      // Handling errors and dispatching appropriate actions
-      dispatch({
-        type: "ALERT",
-        payload:
-          typeof err.response?.data === "string"
-            ? err.response.data
-            : "Something went wrong",
-      });
-    }
-    // Resetting loading state after submission
-    setLoading(false);
+    executeServerRequest({
+      callback: async () => {
+        // Validating form fields
+        if (
+          !user.email ||
+          !user.password ||
+          (path === "register" && !(user.firstname && user.lastname))
+        ) {
+          dispatch({ type: "ALERT", payload: MISSING_INPUT_FIELD });
+          return;
+        }
+        // Sending form data to the server
+        const res = await axiosWithCredentials.post(`auth/${path}`, user);
+        // Dispatching actions based on server response
+        dispatch({ type: "IS_LOGGED", payload: true });
+        dispatch({ type: "ALERT", payload: res.data });
+        dispatch({ type: "AUTH_DIALOG", payload: false });
+        // Storing login status in local storage
+        localStorage.setItem("firstLogin", "true");
+      },
+    });
   };
+
   //  Function to handle Enter key press for form submission
   const handleKeyDown = (e) => {
     if (e.key === "Enter") handleSubmit(e);

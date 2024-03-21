@@ -1,9 +1,9 @@
 // External imports
 import { useEffect, useMemo, useState } from "react";
 import PropTypes from "prop-types";
-// Utility functions
-import { formatDateTime } from "../../../utils/dateUtils";
-import { getTimeDifference } from "../../../utils/timerUtils";
+// Utils
+import { formatDateTime } from "utils/dateUtils";
+import { getTimeDifference } from "utils/timerUtils";
 // Components
 import TaskDetail from "./TaskDetail";
 
@@ -12,10 +12,10 @@ const getTimerStatus = (startTime, finishTime, completedTime) => {
   return completedTime
     ? "Actual Duration:"
     : startTime > now
-    ? "Time Until Start:"
-    : finishTime > now
-    ? "Time Until Finish:"
-    : "Overdue By:";
+      ? "Time Until Start:"
+      : finishTime > now
+        ? "Time Until Finish:"
+        : "Overdue By:";
 };
 const getTimerOperands = (startTime, finishTime) => {
   const now = new Date();
@@ -77,8 +77,8 @@ const MoreTaskDetails = (props) => {
         startTime > now
           ? startTime - now
           : finishTime > now
-          ? finishTime - now
-          : 0;
+            ? finishTime - now
+            : 0;
       timeout = setTimeout(() => {
         let taskStatus = getTimerStatus(startTime, finishTime, completedTime);
         setTaskTimerStatus(taskStatus);
@@ -92,9 +92,8 @@ const MoreTaskDetails = (props) => {
 
   return (
     <>
-      <TaskDetail title="Created At:" value={createdAtFormatted} />
+      <TaskDetail title="Created:" value={createdAtFormatted} />
       <TaskDetail title="Last Update:" value={updatedAtFormatted} />
-
       <TaskDetail title="Target Duration:" value={targetDuration} />
       <TaskDetail
         title={taskTimerStatus}
@@ -107,6 +106,9 @@ const MoreTaskDetails = (props) => {
 MoreTaskDetails.propTypes = {
   startTime: PropTypes.number.isRequired,
   finishTime: PropTypes.number.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  updatedAt: PropTypes.string.isRequired,
+  completedTime: PropTypes.object,
 };
 
 export default MoreTaskDetails;

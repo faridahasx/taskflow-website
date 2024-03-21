@@ -5,11 +5,11 @@ import { useSearchParams } from "react-router-dom";
 import dayjs from "dayjs";
 import PropTypes from "prop-types";
 // Custom hooks
-import useKeyDownListener from "../hooks/useKeyDownListener";
+import useKeyDownListener from "hooks/useKeyDownListener";
 // Utility functions
-import { validateCategories, isValidDate } from "../utils/validateFilters";
+import { validateCategories, isValidDate } from "utils/validateFilters";
 // Component
-import Filters from "../components/Filters/Filters";
+import Filters from "components/Filters/Filters";
 
 const FiltersContainer = ({ handleClose }) => {
   // Redux selector to get categories from the state
@@ -99,20 +99,20 @@ const FiltersContainer = ({ handleClose }) => {
   // Rendering Filters component with necessary props
   return (
     <Filters
-      handleClose={handleClose}
-      handleSubmit={handleSubmit}
+      startlte={startlte}
+      startgte={startgte}
+      finishlte={finishlte}
+      finishgte={finishgte}
       categories={categories}
       selectedCategories={selectedCategories}
       setSelectedCategories={setSelectedCategories}
-      startgte={startgte}
       setStartgte={setStartgte}
-      startlte={startlte}
       setStartlte={setStartlte}
-      finishgte={finishgte}
       setFinishgte={setFinishgte}
-      finishlte={finishlte}
       setFinishlte={setFinishlte}
+      handleSubmit={handleSubmit}
       handleClear={handleClear}
+      handleClose={handleClose}
     />
   );
 };

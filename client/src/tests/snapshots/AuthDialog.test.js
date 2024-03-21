@@ -7,7 +7,7 @@ test("AuthDialog snapshot", () => {
   const { asFragment } = render(
     <Provider store={mockStore(mockInitialState)}>
       <AuthDialog handleCloseAuthDialog={jest.fn()} />
-    </Provider>
+    </Provider>,
   );
 
   expect(asFragment()).toMatchSnapshot("AuthDialog");

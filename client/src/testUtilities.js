@@ -1,7 +1,6 @@
 import { fireEvent, screen } from "@testing-library/react";
 
 const { getByText, getByLabelText, getByTitle } = screen;
-
 const clickByText = (text) => fireEvent.click(getByText(text));
 const clickByTitle = (title) => fireEvent.click(getByTitle(title));
 const clickByTestId = (title) => fireEvent.click(getByTitle(title));

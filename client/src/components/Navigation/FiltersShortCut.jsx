@@ -1,18 +1,18 @@
 // External imports
 import PropTypes from "prop-types";
-import activateFilters from "../../constants/activateFilters";
+import activateFilters from "constants/activateFilters";
 import ActivateFiltersButton from "./ActivateFiltersButton";
 
-const FiltersShortCut = ({ handleClick, activeFilter }) => {
+const FiltersShortCut = ({ activeFilter, handleClick }) => {
   return (
     <ul className="flex active-filters-ul">
       {activateFilters.map((f) => (
         <li key={f.buttonTxt}>
           <ActivateFiltersButton
-            handleClick={handleClick}
             buttonTxt={f.buttonTxt}
             value={f.value}
             isActive={activeFilter === f.value}
+            handleClick={handleClick}
           />
         </li>
       ))}
@@ -21,8 +21,8 @@ const FiltersShortCut = ({ handleClick, activeFilter }) => {
 };
 
 FiltersShortCut.propTypes = {
-  handleClick: PropTypes.func.isRequired,
   activeFilter: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default FiltersShortCut;

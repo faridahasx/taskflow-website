@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import FiltersShortCut from "../../components/Navigation/FiltersShortCut";
-import activateFilters from "../../constants/activateFilters";
+import activateFilters from "constants/activateFilters";
+import FiltersShortCut from "components/Navigation/FiltersShortCut";
 
 const FiltersShortCutContainer = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -27,7 +27,7 @@ const FiltersShortCutContainer = () => {
   };
 
   return (
-    <FiltersShortCut handleClick={handleClick} activeFilter={activeFilter} />
+    <FiltersShortCut activeFilter={activeFilter} handleClick={handleClick} />
   );
 };
 

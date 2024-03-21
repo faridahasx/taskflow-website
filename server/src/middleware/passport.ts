@@ -6,10 +6,9 @@ import User from "../models/user";
 const PASSWORD = process.env.SOCIAL_PASSWORD || "";
 const PASSWORD_SECRET = process.env.PASSWORD_SECRET || "";
 const BASE_URL = process.env.BASE_URL || "";
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || "TO TEST"
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || ""
-const callbackURL = `${BASE_URL}/auth/google/callback`
-
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || "TO TEST";
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || "";
+const callbackURL = `${BASE_URL}/auth/google/callback`;
 
 const OPTIONS = {
   clientID: GOOGLE_CLIENT_ID,
@@ -21,7 +20,7 @@ const verify = async function (
   accessToken: string,
   refreshToken: string,
   profile: any,
-  done: any
+  done: any,
 ) {
   const email = profile.emails[0]["value"];
   const firstname = profile.displayName;

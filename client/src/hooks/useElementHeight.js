@@ -6,14 +6,14 @@ const useElementsHeight = (elementRef) => {
   // State to store and update the height
   const [height, setHeight] = useState(0);
 
-  // Function to update the height based on the current element's offsetHeight
-  const updateHeight = () => {
-    const height_ = elementRef.current.offsetHeight;
-    setHeight(height_);
-  };
-
   // Effect hook to initialize and update the height on component mount and window resize
   useEffect(() => {
+    // Function to update the height based on the current element's offsetHeight
+    const updateHeight = () => {
+      const height_ = elementRef.current.offsetHeight;
+      setHeight(height_);
+    };
+
     // Initial height update
     updateHeight();
 

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import LoadingPage from "../components/Loading/LoadingPage";
+import PageLoading from "components/Loading/PageLoading";
 
 const LoginSuccessRedirect = () => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const LoginSuccessRedirect = () => {
     // eslint-disable-next-line
   }, []);
 
-  return <LoadingPage />;
+  return <PageLoading />;
 };
 
 export default LoginSuccessRedirect;

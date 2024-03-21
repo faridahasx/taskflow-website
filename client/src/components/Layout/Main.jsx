@@ -1,21 +1,17 @@
 import PropTypes from "prop-types";
 // Components
-import CategoriesSliderContainer from "../../containers/Categories/CategoriesSliderContainer";
+import CategoriesSliderContainer from "containers/Categories/CategoriesSliderContainer";
 
 const Main = (props) => {
   // Destructuring props
-  const {
-    children,
-    categoriesOpen,
-    setCategoriesOpen,
-  } = props;
+  const { children, categoriesOpen, setCategoriesOpen } = props;
 
   return (
     <main>
-        <CategoriesSliderContainer
-          categoriesOpen={categoriesOpen}
-          setCategoriesOpen={setCategoriesOpen}
-        />
+      <CategoriesSliderContainer
+        categoriesOpen={categoriesOpen}
+        setCategoriesOpen={setCategoriesOpen}
+      />
       {children}
     </main>
   );

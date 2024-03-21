@@ -2,35 +2,38 @@
 import { useContext } from "react";
 import PropTypes from "prop-types";
 // Custom hooks
-import useFetchTaskDescription from "../../hooks/useFetchTaskDesctription";
+import useFetchTaskDescription from "hooks/useFetchTaskDesctription";
 // Context
-import { TasksDispatchContext } from "../../context/TaskContext";
+import { TasksDispatchContext } from "context/TaskContext";
 // Component
-import OpenTask from "../../components/Tasks/OpenTask";
+import OpenTask from "components/Tasks/OpenTask";
 
 const OpenTaskContainer = (props) => {
   // Destructuring props
   const {
     task,
     openEditTaskEditor,
-    handleClickEditTask,
+    handleOpenEditTaskEditor,
     handleCloseOpenedTask,
   } = props;
   // Accessing the tasks dispatch context
   const dispatchTasks = useContext(TasksDispatchContext);
   // Fetch task description on component mount if not already available
 
-  const { errorDuringFetch, handleTryFetchAgain } =
-    useFetchTaskDescription(task._id, task.description, dispatchTasks);
+  const { errorDuringFetch, handleTryFetchAgain } = useFetchTaskDescription(
+    task._id,
+    task.description,
+    dispatchTasks
+  );
 
   // Render the OpenTask component
   return (
     <OpenTask
       task={task}
-      openEditTaskEditor={openEditTaskEditor}
-      handleClickEditTask={handleClickEditTask}
-      handleCloseOpenedTask={handleCloseOpenedTask}
       errorDuringFetch={errorDuringFetch}
+      openEditTaskEditor={openEditTaskEditor}
+      handleOpenEditTaskEditor={handleOpenEditTaskEditor}
+      handleCloseOpenedTask={handleCloseOpenedTask}
       handleTryFetchAgain={handleTryFetchAgain}
     />
   );
@@ -38,8 +41,11 @@ const OpenTaskContainer = (props) => {
 
 OpenTaskContainer.propTypes = {
   task: PropTypes.object.isRequired,
-  openEditTaskEditor: PropTypes.object.isRequired,
-  handleClickEditTask: PropTypes.func.isRequired,
+  openEditTaskEditor: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.oneOf(null),
+  ]).isRequired,
+  handleOpenEditTaskEditor: PropTypes.func.isRequired,
   handleCloseOpenedTask: PropTypes.func.isRequired,
 };
 

@@ -2,20 +2,22 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
+// Utils
+import { MISSING_INPUT_FIELD, UNKNOWN_ERROR } from "constants/alertMessages";
 // Custom hooks
-import useAuthRequest from "../../hooks/useAuthRequest";
+import useMakeServerRequest from "hooks/useMakeServerRequest";
 // Component
-import TaskForm from "../../components/Tasks/TaskForm/TaskForm";
+import TaskForm from "components/Tasks/TaskForm/TaskForm";
 
 const TaskFormContainer = (props) => {
   // Destructuring props
   const {
-    handleCloseEditor,
-    onSubmit,
     newTask,
-    setNewTask,
     errorDuringFetch,
     handleTryFetchAgain,
+    setNewTask,
+    onSubmit,
+    handleCloseEditor,
   } = props;
 
   // Redux dispatch function
@@ -24,7 +26,7 @@ const TaskFormContainer = (props) => {
   const categories = useSelector((state) => state.categories);
 
   // Custom hook for handling authenticated requests
-  const { executeAuthRequest, loading } = useAuthRequest();
+  const { executeServerRequest, loading } = useMakeServerRequest();
 
   // Destructuring task properties for easier access
   const { title, category, startDate, finishDate, description } = newTask;
@@ -74,43 +76,47 @@ const TaskFormContainer = (props) => {
 
     if (!title) {
       // Dispatch an alert if title is missing
-      dispatch({ type: "ALERT", payload: "Please fill in the title field" });
+      dispatch({ type: "ALERT", payload: MISSING_INPUT_FIELD });
     } else {
       // Execute the server request
-      await executeAuthRequest({ callback: onSubmit, successMessage: "Saved" });
+      await executeServerRequest({
+        callback: onSubmit,
+        successMessage: "Saved",
+        fallbackErrorMessage: UNKNOWN_ERROR,
+      });
     }
   };
 
   // Render the TaskForm component
   return (
     <TaskForm
-      handleCloseEditor={handleCloseEditor}
-      handleSubmit={handleSubmit}
-      handleInputChange={handleInputChange}
+      startDate={startDate}
+      finishDate={finishDate}
+      description={description}
       title={title}
       category={category}
-      startDate={startDate}
-      handleSetStartDate={handleSetStartDate}
-      finishDate={finishDate}
-      handleSetFinishDate={handleSetFinishDate}
-      description={description}
-      handleSetDescription={handleSetDescription}
-      loading={loading}
       saved={saved}
       categories={categories}
-      handleTryFetchAgain={handleTryFetchAgain}
+      loading={loading}
       errorDuringFetch={errorDuringFetch}
+      handleTryFetchAgain={handleTryFetchAgain}
+      handleInputChange={handleInputChange}
+      handleSetStartDate={handleSetStartDate}
+      handleSetFinishDate={handleSetFinishDate}
+      handleSetDescription={handleSetDescription}
+      handleSubmit={handleSubmit}
+      handleCloseEditor={handleCloseEditor}
     />
   );
 };
 
 TaskFormContainer.propTypes = {
-  handleCloseEditor: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  setNewTask: PropTypes.func.isRequired,
-  handleTryFetchAgain: PropTypes.func,
-  errorDuringFetch: PropTypes.any,
   newTask: PropTypes.object.isRequired,
+  errorDuringFetch: PropTypes.any,
+  handleTryFetchAgain: PropTypes.func,
+  setNewTask: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  handleCloseEditor: PropTypes.func.isRequired,
 };
 
 export default TaskFormContainer;

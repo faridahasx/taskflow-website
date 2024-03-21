@@ -12,7 +12,7 @@ test("OpenTask snapshot", () => {
       handleClickEditTask={mockFn}
       handleCloseOpenedTask={mockFn}
       loading={false}
-    />
+    />,
   );
 
   expect(asFragment()).toMatchSnapshot("OpenTask");

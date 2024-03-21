@@ -2,9 +2,9 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 // Components
-import AuthFormContainer from "../../containers/AuthFormContainer";
-import CloseButton from "../IconButtons/CloseButton";
-import Modal from "../Modal/Modal";
+import AuthFormContainer from "containers/AuthFormContainer";
+import CloseButton from "components/IconButtons/CloseButton";
+import Modal from "components/Modal/Modal";
 // Styles
 import "./AuthDialog.css";
 
@@ -22,11 +22,16 @@ const signUp = {
   changeMethod: "Sign in instead",
 };
 
-const AuthDialog = ({ handleCloseAuthDialog }) => {
+const AuthDialog = (props) => {
+  // Destructure props
+  const { handleCloseAuthDialog } = props;
+
+  // Initialize component state
   const [authMethod, setAuthMethod] = useState(signIn);
   const { heading, changeMethod, path, subtmitButtonText } = authMethod;
 
-  const handleChangeAuthMethod = () => {
+  // Handle change tab
+  const handleChangeTab = () => {
     setAuthMethod(path === signIn.path ? signUp : signIn);
   };
 
@@ -34,9 +39,11 @@ const AuthDialog = ({ handleCloseAuthDialog }) => {
     <Modal handleClose={handleCloseAuthDialog}>
       <div>
         <div id="auth-container" className="column">
-          <div className="column" id="auth-top">
+          <div id="auth-top" className="column">
             <CloseButton onClick={handleCloseAuthDialog} />
-            <h1 className="center">{heading}</h1>
+            <h1 id="auth-heading" className="center">
+              {heading}
+            </h1>
           </div>
           <div id="auth-wrapper" className="column">
             <AuthFormContainer
@@ -45,9 +52,9 @@ const AuthDialog = ({ handleCloseAuthDialog }) => {
               subtmitButtonText={subtmitButtonText}
             />
             <button
-              onClick={handleChangeAuthMethod}
               id="change-auth-method-btn"
               className="center"
+              onClick={handleChangeTab}
             >
               {changeMethod}
             </button>

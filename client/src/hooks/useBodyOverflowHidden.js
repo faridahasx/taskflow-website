@@ -18,7 +18,7 @@ function useBodyOverflowHidden() {
         document.body.classList.remove("overflow-hidden");
       }
     };
-  }, []); // Empty dependency array ensures useEffect runs only once
+  }, []); // Empty dependency array to ensure useEffect runs only once
 
   // No return value is needed for this particular hook
 }

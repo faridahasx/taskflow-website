@@ -30,7 +30,7 @@ describe("CategoryFormContainer", () => {
           label="Add category"
           handleCloseDialog={mockHandleCloseDialog}
         />
-      </Provider>
+      </Provider>,
     );
     changeByLabelText("Add category", "input value");
     clickByText("Save");
@@ -44,7 +44,7 @@ describe("CategoryFormContainer", () => {
           payload: { ...successResponse.data, tasks: 0 },
         },
         { type: "ALERT", payload: "Saved" },
-      ])
+      ]),
     );
     await waitFor(() => expect(mockHandleCloseDialog).toHaveBeenCalledTimes(1));
   });
@@ -65,9 +65,9 @@ describe("CategoryFormContainer", () => {
             handleCloseDialog={mockHandleCloseDialog}
           />
         </TasksDispatchContext.Provider>
-      </Provider>
+      </Provider>,
     );
-    const updatedTitle = "updated title"
+    const updatedTitle = "updated title";
     changeByLabelText("Rename", updatedTitle);
     clickByText("Save");
 
@@ -81,7 +81,7 @@ describe("CategoryFormContainer", () => {
           payload: { ...mockCategory, title: updatedTitle },
         },
         { type: "ALERT", payload: "Saved" },
-      ])
+      ]),
     );
     await waitFor(() => expect(mockHandleCloseDialog).toHaveBeenCalledTimes(1));
     await waitFor(() =>
@@ -91,7 +91,7 @@ describe("CategoryFormContainer", () => {
           oldCategoryTitle: mockCategory.title,
           newCategoryTitle: updatedTitle,
         },
-      })
+      }),
     );
   });
 });

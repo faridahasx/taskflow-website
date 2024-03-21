@@ -1,87 +1,82 @@
 .green {
-    background: linear-gradient(120deg, #84fab0, #57d352);
+  background: linear-gradient(120deg, #84fab0, #57d352);
 }
 
 .red {
-    background: linear-gradient(120deg, #ff4b2b, #ff416c);
+  background: linear-gradient(120deg, #ff4b2b, #ff416c);
 }
 
 .yellow {
-    background: linear-gradient(120deg, #fffdba, #fff71e);
+  background: linear-gradient(120deg, #fffdba, #fff71e);
 }
 
 .blue {
-    background: linear-gradient(120deg, #84fab0, #6dcaf8);
+  background: linear-gradient(120deg, #84fab0, #6dcaf8);
 }
 
-
 .color {
-    width: 45px;
-    min-width: 45px;
-    height: auto;
-    position: relative;
+  width: 45px;
+  min-width: 45px;
+  height: auto;
+  position: relative;
 }
 
 .checkbox-icon {
-    position: absolute;
+  position: absolute;
 }
 
-.color-transition .checked {
-    scale: 0;
-    opacity: 0;
-    animation: check forwards 0.5s;
+.checkbox-changed .checked {
+  scale: 0;
+  opacity: 0;
+  animation: check forwards 0.5s;
 }
 
-
-.color-transition .unchecked {
-    animation: uncheck forwards 0.3s;
+.checkbox-changed .unchecked {
+  animation: uncheck forwards 0.3s;
 }
 
-.no-transtion .unchecked {
-    scale: 0;
+.checkbox-initial .unchecked {
+  scale: 0;
 }
-.color-transition .unfilled{
-    opacity: 0;
-    animation: unfilled forwards 0.6s;
+.checkbox-changed .unfilled {
+  opacity: 0;
+  animation: unfilled forwards 0.6s;
 }
 
 @keyframes unfilled {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
-
 @keyframes check {
-    0% {
-        scale: 0;
-        opacity: 0;
-    }
+  0% {
+    scale: 0;
+    opacity: 0;
+  }
 
-    50% {
-        scale: 2;
-        opacity: 0.5;
-    }
+  50% {
+    scale: 2;
+    opacity: 0.5;
+  }
 
-    100% {
-        scale: 1;
-        opacity: 1;
-    }
-
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
 }
 
 @keyframes uncheck {
-    0% {
-        scale: 1;
-        opacity: 1;
-    }
-    100% {
-        scale: 0;
-        opacity: 0;
-    }
-
+  0% {
+    scale: 1;
+    opacity: 1;
+  }
+  100% {
+    scale: 0;
+    opacity: 0;
+  }
 }

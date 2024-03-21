@@ -2,12 +2,12 @@
 import { useEffect, useState } from "react";
 import { createSearchParams, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
+// Utils
+import { axiosWithCredentials } from "utils/axiosInstance";
 // Custom hooks
-import useAuthRequest from "../hooks/useAuthRequest";
-// Assets
-import { axiosWithCredentials } from "../assets/axiosInstance";
+import useMakeServerRequest from "hooks/useMakeServerRequest";
 // Component
-import Search from "../components/Navigation/Search";
+import Search from "components/Navigation/Search";
 
 const SearchContainer = (props) => {
   // Destructuring props
@@ -18,7 +18,7 @@ const SearchContainer = (props) => {
   const [inputValue, setInputValue] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   // Custom hook for handling authenticated requests and loading state
-  const { executeAuthRequest, loading } = useAuthRequest();
+  const { executeServerRequest, loading } = useMakeServerRequest();
 
   // Function to handle form submission
   const handleSubmit = (e) => {
@@ -68,7 +68,7 @@ const SearchContainer = (props) => {
       if (!ignore.value) setSearchResults(res.data);
     };
     // Triggering data fetching only if inputValue is not empty
-    inputValue && executeAuthRequest({callback: fetchData, errorMessage:null});
+    inputValue && executeServerRequest({ callback: fetchData });
     // Cleanup function to avoid state updates on an unmounted component
     return () => (ignore.value = true);
     // eslint-disable-next-line
@@ -77,13 +77,12 @@ const SearchContainer = (props) => {
   // Rendering Search component with necessary props
   return (
     <Search
-      handleSubmit={handleSubmit}
-      handleInputChange={handleInputChange}
-      searchResults={searchResults}
       inputValue={inputValue}
       loading={loading}
-      setInputValue={setInputValue}
+      searchResults={searchResults}
+      handleInputChange={handleInputChange}
       handleLinkClick={handleLinkClick}
+      handleSubmit={handleSubmit}
       handleClose={handleClose}
       handleClear={handleClear}
     />

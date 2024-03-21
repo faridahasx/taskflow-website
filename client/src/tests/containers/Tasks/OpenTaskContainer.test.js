@@ -34,7 +34,7 @@ describe("OpenTaskContainer", () => {
               handleCloseOpenedTask={jest.fn()}
             />
           </TasksDispatchContext.Provider>
-        </Provider>
+        </Provider>,
       );
     });
 
@@ -49,7 +49,7 @@ describe("OpenTaskContainer", () => {
             _id: mockTask._id,
             description: mockFetchedData.data.description,
           },
-        })
+        }),
       );
     });
     it("should not dispatch any data", async () => {
@@ -68,7 +68,7 @@ describe("OpenTaskContainer", () => {
             handleCloseOpenedTask={jest.fn()}
           />
         </TasksDispatchContext.Provider>
-      </Provider>
+      </Provider>,
     );
 
     // Assertions

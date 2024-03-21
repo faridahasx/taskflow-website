@@ -1,19 +1,19 @@
 import PropTypes from "prop-types";
 // Custom hooks
-import useKeyDownListener from "../../hooks/useKeyDownListener";
+import useKeyDownListener from "hooks/useKeyDownListener";
 // Components
-import CloseButton from "../IconButtons/CloseButton";
+import CloseButton from "components/IconButtons/CloseButton";
 // Styles
 import "./SortAndFiltersWrapper.css";
 
 const SortAndFiltersWrapper = (props) => {
   // Destructuring props
   const {
-    children,
-    handleClose,
-    heading,
-    containerRef,
     className = "",
+    heading,
+    children,
+    containerRef,
+    handleClose,
   } = props;
 
   // Handle Escape and Enter key press
@@ -37,11 +37,11 @@ const SortAndFiltersWrapper = (props) => {
 };
 
 SortAndFiltersWrapper.propTypes = {
+  heading: PropTypes.string.isRequired,
+  className: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.elementType, PropTypes.object])
     .isRequired,
   handleClose: PropTypes.func.isRequired,
-  heading: PropTypes.string.isRequired,
-  className: PropTypes.string,
 };
 
 export default SortAndFiltersWrapper;

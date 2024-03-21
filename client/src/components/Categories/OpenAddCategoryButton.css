@@ -1,15 +1,14 @@
 /* Add Category */
 #add-category {
-    width: 100%;
-    font-size: 16px;
-    border-radius: 10px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 10px;
 }
 
 #add-category:hover {
-    background-color: rgba(0, 0, 0, 0.263);
+  background-color: rgba(0, 0, 0, 0.263);
 }
 
 #add-category span {
-    padding-right: 10px;
-
+  padding-right: 10px;
 }

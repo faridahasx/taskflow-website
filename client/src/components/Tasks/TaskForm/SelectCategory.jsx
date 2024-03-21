@@ -8,21 +8,21 @@ import MenuItem from "@mui/material/MenuItem";
 
 const SelectCategory = (props) => {
   // Destructure props
-  const { handleInputChange, category, categories } = props;
+  const { category, categories, handleInputChange } = props;
 
   return (
     <FormControl sx={{ width: "100%" }}>
       <InputLabel id="category">Category</InputLabel>
       <Select
         id="category"
-        labelId="category"
-        value={category || "All"}
         name="category"
+        value={category || "All"}
         label="category"
+        labelId="category"
         onChange={handleInputChange}
       >
         {categories.map((cat) => (
-          <MenuItem value={cat.title} key={cat._id}>
+          <MenuItem key={cat._id} value={cat.title}>
             {cat.title}
           </MenuItem>
         ))}

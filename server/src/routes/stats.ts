@@ -17,7 +17,7 @@ router.get("/", auth, async (req: Request, res: Response) => {
 
     const filters = getFilters(
       reqQuery,
-      new mongoose.Types.ObjectId(user.userId)
+      new mongoose.Types.ObjectId(user.userId),
     );
 
     const stats = await Task.aggregate([

@@ -10,6 +10,6 @@ export const validateCategories = (selectedCategories, categories) => {
   if (!selectedCategories) return [];
   // Filter selectedCategories to only include only those present in the list of categories
   return selectedCategories.filter(
-    (s) => categories.findIndex((c) => c.title === s) > -1
+    (s) => categories.findIndex((c) => c.title === s) > -1,
   );
 };

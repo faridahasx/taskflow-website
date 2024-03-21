@@ -26,7 +26,7 @@ describe("DeleteCategoryContainer", () => {
             handleCloseDialog={mockHandleCloseDialog}
           />
         </TasksDispatchContext.Provider>
-      </Provider>
+      </Provider>,
     );
     clickByText("Delete");
     const actions = store.getActions();
@@ -39,14 +39,14 @@ describe("DeleteCategoryContainer", () => {
           payload: mockCategory,
         },
         { type: "ALERT", payload: "Category deleted" },
-      ])
+      ]),
     );
     await waitFor(() => expect(mockHandleCloseDialog).toHaveBeenCalledTimes(1));
     await waitFor(() =>
       expect(mockDispatchTasks).toHaveBeenCalledWith({
         type: "delete_category",
         payload: mockCategory.title,
-      })
+      }),
     );
   });
 });

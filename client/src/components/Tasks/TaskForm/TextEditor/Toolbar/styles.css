@@ -8,14 +8,13 @@
   position: sticky;
   width: 100%;
   top: 0;
-  z-index: 1000;
+  z-index: 500;
 }
 
 .toolbar-items-group-contrainer {
   display: flex;
-  border-right: 1px solid rgba(0, 0, 0, 0.150);
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
 }
-
 
 .toolbar button.toolbar-item {
   min-width: 40px;
@@ -35,8 +34,6 @@
   cursor: auto;
 }
 
-
-
 .toolbar .toolbar-item:hover:not([disabled]) {
   background-color: #eee;
 }
@@ -51,7 +48,6 @@
 
 .toolbar button.text:nth-child(1) {
   font-size: 25px;
-
 }
 
 .toolbar button.text:nth-child(2) {

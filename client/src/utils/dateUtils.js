@@ -16,7 +16,7 @@ const dateFormatOptions = {
 // Function to format a given date using specified format options
 export const formatDateTime = (date) =>
   new Intl.DateTimeFormat("en-US", dateTimeFormatOptions).format(
-    new Date(date)
+    new Date(date),
   );
 
 export const formatDate = (date) =>
@@ -26,6 +26,6 @@ export const formatDate = (date) =>
 export const getDateWithNDaysOfDifference = (n) => {
   const today = new Date();
   return new Date(
-    new Date(today.setDate(today.getDate() + n)).setHours(0)
+    new Date(today.setDate(today.getDate() + n)).setHours(0),
   ).setMinutes(0);
 };

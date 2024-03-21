@@ -17,7 +17,7 @@ test("Filters snapshot", () => {
       handleRadioGroupChange={mockFn}
       handleClear={mockFn}
       categories={categoriesSample}
-    />
+    />,
   );
   expect(asFragment()).toMatchSnapshot("Filters");
 });

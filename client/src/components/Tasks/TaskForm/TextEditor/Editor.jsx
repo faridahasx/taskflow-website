@@ -36,13 +36,12 @@ const editorConfig = {
 const Editor = ({ description, handleSetDescription }) => {
   return (
     <LexicalComposer initialConfig={editorConfig}>
-      <div className="editor-container">
+      <div aria-label="Description" className="editor-container">
         <HtmlPlugin
           initialHtml={description}
           onHtmlChanged={handleSetDescription}
         />
         <ToolbarPlugin />
-
         <div id="editor" className="editor-inner">
           <RichTextPlugin
             contentEditable={<ContentEditable />}

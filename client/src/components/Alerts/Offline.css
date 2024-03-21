@@ -6,11 +6,12 @@
   padding: 1px 0;
   background-color: rgb(38, 38, 38);
   color: white;
-  box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.47), 0 0px 2px 0 rgb(0, 0, 0);
+  box-shadow:
+    0 4px 8px -2px rgba(0, 0, 0, 0.47),
+    0 0px 2px 0 rgb(0, 0, 0);
   pointer-events: none;
 }
 
 #offline span {
-  
   padding-right: 10px;
 }

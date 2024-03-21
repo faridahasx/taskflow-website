@@ -1,7 +1,7 @@
 import CircularLoading from "./CircularLoading";
-import Modal from "../Modal/Modal";
+import Modal from "components/Modal/Modal";
 
-const LoadingModal = ({ handleClose }) => {
+const ModalLoading = ({ handleClose }) => {
   return (
     <Modal handleClose={handleClose}>
       <CircularLoading />
@@ -9,4 +9,4 @@ const LoadingModal = ({ handleClose }) => {
   );
 };
 
-export default LoadingModal;
+export default ModalLoading;

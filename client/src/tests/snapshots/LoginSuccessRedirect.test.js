@@ -10,7 +10,7 @@ test("LoginSuccessRedirect snapshot", () => {
       <Provider store={mockStore(mockInitialState)}>
         <LoginSuccessRedirect />
       </Provider>
-    </BrowserRouter>
+    </BrowserRouter>,
   );
   expect(asFragment()).toMatchSnapshot("LoginSuccessRedirect");
 });

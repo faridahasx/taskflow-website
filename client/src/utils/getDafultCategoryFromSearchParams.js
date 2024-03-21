@@ -1,4 +1,4 @@
-const getDafultCategory = (categories) => {
+const getDafultCategoryFromSearchParams = (categories) => {
   const searchParams = new URLSearchParams(window.location.search);
 
   const categoriesFromURL = searchParams.get("categories")?.split(",");
@@ -12,4 +12,4 @@ const getDafultCategory = (categories) => {
   return "All";
 };
 
-export default getDafultCategory;
+export default getDafultCategoryFromSearchParams;

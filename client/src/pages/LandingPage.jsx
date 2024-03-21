@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Logo from "../components/Logo/Logo";
-import AuthDialog from "../components/Auth/AuthDialog";
-import SubmitButton from "../components/TextButtons/SubmitButton";
+import Logo from "components/Logo/Logo";
+import AuthDialog from "components/Auth/AuthDialog";
+import SubmitButton from "components/TextButtons/SubmitButton";
 import "./LandingPage.css";
 
 const LandingPage = () => {
@@ -13,14 +13,11 @@ const LandingPage = () => {
     <main id="landing-page">
       <Logo />
       <h1 id="lp-h1" className="center">
-        Elevate your productivity with TaskFlow: your personalized task
-        management tool.
+        Elevate your productivity with TaskFlow.
       </h1>
-      <p id="lp-p">
-        Try TaskFlow today and excel at your tasks like never before!
-      </p>
+      <p id="lp-p">Try it today and excel at your tasks like never before!</p>
       <SubmitButton
-        id='lp-btn'
+        id="lp-btn"
         buttonText="Get Started"
         onClick={toggleDisplayAuthDialog}
       />

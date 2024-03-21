@@ -1,5 +1,6 @@
 // External imports
 import { Component } from "react";
+import { UNKNOWN_ERROR } from "constants/alertMessages";
 // Components
 import ExceptionContainer from "./ExceptionContainer";
 
@@ -26,7 +27,7 @@ export default class ErrorBoundary extends Component {
   render() {
     // Render the Error compoment if there's an error
     if (this.state.hasError) {
-      return <ExceptionContainer message="Something went wrong." />;
+      return <ExceptionContainer message={UNKNOWN_ERROR} />;
     }
 
     // Render children components if no error occured

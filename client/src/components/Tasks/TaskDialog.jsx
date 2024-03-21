@@ -1,21 +1,21 @@
 // External imports
 import PropTypes from "prop-types";
 // Components
-import Modal from "../Modal/Modal";
-import CloseButton from "../IconButtons/CloseButton";
+import Modal from "components/Modal/Modal";
+import CloseButton from "components/IconButtons/CloseButton";
 // Styles
 import "./TaskDialog.css";
 
 const TaskDialog = (props) => {
   // Destructure props
-  const { children, handleBackgroundClick, handleCloseClick, SecondButton } =
+  const { children, RightButton, handleBackgroundClick, handleCloseClick } =
     props;
   return (
-    <Modal handleClose={handleBackgroundClick} className=" task-modal">
+    <Modal className="task-modal" handleClose={handleBackgroundClick}>
       <div className="task-dialog">
         <div className="flex task-dialog-top">
-          <CloseButton onClick={handleCloseClick} />
-          {SecondButton}
+          <CloseButton onClick={handleCloseClick} type="button" />
+          {RightButton}
         </div>
         {children}
       </div>
@@ -25,7 +25,7 @@ const TaskDialog = (props) => {
 
 TaskDialog.propTypes = {
   children: PropTypes.any.isRequired,
-  SecondButton: PropTypes.oneOfType([PropTypes.elementType, PropTypes.object])
+  RightButton: PropTypes.oneOfType([PropTypes.elementType, PropTypes.object])
     .isRequired,
   handleBackgroundClick: PropTypes.func.isRequired,
   handleCloseClick: PropTypes.func.isRequired,

@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 // MUI components
 import { Add } from "@mui/icons-material";
 // Custom hooks
-import useScrollDirection from "../../hooks/useScrollDirection";
+import useScrollDirection from "hooks/useScrollDirection";
 // Components
-import FiltersShortCutContainer from "../../containers/Tasks/FiltersShortCutContainer";
-import IconButton from "../IconButtons/IconButton";
-import SearchNav from "../NavigationItem/SearchNav";
-import FiltersNav from "../NavigationItem/FiltersNav";
-import SortNav from "../NavigationItem/SortNav";
+import FiltersShortCutContainer from "containers/Tasks/FiltersShortCutContainer";
+import IconButton from "components/IconButtons/IconButton";
+import SearchNav from "components/NavigationItem/SearchNav";
+import FiltersNav from "components/NavigationItem/FiltersNav";
+import SortNav from "components/NavigationItem/SortNav";
 // Styles
 import "./Navigation.css";
 
@@ -37,10 +37,10 @@ const Navigation = (props) => {
             </li>
           </ul>
           <IconButton
-            Icon={<Add />}
+            className="add-task-btn"
             title="Add task"
             onClick={handleToggleOpenTaskForm}
-            className="add-task-btn"
+            Icon={<Add />}
           />
         </div>
         <FiltersShortCutContainer />

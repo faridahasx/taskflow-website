@@ -5,6 +5,7 @@ import "./OpenAddCategoryButton.css";
 const OpenAddCategoryButton = ({ onClick }) => {
   return (
     <button
+      aria-label="Add new category"
       id="add-category"
       className="center"
       title="Add new category"

@@ -1,33 +1,33 @@
 // MUI Components
 import { LogoutTwoTone } from "@mui/icons-material";
 // Custom hooks
-import useClearCredentials from "../hooks/useClearCredentials";
-// Assets
-import { axiosWithCredentials } from "../assets/axiosInstance";
+import useClearCredentials from "hooks/useClearCredentials";
+// Utils
+import { axiosWithCredentials } from "utils/axiosInstance";
 // Components
-import IconButton from "../components/IconButtons/IconButton";
-import { useState } from "react";
-import CircularLoading from "../components/Loading/CircularLoading";
+import IconButton from "components/IconButtons/IconButton";
+import CircularLoading from "components/Loading/CircularLoading";
+import useMakeServerRequest from "hooks/useMakeServerRequest";
 
 const LogoutButtonContainer = () => {
-  const [loading, setLoading] = useState(false);
+  const { executeServerRequest, loading } = useMakeServerRequest();
 
   const clearCredentials = useClearCredentials();
   const handleLogout = async () => {
-    setLoading(true);
-    try {
-      await axiosWithCredentials.post("/auth/logout");
-      clearCredentials();
-    } catch (err) {}
-    setLoading(true);
+    executeServerRequest({
+      callback: async () => {
+        await axiosWithCredentials.post("/auth/logout");
+        clearCredentials();
+      },
+    });
   };
 
   return (
     <IconButton
-      Icon={loading ? <CircularLoading /> : <LogoutTwoTone />}
-      onClick={handleLogout}
-      disabled={loading}
       title="Sign Out"
+      onClick={handleLogout}
+      Icon={loading ? <CircularLoading /> : <LogoutTwoTone />}
+      disabled={loading}
     />
   );
 };

@@ -1,46 +1,46 @@
 #tasks-wrapper {
-    width: 100%;
-    background-color: var(--light-grey);
-    overflow: hidden;
+  width: 100%;
+  background-color: var(--light-grey);
+  overflow: hidden;
 }
 
 #tasks {
-    width: 100vw;
-    min-width: var(--min-width);
-    min-height: calc(var(--vh) - 130px);
-    padding-top: 150px;
-    background-color: var(--light-grey);
-    align-items: center;
+  width: 100vw;
+  min-width: var(--min-width);
+  min-height: calc(var(--vh) - 130px);
+  padding-top: 150px;
+  background-color: var(--light-grey);
+  align-items: center;
 }
 
 #tasks-list {
-    width: 100%;
-    align-items: center;
+  width: 100%;
+  align-items: center;
 }
 
 #loading-tasks {
-    width: 100%;
+  width: 100%;
 }
 
 .tasks-empty {
-    width: 100%;
-    height: calc(var(--vh) - 280px);
+  width: 100%;
+  height: calc(var(--vh) - 280px);
 }
 
 @media all and (max-width: 444px) {
-    #tasks {
-        padding-top: 170px;
-    }
+  #tasks {
+    padding-top: 170px;
+  }
 }
 
 @media all and (min-width: 900px) {
-    #tasks-wrapper {
-        justify-content: center;
-        align-items: center;
-    }
+  #tasks-wrapper {
+    justify-content: center;
+    align-items: center;
+  }
 
-    #tasks {
-        width: 80vw;
-        padding-top: 100px;
-    }
+  #tasks {
+    width: 80vw;
+    padding-top: 100px;
+  }
 }

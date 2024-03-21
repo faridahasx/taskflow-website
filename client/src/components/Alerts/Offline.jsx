@@ -5,11 +5,9 @@ import "./Offline.css";
 
 const Offline = () => {
   return (
-    <div id="offline" className="center">
-      <span className="center">
-        <WifiOffIcon
-          style={{ fontSize: "20px" }}
-        />
+    <div role="status" aria-live="assertive" id="offline" className="center">
+      <span aria-hidden="true" className="center">
+        <WifiOffIcon style={{ fontSize: "20px" }} />
       </span>
       Not connected to the internet
     </div>

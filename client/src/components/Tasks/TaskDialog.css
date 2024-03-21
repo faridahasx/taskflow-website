@@ -1,43 +1,42 @@
 .task-dialog {
-    width: 100vw;
-    min-width: var(--min-width);
-    height: var(--vh);
-    min-height: var(--vh);
-    overflow: auto;
-    cursor: auto;
-    background-color: rgb(255, 255, 255);
-    padding: 0 20px;
+  width: 100vw;
+  min-width: var(--min-width);
+  height: var(--vh);
+  min-height: var(--vh);
+  overflow: auto;
+  cursor: auto;
+  background-color: rgb(255, 255, 255);
+  padding: 0 20px;
 }
 
 .task-dialog::-webkit-scrollbar-track {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
 .task-dialog-top {
-    padding-top: 2px;
-    justify-content: space-between;
+  padding-top: 2px;
+  justify-content: space-between;
 }
 
 .task-dialog-title {
-    font-weight: 600;
-    letter-spacing: 1px;
-    width: 100%;
-    min-height: 42px;
-    border-radius: 7px;
-    border: 1px solid rgb(234, 234, 234);
+  font-weight: 600;
+  letter-spacing: 1px;
+  width: 100%;
+  min-height: 42px;
+  border-radius: 7px;
+  border: 1px solid rgb(234, 234, 234);
 }
 
-
 @media all and (min-width: 900px) and (min-height: 500px) {
-    .task-dialog-top {
-        padding-top: 0;
-    }
+  .task-dialog-top {
+    padding-top: 0;
+  }
 
-    .task-dialog {
-        padding: 15px 20px;
-        border-radius: 7px;
-        width: 80vw;
-        height: calc((var(--vh) / 100) * 88);
-        min-height: calc((var(--vh) / 100) * 88);
-    }
+  .task-dialog {
+    padding: 15px 20px;
+    border-radius: 7px;
+    width: 80vw;
+    height: calc((var(--vh) / 100) * 88);
+    min-height: calc((var(--vh) / 100) * 88);
+  }
 }

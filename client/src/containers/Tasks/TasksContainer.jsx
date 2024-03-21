@@ -1,17 +1,17 @@
 // External imports
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-// Assets
-import { axiosWithCredentials } from "../../assets/axiosInstance";
+// Utils
+import { axiosWithCredentials } from "utils/axiosInstance";
+import { getTasksRequestQueryFromURL } from "utils/tasksURLSearchParamsUtils";
+import { FETCH_TASKS_FAILED } from "constants/alertMessages";
 // Custom hooks
-import useElementOnScreen from "../../hooks/useElementOnScreen";
-import useAuthRequest from "../../hooks/useAuthRequest";
-// Utilities
-import { getTasksRequestQueryFromURL } from "../../utils/tasksURLSearchParamsUtils";
+import useElementOnScreen from "hooks/useElementOnScreen";
+import useMakeServerRequest from "hooks/useMakeServerRequest";
 // Context
-import { TasksContext, TasksDispatchContext } from "../../context/TaskContext";
+import { TasksContext, TasksDispatchContext } from "context/TaskContext";
 // Component
-import Tasks from "../../components/Tasks/Tasks";
+import Tasks from "components/Tasks/Tasks";
 
 // Set the limit for tasks fetched at a time
 const fetchLimit = 9;
@@ -20,8 +20,8 @@ const TasksContainer = () => {
   // React Router hook to get the current location
   const location = useLocation();
   // Custom hook for handling authenticated requests
-  const { executeAuthRequest, loading, isOnline, error, handleTryAgain } =
-    useAuthRequest();
+  const { executeServerRequest, loading, isOnline, error, handleTryAgain } =
+    useMakeServerRequest();
   // Contexts and dispatch functions
   const tasks = useContext(TasksContext);
   const dispatchTasks = useContext(TasksDispatchContext);
@@ -64,10 +64,10 @@ const TasksContainer = () => {
   useEffect(() => {
     const ignore = { value: false };
     const queryStringFromURL = getTasksRequestQueryFromURL();
-    executeAuthRequest({
+    executeServerRequest({
       callback: fetchTasks,
       callbackArgs: [ignore, queryStringFromURL, 0],
-      errorMessage: "Failed to fetch tasks",
+      fallbackErrorMessage: FETCH_TASKS_FAILED,
     });
     setRequestQuery({ page: 0, queryString: queryStringFromURL });
 
@@ -89,10 +89,10 @@ const TasksContainer = () => {
         !loading &&
         !error &&
         loadMore &&
-        executeAuthRequest({
+        executeServerRequest({
           callback: fetchTasks,
           callbackArgs: [ignore, queryStringFromState, requestQuery.page],
-          errorMessage: null,
+          fallbackErrorMessage: FETCH_TASKS_FAILED,
         });
     };
     fetchMoreData();
@@ -115,7 +115,6 @@ const TasksContainer = () => {
   // Render the Tasks component
   return (
     <Tasks
-      key={tasks}
       tasks={tasks}
       loadingRef={loadingRef}
       isTransitioning={isTransitioning}

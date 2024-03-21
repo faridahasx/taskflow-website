@@ -1,49 +1,46 @@
 #filters-form {
-    width: calc(100vw - 50px);
-    max-width: 550px;
-    min-width: calc(var(--min-width) - 50px);
-    max-height: calc(var(--vh) - 100px);
-    overflow: hidden;
+  width: calc(100vw - 50px);
+  max-width: 550px;
+  min-width: calc(var(--min-width) - 50px);
+  max-height: calc(var(--vh) - 100px);
+  overflow: hidden;
 }
 
 #filters-form-fields {
-    padding: 10px;
-    max-height: calc(var(--vh) - 200px);
-    overflow: auto;
+  padding: 10px;
+  max-height: calc(var(--vh) - 200px);
+  overflow: auto;
 }
 
-
 #category-filter-label {
-    padding: 5px 10px;
-    color: rgb(63, 63, 63);
+  padding: 5px 10px;
+  color: rgb(63, 63, 63);
 }
 
 #target-label {
-    padding: 10px;
-    color: rgb(63, 63, 63);
+  padding: 10px;
+  color: rgb(63, 63, 63);
 }
 
 #date-filter {
-    width: 100%;
+  width: 100%;
 }
 
-
 #completed-filters label {
-    width: 100%;
-    padding: 0 10px;
+  width: 100%;
+  padding: 0 10px;
 }
 
 #completed-filters label,
 #completed-filters input {
-    color: rgb(63, 63, 63);
+  color: rgb(63, 63, 63);
 }
 
 /* Bottom */
 #filters-bottom {
-    padding: 10px;
+  padding: 10px;
 }
 
 #filters-bottom button:first-child {
-    font-weight: 500;
-
+  font-weight: 500;
 }

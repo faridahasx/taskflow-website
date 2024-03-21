@@ -16,7 +16,7 @@ const useScrollDirection = (offset = 0) => {
     const handleScroll = () => {
       // Determine scroll direction based on offset and scroll position changes
       setScrollDirection(
-        scrollY > offset && scrollY > prevScrollPosition ? "scroll-down" : ""
+        scrollY > offset && scrollY > prevScrollPosition ? "scroll-down" : "",
       );
       // Update the previous scroll position
       setPrevScrollPosition(scrollY);

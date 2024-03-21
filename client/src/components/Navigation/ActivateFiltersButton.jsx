@@ -1,17 +1,21 @@
 // External imports
 import PropTypes from "prop-types";
+// Styles
 import "./ActivateFiltersButton.css";
 
-const ActivateFiltersButton = ({ handleClick, buttonTxt, value, isActive }) => {
+const ActivateFiltersButton = (props) => {
+  // Destructure props
+  const { buttonTxt, value, isActive, handleClick } = props;
   const onClick = () => handleClick(value);
 
   return (
     <button
+      aria-label={`${buttonTxt} Tasks`}
       className={`center activate-filter-btn ${
         isActive ? "active" : "inactive"
       }-filter`}
-      onClick={onClick}
       title={`${buttonTxt} tasks`}
+      onClick={onClick}
     >
       {buttonTxt}
     </button>
@@ -19,9 +23,9 @@ const ActivateFiltersButton = ({ handleClick, buttonTxt, value, isActive }) => {
 };
 
 ActivateFiltersButton.propTypes = {
-  handleClick: PropTypes.func.isRequired,
   buttonTxt: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   isActive: PropTypes.bool.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 export default ActivateFiltersButton;

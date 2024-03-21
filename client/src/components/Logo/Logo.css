@@ -1,17 +1,17 @@
 .logo {
-    min-width: 40px;
-    min-height: 40px;
-    color: rgb(40, 90, 40);
+  min-width: 40px;
+  min-height: 40px;
+  color: rgb(40, 90, 40);
 }
 
-#logo-icon{
-    font-size: larger;
+#logo-icon {
+  font-size: larger;
 }
 
 .logo-task {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 .logo-flow {
-    font-weight: 600;
+  font-weight: 600;
 }

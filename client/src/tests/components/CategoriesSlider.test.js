@@ -20,7 +20,7 @@ describe("CategoriesSlider", () => {
             setCategoriesOpen={mockSetCategoriesOpen}
             handleLinkClick={mockFn}
           />
-        </BrowserRouter>
+        </BrowserRouter>,
       );
     });
 
@@ -47,7 +47,7 @@ describe("CategoriesSlider", () => {
             setCategoriesOpen={mockSetCategoriesOpen}
             handleLinkClick={mockFn}
           />
-        </BrowserRouter>
+        </BrowserRouter>,
       );
       expect(container).toHaveClass("categories-slider-open");
     });
@@ -70,7 +70,7 @@ describe("CategoriesSlider", () => {
             setCategoriesOpen={mockSetCategoriesOpen}
             handleLinkClick={mockFn}
           />
-        </BrowserRouter>
+        </BrowserRouter>,
       );
     });
 

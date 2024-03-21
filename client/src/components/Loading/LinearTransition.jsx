@@ -1,9 +1,9 @@
 import { LinearProgress } from "@mui/material";
 import "./LinearTransition.css";
 
-const LinearTransition = () => {
+const LinearTransition = (props) => {
   return (
-    <div className="linear-transiton" data-testid="linear-transiton">
+    <div data-testid="linear-transiton" className="linear-transiton" {...props}>
       <LinearProgress />
     </div>
   );

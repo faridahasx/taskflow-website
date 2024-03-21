@@ -2,39 +2,39 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+// Utils
+import { formatTaskAnalytics } from "utils/formatTaskAnalytics";
+import { getTaskAnalyticsRequestQueryFromURL } from "utils/tasksURLSearchParamsUtils";
+import { axiosWithCredentials } from "utils/axiosInstance";
+import { UNKNOWN_ERROR } from "constants/alertMessages";
 // Custom hooks
-import useAuthRequest from "../hooks/useAuthRequest";
-import useNetworkStatus from "../hooks/useNetworkStatus";
-// Utility functions
-import { formatStats } from "../utils/formatStats";
-import { getStatsRequestQueryFromURL } from "../utils/tasksURLSearchParamsUtils";
-// Assets
-import { axiosWithCredentials } from "../assets/axiosInstance";
+import useMakeServerRequest from "hooks/useMakeServerRequest";
+import useNetworkStatus from "hooks/useNetworkStatus";
 // Component
-import StatsWrapper from "../components/Stats/StatsWrapper";
+import TaskAnalytics from "components/TaskAnalytics/TaskAnalytics";
 
-const StatsContainer = () => {
+const TaskAnalyticsContainer = () => {
   // Get the current location object from React Router
   const isLogged = useSelector((state) => state.auth.isLogged);
   const isOnline = useNetworkStatus();
   const location = useLocation();
-  const { executeAuthRequest, loading, error, handleTryAgain } =
-    useAuthRequest();
+  const { executeServerRequest, error, handleTryAgain } =
+    useMakeServerRequest();
   const [defaultDateRange, setDefaultDateRange] = useState({
     start: "",
     end: "",
   });
   const { start, end } = defaultDateRange;
-
-  const [stats, setStats] = useState(null);
+  const [taskAnalytics, setTaksAnalytics] = useState(null);
 
   useEffect(() => {
     // To ignore state updates on an unmounted component
     const ignore = { value: false };
     // Function to fetch statistics data
-    const fetchStats = async () => {
+    const fetchAnalytics = async () => {
       // Extract query parameters from the URL
-      let [queryString, new_start, new_end] = getStatsRequestQueryFromURL();
+      let [queryString, new_start, new_end] =
+        getTaskAnalyticsRequestQueryFromURL();
       // Make a request to the server to fetch statistics
       const res = await axiosWithCredentials.get(`stats?${queryString}`);
 
@@ -46,29 +46,32 @@ const StatsContainer = () => {
       }
 
       if (!ignore.value) {
-        setStats(res.data.length === 0 ? 0 : formatStats(res.data[0]));
+        setTaksAnalytics(
+          res.data.length === 0 ? 0 : formatTaskAnalytics(res.data[0])
+        );
       }
     };
-    console.log(error,'error')
-    // Execute the authenticated request and fetch statistics on component mount
-    !error && executeAuthRequest({ callback: fetchStats });
+    // Execute the authenticated request and fetch analytics on component mount
+    !error &&
+      executeServerRequest({
+        callback: fetchAnalytics,
+        fallbackErrorMessage: UNKNOWN_ERROR,
+      });
     // Cleanup funtion to avoid state updates on an unmounted component
     return () => (ignore.value = true);
     // eslint-disable-next-line
   }, [location, isLogged, isOnline, error]);
 
-  // Render StatsWrapper component with necessary props
+  // Render TaskAnalytics component with necessary props
   return (
-    <StatsWrapper
-      stats={stats}
-      loading={loading}
-      isLogged={isLogged}
+    <TaskAnalytics
       start={start}
       end={end}
+      taskAnalytics={taskAnalytics}
       errorDuringFetch={error}
       handleTryAgain={handleTryAgain}
     />
   );
 };
 
-export default StatsContainer;
+export default TaskAnalyticsContainer;

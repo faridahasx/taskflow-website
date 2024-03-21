@@ -1,5 +1,5 @@
-// This function formats statistics
-export const formatStats = (data) => {
+// This function formats task analyticss
+export const formatTaskAnalytics = (data) => {
   const completedTasks = data["Completed"]; // Number of completed tasks
   const overdue = data["Overdue"];
   const completeRate = `${
@@ -8,7 +8,7 @@ export const formatStats = (data) => {
       : Math.round((completedTasks * 100) / (completedTasks + overdue))
   }%`;
 
-  // Return the formatted statistics
+  // Return the formatted analytics
   return {
     ...data,
     "Complete rate": completeRate,

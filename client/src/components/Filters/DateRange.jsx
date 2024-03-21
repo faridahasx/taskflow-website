@@ -2,10 +2,10 @@ import PropTypes from "prop-types";
 // MUI components
 import InputLabel from "@mui/material/InputLabel";
 // Components
-import DatePicker from "../DatePicker";
+import DatePicker from "components/DatePicker";
 
 const DateRange = (props) => {
-  const { start, end, setStart, setEnd, label } = props;
+  const { label, start, end, setStart, setEnd } = props;
   return (
     <div className="sf-component">
       <InputLabel id="category-filter-label">{label}</InputLabel>
@@ -28,11 +28,11 @@ const DateRange = (props) => {
 };
 
 DateRange.propTypes = {
+  label: PropTypes.string.isRequired,
   start: PropTypes.any,
   end: PropTypes.any,
   setStart: PropTypes.func.isRequired,
   setEnd: PropTypes.func.isRequired,
-  label: PropTypes.string.isRequired,
 };
 
 export default DateRange;

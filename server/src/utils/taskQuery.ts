@@ -1,9 +1,12 @@
-import { IFetchTasksRequestQuery, IFetchTasksFilterQuery} from "../types/taskTypes";
+import {
+  IFetchTasksRequestQuery,
+  IFetchTasksFilterQuery,
+} from "../types/taskTypes";
 import { IUserSchema } from "../types/userTypes";
 
 export const getFilters = (
   query: IFetchTasksRequestQuery,
-  userId: IUserSchema["_id"]
+  userId: IUserSchema["_id"],
 ): IFetchTasksFilterQuery => {
   const {
     category,
@@ -79,7 +82,11 @@ class TasksQuery {
   reqQuery: IFetchTasksRequestQuery;
   userId: IUserSchema["_id"];
 
-  constructor(dbQuery: any, reqQuery: IFetchTasksRequestQuery, userId: IUserSchema["_id"]) {
+  constructor(
+    dbQuery: any,
+    reqQuery: IFetchTasksRequestQuery,
+    userId: IUserSchema["_id"],
+  ) {
     this.dbQuery = dbQuery;
     this.reqQuery = reqQuery;
     this.userId = userId;

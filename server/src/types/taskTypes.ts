@@ -12,14 +12,13 @@ export interface ITaskSchema extends Document {
   completedAt: Date;
 }
 
-export interface IFetchByCategoryRequestQuery{
+export interface IFetchByCategoryRequestQuery {
   in: string;
 }
 
 export interface ISearchRequestQuery {
   regex: string;
 }
-
 
 // IQueryFilter
 export interface IFetchTasksFilterQuery {
@@ -30,7 +29,6 @@ export interface IFetchTasksFilterQuery {
   finishDate?: any;
   $or?: any;
 }
-
 
 // IRequestQuery
 export interface IFetchTasksRequestQuery {

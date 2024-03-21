@@ -1,6 +1,6 @@
-import { TaskProvider } from "../context/TaskContext";
-import Layout from "../components/Layout/Layout";
-import TasksContainer from "../containers/Tasks/TasksContainer";
+import { TaskProvider } from "context/TaskContext";
+import Layout from "components/Layout/Layout";
+import TasksContainer from "containers/Tasks/TasksContainer";
 
 const Home = () => {
   return (

@@ -1,18 +1,26 @@
 // External imports
-import PropTypes from "prop-types";
 import { useMemo } from "react";
+import PropTypes from "prop-types";
 // Styles
 import "./Modal.css";
 
-const Modal = ({ handleClose, children, className }) => {
-  const backgroundClass = useMemo(()=> `modal ${className ? className : ""}`, className)
-  
+const Modal = ({ handleClose, children, className, ...otherProps }) => {
+  const backgroundClass = useMemo(
+    () => `modal ${className ? className : ""}`,
+    [className]
+  );
+
   const handleClick = (e) => {
     e.target.className === backgroundClass && handleClose && handleClose();
   };
 
   return (
-    <div className={backgroundClass} onClick={handleClick}>
+    <div
+      role="dialog"
+      className={backgroundClass}
+      onClick={handleClick}
+      {...otherProps}
+    >
       {children}
     </div>
   );

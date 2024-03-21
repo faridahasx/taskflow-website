@@ -16,7 +16,7 @@ test("Tasks snapshot", () => {
         isTransitioning={false}
         loadMore={false}
       />
-    </BrowserRouter>
+    </BrowserRouter>,
   );
 
   expect(asFragment()).toMatchSnapshot("Tasks");

@@ -23,7 +23,7 @@ describe("Home", () => {
         <BrowserRouter>
           <Home />
         </BrowserRouter>
-      </Provider>
+      </Provider>,
     );
   });
   describe("Navigation", () => {
@@ -39,7 +39,7 @@ describe("Home", () => {
         () => {
           expect(queryByTestId("sort")).toBeInTheDocument();
         },
-        { timeout: 7000 }
+        { timeout: 7000 },
       );
     });
 
@@ -50,7 +50,7 @@ describe("Home", () => {
         () => {
           expect(queryByTestId("search")).toBeInTheDocument();
         },
-        { timeout: 7000 }
+        { timeout: 7000 },
       );
     });
 
@@ -62,7 +62,7 @@ describe("Home", () => {
           fireEvent.change(input, { target: { value: "search" } });
           expect(input).toHaveValue("search");
         },
-        { timeout: 7000 }
+        { timeout: 7000 },
       );
     });
   });

@@ -2,22 +2,22 @@
 import { useEffect } from "react";
 import PropTypes from "prop-types";
 // Components
-import CircularLoading from "../Loading/CircularLoading";
-import EditButton from "../IconButtons/EditButton";
+import CircularLoading from "components/Loading/CircularLoading";
+import EditButton from "components/IconButtons/EditButton";
+import TryAgain from "components/IconButtons/TryAgain";
 import TaskDialog from "./TaskDialog";
 // Styles
 import "./OpenTask.css";
 import "./TaskForm/TextEditor/styles.css";
-import TryAgain from "../IconButtons/TryAgain";
 
 const OpenTask = (props) => {
   // Destructure props
   const {
     task,
-    openEditTaskEditor,
-    handleClickEditTask,
-    handleCloseOpenedTask,
     errorDuringFetch,
+    openEditTaskEditor,
+    handleOpenEditTaskEditor,
+    handleCloseOpenedTask,
     handleTryFetchAgain,
   } = props;
 
@@ -25,16 +25,15 @@ const OpenTask = (props) => {
   useEffect(() => {
     document.body.classList.add("overflow-hidden");
     return () => {
-      !openEditTaskEditor._id &&
-        document.body.classList.remove("overflow-hidden");
+      !openEditTaskEditor && document.body.classList.remove("overflow-hidden");
     };
   }, [openEditTaskEditor]);
 
   return (
     <TaskDialog
+      RightButton={<EditButton onClick={handleOpenEditTaskEditor} />}
       handleBackgroundClick={handleCloseOpenedTask}
       handleCloseClick={handleCloseOpenedTask}
-      SecondButton={<EditButton onClick={handleClickEditTask} />}
     >
       <div className="open-task-wrapper">
         <h1 className="task-dialog-title flex">{task.title}</h1>
@@ -61,11 +60,14 @@ const OpenTask = (props) => {
 
 OpenTask.propTypes = {
   task: PropTypes.object.isRequired,
-  openEditTaskEditor: PropTypes.object,
-  handleClickEditTask: PropTypes.func.isRequired,
+  errorDuringFetch: PropTypes.any,
+  openEditTaskEditor: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.oneOf(null),
+  ]).isRequired,
+  handleOpenEditTaskEditor: PropTypes.func.isRequired,
   handleCloseOpenedTask: PropTypes.func.isRequired,
   handleTryFetchAgain: PropTypes.func,
-  errorDuringFetch: PropTypes.any,
 };
 
 export default OpenTask;

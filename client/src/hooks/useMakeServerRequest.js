@@ -1,34 +1,34 @@
 // External imports
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { NO_INTERNET, UNAUTHORIZED } from "constants/alertMessages";
 // Custom hooks
 import useClearCredentials from "./useClearCredentials";
 import useNetworkStatus from "./useNetworkStatus";
 
 // Custom React hook for handling requests that requires authenticed user
-const useAuthRequest = () => {
+const useMakeServerRequest = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const isOnline = useNetworkStatus();
-  const isLogged = useSelector((state) => state.auth.isLogged);
   const dispatch = useDispatch();
   const clearCredentials = useClearCredentials();
   const handleTryAgain = () => setError(null);
 
-  // Function to execute handling requests that requires authenticed user
-  const executeAuthRequest = async ({
+  // Function to execute handling server requests
+  const executeServerRequest = async ({
     callback,
     callbackArgs = [],
-    successMessage,
-    errorMessage='Something went wrong',
+    successMessage = null,
+    fallbackErrorMessage = null,
   }) => {
     // Check if the user is online before making the request
     if (!isOnline) {
       // Dispatch an alert if there's no internet connection
-      dispatch({ type: "ALERT", payload: "Check your internet connection" });
+      dispatch({ type: "ALERT", payload: NO_INTERNET });
       // Display AuthDialog if the user is not authenticated
-    } else if (isLogged) {
+    } else {
       try {
         // Reset error state if specified
         error && setError(null);
@@ -37,10 +37,9 @@ const useAuthRequest = () => {
         // Execute the callback with provided arguments
         await callback(...callbackArgs);
         // Dispatch success alert if successMessage is provided
-        dispatch({ type: "ALERT", payload: successMessage });
-        // Reset loading state if it was set
+        successMessage && dispatch({ type: "ALERT", payload: successMessage });
       } catch (err) {
-         // Set error state if specified
+        // Set error state if specified
         setError(err);
         // Handle different types of errors
         if (err.response) {
@@ -50,7 +49,7 @@ const useAuthRequest = () => {
             clearCredentials();
             dispatch({
               type: "ALERT",
-              payload: "Please login",
+              payload: UNAUTHORIZED,
             });
           } else if (typeof err.response.data === "string") {
             // Dispatch the error message if it's a string
@@ -58,16 +57,16 @@ const useAuthRequest = () => {
           }
         } else {
           // Dispatch a generic error for other types of errors
-          errorMessage &&
-            dispatch({ type: "ALERT", payload: errorMessage });
+          fallbackErrorMessage &&
+            dispatch({ type: "ALERT", payload: fallbackErrorMessage });
         }
       }
-       // Reset loading state if specified
+      // Reset loading state if specified
       setLoading(false);
     }
   };
   // Return the authentication request function and loading state
-  return { executeAuthRequest, loading, isOnline, error, handleTryAgain };
+  return { executeServerRequest, loading, isOnline, error, handleTryAgain };
 };
 
-export default useAuthRequest;
+export default useMakeServerRequest;

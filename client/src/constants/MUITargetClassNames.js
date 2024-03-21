@@ -1,4 +1,4 @@
-export default [
+const MUITargetClassNames = [
   "PrivateSwitchBase-input",
   "MuiInputBase-input",
   "MuiSvgIcon-root",
@@ -27,3 +27,5 @@ export default [
   "MuiYearCalendar-root",
   "MuiPickersCalendarHeader-labelContainer",
 ];
+
+export default MUITargetClassNames;

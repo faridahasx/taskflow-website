@@ -16,7 +16,7 @@ test("TaskForm snapshot", () => {
       category=""
       categories={categoriesSample}
       loading={false}
-    />
+    />,
   );
 
   expect(asFragment()).toMatchSnapshot("TaskForm");

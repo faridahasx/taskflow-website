@@ -91,7 +91,7 @@ describe("getRequestQueryFromURL", () => {
 
     const result = getTasksRequestQueryFromURL();
     expect(result).toBe(
-      "&search[regex]=query&sort=date&category[in]=cat1,cat2&startgte=2023-01-01&startlte=2023-01-03"
+      "&search[regex]=query&sort=date&category[in]=cat1,cat2&startgte=2023-01-01&startlte=2023-01-03",
     );
   });
 });

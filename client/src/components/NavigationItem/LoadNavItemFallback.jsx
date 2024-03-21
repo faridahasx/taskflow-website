@@ -1,5 +1,5 @@
 // Components
-import CircularLoading from "../Loading/CircularLoading";
+import CircularLoading from "components/Loading/CircularLoading";
 
 const LoadNavItemFallback = () => {
   return (

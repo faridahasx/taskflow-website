@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
 // Components
-import DatePicker from "../../DatePicker";
+import DatePicker from "components/DatePicker";
 import SelectCategory from "./SelectCategory";
 // Styles
 import "./SelectTaskDetails.css";
@@ -10,22 +10,22 @@ import "./SelectTaskDetails.css";
 const SelectTaskDetails = (props) => {
   // Destructure props
   const {
-    handleInputChange,
-    handleSetStartDate,
-    handleSetFinishDate,
-    category,
     startDate,
     finishDate,
+    category,
     categories,
+    handleSetStartDate,
+    handleSetFinishDate,
+    handleInputChange,
   } = props;
 
   return (
     <div id="select-task-details" className="flex">
-      <div className="select-task-detail">
+      <div aria-label="Category" className="select-task-detail">
         <SelectCategory
-          handleInputChange={handleInputChange}
           category={category}
           categories={categories}
+          handleInputChange={handleInputChange}
         />
       </div>
       <div className="select-task-detail">
@@ -51,13 +51,13 @@ const SelectTaskDetails = (props) => {
 };
 
 SelectTaskDetails.propTypes = {
-  handleInputChange: PropTypes.func.isRequired,
-  handleSetStartDate: PropTypes.func.isRequired,
-  handleSetFinishDate: PropTypes.func.isRequired,
-  categories: PropTypes.array.isRequired,
-  category: PropTypes.string.isRequired,
   startDate: PropTypes.instanceOf(dayjs),
   finishDate: PropTypes.instanceOf(dayjs),
+  category: PropTypes.string.isRequired,
+  categories: PropTypes.array.isRequired,
+  handleSetStartDate: PropTypes.func.isRequired,
+  handleSetFinishDate: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
 };
 
 export default SelectTaskDetails;

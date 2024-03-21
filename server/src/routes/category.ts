@@ -128,11 +128,11 @@ router.patch("/:title", auth, async (req: Request, res: Response) => {
 
     const updateCategory = Category.findOneAndUpdate(
       { title: req.params.title, userId: user.userId },
-      { title: newTitle }
+      { title: newTitle },
     );
     const updateTasks = Task.updateMany(
       { category: req.params.title, userId: user.userId },
-      { category: newTitle }
+      { category: newTitle },
     );
 
     Promise.all([updateCategory, updateTasks]).then(([c, t]) => {

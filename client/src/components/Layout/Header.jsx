@@ -7,9 +7,9 @@ import { Close } from "@mui/icons-material";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import MenuIcon from "@mui/icons-material/Menu";
 // Components
-import LogoutButtonContainer from "../../containers/LogoutButtonContainer";
-import IconButton from "../IconButtons/IconButton";
-import Logo from "../Logo/Logo";
+import LogoutButtonContainer from "containers/LogoutButtonContainer";
+import IconButton from "components/IconButtons/IconButton";
+import Logo from "components/Logo/Logo";
 // Styles
 import "./Header.css";
 
@@ -34,9 +34,10 @@ const Header = ({ categoriesOpen, setCategoriesOpen }) => {
     <header id="header" className="flex">
       <span id="header-first" className="flex">
         <IconButton
-          Icon={categoriesOpen ? <Close /> : <MenuIcon />}
-          title={categoriesOpen ? "Close categories" : "Open categories"}
+          aria-label={categoriesOpen ? "Close Categories" : "Open Categories"}
+          title={categoriesOpen ? "Close Categories" : "Open Categories"}
           onClick={handleToggleCategoriesOpen}
+          Icon={categoriesOpen ? <Close /> : <MenuIcon />}
         />
         <Link
           data-testid="header-home-link"
@@ -51,9 +52,9 @@ const Header = ({ categoriesOpen, setCategoriesOpen }) => {
         <Link
           data-testid="header-stats-link"
           className="icon"
-          title="Stats"
-          to="/stats"
-          onClick={(e) => handleLinkNavigation(e, "/stats")}
+          title="Task Analytics"
+          to="/analytics"
+          onClick={(e) => handleLinkNavigation(e, "/analytics")}
         >
           <BarChartIcon />
         </Link>

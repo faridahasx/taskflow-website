@@ -1,39 +1,36 @@
 import PropTypes from "prop-types";
-// MUI components
-import SwapVertIcon from "@mui/icons-material/SwapVert";
 // Constant data
-import sortFields from "../../constants/sortFields";
+import sortFields from "constants/sortFields";
 // Custom hooks
-import useClickOutside from "../../hooks/useClickOutside";
+import useClickOutside from "hooks/useClickOutside";
 // Components
-import Dialog from "../SortAndFiltersWrapper/SortAndFiltersWrapper";
-import SortFieldListItem from "./SortFieldListItem";
+import Dialog from "components/SortAndFiltersWrapper/SortAndFiltersWrapper";
+import SortField from "./SortField";
 // Styles
 import "./Sort.css";
 
 const Sort = (props) => {
   // Destructuring props
-  const { handleClose, handleSorting, sortValue } = props;
+  const { currentSort, handleSorting, handleClose } = props;
   // Ref for handling clicks outside the container
   const containerRef = useClickOutside(handleClose);
 
   // Render compomnent
   return (
     <Dialog
-      handleClose={handleClose}
-      heading={"Sort By"}
-      Icon={<SwapVertIcon />}
       className="sort-dialog"
+      heading={"Sort By"}
       containerRef={containerRef}
+      handleClose={handleClose}
     >
       <ul id="sort-ul" data-testid="sort">
         {sortFields.map((s) => (
-          <SortFieldListItem
-            handleSorting={handleSorting}
-            sortValue={sortValue}
-            value={s.value}
-            name={s.name}
+          <SortField
             key={s.value}
+            name={s.name}
+            value={s.value}
+            currentSort={currentSort}
+            handleSorting={handleSorting}
           />
         ))}
       </ul>
@@ -42,9 +39,9 @@ const Sort = (props) => {
 };
 
 Sort.propTypes = {
-  handleClose: PropTypes.func.isRequired,
+  currentSort: PropTypes.string,
   handleSorting: PropTypes.func.isRequired,
-  sortValue: PropTypes.string,
+  handleClose: PropTypes.func.isRequired,
 };
 
 export default Sort;

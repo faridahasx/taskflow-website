@@ -11,20 +11,32 @@ const SearchResults = (props) => {
   const { searchResults, handleLinkClick } = props;
 
   return (
-    <ul id="search-results" data-testid="search-result">
+    <ul
+      aria-label="Search Results"
+      id="search-results"
+      data-testid="search-result"
+    >
       {searchResults.map((s) => (
         <li key={s._id}>
           <Link
-            onClick={(e) => handleLinkClick(e, s._id, s.title)}
             className="flex"
+            onClick={(e) => handleLinkClick(e, s._id, s.title)}
           >
             <span className="s-icon center">
               <SearchIcon />
             </span>
-            <span className="text-overflow" title={s.title}>
+            <span
+              aria-label="Title of the Task"
+              className="text-overflow"
+              title={s.title}
+            >
               {s.title}
             </span>
-            <span className="text-overflow" title={s.category}>
+            <span
+              aria-label="Category of the Task"
+              className="text-overflow"
+              title={s.category}
+            >
               {s.category}
             </span>
           </Link>

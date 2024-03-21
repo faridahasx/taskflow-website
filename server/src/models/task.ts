@@ -1,7 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { ITaskSchema } from "../types/taskTypes";
 
-
 const taskSchema: Schema = new Schema(
   {
     userId: {
@@ -18,7 +17,7 @@ const taskSchema: Schema = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 export default mongoose.model<ITaskSchema>("Task", taskSchema);

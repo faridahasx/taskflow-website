@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 // Custom hooks
-import useAuthRequest from "../../hooks/useAuthRequest";
-// Assets
-import { axiosWithCredentials } from "../../assets/axiosInstance";
+import useMakeServerRequest from "hooks/useMakeServerRequest";
+// Utils
+import { axiosWithCredentials } from "utils/axiosInstance";
 // Component
-import CategorieSlider from "../../components/Categories/CategoriesSlider";
+import CategorieSlider from "components/Categories/CategoriesSlider";
 
 const CategoriesSliderContainer = (props) => {
   // Destructuring props
@@ -19,8 +19,8 @@ const CategoriesSliderContainer = (props) => {
   // Local state for initial fetch status
   const [initialFetch, setInitialFetch] = useState(false);
   // Custom hook for handling authenticated requests and loading state
-  const { executeAuthRequest, loading, error, handleTryAgain } =
-    useAuthRequest();
+  const { executeServerRequest, loading, error, handleTryAgain } =
+    useMakeServerRequest();
 
   // Effect hook to fetch categories on component mount
   useEffect(() => {
@@ -46,7 +46,7 @@ const CategoriesSliderContainer = (props) => {
     !error &&
       !initialFetch &&
       categories.length < 1 &&
-      executeAuthRequest({ callback: fetchCategories, errorMessage: null });
+      executeServerRequest({ callback: fetchCategories });
   }, [dispatch, initialFetch, categories.length, error]);
 
   // Rendering CategorieSlider component with necessary props
@@ -54,9 +54,9 @@ const CategoriesSliderContainer = (props) => {
     <CategorieSlider
       categories={categories}
       loading={loading}
+      errorDuringFetch={error}
       categoriesOpen={categoriesOpen}
       setCategoriesOpen={setCategoriesOpen}
-      errorDuringFetch={error}
       handleTryAgain={handleTryAgain}
     />
   );

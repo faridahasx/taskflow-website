@@ -6,21 +6,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 // Custom hooks
-import useNetworkStatus from "./hooks/useNetworkStatus";
+import useNetworkStatus from "hooks/useNetworkStatus";
 // Components
-import LoadingPage from "./components/Loading/LoadingPage";
-import ErrorBoundary from "./components/Error/ErrorBoundary";
-import Message from "./components/Alerts/Message";
-import Offline from "./components/Alerts/Offline";
+import PageLoading from "components/Loading/PageLoading";
+import ErrorBoundary from "components/Error/ErrorBoundary";
+import Message from "components/Alerts/Message";
+import Offline from "components/Alerts/Offline";
 // Styles
-import "./assets/globals.css";
+import "assets/globals.css";
 
 // Lazily loaded components
-const Home = lazy(() => import("./pages/Home"));
-const LoginSuccessRedirect = lazy(() => import("./pages/LoginSuccessRedirect"));
-const Stats = lazy(() => import("./pages/Stats"));
-const LandingPage = lazy(() => import("./pages/LandingPage"));
-
+const Home = lazy(() => import("pages/Home"));
+const LoginSuccessRedirect = lazy(() => import("pages/LoginSuccessRedirect"));
+const TaskAnalytics = lazy(() => import("pages/TaskAnalytics"));
+const LandingPage = lazy(() => import("pages/LandingPage"));
 
 function App() {
   // Redux dispatch function
@@ -63,10 +62,30 @@ function App() {
         <Message />
         {!isOnline && <Offline />}
         <ErrorBoundary>
-          <Suspense fallback={<LoadingPage />}>
+          <Suspense fallback={<PageLoading />}>
             <Routes>
-              <Route exact path="/" element={isLogged===false? <LandingPage/>: isLogged===true?<Home />:null}/>
-              <Route exact path="/stats" element={isLogged===false ? <Navigate replace to="/" /> : <Stats />}/>
+              <Route
+                exact
+                path="/"
+                element={
+                  isLogged === false ? (
+                    <LandingPage />
+                  ) : isLogged === true ? (
+                    <Home />
+                  ) : null
+                }
+              />
+              <Route
+                exact
+                path="/analytics"
+                element={
+                  isLogged === false ? (
+                    <Navigate replace to="/" />
+                  ) : (
+                    <TaskAnalytics />
+                  )
+                }
+              />
 
               <Route path="/redirect" element={<LoginSuccessRedirect />} />
               <Route path="*" element={<Navigate to="/" />} />

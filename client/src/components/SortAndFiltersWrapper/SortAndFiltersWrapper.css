@@ -1,29 +1,26 @@
 .sf-wrapper {
-    border-radius: 10px;
-    background-color: rgb(255, 255, 255);
-    box-shadow: var(--box-shadow);
-    padding: 0 5px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: var(--box-shadow);
+  padding: 0 5px;
 }
-
-
 
 .sf-top {
-    z-index: 10;
-    align-items: center;
-    height: 50px;
+  z-index: 10;
+  align-items: center;
+  height: 50px;
 }
-
 
 .sf-component,
 .sf-top {
-    border-bottom: 1px solid var(--light-grey);
+  border-bottom: 1px solid var(--light-grey);
 }
 
 .heading-text {
-    padding-left: 10px;
-    align-items: center;
+  padding-left: 10px;
+  align-items: center;
 }
 
 .sf-component {
-    padding: 10px 0;
+  padding: 10px 0;
 }

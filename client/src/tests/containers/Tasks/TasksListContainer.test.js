@@ -20,8 +20,6 @@ let store;
 let mockDispatchTasks;
 let queryString;
 
-
-
 describe("TasksListContainer", () => {
   beforeEach(() => {
     global.IntersectionObserver = MockIntersectionObserverIntersecting;
@@ -37,15 +35,14 @@ describe("TasksListContainer", () => {
     queryString = getTasksRequestQueryFromURL();
 
     render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <TasksDispatchContext.Provider value={mockDispatchTasks}>
-              <TasksContainer />
-            </TasksDispatchContext.Provider>
-          </Provider>
-        </BrowserRouter>
-      );
-    
+      <BrowserRouter>
+        <Provider store={store}>
+          <TasksDispatchContext.Provider value={mockDispatchTasks}>
+            <TasksContainer />
+          </TasksDispatchContext.Provider>
+        </Provider>
+      </BrowserRouter>,
+    );
   });
 
   it("should make api call with correct query for initial task fetch", async () => {
@@ -54,9 +51,9 @@ describe("TasksListContainer", () => {
     await waitFor(
       () =>
         expect(axiosWithCredentials.get).toHaveBeenCalledWith(
-          `task?page=1&limit=9&${queryString}`
+          `task?page=1&limit=9&${queryString}`,
         ),
-      12000
+      12000,
     );
   });
 
@@ -66,7 +63,7 @@ describe("TasksListContainer", () => {
       expect(mockDispatchTasks).toHaveBeenCalledWith({
         type: "initial_fetch",
         payload: [mockTask],
-      })
+      }),
     );
   });
 
@@ -80,26 +77,26 @@ describe("TasksListContainer", () => {
     await waitFor(() =>
       expect(axiosWithCredentials.get).toHaveBeenNthCalledWith(
         1,
-        `task?page=1&limit=9&${queryString}`
-      )
+        `task?page=1&limit=9&${queryString}`,
+      ),
     );
     await waitFor(() =>
       expect(axiosWithCredentials.get).toHaveBeenNthCalledWith(
         2,
-        `task?page=2&limit=9&${queryString}`
-      )
+        `task?page=2&limit=9&${queryString}`,
+      ),
     );
     await waitFor(() =>
       expect(mockDispatchTasks).toHaveBeenNthCalledWith(1, {
         type: "initial_fetch",
         payload: tasksSample,
-      })
+      }),
     );
     await waitFor(() =>
       expect(mockDispatchTasks).toHaveBeenNthCalledWith(2, {
         type: "fetch_more",
         payload: tasksSample,
-      })
+      }),
     );
   });
 });

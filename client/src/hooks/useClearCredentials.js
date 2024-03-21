@@ -15,7 +15,6 @@ const useClearCredentials = () => {
     dispatch({ type: "IS_LOGGED", payload: false });
     dispatch({ type: "AUTH_DIALOG", payload: true });
     dispatch({ type: "CLEAR_CATEGORIES" });
-
   };
 };
 

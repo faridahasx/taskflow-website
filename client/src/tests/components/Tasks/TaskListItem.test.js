@@ -29,7 +29,7 @@ beforeEach(() => {
         handleDelete={mockFn}
         expandDetailsTaskID={mockTask["_id"]}
         setExpandDetailsTaskID={mockSetExpandDetailsTaskID}
-      />
+      />,
     );
   });
 });

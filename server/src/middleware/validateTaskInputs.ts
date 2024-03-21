@@ -12,7 +12,7 @@ import { AuthenticatedUser } from "../types/userTypes";
 export const validateTaskInputs = async (
   req: Request,
   res: Response,
-  next: any
+  next: any,
 ) => {
   const { title, startDate, finishDate, category } = req.body;
   // Validate title

@@ -1,3 +1,0 @@
-prop types: Button props, children props
-aria lebels
-re-evaluate the timers, they are not very good

@@ -2,15 +2,15 @@ import PropTypes from "prop-types";
 // MUI components
 import CheckIcon from "@mui/icons-material/Check";
 
-const SortFieldListItem = (props) => {
-  const { handleSorting, sortValue, value, name } = props;
+const SortField = (props) => {
+  const { name, value, currentSort, handleSorting } = props;
   const handleClick = () => handleSorting(value);
 
   return (
     <li className="center sf-component">
       <button
         className={`sort-field flex ${
-          sortValue === value ? " sort-field-active" : ""
+          currentSort === value ? " sort-field-active" : ""
         }`}
         title={name}
         onClick={handleClick}
@@ -24,11 +24,11 @@ const SortFieldListItem = (props) => {
   );
 };
 
-SortFieldListItem.propTypes = {
-  handleSorting: PropTypes.func.isRequired,
-  sortValue: PropTypes.string,
-  value: PropTypes.string.isRequired,
+SortField.propTypes = {
   name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  currentSort: PropTypes.string,
+  handleSorting: PropTypes.func.isRequired,
 };
 
-export default SortFieldListItem;
+export default SortField;

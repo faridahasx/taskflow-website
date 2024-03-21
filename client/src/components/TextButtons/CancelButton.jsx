@@ -6,7 +6,6 @@ import "./CancelButton.css";
 const CancelButton = (props) => {
   const { buttonText, ...buttonProps } = props;
 
-
   return (
     <button className="center cancel-btn" title={buttonText} {...buttonProps}>
       {buttonText}

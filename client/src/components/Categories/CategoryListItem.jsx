@@ -5,12 +5,12 @@ import PropTypes from "prop-types";
 // MUI components
 import { MoreVertOutlined } from "@mui/icons-material";
 // Components
-import IconButton from "../IconButtons/IconButton";
+import IconButton from "components/IconButtons/IconButton";
 // Styles
 import "./CategoryListItem.css";
 
 // Lazy-loaded components
-const CategoryControls = lazy(() => import("./CategoryControls"));
+const CategoryActions = lazy(() => import("./CategoryActions"));
 
 const CategoryListItem = (props) => {
   // Destructure props
@@ -36,7 +36,7 @@ const CategoryListItem = (props) => {
   };
 
   return (
-    <li className="category-li flex">
+    <li aria-label="Category" className="category-li flex">
       <Link className="flex text-overflow" to={`/?categories=${title}`}>
         <span className="text-overflow" title={title}>
           {title}
@@ -44,14 +44,15 @@ const CategoryListItem = (props) => {
         <span title={`${tasks} tasks`}>{`(${tasks})`}</span>
       </Link>
       <IconButton
-        Icon={<MoreVertOutlined />}
-        title='More'
-        onClick={handleClickOnShowMore}
+        aria-label="More Category Actions"
         data-testid={`${category.title}-menu`}
+        title="More"
+        onClick={handleClickOnShowMore}
+        Icon={<MoreVertOutlined />}
       />
       {currentDialog === "menu" && currentCategory._id === category._id && (
         <Suspense>
-          <CategoryControls
+          <CategoryActions
             handleCloseDialog={handleCloseDialog}
             handleEditClick={handleEditClick}
             handleDeleteClick={handleDeleteClick}

@@ -17,6 +17,7 @@ const IconButton = (props) => {
 
 IconButton.propTypes = {
   Icon: PropTypes.oneOfType([PropTypes.elementType, PropTypes.object]),
+  className: PropTypes.string,
   buttonProps: PropTypes.object,
 };
 

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import PropTypes from "prop-types";
 // Component
-import Sort from "../components/Sort/Sort";
+import Sort from "components/Sort/Sort";
 
 const SortContainer = (props) => {
   // Destructuring props
@@ -11,14 +11,14 @@ const SortContainer = (props) => {
   // Retrieving search parameters
   const [searchParams, setSearchParams] = useSearchParams();
   // State to keep track of the current sorting value
-  const [sortValue, setSortValue] = useState(
+  const [currentSort, setCurrentSort] = useState(
     searchParams.get("sort") || "startDate:-1"
   );
 
   // Function to handle sorting changes
   const handleSorting = (value) => {
     // Update the local state with the new sorting value
-    setSortValue(value);
+    setCurrentSort(value);
     // Applying the updated searchParams to the URL
     setSearchParams((prevParams) => {
       // Create new instance of URLSearchParams for immutability
@@ -33,9 +33,9 @@ const SortContainer = (props) => {
   // Rendering Sort component with necessary props
   return (
     <Sort
-      handleClose={handleClose}
+      currentSort={currentSort}
       handleSorting={handleSorting}
-      sortValue={sortValue}
+      handleClose={handleClose}
     />
   );
 };

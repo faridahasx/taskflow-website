@@ -1,15 +1,15 @@
 .exception {
-    flex-direction: column;
-    -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-direction: column;
 }
 
 #exception-message-container {
-    height: calc(var(--vh) - 280px);
+  height: calc(var(--vh) - 280px);
 }
 
 #exception-message {
-    padding-top: 20px;
-    text-align: center;
-    color:rgb(54, 52, 52);
-    font-size: 25px;
+  padding-top: 20px;
+  text-align: center;
+  color: rgb(54, 52, 52);
+  font-size: 25px;
 }

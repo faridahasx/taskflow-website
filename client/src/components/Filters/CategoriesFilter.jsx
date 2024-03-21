@@ -34,8 +34,8 @@ const CategoriesFilter = (props) => {
       value[value.length - 1] === "All"
         ? ["All"]
         : value[0] === "All"
-        ? [value[1]]
-        : value;
+          ? [value[1]]
+          : value;
     // Set the updated categories in the state
     setSelectedCategories(updatedCategories);
   };
@@ -45,22 +45,22 @@ const CategoriesFilter = (props) => {
       <InputLabel id="category-filter-label">Select categories:</InputLabel>
       <FormControl sx={{ width: "100%" }}>
         <Select
-          labelId="category-filter-label"
-          displayEmpty
           id="filter-category"
-          multiple
+          labelId="category-filter-label"
           value={selectedCategories}
-          onChange={handleChange}
           renderValue={() => selectedCategories.join(", ")}
+          onChange={handleChange}
           MenuProps={MenuProps}
+          displayEmpty
+          multiple
         >
           {categories.map((c) => (
-            <MenuItem key={c.title} value={c.title} className="portal">
+            <MenuItem key={c.title} className="portal" value={c.title}>
               <Checkbox
-                checked={selectedCategories.indexOf(c.title) > -1}
                 className="portal"
+                checked={selectedCategories.indexOf(c.title) > -1}
               />
-              <ListItemText primary={c.title} className="portal" />
+              <ListItemText className="portal" primary={c.title} />
             </MenuItem>
           ))}
         </Select>

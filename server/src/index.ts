@@ -45,7 +45,7 @@ app.use(
     store: MongoStore.create({
       mongoUrl: DB_URI,
     }),
-  })
+  }),
 );
 app.use(cookieParser());
 
@@ -58,7 +58,7 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", CLIENT_URL);
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+    "Origin, X-Requested-With, Content-Type, Accept",
   );
   next();
 });
@@ -67,7 +67,7 @@ app.use(
     origin: [CLIENT_URL],
     methods: "GET, POST, PUT, DELETE, PATCH",
     credentials: true,
-  })
+  }),
 );
 
 // Routes

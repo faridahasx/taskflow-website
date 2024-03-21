@@ -7,8 +7,6 @@ export interface IUserSchema extends Document {
   password: string;
 }
 
-
 export interface AuthenticatedUser {
   userId: IUserSchema["_id"];
 }
-

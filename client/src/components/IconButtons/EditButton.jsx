@@ -6,13 +6,7 @@ import { Edit } from "@mui/icons-material";
 import IconButton from "./IconButton";
 
 const EditButton = (buttonProps) => {
-  return (
-    <IconButton
-      Icon={<Edit />}
-      title='Close'
-      {...buttonProps}
-    />
-  );
+  return <IconButton Icon={<Edit />} title="Edit" {...buttonProps} />;
 };
 
 EditButton.propTypes = {

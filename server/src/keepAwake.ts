@@ -11,7 +11,7 @@ const job = new CronJob("*/14 * * * * *", () => {
     .get(BASE_URL, (res) => {
       if (res.statusCode !== 200) {
         console.log(
-          `Failed to restart the server with status code: ${res.statusCode}`
+          `Failed to restart the server with status code: ${res.statusCode}`,
         );
       }
     })
