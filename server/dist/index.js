@@ -8,15 +8,15 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const passport_1 = __importDefault(require("./middleware/passport"));
 const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
-const database_1 = __importDefault(require("database"));
-const keepAwake_1 = __importDefault(require("keepAwake"));
-const morgan_1 = __importDefault(require("morgan"));
-const auth_1 = __importDefault(require("routes/auth"));
-const task_1 = __importDefault(require("routes/task"));
-const category_1 = __importDefault(require("routes/category"));
-const stats_1 = __importDefault(require("routes/stats"));
 const express_session_1 = __importDefault(require("express-session"));
 const connect_mongo_1 = __importDefault(require("connect-mongo"));
+const morgan_1 = __importDefault(require("morgan"));
+const auth_1 = __importDefault(require("./routes/auth"));
+const task_1 = __importDefault(require("./routes/task"));
+const category_1 = __importDefault(require("./routes/category"));
+const stats_1 = __importDefault(require("./routes/stats"));
+const database_1 = __importDefault(require("./database"));
+const keepAwake_1 = __importDefault(require("./keepAwake"));
 //
 // ENV
 dotenv_1.default.config();

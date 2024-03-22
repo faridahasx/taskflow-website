@@ -14,9 +14,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const mongoose_1 = __importDefault(require("mongoose"));
-const authVerify_1 = __importDefault(require("middleware/authVerify"));
-const category_1 = __importDefault(require("models/category"));
-const task_1 = __importDefault(require("models/task"));
+const authVerify_1 = __importDefault(require("../middleware/authVerify"));
+const category_1 = __importDefault(require("../models/category"));
+const task_1 = __importDefault(require("../models/task"));
 const responseMessages_1 = require("../constants/responseMessages");
 const router = (0, express_1.Router)();
 // ADD

@@ -2,13 +2,10 @@ import { Request, Response, Router } from "express";
 import passport from "passport";
 import jwt from "jsonwebtoken";
 import CryptoJS from "crypto-js";
-import { createResetPasswordToken } from "utils/auth/createToken";
-import sendEmail from "utils/sendEmail";
-import validateEmail from "utils/auth/validateEmail";
-import generateAndSendAuthTokens from "utils/auth/generateAndSendAuthTokens";
-import category from "models/category";
-import User from "models/user";
-import { IUserSchema } from "types/userTypes";
+import { createResetPasswordToken } from "../utils/auth/createToken";
+import sendEmail from "../utils/sendEmail";
+import validateEmail from "../utils/auth/validateEmail";
+import User from "../models/user";
 import {
   duplicateEmailsError,
   invalidEmailError,
@@ -16,7 +13,10 @@ import {
   missingFields,
   serverError,
   wrongCredentialsError,
-} from "constants/responseMessages";
+} from "../constants/responseMessages";
+import category from "../models/category";
+import generateAndSendAuthTokens from "../utils/auth/generateAndSendAuthTokens";
+import { IUserSchema } from "../types/userTypes";
 
 const router = Router();
 const PASSWORD_SECRET = process.env.PASSWORD_SECRET || "";

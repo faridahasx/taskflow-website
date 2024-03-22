@@ -13,9 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const authVerify_1 = __importDefault(require("middleware/authVerify"));
-const task_1 = __importDefault(require("models/task"));
-const taskQuery_1 = __importDefault(require("utils/taskQuery"));
+const authVerify_1 = __importDefault(require("../middleware/authVerify"));
+const task_1 = __importDefault(require("../models/task"));
+const taskQuery_1 = __importDefault(require("../utils/taskQuery"));
 const responseMessages_1 = require("../constants/responseMessages");
 const validateTaskInputs_1 = require("../middleware/validateTaskInputs");
 const router = (0, express_1.Router)();

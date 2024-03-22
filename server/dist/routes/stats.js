@@ -14,10 +14,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const mongoose_1 = __importDefault(require("mongoose"));
-const authVerify_1 = __importDefault(require("middleware/authVerify"));
-const task_1 = __importDefault(require("models/task"));
-const taskQuery_1 = require("utils/taskQuery");
-const responseMessages_1 = require("constants/responseMessages");
+const authVerify_1 = __importDefault(require("../middleware/authVerify"));
+const task_1 = __importDefault(require("../models/task"));
+const taskQuery_1 = require("../utils/taskQuery");
+const responseMessages_1 = require("../constants/responseMessages");
 const router = (0, express_1.Router)();
 // GET USERS TASK STATS
 router.get("/", authVerify_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {

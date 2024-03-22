@@ -1,8 +1,8 @@
 import {
   IFetchTasksRequestQuery,
   IFetchTasksFilterQuery,
-} from "types/taskTypes";
-import { IUserSchema } from "types/userTypes";
+} from "../types/taskTypes";
+import { IUserSchema } from "../types/userTypes";
 
 export const getFilters = (
   query: IFetchTasksRequestQuery,

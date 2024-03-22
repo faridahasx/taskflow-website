@@ -1,8 +1,8 @@
 import { Router, Request, Response } from "express";
-import auth from "middleware/authVerify";
-import Task from "models/task";
-import TasksQuery from "utils/taskQuery";
-import { AuthenticatedUser } from "types/userTypes";
+import auth from "../middleware/authVerify";
+import Task from "../models/task";
+import TasksQuery from "../utils/taskQuery";
+import { AuthenticatedUser } from "../types/userTypes";
 import {
   deleteSuccess,
   serverError,

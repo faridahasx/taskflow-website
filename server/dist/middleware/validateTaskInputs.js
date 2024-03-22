@@ -13,8 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateTaskInputs = void 0;
-const responseMessages_1 = require("constants/responseMessages");
-const category_1 = __importDefault(require("models/category"));
+const responseMessages_1 = require("../constants/responseMessages");
+const category_1 = __importDefault(require("../models/category"));
 const validateTaskInputs = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { title, startDate, finishDate, category } = req.body;
     // Validate title

@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv_1 = __importDefault(require("dotenv"));
-const responseMessages_1 = require("constants/responseMessages");
-const generateAndSendAuthTokens_1 = __importDefault(require("utils/auth/generateAndSendAuthTokens"));
+const responseMessages_1 = require("../constants/responseMessages");
+const generateAndSendAuthTokens_1 = __importDefault(require("../utils/auth/generateAndSendAuthTokens"));
 dotenv_1.default.config();
 const JWT_REFRESH_TOKEN_SECRET = process.env.JWT_REFRESH_TOKEN_SECRET || "";
 const JWT_ACCESS_TOKEN_SECRET = process.env.JWT_ACCESS_TOKEN_SECRET || "";

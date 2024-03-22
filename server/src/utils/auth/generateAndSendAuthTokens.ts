@@ -1,6 +1,6 @@
 import { Response } from "express";
 import { createRefreshToken, createAccessToken } from "./createToken";
-import { IUserSchema } from "types/userTypes";
+import { IUserSchema } from "../../types/userTypes";
 
 const generateAndSendAuthTokens = (
   res: Response,

@@ -3,15 +3,15 @@ import cookieParser from "cookie-parser";
 import passport from "./middleware/passport";
 import cors from "cors";
 import dotenv from "dotenv";
-import connectDB from "database";
-import keepAwake from "keepAwake";
-import morgan from "morgan";
-import auth from "routes/auth";
-import task from "routes/task";
-import category from "routes/category";
-import stats from "routes/stats";
 import session from "express-session";
 import MongoStore from "connect-mongo";
+import morgan from "morgan";
+import auth from "./routes/auth";
+import task from "./routes/task";
+import category from "./routes/category";
+import stats from "./routes/stats";
+import connectDB from "./database";
+import keepAwake from "./keepAwake";
 //
 
 // ENV

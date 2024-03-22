@@ -1,9 +1,9 @@
 import { Request, Response, Router } from "express";
 import mongoose from "mongoose";
-import auth from "middleware/authVerify";
-import Category from "models/category";
-import Task from "models/task";
-import { AuthenticatedUser } from "types/userTypes";
+import auth from "../middleware/authVerify";
+import Category from "../models/category";
+import Task from "../models/task";
+import { AuthenticatedUser } from "../types/userTypes";
 import {
   categoryNotFound,
   deleteSuccess,

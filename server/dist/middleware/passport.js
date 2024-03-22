@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const passport_1 = __importDefault(require("passport"));
 const crypto_js_1 = __importDefault(require("crypto-js"));
 const passport_google_oauth2_1 = require("passport-google-oauth2");
-const user_1 = __importDefault(require("models/user"));
+const user_1 = __importDefault(require("../models/user"));
 const PASSWORD = process.env.SOCIAL_PASSWORD || "";
 const PASSWORD_SECRET = process.env.PASSWORD_SECRET || "";
 const BASE_URL = process.env.BASE_URL || "";
