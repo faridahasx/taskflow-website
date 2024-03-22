@@ -1,11 +1,14 @@
 import { render, waitFor, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { axiosWithCredentials } from "assets/axiosInstance";
-import { mockStore } from "mocks/mockReduxState";
-import { changeByLabelText, clickByText, pressEnter } from "testUtilities";
-import AuthDialog from "components/Auth/AuthDialog";
-import { MISSING_INPUT_FIELD } from "constants/alertMessages";
+import { axiosWithCredentials } from "../../../assets/axiosInstance";
+import { mockStore } from "../../mocks/mockReduxState";
+import {
+  changeByLabelText,
+  clickByText,
+  pressEnter,
+} from "../../../testUtilities";
+import AuthDialog from "../../../components/Auth/AuthDialog";
 
 const { getByText, getByLabelText, queryByLabelText } = screen;
 
@@ -18,7 +21,7 @@ const successResponse = { status: 200, data: "Success" };
 const reduxStateOnMissingInputField = [
   {
     type: "ALERT",
-    payload: MISSING_INPUT_FIELD,
+    payload: "Please fill out all fields.",
   },
 ];
 
@@ -39,7 +42,7 @@ beforeEach(() => {
       <BrowserRouter>
         <AuthDialog handleCloseAuthDialog={jest.fn()} />
       </BrowserRouter>
-    </Provider>
+    </Provider>,
   );
   container = component.container;
 });
@@ -129,7 +132,7 @@ describe("AuthDialog: Submit Events", () => {
         pressEnter(container);
         const actions = store.getActions();
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnSuccessfullAuth)
+          expect(actions).toEqual(reduxStateOnSuccessfullAuth),
         );
       });
 
@@ -137,7 +140,7 @@ describe("AuthDialog: Submit Events", () => {
         clickByText("Sign in");
         const actions = store.getActions();
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnSuccessfullAuth)
+          expect(actions).toEqual(reduxStateOnSuccessfullAuth),
         );
       });
     });
@@ -155,7 +158,7 @@ describe("AuthDialog: Submit Events", () => {
         pressEnter(container);
         const actions = store.getActions();
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnSuccessfullAuth)
+          expect(actions).toEqual(reduxStateOnSuccessfullAuth),
         );
       });
 
@@ -163,7 +166,7 @@ describe("AuthDialog: Submit Events", () => {
         clickByText("Sign up");
         const actions = store.getActions();
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnSuccessfullAuth)
+          expect(actions).toEqual(reduxStateOnSuccessfullAuth),
         );
       });
     });
@@ -178,7 +181,7 @@ describe("AuthDialog: Submit Events", () => {
         const actions = store.getActions();
         // Assertions
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnMissingInputField)
+          expect(actions).toEqual(reduxStateOnMissingInputField),
         );
       });
       it("missing email", async () => {
@@ -188,7 +191,7 @@ describe("AuthDialog: Submit Events", () => {
         const actions = store.getActions();
         // Assertions
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnMissingInputField)
+          expect(actions).toEqual(reduxStateOnMissingInputField),
         );
       });
     });
@@ -206,7 +209,7 @@ describe("AuthDialog: Submit Events", () => {
 
         // Assertions
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnMissingInputField)
+          expect(actions).toEqual(reduxStateOnMissingInputField),
         );
       });
       it("missing password", async () => {
@@ -219,7 +222,7 @@ describe("AuthDialog: Submit Events", () => {
 
         // Assertions
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnMissingInputField)
+          expect(actions).toEqual(reduxStateOnMissingInputField),
         );
       });
 
@@ -233,7 +236,7 @@ describe("AuthDialog: Submit Events", () => {
 
         // Assertions
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnMissingInputField)
+          expect(actions).toEqual(reduxStateOnMissingInputField),
         );
       });
       it("missing last name", async () => {
@@ -246,7 +249,7 @@ describe("AuthDialog: Submit Events", () => {
 
         // Assertions
         await waitFor(() =>
-          expect(actions).toEqual(reduxStateOnMissingInputField)
+          expect(actions).toEqual(reduxStateOnMissingInputField),
         );
       });
     });
@@ -266,7 +269,7 @@ describe("AuthDialog: Submit Events", () => {
     await waitFor(() =>
       expect(actions).toEqual([
         { type: "ALERT", payload: "Something went wrong" },
-      ])
+      ]),
     );
   });
 });
