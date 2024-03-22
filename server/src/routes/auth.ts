@@ -2,10 +2,13 @@ import { Request, Response, Router } from "express";
 import passport from "passport";
 import jwt from "jsonwebtoken";
 import CryptoJS from "crypto-js";
-import { createResetPasswordToken } from "../utils/auth/createToken";
-import sendEmail from "../utils/sendEmail";
-import validateEmail from "../utils/auth/validateEmail";
-import User from "../models/user";
+import { createResetPasswordToken } from "utils/auth/createToken";
+import sendEmail from "utils/sendEmail";
+import validateEmail from "utils/auth/validateEmail";
+import generateAndSendAuthTokens from "utils/auth/generateAndSendAuthTokens";
+import category from "models/category";
+import User from "models/user";
+import { IUserSchema } from "types/userTypes";
 import {
   duplicateEmailsError,
   invalidEmailError,
@@ -13,10 +16,7 @@ import {
   missingFields,
   serverError,
   wrongCredentialsError,
-} from "../constants/responseMessages";
-import category from "../models/category";
-import generateAndSendAuthTokens from "../utils/auth/generateAndSendAuthTokens";
-import { IUserSchema } from "../types/userTypes";
+} from "constants/responseMessages";
 
 const router = Router();
 const PASSWORD_SECRET = process.env.PASSWORD_SECRET || "";
@@ -133,7 +133,7 @@ router.post("/reset-password/:token", async (req: Request, res: Response) => {
     const resetPasswordToken = req.params.token;
     const user = jwt.verify(
       resetPasswordToken,
-      JWT_RESET_PASSWORD_REFRESH_TOKEN_SECRET,
+      JWT_RESET_PASSWORD_REFRESH_TOKEN_SECRET
     );
 
     if (!user) return res.status(400).json("Invalid token.");
@@ -143,13 +143,13 @@ router.post("/reset-password/:token", async (req: Request, res: Response) => {
     const email = user.email;
     const hashedPassword = CryptoJS.AES.encrypt(
       password,
-      PASSWORD_SECRET,
+      PASSWORD_SECRET
     ).toString();
     await User.findOneAndUpdate(
       { email: email },
       {
         password: hashedPassword,
-      },
+      }
     );
     res.status(200).json("Password has been changed successfully!");
   } catch (err) {
@@ -177,7 +177,7 @@ router.get(
   passport.authenticate("google", {
     session: false,
     scope: ["profile", "email"],
-  }),
+  })
 );
 
 router.get(
@@ -191,7 +191,7 @@ router.get(
     const userId = req.user as IUserSchema["_id"];
     generateAndSendAuthTokens(res, userId);
     res.redirect(CLIENT_URL + "/redirect");
-  },
+  }
 );
 
 export default router;

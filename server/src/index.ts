@@ -3,13 +3,13 @@ import cookieParser from "cookie-parser";
 import passport from "./middleware/passport";
 import cors from "cors";
 import dotenv from "dotenv";
-import connectDB from "./database";
-import keepAwake from "./keepAwake";
+import connectDB from "database";
+import keepAwake from "keepAwake";
 import morgan from "morgan";
-import auth from "./routes/auth";
-import task from "./routes/task";
-import category from "./routes/category";
-import stats from "./routes/stats";
+import auth from "routes/auth";
+import task from "routes/task";
+import category from "routes/category";
+import stats from "routes/stats";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 //
@@ -45,7 +45,7 @@ app.use(
     store: MongoStore.create({
       mongoUrl: DB_URI,
     }),
-  }),
+  })
 );
 app.use(cookieParser());
 
@@ -58,7 +58,7 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", CLIENT_URL);
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept",
+    "Origin, X-Requested-With, Content-Type, Accept"
   );
   next();
 });
@@ -67,7 +67,7 @@ app.use(
     origin: [CLIENT_URL],
     methods: "GET, POST, PUT, DELETE, PATCH",
     credentials: true,
-  }),
+  })
 );
 
 // Routes

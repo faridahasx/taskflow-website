@@ -1,8 +1,8 @@
 import { Router, Request, Response } from "express";
-import auth from "../middleware/authVerify";
-import Task from "../models/task";
-import TasksQuery from "../utils/taskQuery";
-import { AuthenticatedUser } from "../types/userTypes";
+import auth from "middleware/authVerify";
+import Task from "models/task";
+import TasksQuery from "utils/taskQuery";
+import { AuthenticatedUser } from "types/userTypes";
 import {
   deleteSuccess,
   serverError,
@@ -28,7 +28,7 @@ router.post(
     } catch (err) {
       return res.status(500).json(serverError);
     }
-  },
+  }
 );
 
 // GET TASKS - filter, sort, paginate
@@ -44,7 +44,7 @@ router.get("/", auth, async (req: Request, res: Response) => {
       let query = new TasksQuery(
         Task.find({}, "-description -userId"),
         reqQuery,
-        user.userId,
+        user.userId
       )
         .filtering()
         .sorting()
@@ -63,7 +63,7 @@ router.get("/:id", auth, async (req: Request, res: Response) => {
     let user = req.user as AuthenticatedUser;
     const taskDescription = await Task.findOne(
       { _id: req.params.id, userId: user.userId },
-      "description",
+      "description"
     );
     if (!taskDescription) return res.status(404).json(taskNotFound);
     res.status(200).json(taskDescription);
@@ -85,7 +85,7 @@ router.patch(
         {
           $set: req.body,
         },
-        { new: true },
+        { new: true }
       );
       if (!task) return res.status(404).json(taskNotFound);
       res.status(200).json(updateSuccess);
@@ -93,7 +93,7 @@ router.patch(
       console.log(err);
       return res.status(500).json(serverError);
     }
-  },
+  }
 );
 
 // EDIT TASK COMPLETED
@@ -106,7 +106,7 @@ router.patch("/completed/:id", auth, async (req: Request, res: Response) => {
       {
         $set: { completedAt: completedAt },
       },
-      { new: true },
+      { new: true }
     );
     if (!task) return res.status(404).json(taskNotFound);
     res.status(200).json(updateSuccess);

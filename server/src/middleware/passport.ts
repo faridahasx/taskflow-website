@@ -1,7 +1,7 @@
 import passport from "passport";
 import CryptoJS from "crypto-js";
 import { Strategy as GoogleStrategy } from "passport-google-oauth2";
-import User from "../models/user";
+import User from "models/user";
 
 const PASSWORD = process.env.SOCIAL_PASSWORD || "";
 const PASSWORD_SECRET = process.env.PASSWORD_SECRET || "";
@@ -20,7 +20,7 @@ const verify = async function (
   accessToken: string,
   refreshToken: string,
   profile: any,
-  done: any,
+  done: any
 ) {
   const email = profile.emails[0]["value"];
   const firstname = profile.displayName;

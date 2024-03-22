@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
-import { IUserSchema } from "../../types/userTypes";
+import { IUserSchema } from "types/userTypes";
 dotenv.config();
 
 const JWT_REFRESH_TOKEN_SECRET = process.env.JWT_REFRESH_TOKEN_SECRET || "";

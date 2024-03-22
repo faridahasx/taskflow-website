@@ -1,24 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.taskNotFound =
-  exports.titleTooLong =
-  exports.missingFinishDate =
-  exports.missingStartDate =
-  exports.categoryNotFound =
-  exports.maximumCategoriesReached =
-  exports.duplicateTitlesError =
-  exports.wrongCredentialsError =
-  exports.minimumPasswordLengthError =
-  exports.duplicateEmailsError =
-  exports.invalidEmailError =
-  exports.authError =
-  exports.missingField =
-  exports.missingFields =
-  exports.missingTitleField =
-  exports.deleteSuccess =
-  exports.updateSuccess =
-  exports.serverError =
-    void 0;
+exports.taskNotFound = exports.titleTooLong = exports.missingFinishDate = exports.missingStartDate = exports.categoryNotFound = exports.maximumCategoriesReached = exports.duplicateTitlesError = exports.wrongCredentialsError = exports.minimumPasswordLengthError = exports.duplicateEmailsError = exports.invalidEmailError = exports.authError = exports.missingField = exports.missingFields = exports.missingTitleField = exports.deleteSuccess = exports.updateSuccess = exports.serverError = void 0;
 // General
 exports.serverError = "Something went wrong";
 exports.updateSuccess = "Update Success!";
@@ -30,8 +12,7 @@ exports.missingField = "Please fill in the required field";
 exports.authError = "Not Authenticated!";
 exports.invalidEmailError = "Invalid email address";
 exports.duplicateEmailsError = "The email address is already being used";
-exports.minimumPasswordLengthError =
-  "Password must be at least 8 characters long";
+exports.minimumPasswordLengthError = "Password must be at least 8 characters long";
 exports.wrongCredentialsError = "Wrong credentials!";
 // Category
 exports.duplicateTitlesError = "Duplicate titles";

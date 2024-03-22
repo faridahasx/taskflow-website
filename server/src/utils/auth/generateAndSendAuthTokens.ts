@@ -1,10 +1,10 @@
 import { Response } from "express";
 import { createRefreshToken, createAccessToken } from "./createToken";
-import { IUserSchema } from "../../types/userTypes";
+import { IUserSchema } from "types/userTypes";
 
 const generateAndSendAuthTokens = (
   res: Response,
-  userID: IUserSchema["_id"],
+  userID: IUserSchema["_id"]
 ) => {
   // Create tokens
   const refreshToken = createRefreshToken({

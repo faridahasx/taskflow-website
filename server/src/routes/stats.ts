@@ -1,11 +1,11 @@
 import { Request, Response, Router } from "express";
 import mongoose from "mongoose";
-import auth from "../middleware/authVerify";
-import Task from "../models/task";
-import { AuthenticatedUser } from "../types/userTypes";
-import { getFilters } from "../utils/taskQuery";
-import { serverError } from "../constants/responseMessages";
-import { IFetchTasksRequestQuery } from "../types/taskTypes";
+import auth from "middleware/authVerify";
+import Task from "models/task";
+import { AuthenticatedUser } from "types/userTypes";
+import { IFetchTasksRequestQuery } from "types/taskTypes";
+import { getFilters } from "utils/taskQuery";
+import { serverError } from "constants/responseMessages";
 
 const router = Router();
 
@@ -17,7 +17,7 @@ router.get("/", auth, async (req: Request, res: Response) => {
 
     const filters = getFilters(
       reqQuery,
-      new mongoose.Types.ObjectId(user.userId),
+      new mongoose.Types.ObjectId(user.userId)
     );
 
     const stats = await Task.aggregate([
