@@ -98,7 +98,7 @@ const CategorieSlider = (props) => {
         <div id="categories-list-container" className="center">
           {loading ? (
             <CircularLoading />
-          ) : errorDuringFetch ? (
+          ) : errorDuringFetch !== null ? (
             <TryAgain onClick={handleTryAgain} />
           ) : (
             categories &&
@@ -157,7 +157,7 @@ const CategorieSlider = (props) => {
 CategorieSlider.propTypes = {
   categories: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
-  errorDuringFetch: PropTypes.bool.isRequired,
+  errorDuringFetch: PropTypes.any,
   categoriesOpen: PropTypes.bool.isRequired,
   setCategoriesOpen: PropTypes.func.isRequired,
   handleTryAgain: PropTypes.func.isRequired,

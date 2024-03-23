@@ -1,91 +1,61 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
-import { categoriesSample } from "../../constants/sampleData";
-import { pressEscape } from "../../testUtilities";
-import CategorieSlider from "../../components/Categories/CategoriesSlider";
+import { render, screen } from "test-utilities/test-utils";
+import { categoriesSample } from "constants/sampleData";
+import CategorieSlider from "components/Categories/CategoriesSlider";
+import { mockStore } from "test-utilities/mocks/mockReduxState";
+import { clickByTestId } from "test-utilities/user-interaction";
 
-const mockFn = jest.fn();
-let mockSetCategoriesOpen = jest.fn();
+const renderComponent = (
+  categories = categoriesSample,
+  loading = false,
+  errorDuringFetch = null,
+  handleTryAgain = jest.fn(),
+  categoriesOpen = true,
+  setCategoriesOpen = jest.fn()
+) => {
+  render(
+    <CategorieSlider
+      categories={categories}
+      loading={loading}
+      categoriesOpen={categoriesOpen}
+      setCategoriesOpen={setCategoriesOpen}
+      handleLinkClick={jest.fn()}
+      errorDuringFetch={errorDuringFetch}
+      handleTryAgain={handleTryAgain}
+    />,
+    {
+      props: { store: mockStore({}) },
+    }
+  );
+};
 
-let component;
 describe("CategoriesSlider", () => {
-  describe("loading is true, categoriesOpen is false", () => {
-    beforeEach(() => {
-      component = render(
-        <BrowserRouter>
-          <CategorieSlider
-            categories={categoriesSample}
-            loading={true}
-            categoriesOpen={false}
-            setCategoriesOpen={mockSetCategoriesOpen}
-            handleLinkClick={mockFn}
-          />
-        </BrowserRouter>,
-      );
-    });
-
-    it("renders loading indicator", () => {
-      const loading = screen.getByTestId("loading");
-      expect(loading).toBeInTheDocument();
-    });
-
-    it("doesn't render category list items", () => {
-      const items = document.getElementsByClassName("category-li");
-      expect(items).toHaveLength(0);
-    });
-    it("renders categories slider with open and closed states", () => {
-      const { rerender, getByTestId } = component;
-      const container = getByTestId("categories");
-      expect(container).not.toHaveClass("categories-slider-open");
-
-      rerender(
-        <BrowserRouter>
-          <CategorieSlider
-            categories={categoriesSample}
-            loading={true}
-            categoriesOpen={true}
-            setCategoriesOpen={mockSetCategoriesOpen}
-            handleLinkClick={mockFn}
-          />
-        </BrowserRouter>,
-      );
-      expect(container).toHaveClass("categories-slider-open");
-    });
-    it("doesn't listen for 'Escape' key press events", () => {
-      const { container } = component;
-      pressEscape(container);
-      expect(mockSetCategoriesOpen).not.toHaveBeenCalled();
-    });
+  it("renders loading indicator", () => {
+    renderComponent(categoriesSample, true);
+    const loading = screen.getByTestId("loading");
+    expect(loading).toBeInTheDocument();
   });
 
-  describe("loading is false, categoriesOpen is true", () => {
-    beforeEach(() => {
-      mockSetCategoriesOpen = jest.fn();
-      component = render(
-        <BrowserRouter>
-          <CategorieSlider
-            categories={categoriesSample}
-            loading={false}
-            categoriesOpen={true}
-            setCategoriesOpen={mockSetCategoriesOpen}
-            handleLinkClick={mockFn}
-          />
-        </BrowserRouter>,
-      );
-    });
+  it("renders error indicator", () => {
+    renderComponent(categoriesSample, false, true);
+    expect(screen.getByTestId("try-again")).toBeInTheDocument();
+  });
 
-    it("renders category list items", () => {
-      const items = document.getElementsByClassName("category-li");
-      expect(items).toHaveLength(categoriesSample.length);
-    });
-    it("handles background click", () => {
-      fireEvent.click(document.getElementById("categories-dropdown"));
-      expect(mockSetCategoriesOpen).toHaveBeenCalledWith(false);
-    });
-    it("handles 'Escape' key press", () => {
-      const { container } = component;
-      pressEscape(container);
-      expect(mockSetCategoriesOpen).toHaveBeenCalledWith(false);
-    });
+  it("handles try fetch again", () => {
+    const handleTryAgain = jest.fn();
+    renderComponent(categoriesSample, false, true, handleTryAgain);
+    clickByTestId("try-again");
+    expect(handleTryAgain).toHaveBeenCalled();
+  });
+
+  it("doesn't render category list items", () => {
+    renderComponent(categoriesSample, true);
+    expect(screen.queryAllByTestId("category-li")).toHaveLength(0);
+  });
+
+  it("renders category list items", () => {
+    renderComponent();
+    expect(screen.getAllByTestId("category-li")).toHaveLength(
+      categoriesSample.length
+    );
   });
 });

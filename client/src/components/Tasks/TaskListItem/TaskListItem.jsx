@@ -97,7 +97,7 @@ const TaskListItem = (props) => {
   const handleCloseOpenedTask = () => setOpenTask(null);
 
   return (
-    <li className="task-li">
+    <li data-testid="task-li" className="task-li">
       <div className="task-wrapper flex">
         <TaskCheckboxContainer task={task} checkboxProps={checkboxProps} />
         <div
@@ -152,16 +152,9 @@ const TaskListItem = (props) => {
 
 TaskListItem.propTypes = {
   task: PropTypes.object.isRequired,
-  expandDetailsTaskID: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.oneOf(null),
-  ]).isRequired,
-  openEditTaskEditor: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.oneOf(null),
-  ]).isRequired,
-  openTask: PropTypes.oneOfType([PropTypes.object, PropTypes.oneOf(null)])
-    .isRequired,
+  expandDetailsTaskID: PropTypes.string,
+  openEditTaskEditor: PropTypes.object,
+  openTask: PropTypes.object,
   setOpenEditTaskEditor: PropTypes.func.isRequired,
   setOpenTask: PropTypes.func.isRequired,
   setExpandDetailsTaskID: PropTypes.func.isRequired,

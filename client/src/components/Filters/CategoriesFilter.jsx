@@ -41,7 +41,7 @@ const CategoriesFilter = (props) => {
   };
 
   return (
-    <div className="sf-component">
+    <div className="filter-component">
       <InputLabel id="category-filter-label">Select categories:</InputLabel>
       <FormControl sx={{ width: "100%" }}>
         <Select

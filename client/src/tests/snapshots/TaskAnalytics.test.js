@@ -2,11 +2,11 @@ import { render } from "test-utilities/test-utils";
 import mockInitialState, {
   mockStore,
 } from "test-utilities/mocks/mockReduxState";
-import Home from "pages/Home";
+import TaskAnalytics from "pages/TaskAnalytics";
 
-test("Home snapshot", () => {
-  const { asFragment } = render(<Home />, {
+test("TaskAnalytics snapshot", () => {
+  const { asFragment } = render(<TaskAnalytics />, {
     props: { store: mockStore(mockInitialState) },
   });
-  expect(asFragment()).toMatchSnapshot("Home");
+  expect(asFragment()).toMatchSnapshot("TaskAnalytics");
 });

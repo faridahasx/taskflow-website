@@ -4,6 +4,7 @@ exports[`TaskForm snapshot: TaskForm 1`] = `
 <DocumentFragment>
   <div
     class="modal task-modal"
+    role="dialog"
   >
     <div
       class="task-dialog"
@@ -12,8 +13,10 @@ exports[`TaskForm snapshot: TaskForm 1`] = `
         class="flex task-dialog-top"
       >
         <button
+          aria-label="Close"
           class="icon "
           title="Close"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -28,7 +31,9 @@ exports[`TaskForm snapshot: TaskForm 1`] = `
           </svg>
         </button>
         <button
-          class="icon "
+          aria-label="Submit"
+          class="icon task-save-btn"
+          disabled=""
           form="task-form"
           title="Save"
         >
@@ -46,10 +51,13 @@ exports[`TaskForm snapshot: TaskForm 1`] = `
         </button>
       </div>
       <form
+        aria-label="Task Form"
         class="column"
+        data-testid="task-form"
         id="task-form"
       >
         <input
+          aria-label="Title"
           class="task-dialog-title"
           maxlength="200"
           name="title"
@@ -87,6 +95,7 @@ exports[`TaskForm snapshot: TaskForm 1`] = `
           id="select-task-details"
         >
           <div
+            aria-label="Category"
             class="select-task-detail"
           >
             <div

@@ -1,7 +1,7 @@
-import { renderHook } from "@testing-library/react-hooks";
-import useClickOutside from "../../hooks/useClickOutside";
+import { renderHook } from "test-utilities/test-utils";
+import useClickOutside from "hooks/useClickOutside";
 
-test("useClickOutside calls the callback when clicking outside the element", () => {
+test("useClickOutside: executes the callback", () => {
   const callback = jest.fn();
   const { result } = renderHook(() => useClickOutside(callback));
 

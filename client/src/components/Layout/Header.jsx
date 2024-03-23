@@ -50,7 +50,7 @@ const Header = ({ categoriesOpen, setCategoriesOpen }) => {
       </span>
       <span id="header-second" className="flex">
         <Link
-          data-testid="header-stats-link"
+          data-testid="header-analytics-link"
           className="icon"
           title="Task Analytics"
           to="/analytics"

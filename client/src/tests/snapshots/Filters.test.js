@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
-import { categoriesSample } from "../../constants/sampleData";
-import Filters from "../../components/Filters/Filters";
+import { categoriesSample } from "constants/sampleData";
+import Filters from "components/Filters/Filters";
 
 const mockFn = jest.fn();
 
@@ -17,7 +17,8 @@ test("Filters snapshot", () => {
       handleRadioGroupChange={mockFn}
       handleClear={mockFn}
       categories={categoriesSample}
-    />,
+      selectedCategories={[]}
+    />
   );
   expect(asFragment()).toMatchSnapshot("Filters");
 });

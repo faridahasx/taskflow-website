@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import PasswordField from "../../../components/Auth/PasswordField";
+import PasswordField from "components/Auth/PasswordField";
 
 test("PasswordField: handles toggle password visibility", () => {
   render(<PasswordField handleInputChange={jest.fn()} />);

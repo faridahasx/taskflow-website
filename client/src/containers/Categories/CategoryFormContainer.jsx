@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import useMakeServerRequest from "hooks/useMakeServerRequest";
 // Utils
 import { axiosWithCredentials } from "utils/axiosInstance";
-import { MISSING_INPUT_FIELD } from "constants/alertMessages";
+import { MISSING_INPUT_FIELD, UNKNOWN_ERROR } from "constants/alertMessages";
 // Context
 import { TasksDispatchContext } from "context/TaskContext";
 // Component
@@ -30,16 +30,18 @@ const CategoryFormContainer = (props) => {
     // Check if the title has changed
     if (title !== category?.title) {
       // Validate and execute form method based on label
-      if (title === "")
+      if (title === "") {
         dispatch({
           type: "ALERT",
           payload: MISSING_INPUT_FIELD,
         });
-      else
+      } else {
         await executeServerRequest({
           callback:
             label === "Add Category" ? handleAddCategory : handleEditCategory,
+          fallbackErrorMessage: UNKNOWN_ERROR,
         });
+      }
     } else {
       // Close dialog if there are no changes
       handleCloseDialog();

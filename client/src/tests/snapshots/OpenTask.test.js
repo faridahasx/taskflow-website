@@ -1,18 +1,18 @@
 import { render } from "@testing-library/react";
-import { tasksSample } from "../../constants/sampleData";
-import OpenTask from "../../components/Tasks/OpenTask";
-
-const mockFn = jest.fn();
+import { tasksSample } from "constants/sampleData";
+import OpenTask from "components/Tasks/OpenTask";
 
 test("OpenTask snapshot", () => {
+  const mockFn = jest.fn();
   const { asFragment } = render(
     <OpenTask
       task={tasksSample[0]}
-      openEditTaskEditor={{}}
+      errorDuringFetch={null}
+      openEditTaskEditor={null}
       handleClickEditTask={mockFn}
       handleCloseOpenedTask={mockFn}
-      loading={false}
-    />,
+      handleTryFetchAgain={mockFn}
+    />
   );
 
   expect(asFragment()).toMatchSnapshot("OpenTask");

@@ -3,11 +3,9 @@ import createMockStore from "redux-mock-store";
 const mockStore = createMockStore([]);
 
 const mockInitialState = {
-  auth: { isLogged: false },
-  authDialog: { displayAuthDialog: null },
-  displayAuthDialog: null,
+  auth: { isLogged: null },
   alert: { message: "" },
-  categories: [{ title: "All", _id: "All", tasks: 0 }],
+  categories: [],
 };
 
 const mockAuthState = {

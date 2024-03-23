@@ -36,7 +36,11 @@ const CategoryListItem = (props) => {
   };
 
   return (
-    <li aria-label="Category" className="category-li flex">
+    <li
+      aria-label="Category"
+      data-testid="category-li"
+      className="category-li flex"
+    >
       <Link className="flex text-overflow" to={`/?categories=${title}`}>
         <span className="text-overflow" title={title}>
           {title}

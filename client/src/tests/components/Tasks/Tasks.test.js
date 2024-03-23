@@ -1,84 +1,65 @@
-import { render, expect, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
-import Tasks from "../../../components/Tasks/Tasks";
-import { tasksSample } from "../../../constants/sampleData";
-const { getByText, queryByTestId } = screen;
-const mockFn = jest.fn();
+import { render, screen } from "test-utilities/test-utils";
+import Tasks from "components/Tasks/Tasks";
+import { tasksSample } from "constants/sampleData";
+import { mockStore } from "test-utilities/mocks/mockReduxState";
+
+const renderComponent = (
+  tasks,
+  isTransitioning = false,
+  errorDuringFetch = false,
+  loadMore = false,
+  handleTryAgain = jest.fn()
+) => {
+  render(
+    <Tasks
+      errorDuringFetch={errorDuringFetch}
+      isTransitioning={isTransitioning}
+      loadMore={loadMore}
+      tasks={tasks}
+      loadingRef={null}
+      handleTryAgain={handleTryAgain}
+    />,
+    {
+      props: { store: mockStore({}) },
+    }
+  );
+};
 
 describe("Tasks component", () => {
-  describe("value of 'tasks' is empty list", () => {
-    beforeEach(() => {
-      render(
-        <BrowserRouter>
-          <Tasks
-            tasks={[]}
-            loadingRef={null}
-            handleToggleCompleted={mockFn}
-            handleDelete={mockFn}
-            isTransitioning={false}
-            loadMore={false}
-          />
-        </BrowserRouter>,
-      );
-    });
-    it('renders "No tasks"', () => {
-      expect(getByText("No tasks")).toBeInTheDocument();
-    });
+  it("renders 'No Task", () => {
+    renderComponent([]);
+    expect(screen.getByText("No Task")).toBeInTheDocument();
   });
-  describe("value of 'tasks' is null", () => {
-    beforeEach(() => {
-      render(
-        <BrowserRouter>
-          <Tasks
-            tasks={null}
-            loadingRef={null}
-            handleToggleCompleted={mockFn}
-            handleDelete={mockFn}
-            isTransitioning={false}
-            loadMore={false}
-          />
-        </BrowserRouter>,
-      );
-    });
-    it("renders initial loading indicator", () => {
-      expect(
-        queryByTestId("loading-initial-tasks-indicator"),
-      ).toBeInTheDocument();
-    });
+  it("renders initial loading indicator", () => {
+    renderComponent(null);
+    expect(
+      screen.getByTestId("loading-initial-tasks-indicator")
+    ).toBeInTheDocument();
   });
 
-  describe("value of 'tasks' is list of tasks ", () => {
-    beforeEach(() => {
-      render(
-        <BrowserRouter>
-          <Tasks
-            tasks={tasksSample}
-            loadingRef={null}
-            handleToggleCompleted={mockFn}
-            handleDelete={mockFn}
-            isTransitioning={false}
-            loadMore={false}
-          />
-        </BrowserRouter>,
-      );
-    });
+  it("renders transitioning and not loadmore indicator", () => {
+    renderComponent(tasksSample, true);
+    expect(screen.getByTestId("linear-transiton")).toBeInTheDocument();
+    expect(
+      screen.queryByTestId("loading-more-tasks-indicator")
+    ).not.toBeInTheDocument();
+  });
 
-    it("renders tasks list items", () => {
-      expect(document.getElementsByClassName("task-li")).toHaveLength(
-        tasksSample.length,
-      );
-    });
+  it("renders loadmore and not Transitioning indicator", () => {
+    renderComponent(tasksSample, false, false, true);
+    expect(screen.queryByTestId("linear-transiton")).not.toBeInTheDocument();
+    expect(
+      screen.getByTestId("loading-more-tasks-indicator")
+    ).toBeInTheDocument();
+  });
 
-    it("renders transitioning indicator when isTransitioning is true", () => {
-      expect(queryByTestId("linear-transiton")).toBeInTheDocument();
-      expect(
-        queryByTestId("loading-more-tasks-indicator"),
-      ).not.toBeInTheDocument();
-    });
+  it("renders error indicator", () => {
+    renderComponent(null, false, true);
+    expect(screen.getByText("Something went wrong")).toBeInTheDocument();
+  });
 
-    it("renders loading more tasks indicator when isTransitioning is false and loadMore is true", () => {
-      expect(queryByTestId("linear-transiton")).not.toBeInTheDocument();
-      expect(queryByTestId("loading-more-tasks-indicator")).toBeInTheDocument();
-    });
+  it("renders tasks list items", () => {
+    renderComponent(tasksSample);
+    expect(screen.getAllByTestId("task-li")).toHaveLength(tasksSample.length);
   });
 });

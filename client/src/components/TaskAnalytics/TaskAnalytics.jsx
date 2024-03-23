@@ -83,7 +83,7 @@ const TaskAnalytics = ({
 TaskAnalytics.propTypes = {
   start: PropTypes.string.isRequired,
   end: PropTypes.string.isRequired,
-  taskAnalytics: PropTypes.any,
+  taskAnalytics: PropTypes.object,
   errorDuringFetch: PropTypes.bool.isRequired,
   handleTryAgain: PropTypes.func.isRequired,
 };

@@ -92,7 +92,9 @@ exports[`Tasks snapshot: Tasks 1`] = `
               </li>
             </ul>
             <button
+              aria-label="Add New Task"
               class="icon add-task-btn"
+              data-testid="add-task-btn"
               title="Add Task"
             >
               <svg
@@ -113,6 +115,7 @@ exports[`Tasks snapshot: Tasks 1`] = `
           >
             <li>
               <button
+                aria-label="All Tasks"
                 class="center activate-filter-btn active-filter"
                 title="All tasks"
               >
@@ -121,6 +124,7 @@ exports[`Tasks snapshot: Tasks 1`] = `
             </li>
             <li>
               <button
+                aria-label="Current Tasks"
                 class="center activate-filter-btn inactive-filter"
                 title="Current tasks"
               >
@@ -129,6 +133,7 @@ exports[`Tasks snapshot: Tasks 1`] = `
             </li>
             <li>
               <button
+                aria-label="Overdue Tasks"
                 class="center activate-filter-btn inactive-filter"
                 title="Overdue tasks"
               >
@@ -137,6 +142,7 @@ exports[`Tasks snapshot: Tasks 1`] = `
             </li>
             <li>
               <button
+                aria-label="Upcoming Tasks"
                 class="center activate-filter-btn inactive-filter"
                 title="Upcoming tasks"
               >
@@ -145,6 +151,7 @@ exports[`Tasks snapshot: Tasks 1`] = `
             </li>
             <li>
               <button
+                aria-label="Completed Tasks"
                 class="center activate-filter-btn inactive-filter"
                 title="Completed tasks"
               >
@@ -155,31 +162,45 @@ exports[`Tasks snapshot: Tasks 1`] = `
         </div>
       </nav>
       <ol
+        aria-label="Task List"
         class="column"
         id="tasks-list"
       >
         <li
           class="task-li"
+          data-testid="task-li"
         >
           <div
             class="task-wrapper flex"
           >
             <button
-              class="center color blue "
-              title="Mark as completed"
+              aria-label="Mark as Completed"
+              class="center color blue checkbox-initial"
+              title="Mark as Completed"
             >
               <span
-                class="icon center"
+                class="center"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall unfilled css-ptiqhd-MuiSvgIcon-root"
                   data-testid="RadioButtonUncheckedIcon"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
                   <path
                     d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium checkbox-icon unchecked css-15yr02a-MuiSvgIcon-root"
+                  data-testid="CheckCircleIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
                   />
                 </svg>
               </span>
@@ -214,32 +235,32 @@ exports[`Tasks snapshot: Tasks 1`] = `
                 </span>
                 <span
                   class="flex detail"
-                  title="Start date: 12/18/2023, 12:00 AM"
+                  title="Start: Mar 22, 2024, 12:00 AM"
                 >
                   <span
                     class="flex"
                   >
-                    Start date:
+                    Start:
                   </span>
                   <span
                     class="flex"
                   >
-                    12/18/2023, 12:00 AM
+                    Mar 22, 2024, 12:00 AM
                   </span>
                 </span>
                 <span
                   class="flex detail"
-                  title="Target date: 12/20/2023, 12:00 AM"
+                  title="Finish: Mar 24, 2024, 12:00 AM"
                 >
                   <span
                     class="flex"
                   >
-                    Target date:
+                    Finish:
                   </span>
                   <span
                     class="flex"
                   >
-                    12/20/2023, 12:00 AM
+                    Mar 24, 2024, 12:00 AM
                   </span>
                 </span>
               </div>
@@ -248,8 +269,9 @@ exports[`Tasks snapshot: Tasks 1`] = `
               class="column task-controls"
             >
               <button
+                aria-label="Show Options"
                 class="icon expand "
-                title="Expand"
+                title="Show Options"
               >
                 <svg
                   aria-hidden="true"
@@ -268,26 +290,39 @@ exports[`Tasks snapshot: Tasks 1`] = `
         </li>
         <li
           class="task-li"
+          data-testid="task-li"
         >
           <div
             class="task-wrapper flex"
           >
             <button
-              class="center color red "
-              title="Mark as completed"
+              aria-label="Mark as Completed"
+              class="center color red checkbox-initial"
+              title="Mark as Completed"
             >
               <span
-                class="icon center"
+                class="center"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall unfilled css-ptiqhd-MuiSvgIcon-root"
                   data-testid="RadioButtonUncheckedIcon"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
                   <path
                     d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium checkbox-icon unchecked css-15yr02a-MuiSvgIcon-root"
+                  data-testid="CheckCircleIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
                   />
                 </svg>
               </span>
@@ -322,32 +357,32 @@ exports[`Tasks snapshot: Tasks 1`] = `
                 </span>
                 <span
                   class="flex detail"
-                  title="Start date: 12/17/2023, 12:00 AM"
+                  title="Start: Mar 21, 2024, 12:00 AM"
                 >
                   <span
                     class="flex"
                   >
-                    Start date:
+                    Start:
                   </span>
                   <span
                     class="flex"
                   >
-                    12/17/2023, 12:00 AM
+                    Mar 21, 2024, 12:00 AM
                   </span>
                 </span>
                 <span
                   class="flex detail"
-                  title="Target date: 12/18/2023, 12:00 AM"
+                  title="Finish: Mar 22, 2024, 12:00 AM"
                 >
                   <span
                     class="flex"
                   >
-                    Target date:
+                    Finish:
                   </span>
                   <span
                     class="flex"
                   >
-                    12/18/2023, 12:00 AM
+                    Mar 22, 2024, 12:00 AM
                   </span>
                 </span>
               </div>
@@ -356,8 +391,9 @@ exports[`Tasks snapshot: Tasks 1`] = `
               class="column task-controls"
             >
               <button
+                aria-label="Show Options"
                 class="icon expand "
-                title="Expand"
+                title="Show Options"
               >
                 <svg
                   aria-hidden="true"
@@ -376,26 +412,39 @@ exports[`Tasks snapshot: Tasks 1`] = `
         </li>
         <li
           class="task-li"
+          data-testid="task-li"
         >
           <div
             class="task-wrapper flex"
           >
             <button
-              class="center color yellow "
-              title="Mark as completed"
+              aria-label="Mark as Completed"
+              class="center color yellow checkbox-initial"
+              title="Mark as Completed"
             >
               <span
-                class="icon center"
+                class="center"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall unfilled css-ptiqhd-MuiSvgIcon-root"
                   data-testid="RadioButtonUncheckedIcon"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
                   <path
                     d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium checkbox-icon unchecked css-15yr02a-MuiSvgIcon-root"
+                  data-testid="CheckCircleIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
                   />
                 </svg>
               </span>
@@ -430,32 +479,32 @@ exports[`Tasks snapshot: Tasks 1`] = `
                 </span>
                 <span
                   class="flex detail"
-                  title="Start date: 12/21/2023, 12:00 AM"
+                  title="Start: Mar 25, 2024, 12:00 AM"
                 >
                   <span
                     class="flex"
                   >
-                    Start date:
+                    Start:
                   </span>
                   <span
                     class="flex"
                   >
-                    12/21/2023, 12:00 AM
+                    Mar 25, 2024, 12:00 AM
                   </span>
                 </span>
                 <span
                   class="flex detail"
-                  title="Target date: 12/22/2023, 12:00 AM"
+                  title="Finish: Mar 26, 2024, 12:00 AM"
                 >
                   <span
                     class="flex"
                   >
-                    Target date:
+                    Finish:
                   </span>
                   <span
                     class="flex"
                   >
-                    12/22/2023, 12:00 AM
+                    Mar 26, 2024, 12:00 AM
                   </span>
                 </span>
               </div>
@@ -464,8 +513,9 @@ exports[`Tasks snapshot: Tasks 1`] = `
               class="column task-controls"
             >
               <button
+                aria-label="Show Options"
                 class="icon expand "
-                title="Expand"
+                title="Show Options"
               >
                 <svg
                   aria-hidden="true"
@@ -484,20 +534,22 @@ exports[`Tasks snapshot: Tasks 1`] = `
         </li>
         <li
           class="task-li"
+          data-testid="task-li"
         >
           <div
             class="task-wrapper flex"
           >
             <button
-              class="center color green "
-              title="Unmark as completed"
+              aria-label="Mark as Incomplete"
+              class="center color green checkbox-initial"
+              title="Mark as Incomplete"
             >
               <span
-                class="icon center"
+                class="center"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-15yr02a-MuiSvgIcon-root"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium checkbox-icon checked css-15yr02a-MuiSvgIcon-root"
                   data-testid="CheckCircleIcon"
                   focusable="false"
                   viewBox="0 0 24 24"
@@ -538,47 +590,47 @@ exports[`Tasks snapshot: Tasks 1`] = `
                 </span>
                 <span
                   class="flex detail"
-                  title="Start date: 12/21/2023, 12:00 AM"
+                  title="Start: Mar 25, 2024, 12:00 AM"
                 >
                   <span
                     class="flex"
                   >
-                    Start date:
+                    Start:
                   </span>
                   <span
                     class="flex"
                   >
-                    12/21/2023, 12:00 AM
+                    Mar 25, 2024, 12:00 AM
                   </span>
                 </span>
                 <span
                   class="flex detail"
-                  title="Target date: 12/23/2023, 12:00 AM"
+                  title="Finish: Mar 27, 2024, 12:00 AM"
                 >
                   <span
                     class="flex"
                   >
-                    Target date:
+                    Finish:
                   </span>
                   <span
                     class="flex"
                   >
-                    12/23/2023, 12:00 AM
+                    Mar 27, 2024, 12:00 AM
                   </span>
                 </span>
                 <span
                   class="flex detail"
-                  title="Completed at: 12/22/2023, 12:00 AM"
+                  title="Completion: Mar 26, 2024, 12:00 AM"
                 >
                   <span
                     class="flex"
                   >
-                    Completed at:
+                    Completion:
                   </span>
                   <span
                     class="flex"
                   >
-                    12/22/2023, 12:00 AM
+                    Mar 26, 2024, 12:00 AM
                   </span>
                 </span>
               </div>
@@ -587,8 +639,9 @@ exports[`Tasks snapshot: Tasks 1`] = `
               class="column task-controls"
             >
               <button
+                aria-label="Show Options"
                 class="icon expand "
-                title="Expand"
+                title="Show Options"
               >
                 <svg
                   aria-hidden="true"
@@ -607,26 +660,39 @@ exports[`Tasks snapshot: Tasks 1`] = `
         </li>
         <li
           class="task-li"
+          data-testid="task-li"
         >
           <div
             class="task-wrapper flex"
           >
             <button
-              class="center color blue "
-              title="Mark as completed"
+              aria-label="Mark as Completed"
+              class="center color blue checkbox-initial"
+              title="Mark as Completed"
             >
               <span
-                class="icon center"
+                class="center"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall unfilled css-ptiqhd-MuiSvgIcon-root"
                   data-testid="RadioButtonUncheckedIcon"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
                   <path
                     d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium checkbox-icon unchecked css-15yr02a-MuiSvgIcon-root"
+                  data-testid="CheckCircleIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
                   />
                 </svg>
               </span>
@@ -637,9 +703,9 @@ exports[`Tasks snapshot: Tasks 1`] = `
             >
               <h3
                 class="flex"
-                title="Login to continue"
+                title="Task 5"
               >
-                Login to continue
+                Task 5
               </h3>
               <div
                 class="details-container column"
@@ -661,32 +727,32 @@ exports[`Tasks snapshot: Tasks 1`] = `
                 </span>
                 <span
                   class="flex detail"
-                  title="Start date: 12/18/2023, 12:00 AM"
+                  title="Start: Mar 22, 2024, 12:00 AM"
                 >
                   <span
                     class="flex"
                   >
-                    Start date:
+                    Start:
                   </span>
                   <span
                     class="flex"
                   >
-                    12/18/2023, 12:00 AM
+                    Mar 22, 2024, 12:00 AM
                   </span>
                 </span>
                 <span
                   class="flex detail"
-                  title="Target date: 12/20/2023, 12:00 AM"
+                  title="Finish: Mar 24, 2024, 12:00 AM"
                 >
                   <span
                     class="flex"
                   >
-                    Target date:
+                    Finish:
                   </span>
                   <span
                     class="flex"
                   >
-                    12/20/2023, 12:00 AM
+                    Mar 24, 2024, 12:00 AM
                   </span>
                 </span>
               </div>
@@ -695,8 +761,497 @@ exports[`Tasks snapshot: Tasks 1`] = `
               class="column task-controls"
             >
               <button
+                aria-label="Show Options"
                 class="icon expand "
-                title="Expand"
+                title="Show Options"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="ExpandMoreIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </li>
+        <li
+          class="task-li"
+          data-testid="task-li"
+        >
+          <div
+            class="task-wrapper flex"
+          >
+            <button
+              aria-label="Mark as Completed"
+              class="center color blue checkbox-initial"
+              title="Mark as Completed"
+            >
+              <span
+                class="center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall unfilled css-ptiqhd-MuiSvgIcon-root"
+                  data-testid="RadioButtonUncheckedIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium checkbox-icon unchecked css-15yr02a-MuiSvgIcon-root"
+                  data-testid="CheckCircleIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="column task-middle"
+              data-testid="task-clickable"
+            >
+              <h3
+                class="flex"
+                title="Task 6"
+              >
+                Task 6
+              </h3>
+              <div
+                class="details-container column"
+              >
+                <span
+                  class="flex detail"
+                  title="Category: Tasks"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Category:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    Tasks
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Start: Mar 22, 2024, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Start:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    Mar 22, 2024, 12:00 AM
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Finish: Mar 24, 2024, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Finish:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    Mar 24, 2024, 12:00 AM
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="column task-controls"
+            >
+              <button
+                aria-label="Show Options"
+                class="icon expand "
+                title="Show Options"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="ExpandMoreIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </li>
+        <li
+          class="task-li"
+          data-testid="task-li"
+        >
+          <div
+            class="task-wrapper flex"
+          >
+            <button
+              aria-label="Mark as Completed"
+              class="center color blue checkbox-initial"
+              title="Mark as Completed"
+            >
+              <span
+                class="center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall unfilled css-ptiqhd-MuiSvgIcon-root"
+                  data-testid="RadioButtonUncheckedIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium checkbox-icon unchecked css-15yr02a-MuiSvgIcon-root"
+                  data-testid="CheckCircleIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="column task-middle"
+              data-testid="task-clickable"
+            >
+              <h3
+                class="flex"
+                title="Task 7"
+              >
+                Task 7
+              </h3>
+              <div
+                class="details-container column"
+              >
+                <span
+                  class="flex detail"
+                  title="Category: Tasks"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Category:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    Tasks
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Start: Mar 22, 2024, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Start:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    Mar 22, 2024, 12:00 AM
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Finish: Mar 24, 2024, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Finish:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    Mar 24, 2024, 12:00 AM
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="column task-controls"
+            >
+              <button
+                aria-label="Show Options"
+                class="icon expand "
+                title="Show Options"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="ExpandMoreIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </li>
+        <li
+          class="task-li"
+          data-testid="task-li"
+        >
+          <div
+            class="task-wrapper flex"
+          >
+            <button
+              aria-label="Mark as Completed"
+              class="center color blue checkbox-initial"
+              title="Mark as Completed"
+            >
+              <span
+                class="center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall unfilled css-ptiqhd-MuiSvgIcon-root"
+                  data-testid="RadioButtonUncheckedIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium checkbox-icon unchecked css-15yr02a-MuiSvgIcon-root"
+                  data-testid="CheckCircleIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="column task-middle"
+              data-testid="task-clickable"
+            >
+              <h3
+                class="flex"
+                title="Task 8"
+              >
+                Task 8
+              </h3>
+              <div
+                class="details-container column"
+              >
+                <span
+                  class="flex detail"
+                  title="Category: Tasks"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Category:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    Tasks
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Start: Mar 22, 2024, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Start:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    Mar 22, 2024, 12:00 AM
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Finish: Mar 24, 2024, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Finish:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    Mar 24, 2024, 12:00 AM
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="column task-controls"
+            >
+              <button
+                aria-label="Show Options"
+                class="icon expand "
+                title="Show Options"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="ExpandMoreIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </li>
+        <li
+          class="task-li"
+          data-testid="task-li"
+        >
+          <div
+            class="task-wrapper flex"
+          >
+            <button
+              aria-label="Mark as Completed"
+              class="center color blue checkbox-initial"
+              title="Mark as Completed"
+            >
+              <span
+                class="center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall unfilled css-ptiqhd-MuiSvgIcon-root"
+                  data-testid="RadioButtonUncheckedIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium checkbox-icon unchecked css-15yr02a-MuiSvgIcon-root"
+                  data-testid="CheckCircleIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="column task-middle"
+              data-testid="task-clickable"
+            >
+              <h3
+                class="flex"
+                title="Task 9"
+              >
+                Task 9
+              </h3>
+              <div
+                class="details-container column"
+              >
+                <span
+                  class="flex detail"
+                  title="Category: Tasks"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Category:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    Tasks
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Start: Mar 22, 2024, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Start:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    Mar 22, 2024, 12:00 AM
+                  </span>
+                </span>
+                <span
+                  class="flex detail"
+                  title="Finish: Mar 24, 2024, 12:00 AM"
+                >
+                  <span
+                    class="flex"
+                  >
+                    Finish:
+                  </span>
+                  <span
+                    class="flex"
+                  >
+                    Mar 24, 2024, 12:00 AM
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="column task-controls"
+            >
+              <button
+                aria-label="Show Options"
+                class="icon expand "
+                title="Show Options"
               >
                 <svg
                   aria-hidden="true"

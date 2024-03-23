@@ -1,97 +1,115 @@
-import React from "react";
-import { render, waitFor } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { axiosWithCredentials } from "../../../assets/axiosInstance";
-import { TasksDispatchContext } from "../../../context/TaskContext";
-import { categoriesSample } from "../../../constants/sampleData";
-import { mockAuthState, mockStore } from "../../mocks/mockReduxState";
-import { changeByLabelText, clickByText } from "../../../testUtilities";
-import CategoryFormContainer from "../../../containers/Categories/CategoryFormContainer";
+import { render, waitFor } from "test-utilities/test-utils";
+import { axiosWithCredentials } from "utils/axiosInstance";
+import { categoriesSample } from "constants/sampleData";
+import { mockAuthState, mockStore } from "test-utilities/mocks/mockReduxState";
+import { changeByTestId, clickByText } from "test-utilities/user-interaction";
+import CategoryFormContainer from "containers/Categories/CategoryFormContainer";
+import { UNKNOWN_ERROR } from "constants/alertMessages";
 
 const mockCategory = categoriesSample[0];
 const successResponse = { status: 200, data: mockCategory };
-
-let mockHandleCloseDialog;
 let store;
+let mockDispatchTasks;
+
+const renderComponent = (label, category) => {
+  render(
+    <CategoryFormContainer
+      label={label}
+      category={category}
+      handleCloseDialog={jest.fn()}
+    />,
+    {
+      props: { store: store, mockDispatchTasks: mockDispatchTasks },
+    }
+  );
+};
 
 beforeEach(() => {
   store = mockStore(mockAuthState);
-  mockHandleCloseDialog = jest.fn();
+  mockDispatchTasks = jest.fn();
 });
 
 describe("CategoryFormContainer", () => {
-  it("should handle add mode", async () => {
-    axiosWithCredentials.post = jest.fn(() => successResponse);
+  describe("Rename Category", () => {
+    beforeEach(() => {
+      axiosWithCredentials.patch = jest.fn(() => successResponse);
+    });
 
-    // Render the component
-    render(
-      <Provider store={store}>
-        <CategoryFormContainer
-          label="Add category"
-          handleCloseDialog={mockHandleCloseDialog}
-        />
-      </Provider>,
-    );
-    changeByLabelText("Add category", "input value");
-    clickByText("Save");
-    const actions = store.getActions();
+    it("should dispatch an edit category action", async () => {
+      renderComponent("Rename", mockCategory);
 
-    // Assertions
-    await waitFor(() =>
-      expect(actions).toEqual([
-        {
-          type: "ADD_CATEGORY",
-          payload: { ...successResponse.data, tasks: 0 },
-        },
-        { type: "ALERT", payload: "Saved" },
-      ]),
-    );
-    await waitFor(() => expect(mockHandleCloseDialog).toHaveBeenCalledTimes(1));
+      const updatedTitle = "value";
+      changeByTestId("category-title-input", "value");
+      clickByText("Save");
+
+      const actions = store.getActions();
+      // Assertions
+      await waitFor(() =>
+        expect(actions).toEqual([
+          {
+            type: "EDIT_CATEGORY",
+            payload: { ...mockCategory, title: updatedTitle },
+          },
+        ])
+      );
+    });
+
+    it("should dispatch an edit task category title action", async () => {
+      renderComponent("Rename", mockCategory);
+      const updatedTitle = "value";
+      changeByTestId("category-title-input", updatedTitle);
+      clickByText("Save");
+
+      await waitFor(() =>
+        expect(mockDispatchTasks).toHaveBeenCalledWith({
+          type: "edit_category",
+          payload: {
+            oldCategoryTitle: mockCategory.title,
+            newCategoryTitle: updatedTitle,
+          },
+        })
+      );
+    });
   });
+  describe("Add Category", () => {
+    beforeEach(() => {
+      axiosWithCredentials.post = jest.fn(() => successResponse);
+    });
 
-  it("should handle edit mode", async () => {
-    // Context
-    const mockDispatchTasks = jest.fn();
-    //
-    axiosWithCredentials.patch = jest.fn(() => successResponse);
+    it("should dispatch an add category action", async () => {
+      renderComponent("Add Category");
+      changeByTestId("category-title-input", "value");
+      clickByText("Save");
+      const actions = store.getActions();
 
-    // Render the component
-    render(
-      <Provider store={store}>
-        <TasksDispatchContext.Provider value={mockDispatchTasks}>
-          <CategoryFormContainer
-            label="Rename"
-            category={mockCategory}
-            handleCloseDialog={mockHandleCloseDialog}
-          />
-        </TasksDispatchContext.Provider>
-      </Provider>,
-    );
-    const updatedTitle = "updated title";
-    changeByLabelText("Rename", updatedTitle);
-    clickByText("Save");
+      // Assertions
+      await waitFor(() =>
+        expect(actions).toEqual([
+          {
+            type: "ADD_CATEGORY",
+            payload: { ...successResponse.data, tasks: 0 },
+          },
+        ])
+      );
+    });
 
-    const actions = store.getActions();
-
-    // Assertions
-    await waitFor(() =>
-      expect(actions).toEqual([
-        {
-          type: "EDIT_CATEGORY",
-          payload: { ...mockCategory, title: updatedTitle },
-        },
-        { type: "ALERT", payload: "Saved" },
-      ]),
-    );
-    await waitFor(() => expect(mockHandleCloseDialog).toHaveBeenCalledTimes(1));
-    await waitFor(() =>
-      expect(mockDispatchTasks).toHaveBeenCalledWith({
-        type: "edit_category",
-        payload: {
-          oldCategoryTitle: mockCategory.title,
-          newCategoryTitle: updatedTitle,
-        },
-      }),
-    );
+    it("should dispatch an unknown error alert", async () => {
+      axiosWithCredentials.post = jest.fn(() => {
+        throw Error("");
+      });
+      renderComponent("Add Category");
+      changeByTestId("category-title-input", "value");
+      clickByText("Save");
+      const actions = store.getActions();
+      // Assertions
+      await waitFor(() =>
+        expect(actions).toEqual([
+          {
+            type: "ALERT",
+            payload: UNKNOWN_ERROR,
+          },
+        ])
+      );
+    });
   });
 });

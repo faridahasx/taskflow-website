@@ -11,7 +11,7 @@ const TaskCheckbox = (props) => {
   const { taskCompleted, checkboxProps, handleToggleCompleted } = props;
   const buttonAction = useMemo(
     () => `Mark as ${taskCompleted ? "Incomplete" : "Completed"}`,
-    [taskCompleted],
+    [taskCompleted]
   );
 
   return (
@@ -35,7 +35,7 @@ const TaskCheckbox = (props) => {
 };
 
 TaskCheckbox.propTypes = {
-  taskCompleted: PropTypes.any.isRequired,
+  taskCompleted: PropTypes.any,
   checkboxProps: PropTypes.shape({
     changed: PropTypes.string,
     color: PropTypes.string,

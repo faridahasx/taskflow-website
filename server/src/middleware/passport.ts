@@ -29,8 +29,8 @@ const verify = async function (
 
   if (!user) {
     const newUser = new User({
-      firstname: firstname,
-      lastname: lastname,
+      firstname: firstname?firstname:"unknown",
+      lastname: lastname?lastname: "unknown",
       email: email,
       password: CryptoJS.AES.encrypt(PASSWORD, PASSWORD_SECRET).toString(),
     });

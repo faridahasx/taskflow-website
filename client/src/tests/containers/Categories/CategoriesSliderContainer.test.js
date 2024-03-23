@@ -1,10 +1,8 @@
-import { render, waitFor } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
-import { axiosWithCredentials } from "../../../assets/axiosInstance";
-import { categoriesSample } from "../../../constants/sampleData";
-import { mockAuthState, mockStore } from "../../mocks/mockReduxState";
-import CategoriesSliderContainer from "../../../containers/Categories/CategoriesSliderContainer";
+import { render, screen, waitFor } from "test-utilities/test-utils";
+import { axiosWithCredentials } from "utils/axiosInstance";
+import { categoriesSample } from "constants/sampleData";
+import { mockAuthState, mockStore } from "test-utilities/mocks/mockReduxState";
+import CategoriesSliderContainer from "containers/Categories/CategoriesSliderContainer";
 
 const mockFetchedCategories = {
   status: 200,
@@ -14,24 +12,33 @@ const mockFetchedCategories = {
   },
 };
 
-let store;
-beforeEach(() => {
-  store = mockStore(mockAuthState);
+const renderComponent = (store = mockStore(mockAuthState)) => {
   render(
-    <Provider store={store}>
-      <BrowserRouter>
-        <CategoriesSliderContainer
-          categoriesOpen={true}
-          setCategoriesOpen={jest.fn()}
-        />
-      </BrowserRouter>
-    </Provider>,
+    <CategoriesSliderContainer
+      categoriesOpen={true}
+      setCategoriesOpen={jest.fn()}
+    />,
+    {
+      props: { store: store },
+    }
   );
-});
+};
 
 describe("CategoriesSliderContainer", () => {
-  it("should dispatch fetched categories", async () => {
-    axiosWithCredentials.get = jest.fn(() => mockFetchedCategories);
+  it("should render categories", async () => {
+    let store = mockStore({ ...mockAuthState, categories: categoriesSample });
+    renderComponent(store);
+    expect(screen.getAllByTestId("category-li")).toHaveLength(
+      categoriesSample.length
+    );
+  });
+
+  it("should fetch and dispatch categories", async () => {
+    axiosWithCredentials.get = jest.fn(() => {
+      return mockFetchedCategories;
+    });
+    let store = mockStore(mockAuthState);
+    renderComponent(store);
     const actions = store.getActions();
     // Assertions
     await waitFor(() =>
@@ -39,15 +46,24 @@ describe("CategoriesSliderContainer", () => {
         {
           payload: [
             {
-              title: "All",
-              tasks: mockFetchedCategories.data.totalTasks,
               _id: "All",
+              tasks: mockFetchedCategories.data.totalTasks,
+              title: "All",
             },
             ...mockFetchedCategories.data.categories,
           ],
           type: "FETCH_CATEGORIES",
         },
-      ]),
+      ])
     );
+  });
+
+  it("should render try again button", async () => {
+    axiosWithCredentials.get = jest.fn(() => {
+      throw Error("");
+    });
+    renderComponent();
+    const element = await screen.findByTestId("try-again");
+    expect(element).toBeInTheDocument();
   });
 });

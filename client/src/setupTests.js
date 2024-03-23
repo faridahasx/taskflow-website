@@ -8,7 +8,7 @@ jest.mock("react-router-dom", () => ({
   useNavigate: jest.fn(),
 }));
 
-jest.mock("./assets/axiosInstance", () => ({
+jest.mock("utils/axiosInstance", () => ({
   axiosWithCredentials: {
     get: jest.fn(),
     post: jest.fn(),
@@ -17,6 +17,6 @@ jest.mock("./assets/axiosInstance", () => ({
   },
 }));
 
-jest.mock("./context/TaskContext");
+jest.mock("context/TaskContext");
 
 jest.setTimeout(15000);

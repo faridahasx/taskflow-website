@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 // Utils
 import { axiosWithCredentials } from "utils/axiosInstance";
-import { MISSING_INPUT_FIELD } from "constants/alertMessages";
+import { MISSING_INPUT_FIELD, UNKNOWN_ERROR } from "constants/alertMessages";
 // Custom hooks
 import useKeyDownListener from "hooks/useKeyDownListener";
 import useMakeServerRequest from "hooks/useMakeServerRequest";
@@ -55,10 +55,10 @@ const AuthFormContainer = (props) => {
         // Dispatching actions based on server response
         dispatch({ type: "IS_LOGGED", payload: true });
         dispatch({ type: "ALERT", payload: res.data });
-        dispatch({ type: "AUTH_DIALOG", payload: false });
         // Storing login status in local storage
         localStorage.setItem("firstLogin", "true");
       },
+      fallbackErrorMessage: UNKNOWN_ERROR,
     });
   };
 

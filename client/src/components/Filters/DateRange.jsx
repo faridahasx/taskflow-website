@@ -7,7 +7,7 @@ import DatePicker from "components/DatePicker";
 const DateRange = (props) => {
   const { label, start, end, setStart, setEnd } = props;
   return (
-    <div className="sf-component">
+    <div className="filter-component">
       <InputLabel id="category-filter-label">{label}</InputLabel>
       <DatePicker
         name="Start"

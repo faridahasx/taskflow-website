@@ -6,7 +6,11 @@ import "./CategoryListItem";
 
 const DefaultCategoryListItem = ({ tasksCount }) => {
   return (
-    <li aria-label="Tasks of all categories" className="category-li flex">
+    <li
+      aria-label="All Tasks"
+      data-testid="category-li"
+      className="category-li flex"
+    >
       <Link className="flex" to="/">
         <span className="text-overflow">All</span>
         <span>{tasksCount}</span>

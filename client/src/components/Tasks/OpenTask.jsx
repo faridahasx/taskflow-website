@@ -61,10 +61,7 @@ const OpenTask = (props) => {
 OpenTask.propTypes = {
   task: PropTypes.object.isRequired,
   errorDuringFetch: PropTypes.any,
-  openEditTaskEditor: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.oneOf(null),
-  ]).isRequired,
+  openEditTaskEditor: PropTypes.object,
   handleOpenEditTaskEditor: PropTypes.func.isRequired,
   handleCloseOpenedTask: PropTypes.func.isRequired,
   handleTryFetchAgain: PropTypes.func,

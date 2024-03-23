@@ -67,6 +67,7 @@ const TaskForm = (props) => {
     >
       <form
         aria-label="Task Form"
+        data-testid="task-form"
         id="task-form"
         className="column"
         onSubmit={handleSubmit}

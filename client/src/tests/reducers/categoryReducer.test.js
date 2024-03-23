@@ -1,5 +1,5 @@
-import { categoriesSample } from "../../constants/sampleData";
-import categoryReducer from "../../redux/reducers/categoryReducer";
+import { categoriesSample } from "constants/sampleData";
+import categoryReducer from "redux/reducers/categoryReducer";
 
 const defaultCategory = categoriesSample[0];
 const userDefinedCategory = categoriesSample[1];
@@ -7,7 +7,7 @@ const userDefinedCategory = categoriesSample[1];
 const defaultState = [defaultCategory];
 
 describe("categoryReducer: FETCH_CATEGORIES, ADD_CATEGORY, EDIT_CATEGORY, DELETE_CATEGORY", () => {
-  it("should return initial state ", () => {
+  it("should return initial state", () => {
     const nextState = categoryReducer(defaultState, {});
     expect(nextState).toHaveLength(1);
   });
@@ -147,7 +147,7 @@ describe("categoryReducer: EDIT_CATEGORY_IN_TASK", () => {
 
     const nextState = categoryReducer(
       [...categoriesSample, anotherCategory],
-      action,
+      action
     );
     expect(nextState).toEqual([
       defaultCategory,

@@ -4,6 +4,7 @@ exports[`OpenTask snapshot: OpenTask 1`] = `
 <DocumentFragment>
   <div
     class="modal task-modal"
+    role="dialog"
   >
     <div
       class="task-dialog"
@@ -12,8 +13,10 @@ exports[`OpenTask snapshot: OpenTask 1`] = `
         class="flex task-dialog-top"
       >
         <button
+          aria-label="Close"
           class="icon "
           title="Close"
+          type="button"
         >
           <svg
             aria-hidden="true"

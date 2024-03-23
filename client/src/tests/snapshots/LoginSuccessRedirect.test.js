@@ -1,16 +1,15 @@
-import { render } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
-import mockInitialState, { mockStore } from "../mocks/mockReduxState";
-import LoginSuccessRedirect from "../../pages/LoginSuccessRedirect";
+import { render } from "test-utilities/test-utils";
+import { useNavigate } from "react-router-dom";
+import mockInitialState, {
+  mockStore,
+} from "test-utilities/mocks/mockReduxState";
+import LoginSuccessRedirect from "pages/LoginSuccessRedirect";
 
 test("LoginSuccessRedirect snapshot", () => {
-  const { asFragment } = render(
-    <BrowserRouter>
-      <Provider store={mockStore(mockInitialState)}>
-        <LoginSuccessRedirect />
-      </Provider>
-    </BrowserRouter>,
-  );
+  useNavigate.mockReturnValue(jest.fn());
+
+  const { asFragment } = render(<LoginSuccessRedirect />, {
+    props: { store: mockStore(mockInitialState) },
+  });
   expect(asFragment()).toMatchSnapshot("LoginSuccessRedirect");
 });

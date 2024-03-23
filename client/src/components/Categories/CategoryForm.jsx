@@ -37,6 +37,7 @@ const CategoryForm = (props) => {
           <input
             aria-label="Category Title"
             id="categoryTitle"
+            data-testid="category-title-input"
             name="categoryTitle"
             value={title}
             placeholder="Title"

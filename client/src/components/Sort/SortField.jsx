@@ -7,7 +7,7 @@ const SortField = (props) => {
   const handleClick = () => handleSorting(value);
 
   return (
-    <li className="center sf-component">
+    <li className="center sort-component">
       <button
         className={`sort-field flex ${
           currentSort === value ? " sort-field-active" : ""

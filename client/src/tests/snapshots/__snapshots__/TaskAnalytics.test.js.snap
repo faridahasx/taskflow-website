@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Stats snapshot: Stats 1`] = `
+exports[`TaskAnalytics snapshot: TaskAnalytics 1`] = `
 <DocumentFragment>
   <header
     class="flex"
@@ -11,8 +11,9 @@ exports[`Stats snapshot: Stats 1`] = `
       id="header-first"
     >
       <button
+        aria-label="Open Categories"
         class="icon "
-        title="Open categories"
+        title="Open Categories"
       >
         <svg
           aria-hidden="true"
@@ -32,20 +33,11 @@ exports[`Stats snapshot: Stats 1`] = `
         href="/"
       >
         <div
+          aria-label="TaskFlow Logo"
           class="logo center"
+          role="img"
           title="TaskFlow"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-            data-testid="MovingIcon"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19.71 9.71 22 12V6h-6l2.29 2.29-4.17 4.17c-.39.39-1.02.39-1.41 0l-1.17-1.17c-1.17-1.17-3.07-1.17-4.24 0L2 16.59 3.41 18l5.29-5.29c.39-.39 1.02-.39 1.41 0l1.17 1.17c1.17 1.17 3.07 1.17 4.24 0l4.19-4.17z"
-            />
-          </svg>
           <span
             class="logo-task"
           >
@@ -56,6 +48,18 @@ exports[`Stats snapshot: Stats 1`] = `
           >
             Flow
           </span>
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="MovingIcon"
+            focusable="false"
+            id="logo-icon"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19.71 9.71 22 12V6h-6l2.29 2.29-4.17 4.17c-.39.39-1.02.39-1.41 0l-1.17-1.17c-1.17-1.17-3.07-1.17-4.24 0L2 16.59 3.41 18l5.29-5.29c.39-.39 1.02-.39 1.41 0l1.17 1.17c1.17 1.17 3.07 1.17 4.24 0l4.19-4.17z"
+            />
+          </svg>
         </div>
       </a>
     </span>
@@ -65,9 +69,9 @@ exports[`Stats snapshot: Stats 1`] = `
     >
       <a
         class="icon"
-        data-testid="header-stats-link"
-        href="/stats"
-        title="Stats"
+        data-testid="header-analytics-link"
+        href="/analytics"
+        title="Task Analytics"
       >
         <svg
           aria-hidden="true"
@@ -83,17 +87,17 @@ exports[`Stats snapshot: Stats 1`] = `
       </a>
       <button
         class="icon "
-        title="Sign In"
+        title="Sign Out"
       >
         <svg
           aria-hidden="true"
           class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-          data-testid="LoginOutlinedIcon"
+          data-testid="LogoutTwoToneIcon"
           focusable="false"
           viewBox="0 0 24 24"
         >
           <path
-            d="M11 7 9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"
+            d="M5 5h7V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h7v-2H5V5zm16 7-4-4v3H9v2h8v3l4-4z"
           />
         </svg>
       </button>
@@ -112,66 +116,29 @@ exports[`Stats snapshot: Stats 1`] = `
           class="center"
           id="categories-list-container"
         >
-          <ol
-            id="categories-list"
+          <span
+            class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+            data-testid="loading"
+            role="progressbar"
+            style="width: 40px; height: 40px;"
           >
-            <li
-              class="category-li flex"
+            <svg
+              class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+              viewBox="22 22 44 44"
             >
-              <a
-                class="flex"
-                href="/"
-              >
-                <span
-                  class="text-overflow"
-                >
-                  All
-                </span>
-                <span>
-                  (5)
-                </span>
-              </a>
-            </li>
-            <li
-              class="category-li flex"
-            >
-              <a
-                class="flex text-overflow"
-                href="/?categories=Tasks"
-              >
-                <span
-                  class="text-overflow"
-                  title="Tasks"
-                >
-                  Tasks
-                </span>
-                <span
-                  title="5 tasks"
-                >
-                  (5)
-                </span>
-              </a>
-              <button
-                class="icon "
-                data-testid="Tasks-menu"
-                title="More"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="MoreVertOutlinedIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
-                  />
-                </svg>
-              </button>
-            </li>
-          </ol>
+              <circle
+                class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+                cx="44"
+                cy="44"
+                fill="none"
+                r="20.2"
+                stroke-width="3.6"
+              />
+            </svg>
+          </span>
         </div>
         <button
+          aria-label="Add new category"
           class="center"
           id="add-category"
           title="Add new category"
@@ -196,16 +163,18 @@ exports[`Stats snapshot: Stats 1`] = `
       </div>
     </div>
     <div
+      aria-labelledby="analytics-heading"
       class="column"
-      id="stats"
+      id="analytics"
+      role="region"
     >
       <div
         class="column"
-        id="stats-wrapper"
+        id="analytics-wrapper"
       >
         <div
           class="flex"
-          id="stats-top"
+          id="analytics-top"
         >
           <span
             class="nav-item center"
@@ -229,15 +198,34 @@ exports[`Stats snapshot: Stats 1`] = `
           </span>
           <h1
             class="flex"
-            id="stats-heading"
+            id="analytics-heading"
           >
-            Tasks:
+            Task Analytics:
           </h1>
         </div>
         <span
-          class="center stats-empty"
+          class="center analytics-empty"
         >
-          Sign in to unlock this feature
+          <span
+            class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+            data-testid="loading"
+            role="progressbar"
+            style="width: 40px; height: 40px;"
+          >
+            <svg
+              class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+              viewBox="22 22 44 44"
+            >
+              <circle
+                class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+                cx="44"
+                cy="44"
+                fill="none"
+                r="20.2"
+                stroke-width="3.6"
+              />
+            </svg>
+          </span>
         </span>
       </div>
     </div>
@@ -252,24 +240,15 @@ exports[`Stats snapshot: Stats 1`] = `
       <a
         aria-label="Go to home page"
         href="/"
-        id="footer-link"
+        id="footer-logo-link"
         title="Home"
       >
         <div
+          aria-label="TaskFlow Logo"
           class="logo center"
+          role="img"
           title="TaskFlow"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-            data-testid="MovingIcon"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19.71 9.71 22 12V6h-6l2.29 2.29-4.17 4.17c-.39.39-1.02.39-1.41 0l-1.17-1.17c-1.17-1.17-3.07-1.17-4.24 0L2 16.59 3.41 18l5.29-5.29c.39-.39 1.02-.39 1.41 0l1.17 1.17c1.17 1.17 3.07 1.17 4.24 0l4.19-4.17z"
-            />
-          </svg>
           <span
             class="logo-task"
           >
@@ -280,13 +259,25 @@ exports[`Stats snapshot: Stats 1`] = `
           >
             Flow
           </span>
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="MovingIcon"
+            focusable="false"
+            id="logo-icon"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19.71 9.71 22 12V6h-6l2.29 2.29-4.17 4.17c-.39.39-1.02.39-1.41 0l-1.17-1.17c-1.17-1.17-3.07-1.17-4.24 0L2 16.59 3.41 18l5.29-5.29c.39-.39 1.02-.39 1.41 0l1.17 1.17c1.17 1.17 3.07 1.17 4.24 0l4.19-4.17z"
+            />
+          </svg>
         </div>
       </a>
       <a
         href="https://farida-mu.vercel.app/#contact"
-        id="dev-info"
+        id="dev-link"
         target="_blank"
-        title="Farida Hasanova"
+        title="Contact the developer"
       >
         Contact the developer
       </a>

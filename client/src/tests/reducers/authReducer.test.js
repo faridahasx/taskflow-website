@@ -1,7 +1,7 @@
 import authReducer from "../../redux/reducers/authReducer";
 
 describe("authReducer", () => {
-  it("should return initial state ", () => {
+  it("should return initial state", () => {
     const initialState = {
       isLogged: null,
     };

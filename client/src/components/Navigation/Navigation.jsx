@@ -37,8 +37,10 @@ const Navigation = (props) => {
             </li>
           </ul>
           <IconButton
+            aria-label="Add New Task"
+            data-testid="add-task-btn"
             className="add-task-btn"
-            title="Add task"
+            title="Add Task"
             onClick={handleToggleOpenTaskForm}
             Icon={<Add />}
           />

@@ -35,8 +35,8 @@ const verify = function (accessToken, refreshToken, profile, done) {
         const user = yield user_1.default.findOne({ email: email });
         if (!user) {
             const newUser = new user_1.default({
-                firstname: firstname,
-                lastname: lastname,
+                firstname: firstname ? firstname : "unknown",
+                lastname: lastname ? lastname : "unknown",
                 email: email,
                 password: crypto_js_1.default.AES.encrypt(PASSWORD, PASSWORD_SECRET).toString(),
             });

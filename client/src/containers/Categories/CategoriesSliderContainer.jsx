@@ -32,9 +32,9 @@ const CategoriesSliderContainer = (props) => {
         type: "FETCH_CATEGORIES",
         payload: [
           {
-            title: "All",
-            tasks: res.data.totalTasks,
             _id: "All",
+            tasks: res.data.totalTasks,
+            title: "All",
           },
           ...res.data.categories,
         ],

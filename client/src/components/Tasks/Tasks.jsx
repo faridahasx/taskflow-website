@@ -111,32 +111,32 @@ const Tasks = (props) => {
       </div>
       {/* Conditional rendering of AddTaskForm or EditTaskForm */}
 
-      <Suspense
-        fallback={<ModalLoading handleClose={handleCloseAddTaskEditor} />}
-      >
-        {openAddTaskEditor && (
+      {openAddTaskEditor && (
+        <Suspense
+          fallback={<ModalLoading handleClose={handleCloseAddTaskEditor} />}
+        >
           <AddTaskForm handleCloseEditor={handleCloseAddTaskEditor} />
-        )}
-      </Suspense>
-      <Suspense
-        fallback={<ModalLoading handleClose={handleCloseEditTaskEditor} />}
-      >
-        {openEditTaskEditor && (
+        </Suspense>
+      )}
+      {openEditTaskEditor && (
+        <Suspense
+          fallback={<ModalLoading handleClose={handleCloseEditTaskEditor} />}
+        >
           <EditTaskForm
             handleCloseEditor={handleCloseEditTaskEditor}
             task={openEditTaskEditor}
           />
-        )}
-      </Suspense>
+        </Suspense>
+      )}
     </section>
   );
 };
 
 Tasks.propTypes = {
-  errorDuringFetch: PropTypes.bool.isRequired,
+  errorDuringFetch: PropTypes.any,
   isTransitioning: PropTypes.bool.isRequired,
   loadMore: PropTypes.bool.isRequired,
-  tasks: PropTypes.oneOfType([PropTypes.array, PropTypes.oneOf([null])]),
+  tasks: PropTypes.array,
   loadingRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   handleTryAgain: PropTypes.func.isRequired,
 };

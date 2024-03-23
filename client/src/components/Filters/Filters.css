@@ -12,6 +12,11 @@
   overflow: auto;
 }
 
+.filter-component {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--light-grey);
+}
+
 #category-filter-label {
   padding: 5px 10px;
   color: rgb(63, 63, 63);

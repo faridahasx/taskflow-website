@@ -1,7 +1,7 @@
-import alertReducer from "../../redux/reducers/alertReducer";
+import alertReducer from "redux/reducers/alertReducer";
 
 describe("alertReducer", () => {
-  it("should return initial state ", () => {
+  it("should return initial state", () => {
     const initialState = {
       message: "",
     };

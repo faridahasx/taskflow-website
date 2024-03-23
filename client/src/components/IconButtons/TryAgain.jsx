@@ -4,7 +4,12 @@ import IconButton from "./IconButton";
 
 const TryAgain = (buttonProps) => {
   return (
-    <IconButton aria-label="Try Again" Icon={<ReplayIcon />} {...buttonProps} />
+    <IconButton
+      aria-label="Try Again"
+      data-testid="try-again"
+      Icon={<ReplayIcon />}
+      {...buttonProps}
+    />
   );
 };
 

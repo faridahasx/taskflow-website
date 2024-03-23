@@ -41,10 +41,7 @@ const OpenTaskContainer = (props) => {
 
 OpenTaskContainer.propTypes = {
   task: PropTypes.object.isRequired,
-  openEditTaskEditor: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.oneOf(null),
-  ]).isRequired,
+  openEditTaskEditor: PropTypes.object,
   handleOpenEditTaskEditor: PropTypes.func.isRequired,
   handleCloseOpenedTask: PropTypes.func.isRequired,
 };

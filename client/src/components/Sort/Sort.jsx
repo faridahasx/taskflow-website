@@ -4,7 +4,7 @@ import sortFields from "constants/sortFields";
 // Custom hooks
 import useClickOutside from "hooks/useClickOutside";
 // Components
-import Dialog from "components/SortAndFiltersWrapper/SortAndFiltersWrapper";
+import DialogWrapper from "components/DialogWrapper/DialogWrapper";
 import SortField from "./SortField";
 // Styles
 import "./Sort.css";
@@ -17,13 +17,13 @@ const Sort = (props) => {
 
   // Render compomnent
   return (
-    <Dialog
+    <DialogWrapper
       className="sort-dialog"
       heading={"Sort By"}
       containerRef={containerRef}
       handleClose={handleClose}
     >
-      <ul id="sort-ul" data-testid="sort">
+      <ul aria-label="Sort Tasks" id="sort-ul" data-testid="sort">
         {sortFields.map((s) => (
           <SortField
             key={s.value}
@@ -34,7 +34,7 @@ const Sort = (props) => {
           />
         ))}
       </ul>
-    </Dialog>
+    </DialogWrapper>
   );
 };
 

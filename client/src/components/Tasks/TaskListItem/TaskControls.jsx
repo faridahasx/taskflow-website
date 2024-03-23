@@ -25,7 +25,7 @@ const TaskControls = (props) => {
 
   // Function to expand task details
   const handleExpandTaskDetails = () => {
-    setExpandDetailsTaskID((prev) => (prev === task._id ? "" : task._id));
+    setExpandDetailsTaskID((prev) => (prev === task._id ? null : task._id));
   };
 
   return (
@@ -57,7 +57,7 @@ const TaskControls = (props) => {
 
 TaskControls.propTypes = {
   task: PropTypes.object.isRequired,
-  expandDetailsTaskID: PropTypes.string.isRequired,
+  expandDetailsTaskID: PropTypes.string,
   setExpandDetailsTaskID: PropTypes.func.isRequired,
   handleOpenEditTaskEditor: PropTypes.func.isRequired,
 };

@@ -10,20 +10,19 @@
 
 #lp-h1 {
   font-size: 23px;
-  margin-top: 50px;
+  margin: 50px 0;
   font-size: 23px;
-}
-
-#lp-h1,
-#lp-p {
-  margin-bottom: 25px;
   text-align: center;
   color: rgb(44, 71, 44);
 }
 
-#lp-p {
+/* #lp-p {
+  margin-bottom: 25px;
+  text-align: center;
+  color: rgb(44, 71, 44);
+
   font-size: 20px;
-}
+} */
 
 #landing-page .logo {
   font-size: 40px;
