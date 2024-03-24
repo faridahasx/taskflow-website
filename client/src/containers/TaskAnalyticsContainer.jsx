@@ -36,7 +36,7 @@ const TaskAnalyticsContainer = () => {
       let [queryString, new_start, new_end] =
         getTaskAnalyticsRequestQueryFromURL();
       // Make a request to the server to fetch statistics
-      const res = await axiosWithCredentials.get(`stats?${queryString}`);
+      const res = await axiosWithCredentials.get(`analytics?${queryString}`);
 
       if (new_start !== start) {
         setDefaultDateRange({

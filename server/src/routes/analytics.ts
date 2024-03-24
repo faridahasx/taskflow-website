@@ -9,12 +9,11 @@ import { IFetchTasksRequestQuery } from "../types/taskTypes";
 
 const router = Router();
 
-// GET USERS TASK STATS
+// GET USER TASK ANALYTICS
 router.get("/", auth, async (req: Request, res: Response) => {
   try {
     let user = req.user as AuthenticatedUser;
     let reqQuery = req.query as IFetchTasksRequestQuery;
-
     const filters = getFilters(
       reqQuery,
       new mongoose.Types.ObjectId(user.userId)

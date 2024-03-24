@@ -14,9 +14,10 @@ const morgan_1 = __importDefault(require("morgan"));
 const auth_1 = __importDefault(require("./routes/auth"));
 const task_1 = __importDefault(require("./routes/task"));
 const category_1 = __importDefault(require("./routes/category"));
-const stats_1 = __importDefault(require("./routes/stats"));
+const analytics_1 = __importDefault(require("./routes/analytics"));
 const database_1 = __importDefault(require("./database"));
 const keepAwake_1 = __importDefault(require("./keepAwake"));
+const responseMessages_1 = require("./constants/responseMessages");
 //
 // ENV
 dotenv_1.default.config();
@@ -67,8 +68,13 @@ app.get("/", (req, res) => {
 });
 app.use("/auth", auth_1.default);
 app.use("/task", task_1.default);
-app.use("/stats", stats_1.default);
+app.use("/analytics", analytics_1.default);
 app.use("/category", category_1.default);
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.log(err.stack);
+    res.status(500).send(responseMessages_1.serverError);
+});
 // Listen
 app.listen(PORT, () => {
     console.log(`SERVER IS RUNNING ON PORT: ${PORT}`);

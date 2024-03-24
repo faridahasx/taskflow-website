@@ -21,7 +21,6 @@ const sendEmail_1 = __importDefault(require("../utils/sendEmail"));
 const validateEmail_1 = __importDefault(require("../utils/auth/validateEmail"));
 const user_1 = __importDefault(require("../models/user"));
 const responseMessages_1 = require("../constants/responseMessages");
-const category_1 = __importDefault(require("../models/category"));
 const generateAndSendAuthTokens_1 = __importDefault(require("../utils/auth/generateAndSendAuthTokens"));
 const router = (0, express_1.Router)();
 const PASSWORD_SECRET = process.env.PASSWORD_SECRET || "";
@@ -52,9 +51,6 @@ router.post("/register", (req, res) => __awaiter(void 0, void 0, void 0, functio
             password: crypto_js_1.default.AES.encrypt(password, PASSWORD_SECRET).toString(),
         });
         yield newUser.save();
-        // Create default category
-        const newCategory = new category_1.default({ title: "Tasks", userId: newUser._id });
-        yield newCategory.save();
         // Set credentials ans send response
         (0, generateAndSendAuthTokens_1.default)(res, newUser._id);
         res.status(200).json("Register Success!");

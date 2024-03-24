@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import cookieParser from "cookie-parser";
 import passport from "./middleware/passport";
 import cors from "cors";
@@ -9,9 +9,10 @@ import morgan from "morgan";
 import auth from "./routes/auth";
 import task from "./routes/task";
 import category from "./routes/category";
-import stats from "./routes/stats";
+import analytics from "./routes/analytics";
 import connectDB from "./database";
 import keepAwake from "./keepAwake";
+import { serverError } from "./constants/responseMessages";
 //
 
 // ENV
@@ -77,8 +78,14 @@ app.get("/", (req, res) => {
 
 app.use("/auth", auth);
 app.use("/task", task);
-app.use("/stats", stats);
+app.use("/analytics", analytics);
 app.use("/category", category);
+
+// Error handling middleware
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.log(err.stack);
+  res.status(500).send(serverError);
+});
 
 // Listen
 app.listen(PORT, () => {

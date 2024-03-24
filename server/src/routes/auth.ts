@@ -14,7 +14,6 @@ import {
   serverError,
   wrongCredentialsError,
 } from "../constants/responseMessages";
-import category from "../models/category";
 import generateAndSendAuthTokens from "../utils/auth/generateAndSendAuthTokens";
 import { IUserSchema } from "../types/userTypes";
 
@@ -52,9 +51,6 @@ router.post("/register", async (req: Request, res: Response) => {
       password: CryptoJS.AES.encrypt(password, PASSWORD_SECRET).toString(),
     });
     await newUser.save();
-    // Create default category
-    const newCategory = new category({ title: "Tasks", userId: newUser._id });
-    await newCategory.save();
 
     // Set credentials ans send response
     generateAndSendAuthTokens(res, newUser._id);
