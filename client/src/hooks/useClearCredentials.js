@@ -13,7 +13,6 @@ const useClearCredentials = () => {
 
     // Dispatch an action to update the 'IS_LOGGED' state to false
     dispatch({ type: "IS_LOGGED", payload: false });
-    dispatch({ type: "AUTH_DIALOG", payload: true });
     dispatch({ type: "CLEAR_CATEGORIES" });
   };
 };
