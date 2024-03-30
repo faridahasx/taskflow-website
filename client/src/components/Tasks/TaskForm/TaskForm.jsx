@@ -112,9 +112,9 @@ const TaskForm = (props) => {
 
       {confirmCloseUnsaved && (
         <ConfirmationDialog
-          cancelButtonText="Back To Editor"
-          confirmButtonText="Exit Anyway"
-          heading="Your draft will be lost"
+          cancelButtonText="Cancel"
+          confirmButtonText="Exit"
+          heading="Confirm Exit?"
           loading={loading}
           handleCloseDialog={handleCancelClose}
           handleCancel={handleCancelClose}
