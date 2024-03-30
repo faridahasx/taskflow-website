@@ -72,7 +72,9 @@ function App() {
                     <LandingPage />
                   ) : isLogged === true ? (
                     <Home />
-                  ) : null
+                  ) : (
+                    <PageLoading />
+                  )
                 }
               />
               <Route
@@ -81,8 +83,10 @@ function App() {
                 element={
                   isLogged === false ? (
                     <Navigate replace to="/" />
-                  ) : (
+                  ) : isLogged === true ? (
                     <TaskAnalytics />
+                  ) : (
+                    <PageLoading />
                   )
                 }
               />

@@ -17,6 +17,11 @@
   align-items: center;
 }
 
+
+#search-form:focus-within {
+  outline: 1px ridge rgb(176, 176, 176);
+}
+
 #search-form input {
   background-color: rgba(127, 255, 212, 0);
   font-size: 17px;
