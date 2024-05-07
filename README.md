@@ -29,11 +29,11 @@ It's a user-centric creation that embodies my commitment to impactful developmen
 - **Server:**
   - TypeScipt
   - Node.js
-  - Express
+  - Express.js
   - Passport.js
 - **Client:**
   - JavaScript
-  - React
+  - React.js
   - Material UI
   - CSS
   - Jest & React Testing Library
