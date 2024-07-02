@@ -1,5 +1,5 @@
 // External Imports
-import { Suspense, lazy, useEffect, useLayoutEffect } from "react";
+import { Suspense, lazy, useEffect, useLayoutEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // MUI Components
@@ -14,6 +14,8 @@ import Message from "components/Alerts/Message";
 import Offline from "components/Alerts/Offline";
 // Styles
 import "assets/globals.css";
+import ConfirmationDialog from "components/ConfirmationDialog/ConfirmationDialog";
+import freeServerMessage from "components/freeServerMessage";
 
 // Lazily loaded components
 const Home = lazy(() => import("pages/Home"));
@@ -28,6 +30,9 @@ function App() {
   const isLogged = useSelector((state) => state.auth.isLogged);
   // Check online status using custom hook
   const isOnline = useNetworkStatus();
+  //
+  const [displayMessage, setDisplayMessage] = useState(true);
+  const closeDisplayMessage = () => setDisplayMessage(false);
 
   //Adjusts the viewport height on window resize
   useEffect(() => {
@@ -61,6 +66,14 @@ function App() {
       <BrowserRouter>
         <Message />
         {!isOnline && <Offline />}
+        {displayMessage && (
+          <ConfirmationDialog
+            heading={freeServerMessage}
+            confirmButtonText={"Continue"}
+            handleCloseDialog={closeDisplayMessage}
+            handleConfirm={closeDisplayMessage}
+          />
+        )}
         <ErrorBoundary>
           <Suspense fallback={<PageLoading />}>
             <Routes>

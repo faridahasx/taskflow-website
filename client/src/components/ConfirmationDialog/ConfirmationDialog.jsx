@@ -23,8 +23,14 @@ const ConfirmationDialog = (props) => {
     <Modal handleClose={handleCloseDialog}>
       <div aria-describedby="dialaog-heading" className="confirmation-dialog">
         <h1 id="dialaog-heading">{heading}</h1>
-        <div className="flex">
-          <CancelButton buttonText={cancelButtonText} onClick={handleCancel} />
+        <div className="flex dialog-btns">
+          {cancelButtonText && (
+            <CancelButton
+              buttonText={cancelButtonText}
+              onClick={handleCancel}
+            />
+          )}
+
           <SubmitButton
             buttonText={confirmButtonText}
             loading={loading}
