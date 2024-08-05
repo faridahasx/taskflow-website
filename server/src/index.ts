@@ -29,11 +29,11 @@ const app = express();
 // Connect to MongoDB
 connectDB(DB_URI);
 
-if (NODE_ENV === "DEVELOPMENT") {
-  app.use(morgan("dev"));
-} else {
-  keepAwake.start();
-}
+// if (NODE_ENV === "DEVELOPMENT") {
+//   app.use(morgan("dev"));
+// } else {
+//   keepAwake.start();
+// }
 
 // Middleware
 app.use(express.json());
