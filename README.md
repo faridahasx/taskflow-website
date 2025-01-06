@@ -1,4 +1,4 @@
-# [TaskFlow](https://www.taskflow.site/): A personal task management website for a simplified workflow.
+# [TaskFlow](https://www.taskflow.world/): A personal task management website for a simplified workflow.
 
 Crafted with the MERN stack. Tested with Jest and React Testing Library. ✅
 
@@ -6,11 +6,11 @@ Crafted with the MERN stack. Tested with Jest and React Testing Library. ✅
 
 ![Project gif](https://github.com/faridahasx/taskflow-website/blob/main/project.gif)
 
-[Visit the site](https://www.taskflow.site/) | [Server](https://github.com/faridahasx/taskflow-website/tree/main/server) | [Client](https://github.com/faridahasx/taskflow-website/tree/main/client)
+[Visit the site](https://www.taskflow.world/) | [Server](https://github.com/faridahasx/taskflow-website/tree/main/server) | [Client](https://github.com/faridahasx/taskflow-website/tree/main/client)
 
 # Purpose of this project
 
-Driven developer here! [TaskFlow](https://www.taskflow.site/) isn't just a showcase project. Beyond the code, it's about
+Driven developer here! [TaskFlow](https://www.taskflow.world/) isn't just a showcase project. Beyond the code, it's about
 creating something that people will genuinely use—merging my passion for coding with practical utility.
 It's a user-centric creation that embodies my commitment to impactful development. 💻
 
@@ -68,4 +68,4 @@ If you have any queries, please feel free to reach out:
 
 #
 
-[Visit the site](https://www.taskflow.site/) | [Server](https://github.com/faridahasx/taskflow-website/tree/main/server) | [Client](https://github.com/faridahasx/taskflow-website/tree/main/client)
+[Visit the site](https://www.taskflow.world/) | [Server](https://github.com/faridahasx/taskflow-website/tree/main/server) | [Client](https://github.com/faridahasx/taskflow-website/tree/main/client)
